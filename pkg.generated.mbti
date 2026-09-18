@@ -1,0 +1,19 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "shop1111/moonbindgen"
+
+// Values
+pub fn generate(String, String) -> GenerateResult raise
+
+// Errors
+
+// Types and methods
+pub struct GenerateResult {
+  bindings : String
+  report : String
+  generated : Int
+  skipped : Int
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,281 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "shop1111/moonbindgen/examples/sqlite"
+
+// Values
+pub fn sqlite3_aggregate_count(C_sqlite3_context) -> Int
+
+pub fn sqlite3_backup_finish(C_sqlite3_backup) -> Int
+
+pub fn sqlite3_backup_pagecount(C_sqlite3_backup) -> Int
+
+pub fn sqlite3_backup_remaining(C_sqlite3_backup) -> Int
+
+pub fn sqlite3_backup_step(C_sqlite3_backup, Int) -> Int
+
+pub fn sqlite3_bind_double(C_sqlite3_stmt, Int, Double) -> Int
+
+pub fn sqlite3_bind_int(C_sqlite3_stmt, Int, Int) -> Int
+
+pub fn sqlite3_bind_int64(C_sqlite3_stmt, Int, Int64) -> Int
+
+pub fn sqlite3_bind_null(C_sqlite3_stmt, Int) -> Int
+
+pub fn sqlite3_bind_parameter_count(C_sqlite3_stmt) -> Int
+
+pub fn sqlite3_bind_value(C_sqlite3_stmt, Int, C_sqlite3_value) -> Int
+
+pub fn sqlite3_bind_zeroblob(C_sqlite3_stmt, Int, Int) -> Int
+
+pub fn sqlite3_bind_zeroblob64(C_sqlite3_stmt, Int, UInt64) -> Int
+
+pub fn sqlite3_blob_bytes(C_sqlite3_blob) -> Int
+
+pub fn sqlite3_blob_close(C_sqlite3_blob) -> Int
+
+pub fn sqlite3_blob_reopen(C_sqlite3_blob, Int64) -> Int
+
+pub fn sqlite3_busy_timeout(C_sqlite3, Int) -> Int
+
+pub fn sqlite3_changes(C_sqlite3) -> Int
+
+pub fn sqlite3_changes64(C_sqlite3) -> Int64
+
+pub fn sqlite3_clear_bindings(C_sqlite3_stmt) -> Int
+
+pub fn sqlite3_close(C_sqlite3) -> Int
+
+pub fn sqlite3_close_v2(C_sqlite3) -> Int
+
+pub fn sqlite3_column_bytes(C_sqlite3_stmt, Int) -> Int
+
+pub fn sqlite3_column_bytes16(C_sqlite3_stmt, Int) -> Int
+
+pub fn sqlite3_column_count(C_sqlite3_stmt) -> Int
+
+pub fn sqlite3_column_double(C_sqlite3_stmt, Int) -> Double
+
+pub fn sqlite3_column_int(C_sqlite3_stmt, Int) -> Int
+
+pub fn sqlite3_column_int64(C_sqlite3_stmt, Int) -> Int64
+
+pub fn sqlite3_column_type(C_sqlite3_stmt, Int) -> Int
+
+pub fn sqlite3_data_count(C_sqlite3_stmt) -> Int
+
+pub fn sqlite3_db_cacheflush(C_sqlite3) -> Int
+
+pub fn sqlite3_db_release_memory(C_sqlite3) -> Int
+
+pub fn sqlite3_enable_load_extension(C_sqlite3, Int) -> Int
+
+pub fn sqlite3_enable_shared_cache(Int) -> Int
+
+pub fn sqlite3_errcode(C_sqlite3) -> Int
+
+pub fn sqlite3_error_offset(C_sqlite3) -> Int
+
+pub fn sqlite3_expired(C_sqlite3_stmt) -> Int
+
+pub fn sqlite3_extended_errcode(C_sqlite3) -> Int
+
+pub fn sqlite3_extended_result_codes(C_sqlite3, Int) -> Int
+
+pub fn sqlite3_finalize(C_sqlite3_stmt) -> Int
+
+pub fn sqlite3_get_autocommit(C_sqlite3) -> Int
+
+pub fn sqlite3_global_recover() -> Int
+
+pub fn sqlite3_hard_heap_limit64(Int64) -> Int64
+
+pub fn sqlite3_initialize() -> Int
+
+pub fn sqlite3_interrupt(C_sqlite3) -> Unit
+
+pub fn sqlite3_is_interrupted(C_sqlite3) -> Int
+
+pub fn sqlite3_keyword_count() -> Int
+
+pub fn sqlite3_last_insert_rowid(C_sqlite3) -> Int64
+
+pub fn sqlite3_libversion_number() -> Int
+
+pub fn sqlite3_limit(C_sqlite3, Int, Int) -> Int
+
+pub fn sqlite3_memory_highwater(Int) -> Int64
+
+pub fn sqlite3_memory_used() -> Int64
+
+pub fn sqlite3_mutex_enter(C_sqlite3_mutex) -> Unit
+
+pub fn sqlite3_mutex_free(C_sqlite3_mutex) -> Unit
+
+pub fn sqlite3_mutex_held(C_sqlite3_mutex) -> Int
+
+pub fn sqlite3_mutex_leave(C_sqlite3_mutex) -> Unit
+
+pub fn sqlite3_mutex_notheld(C_sqlite3_mutex) -> Int
+
+pub fn sqlite3_mutex_try(C_sqlite3_mutex) -> Int
+
+pub fn sqlite3_os_end() -> Int
+
+pub fn sqlite3_os_init() -> Int
+
+pub fn sqlite3_release_memory(Int) -> Int
+
+pub fn sqlite3_reset(C_sqlite3_stmt) -> Int
+
+pub fn sqlite3_reset_auto_extension() -> Unit
+
+pub fn sqlite3_result_double(C_sqlite3_context, Double) -> Unit
+
+pub fn sqlite3_result_error_code(C_sqlite3_context, Int) -> Unit
+
+pub fn sqlite3_result_error_nomem(C_sqlite3_context) -> Unit
+
+pub fn sqlite3_result_error_toobig(C_sqlite3_context) -> Unit
+
+pub fn sqlite3_result_int(C_sqlite3_context, Int) -> Unit
+
+pub fn sqlite3_result_int64(C_sqlite3_context, Int64) -> Unit
+
+pub fn sqlite3_result_null(C_sqlite3_context) -> Unit
+
+pub fn sqlite3_result_subtype(C_sqlite3_context, UInt) -> Unit
+
+pub fn sqlite3_result_value(C_sqlite3_context, C_sqlite3_value) -> Unit
+
+pub fn sqlite3_result_zeroblob(C_sqlite3_context, Int) -> Unit
+
+pub fn sqlite3_result_zeroblob64(C_sqlite3_context, UInt64) -> Int
+
+pub fn sqlite3_set_last_insert_rowid(C_sqlite3, Int64) -> Unit
+
+pub fn sqlite3_setlk_timeout(C_sqlite3, Int, Int) -> Int
+
+pub fn sqlite3_shutdown() -> Int
+
+pub fn sqlite3_sleep(Int) -> Int
+
+pub fn sqlite3_snapshot_cmp(C_sqlite3_snapshot, C_sqlite3_snapshot) -> Int
+
+pub fn sqlite3_snapshot_free(C_sqlite3_snapshot) -> Unit
+
+pub fn sqlite3_soft_heap_limit(Int) -> Unit
+
+pub fn sqlite3_soft_heap_limit64(Int64) -> Int64
+
+pub fn sqlite3_step(C_sqlite3_stmt) -> Int
+
+pub fn sqlite3_stmt_busy(C_sqlite3_stmt) -> Int
+
+pub fn sqlite3_stmt_explain(C_sqlite3_stmt, Int) -> Int
+
+pub fn sqlite3_stmt_isexplain(C_sqlite3_stmt) -> Int
+
+pub fn sqlite3_stmt_readonly(C_sqlite3_stmt) -> Int
+
+pub fn sqlite3_stmt_scanstatus_reset(C_sqlite3_stmt) -> Unit
+
+pub fn sqlite3_stmt_status(C_sqlite3_stmt, Int, Int) -> Int
+
+pub fn sqlite3_str_errcode(C_sqlite3_str) -> Int
+
+pub fn sqlite3_str_free(C_sqlite3_str) -> Unit
+
+pub fn sqlite3_str_length(C_sqlite3_str) -> Int
+
+pub fn sqlite3_str_reset(C_sqlite3_str) -> Unit
+
+pub fn sqlite3_str_truncate(C_sqlite3_str, Int) -> Unit
+
+pub fn sqlite3_system_errno(C_sqlite3) -> Int
+
+pub fn sqlite3_thread_cleanup() -> Unit
+
+pub fn sqlite3_threadsafe() -> Int
+
+pub fn sqlite3_total_changes(C_sqlite3) -> Int
+
+pub fn sqlite3_total_changes64(C_sqlite3) -> Int64
+
+pub fn sqlite3_transfer_bindings(C_sqlite3_stmt, C_sqlite3_stmt) -> Int
+
+pub fn sqlite3_value_bytes(C_sqlite3_value) -> Int
+
+pub fn sqlite3_value_bytes16(C_sqlite3_value) -> Int
+
+pub fn sqlite3_value_double(C_sqlite3_value) -> Double
+
+pub fn sqlite3_value_encoding(C_sqlite3_value) -> Int
+
+pub fn sqlite3_value_free(C_sqlite3_value) -> Unit
+
+pub fn sqlite3_value_frombind(C_sqlite3_value) -> Int
+
+pub fn sqlite3_value_int(C_sqlite3_value) -> Int
+
+pub fn sqlite3_value_int64(C_sqlite3_value) -> Int64
+
+pub fn sqlite3_value_nochange(C_sqlite3_value) -> Int
+
+pub fn sqlite3_value_numeric_type(C_sqlite3_value) -> Int
+
+pub fn sqlite3_value_subtype(C_sqlite3_value) -> UInt
+
+pub fn sqlite3_value_type(C_sqlite3_value) -> Int
+
+pub fn sqlite3_vfs_register(C_sqlite3_vfs, Int) -> Int
+
+pub fn sqlite3_vfs_unregister(C_sqlite3_vfs) -> Int
+
+pub fn sqlite3_vtab_distinct(C_sqlite3_index_info) -> Int
+
+pub fn sqlite3_vtab_in(C_sqlite3_index_info, Int, Int) -> Int
+
+pub fn sqlite3_vtab_nochange(C_sqlite3_context) -> Int
+
+pub fn sqlite3_vtab_on_conflict(C_sqlite3) -> Int
+
+pub fn sqlite3_wal_autocheckpoint(C_sqlite3, Int) -> Int
+
+// Errors
+
+// Types and methods
+#external
+pub type C_sqlite3
+
+#external
+pub type C_sqlite3_backup
+
+#external
+pub type C_sqlite3_blob
+
+#external
+pub type C_sqlite3_context
+
+#external
+pub type C_sqlite3_index_info
+
+#external
+pub type C_sqlite3_mutex
+
+#external
+pub type C_sqlite3_snapshot
+
+#external
+pub type C_sqlite3_stmt
+
+#external
+pub type C_sqlite3_str
+
+#external
+pub type C_sqlite3_value
+
+#external
+pub type C_sqlite3_vfs
+
+// Type aliases
+
+// Traits

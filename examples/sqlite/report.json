@@ -1,0 +1,1499 @@
+{
+  "schema": "moonbindgen-report-v1",
+  "header": "sqlite3.h",
+  "generated": 119,
+  "skipped": 179,
+  "functions": [
+    {
+      "name": "sqlite3_libversion",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_sourceid",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_libversion_number",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_compileoption_used",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_compileoption_get",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_threadsafe",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_close",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_close_v2",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_exec",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_initialize",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_shutdown",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_os_init",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_os_end",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_config",
+      "status": "skipped",
+      "reason": "variadic function"
+    },
+    {
+      "name": "sqlite3_db_config",
+      "status": "skipped",
+      "reason": "variadic function"
+    },
+    {
+      "name": "sqlite3_extended_result_codes",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_last_insert_rowid",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_set_last_insert_rowid",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_changes",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_changes64",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_total_changes",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_total_changes64",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_interrupt",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_is_interrupted",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_complete",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_complete16",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_busy_handler",
+      "status": "skipped",
+      "reason": "unsupported parameter type: int (*)(void *, int)"
+    },
+    {
+      "name": "sqlite3_busy_timeout",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_setlk_timeout",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_get_table",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_free_table",
+      "status": "skipped",
+      "reason": "unsupported parameter type: char **"
+    },
+    {
+      "name": "sqlite3_mprintf",
+      "status": "skipped",
+      "reason": "variadic function"
+    },
+    {
+      "name": "sqlite3_vmprintf",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_snprintf",
+      "status": "skipped",
+      "reason": "variadic function"
+    },
+    {
+      "name": "sqlite3_vsnprintf",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_malloc",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_malloc64",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_realloc",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_realloc64",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_free",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void *"
+    },
+    {
+      "name": "sqlite3_msize",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void *"
+    },
+    {
+      "name": "sqlite3_memory_used",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_memory_highwater",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_randomness",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void *"
+    },
+    {
+      "name": "sqlite3_set_authorizer",
+      "status": "skipped",
+      "reason": "unsupported parameter type: int (*)(void *, int, const char *, const char *, const char *, const char *)"
+    },
+    {
+      "name": "sqlite3_trace",
+      "status": "skipped",
+      "reason": "unsupported return type: void *(sqlite3 *, void"
+    },
+    {
+      "name": "sqlite3_profile",
+      "status": "skipped",
+      "reason": "unsupported return type: void *(sqlite3 *, void"
+    },
+    {
+      "name": "sqlite3_trace_v2",
+      "status": "skipped",
+      "reason": "unsupported parameter type: int (*)(unsigned int, void *, void *, void *)"
+    },
+    {
+      "name": "sqlite3_progress_handler",
+      "status": "skipped",
+      "reason": "unsupported parameter type: int (*)(void *)"
+    },
+    {
+      "name": "sqlite3_open",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_open16",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_open_v2",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_uri_parameter",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_uri_boolean",
+      "status": "skipped",
+      "reason": "unsupported parameter type: sqlite3_filename"
+    },
+    {
+      "name": "sqlite3_uri_int64",
+      "status": "skipped",
+      "reason": "unsupported parameter type: sqlite3_filename"
+    },
+    {
+      "name": "sqlite3_uri_key",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_filename_database",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_filename_journal",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_filename_wal",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_database_file_object",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_create_filename",
+      "status": "skipped",
+      "reason": "unsupported return type: sqlite3_filename"
+    },
+    {
+      "name": "sqlite3_free_filename",
+      "status": "skipped",
+      "reason": "unsupported parameter type: sqlite3_filename"
+    },
+    {
+      "name": "sqlite3_errcode",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_extended_errcode",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_errmsg",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_errmsg16",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_errstr",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_error_offset",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_set_errmsg",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_limit",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_prepare",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_prepare_v2",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_prepare_v3",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_prepare16",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_prepare16_v2",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_prepare16_v3",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_sql",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_expanded_sql",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_stmt_readonly",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_stmt_isexplain",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_stmt_explain",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_stmt_busy",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_bind_blob",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_bind_blob64",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_bind_double",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_bind_int",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_bind_int64",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_bind_null",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_bind_text",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_bind_text16",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_bind_text64",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_bind_value",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_bind_pointer",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void *"
+    },
+    {
+      "name": "sqlite3_bind_zeroblob",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_bind_zeroblob64",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_bind_parameter_count",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_bind_parameter_name",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_bind_parameter_index",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_clear_bindings",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_column_count",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_column_name",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_column_name16",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_column_database_name",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_column_database_name16",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_column_table_name",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_column_table_name16",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_column_origin_name",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_column_origin_name16",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_column_decltype",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_column_decltype16",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_step",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_data_count",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_column_blob",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_column_double",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_column_int",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_column_int64",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_column_text",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_column_text16",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_column_value",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_column_bytes",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_column_bytes16",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_column_type",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_finalize",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_reset",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_create_function",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_create_function16",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_create_function_v2",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_create_window_function",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_aggregate_count",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_expired",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_transfer_bindings",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_global_recover",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_thread_cleanup",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_memory_alarm",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void (*)(void *, sqlite3_int64, int)"
+    },
+    {
+      "name": "sqlite3_value_blob",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_value_double",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_value_int",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_value_int64",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_value_pointer",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_value_text",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_value_text16",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_value_text16le",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_value_text16be",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_value_bytes",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_value_bytes16",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_value_type",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_value_numeric_type",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_value_nochange",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_value_frombind",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_value_encoding",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_value_subtype",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_value_dup",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_value_free",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_aggregate_context",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_user_data",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_context_db_handle",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_get_auxdata",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_set_auxdata",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void *"
+    },
+    {
+      "name": "sqlite3_get_clientdata",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_set_clientdata",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_result_blob",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_result_blob64",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_result_double",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_result_error",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_result_error16",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_result_error_toobig",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_result_error_nomem",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_result_error_code",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_result_int",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_result_int64",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_result_null",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_result_text",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_result_text64",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_result_text16",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_result_text16le",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_result_text16be",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_result_value",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_result_pointer",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void *"
+    },
+    {
+      "name": "sqlite3_result_zeroblob",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_result_zeroblob64",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_result_subtype",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_create_collation",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_create_collation_v2",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_create_collation16",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_collation_needed",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void *"
+    },
+    {
+      "name": "sqlite3_collation_needed16",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void *"
+    },
+    {
+      "name": "sqlite3_sleep",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_win32_set_directory",
+      "status": "skipped",
+      "reason": "unsupported parameter type: unsigned long"
+    },
+    {
+      "name": "sqlite3_win32_set_directory8",
+      "status": "skipped",
+      "reason": "unsupported parameter type: unsigned long"
+    },
+    {
+      "name": "sqlite3_win32_set_directory16",
+      "status": "skipped",
+      "reason": "unsupported parameter type: unsigned long"
+    },
+    {
+      "name": "sqlite3_get_autocommit",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_db_handle",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_db_name",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_db_filename",
+      "status": "skipped",
+      "reason": "unsupported return type: sqlite3_filename"
+    },
+    {
+      "name": "sqlite3_db_readonly",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_txn_state",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_next_stmt",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_commit_hook",
+      "status": "skipped",
+      "reason": "unsupported return type: void *(sqlite3 *, int"
+    },
+    {
+      "name": "sqlite3_rollback_hook",
+      "status": "skipped",
+      "reason": "unsupported return type: void *(sqlite3 *, void"
+    },
+    {
+      "name": "sqlite3_autovacuum_pages",
+      "status": "skipped",
+      "reason": "unsupported parameter type: unsigned int (*)(void *, const char *, unsigned int, unsigned int, unsigned int)"
+    },
+    {
+      "name": "sqlite3_update_hook",
+      "status": "skipped",
+      "reason": "unsupported return type: void *(sqlite3 *, void"
+    },
+    {
+      "name": "sqlite3_enable_shared_cache",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_release_memory",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_db_release_memory",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_soft_heap_limit64",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_hard_heap_limit64",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_soft_heap_limit",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_table_column_metadata",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_load_extension",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_enable_load_extension",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_auto_extension",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void (*)(void)"
+    },
+    {
+      "name": "sqlite3_cancel_auto_extension",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void (*)(void)"
+    },
+    {
+      "name": "sqlite3_reset_auto_extension",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_create_module",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_create_module_v2",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_drop_modules",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char **"
+    },
+    {
+      "name": "sqlite3_declare_vtab",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_overload_function",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_blob_open",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_blob_reopen",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_blob_close",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_blob_bytes",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_blob_read",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void *"
+    },
+    {
+      "name": "sqlite3_blob_write",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const void *"
+    },
+    {
+      "name": "sqlite3_vfs_find",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_vfs_register",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_vfs_unregister",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_mutex_alloc",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_mutex_free",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_mutex_enter",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_mutex_try",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_mutex_leave",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_mutex_held",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_mutex_notheld",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_db_mutex",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_file_control",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_test_control",
+      "status": "skipped",
+      "reason": "variadic function"
+    },
+    {
+      "name": "sqlite3_keyword_count",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_keyword_name",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char **"
+    },
+    {
+      "name": "sqlite3_keyword_check",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_str_new",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_str_finish",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_str_free",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_str_appendf",
+      "status": "skipped",
+      "reason": "variadic function"
+    },
+    {
+      "name": "sqlite3_str_vappendf",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_str_append",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_str_appendall",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_str_appendchar",
+      "status": "skipped",
+      "reason": "unsupported parameter type: char"
+    },
+    {
+      "name": "sqlite3_str_reset",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_str_truncate",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_str_errcode",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_str_length",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_str_value",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_status",
+      "status": "skipped",
+      "reason": "unsupported parameter type: int *"
+    },
+    {
+      "name": "sqlite3_status64",
+      "status": "skipped",
+      "reason": "unsupported parameter type: sqlite3_int64 *"
+    },
+    {
+      "name": "sqlite3_db_status",
+      "status": "skipped",
+      "reason": "unsupported parameter type: int *"
+    },
+    {
+      "name": "sqlite3_db_status64",
+      "status": "skipped",
+      "reason": "unsupported parameter type: sqlite3_int64 *"
+    },
+    {
+      "name": "sqlite3_stmt_status",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_backup_init",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_backup_step",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_backup_finish",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_backup_remaining",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_backup_pagecount",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_unlock_notify",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void (*)(void **, int)"
+    },
+    {
+      "name": "sqlite3_stricmp",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_strnicmp",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_strglob",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_strlike",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_log",
+      "status": "skipped",
+      "reason": "variadic function"
+    },
+    {
+      "name": "sqlite3_wal_hook",
+      "status": "skipped",
+      "reason": "unsupported return type: void *(sqlite3 *, int"
+    },
+    {
+      "name": "sqlite3_wal_autocheckpoint",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_wal_checkpoint",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_wal_checkpoint_v2",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_vtab_config",
+      "status": "skipped",
+      "reason": "variadic function"
+    },
+    {
+      "name": "sqlite3_vtab_on_conflict",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_vtab_nochange",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_vtab_collation",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_vtab_distinct",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_vtab_in",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_vtab_in_first",
+      "status": "skipped",
+      "reason": "unsupported parameter type: sqlite3_value **"
+    },
+    {
+      "name": "sqlite3_vtab_in_next",
+      "status": "skipped",
+      "reason": "unsupported parameter type: sqlite3_value **"
+    },
+    {
+      "name": "sqlite3_vtab_rhs_value",
+      "status": "skipped",
+      "reason": "unsupported parameter type: sqlite3_value **"
+    },
+    {
+      "name": "sqlite3_stmt_scanstatus",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void *"
+    },
+    {
+      "name": "sqlite3_stmt_scanstatus_v2",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void *"
+    },
+    {
+      "name": "sqlite3_stmt_scanstatus_reset",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_db_cacheflush",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_system_errno",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_snapshot_get",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_snapshot_open",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_snapshot_free",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_snapshot_cmp",
+      "status": "generated",
+      "reason": ""
+    },
+    {
+      "name": "sqlite3_snapshot_recover",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_serialize",
+      "status": "skipped",
+      "reason": "unknown function type"
+    },
+    {
+      "name": "sqlite3_deserialize",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_carray_bind_v2",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void *"
+    },
+    {
+      "name": "sqlite3_carray_bind",
+      "status": "skipped",
+      "reason": "unsupported parameter type: void *"
+    },
+    {
+      "name": "sqlite3_rtree_geometry_callback",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    },
+    {
+      "name": "sqlite3_rtree_query_callback",
+      "status": "skipped",
+      "reason": "unsupported parameter type: const char *"
+    }
+  ],
+  "enums": []
+}

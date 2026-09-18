@@ -1,0 +1,10 @@
+import {
+  "moonbitlang/core/encoding/utf8",
+  "moonbitlang/core/abort",
+}
+
+pkgtype(kind: "executable")
+
+options(
+  "native-stub": [ "sqlite3.c", "shim.c" ],
+)
