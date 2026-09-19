@@ -99,6 +99,37 @@ test "uses sanitized parameter names without duplicates" {
 }
 
 ///|
+test "parses versioned generation configuration" {
+  let config = parse_config(
+    (
+      #|{"schema":"moonbindgen-config-v1","include_functions":["open"],"exclude_functions":["close"],"renames":{"open":"db_open"},"type_overrides":{"size_t":"UInt64"},"utf8_inputs":["open.path"],"unsupported_policy":"error"}
+    ),
+  )
+  assert_true(config.include_functions.contains("open"))
+  assert_true(config.exclude_functions.contains("close"))
+  assert_eq(config.renamed("open"), "db_open")
+  assert_eq(config.type_overrides.get("size_t"), Some("UInt64"))
+  assert_true(config.utf8_inputs.contains("open.path"))
+  assert_eq(config.unsupported_policy, UnsupportedPolicy::Error)
+}
+
+///|
+test "rejects unknown configuration fields" {
+  try
+    parse_config(
+      (
+        #|{"schema":"moonbindgen-config-v1","unknown":true}
+      ),
+    )
+  catch {
+    ConfigError::InvalidConfig(message) =>
+      assert_true(message.contains("unknown"))
+  } noraise {
+    _ => fail("expected invalid configuration")
+  }
+}
+
+///|
 test "tracks explicit and inherited Clang source locations" {
   let ast = @json.parse(
     (

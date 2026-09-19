@@ -1,0 +1,9 @@
+{
+  "schema": "moonbindgen-config-v1",
+  "include_functions": ["score", "release"],
+  "exclude_functions": ["release"],
+  "renames": {
+    "score": "widget_score"
+  },
+  "unsupported_policy": "report"
+}

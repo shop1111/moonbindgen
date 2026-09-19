@@ -69,3 +69,16 @@ fn c_function(node : Json, source : SourceLocation) -> CFunction? {
     source,
   })
 }
+
+///|
+fn CFunction::with_moon_name(self : CFunction, name : String) -> CFunction {
+  {
+    name: self.name,
+    moon_name: moonbit_value_name(name),
+    symbol: self.symbol,
+    c_signature: self.c_signature,
+    return_type: self.return_type,
+    parameters: self.parameters,
+    source: self.source,
+  }
+}

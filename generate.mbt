@@ -31,6 +31,15 @@ fn enum_number(node : Json) -> Int? {
 
 ///|
 pub fn generate(ast_text : String, header : String) -> GenerateResult raise {
+  generate_with_config(ast_text, header, GenerateConfig::default())
+}
+
+///|
+pub fn generate_with_config(
+  ast_text : String,
+  header : String,
+  config : GenerateConfig,
+) -> GenerateResult raise {
   let ast = @json.parse(ast_text)
   if text_field(ast, "kind") != Some("TranslationUnitDecl") {
     fail("Clang output is not a translation unit")
@@ -145,6 +154,11 @@ pub fn generate(ast_text : String, header : String) -> GenerateResult raise {
       Some(value) => value
       None => "<unnamed>"
     }
+    if !config.allows(name) {
+      skipped += 1
+      items.push(report_item(name, "skipped", "filtered by configuration"))
+      continue
+    }
     if seen.contains(name) {
       skipped += 1
       items.push(report_item(name, "skipped", "duplicate declaration"))
@@ -155,6 +169,7 @@ pub fn generate(ast_text : String, header : String) -> GenerateResult raise {
       Some(value) => value
       None => fail("Unrecognized Clang FunctionDecl structure")
     }
+    let function = function.with_moon_name(config.renamed(name))
     match value_names.get(function.moon_name) {
       Some(previous) if previous != function.name => {
         skipped += 1

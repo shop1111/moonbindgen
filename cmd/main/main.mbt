@@ -1,6 +1,6 @@
 ///|
 fn usage() -> String {
-  "Usage: moonbindgen generate <header> --out <dir> [--clang <exe>] [-- <clang arguments...>]"
+  "Usage: moonbindgen generate <header> --out <dir> [--clang <exe>] [--config <json>] [-- <clang arguments...>]"
 }
 
 ///|
@@ -32,6 +32,7 @@ async fn main {
   let header = args[2]
   let mut out_dir = ""
   let mut clang = "clang"
+  let mut config_path = ""
   let clang_args : Array[String] = []
   let mut index = 3
   while index < args.length() {
@@ -49,6 +50,13 @@ async fn main {
           die("--clang needs an executable")
         }
         clang = args[index]
+      }
+      "--config" => {
+        index += 1
+        if index >= args.length() {
+          die("--config needs a JSON file")
+        }
+        config_path = args[index]
       }
       "--" => {
         index += 1
@@ -86,7 +94,23 @@ async fn main {
   if code != 0 {
     die("Clang failed:\n" + stderr)
   }
-  let result = @lib.generate(stdout, absolute_header) catch {
+  let config = if config_path == "" {
+    @lib.GenerateConfig::default()
+  } else {
+    let text = @fs.read_file(config_path).text() catch {
+      _ => {
+        die("Could not read configuration: " + config_path)
+        return
+      }
+    }
+    @lib.parse_config(text) catch {
+      @lib.ConfigError::InvalidConfig(message) => {
+        die("Invalid configuration: " + message)
+        return
+      }
+    }
+  }
+  let result = @lib.generate_with_config(stdout, absolute_header, config) catch {
     _ => {
       die("Could not interpret Clang 23 AST JSON")
       return
