@@ -1,0 +1,68 @@
+name: Native verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: windows-2025
+    timeout-minutes: 30
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Install MoonBit
+        uses: hustcer/setup-moonbit@v1.22
+        with:
+          version: 0.1.20260819
+
+      - name: Install LLVM 23.1.1
+        shell: pwsh
+        run: |
+          $llvmUrl = 'https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.1/LLVM-23.1.1-win64.msi'
+          $llvmInstaller = Join-Path $env:RUNNER_TEMP 'LLVM-23.1.1-win64.msi'
+          Invoke-WebRequest -Uri $llvmUrl -OutFile $llvmInstaller
+          $install = Start-Process msiexec.exe -ArgumentList @('/i', $llvmInstaller, '/qn', '/norestart') -Wait -PassThru -WindowStyle Hidden
+          if ($install.ExitCode -ne 0) { throw "LLVM installation failed with exit code $($install.ExitCode)" }
+          'C:\Program Files\LLVM\bin' | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          & 'C:\Program Files\LLVM\bin\clang.exe' --version
+
+      - name: Resolve dependencies
+        shell: pwsh
+        run: moon update
+
+      - name: Run native verification
+        shell: pwsh
+        run: .\scripts\verify.ps1
+
+      - name: Verify generated interfaces and formatting
+        shell: pwsh
+        run: |
+          moon info
+          if ($LASTEXITCODE -ne 0) { throw 'moon info failed' }
+          git diff --exit-code -- ':(glob)**/*.mbti'
+          if ($LASTEXITCODE -ne 0) { throw 'Generated interfaces are stale' }
+          moon fmt --check
+          if ($LASTEXITCODE -ne 0) { throw 'Formatting check failed' }
+          moon doc
+          if ($LASTEXITCODE -ne 0) { throw 'Documentation build failed' }
+
+      - name: Verify release package contents
+        shell: pwsh
+        run: |
+          $packageFiles = (& moon package --list) -join "`n"
+          if ($LASTEXITCODE -ne 0) { throw 'Package listing failed' }
+          $forbidden = @('submission/', '2026年9月MoonBit', 'fixtures/', 'scripts/', '.github/', 'examples/')
+          foreach ($entry in $forbidden) {
+            if ($packageFiles.Contains($entry)) { throw "Forbidden release entry: $entry" }
+          }
+          $packageFiles
