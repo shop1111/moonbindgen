@@ -7,10 +7,70 @@ pub struct GenerateResult {
 }
 
 ///|
-fn report_item(name : String, status : String, reason : String) -> Json {
+pub struct ToolMetadata {
+  clang_version : String
+  clang_target : String
+}
+
+///|
+pub fn ToolMetadata::new(
+  clang_version : String,
+  clang_target : String,
+) -> ToolMetadata {
+  { clang_version, clang_target }
+}
+
+///|
+pub fn ToolMetadata::unknown() -> ToolMetadata {
+  { clang_version: "unknown", clang_target: "unknown" }
+}
+
+///|
+fn reason_code(status : String, reason : String) -> String {
+  if status == "generated" {
+    "generated"
+  } else if reason == "filtered by configuration" {
+    "filtered"
+  } else if reason == "duplicate declaration" {
+    "duplicate_declaration"
+  } else if reason.contains("name collision") {
+    "name_collision"
+  } else if reason == "variadic function" {
+    "variadic_function"
+  } else if reason.contains("unsupported return type") {
+    "unsupported_return_type"
+  } else if reason.contains("unsupported parameter type") {
+    "unsupported_parameter_type"
+  } else if reason.contains("enum value outside") {
+    "enum_value_out_of_range"
+  } else {
+    "unsupported_declaration"
+  }
+}
+
+///|
+fn report_item(
+  kind : String,
+  name : String,
+  moon_name : String,
+  source : SourceLocation,
+  c_signature : String,
+  moonbit_signature : String,
+  status : String,
+  reason : String,
+) -> Json {
   Json::object({
-    "name": Json::string(name),
+    "kind": Json::string(kind),
+    "c_name": Json::string(name),
+    "moonbit_name": Json::string(moon_name),
+    "source": Json::object({
+      "file": Json::string(source.file),
+      "line": Json::number(source.line.to_double()),
+    }),
+    "c_signature": Json::string(c_signature),
+    "moonbit_signature": Json::string(moonbit_signature),
     "status": Json::string(status),
+    "reason_code": Json::string(reason_code(status, reason)),
     "reason": Json::string(reason),
   })
 }
@@ -31,7 +91,12 @@ fn enum_number(node : Json) -> Int? {
 
 ///|
 pub fn generate(ast_text : String, header : String) -> GenerateResult raise {
-  generate_with_config(ast_text, header, GenerateConfig::default())
+  generate_with_metadata(
+    ast_text,
+    header,
+    GenerateConfig::default(),
+    ToolMetadata::unknown(),
+  )
 }
 
 ///|
@@ -39,6 +104,16 @@ pub fn generate_with_config(
   ast_text : String,
   header : String,
   config : GenerateConfig,
+) -> GenerateResult raise {
+  generate_with_metadata(ast_text, header, config, ToolMetadata::unknown())
+}
+
+///|
+pub fn generate_with_metadata(
+  ast_text : String,
+  header : String,
+  config : GenerateConfig,
+  metadata : ToolMetadata,
 ) -> GenerateResult raise {
   let ast = @json.parse(ast_text)
   if text_field(ast, "kind") != Some("TranslationUnitDecl") {
@@ -50,6 +125,9 @@ pub fn generate_with_config(
   let value_names : Map[String, String] = Map([])
   let enum_lines : Array[String] = []
   let enum_reports : Array[Json] = []
+  let mut enum_generated = 0
+  let mut enum_skipped = 0
+  let mut unsupported = 0
   let nodes = located_nodes(ast)
   for entry in nodes {
     let node = entry.node
@@ -117,12 +195,33 @@ pub fn generate_with_config(
             for line in lines {
               enum_lines.push(line)
             }
-            enum_reports.push(report_item(enum_name, "generated", ""))
+            enum_generated += 1
+            enum_reports.push(
+              report_item(
+                "enum",
+                enum_name,
+                moonbit_value_name(enum_name),
+                entry.source,
+                "enum " + enum_name,
+                lines.join("\n"),
+                "generated",
+                "",
+              ),
+            )
           }
         } else if on_header {
+          enum_skipped += 1
+          unsupported += 1
           enum_reports.push(
             report_item(
-              enum_name, "skipped", "enum value outside supported Int range",
+              "enum",
+              enum_name,
+              moonbit_value_name(enum_name),
+              entry.source,
+              "enum " + enum_name,
+              "",
+              "skipped",
+              "enum value outside supported Int range",
             ),
           )
         }
@@ -156,12 +255,34 @@ pub fn generate_with_config(
     }
     if !config.allows(name) {
       skipped += 1
-      items.push(report_item(name, "skipped", "filtered by configuration"))
+      items.push(
+        report_item(
+          "function",
+          name,
+          moonbit_value_name(config.renamed(name)),
+          entry.source,
+          type_spelling(node).unwrap_or(""),
+          "",
+          "skipped",
+          "filtered by configuration",
+        ),
+      )
       continue
     }
     if seen.contains(name) {
       skipped += 1
-      items.push(report_item(name, "skipped", "duplicate declaration"))
+      items.push(
+        report_item(
+          "function",
+          name,
+          moonbit_value_name(config.renamed(name)),
+          entry.source,
+          type_spelling(node).unwrap_or(""),
+          "",
+          "skipped",
+          "duplicate declaration",
+        ),
+      )
       continue
     }
     seen[name] = true
@@ -173,9 +294,15 @@ pub fn generate_with_config(
     match value_names.get(function.moon_name) {
       Some(previous) if previous != function.name => {
         skipped += 1
+        unsupported += 1
         items.push(
           report_item(
+            "function",
             function.name,
+            function.moon_name,
+            function.source,
+            function.c_signature,
+            "",
             "skipped",
             "MoonBit name collision with: " + previous,
           ),
@@ -191,11 +318,34 @@ pub fn generate_with_config(
       Some(code) => {
         function_lines.push(code)
         generated += 1
-        items.push(report_item(name, "generated", ""))
+        items.push(
+          report_item(
+            "function",
+            function.name,
+            function.moon_name,
+            function.source,
+            function.c_signature,
+            code.trim().to_owned(),
+            "generated",
+            "",
+          ),
+        )
       }
       None => {
         skipped += 1
-        items.push(report_item(name, "skipped", reason))
+        unsupported += 1
+        items.push(
+          report_item(
+            "function",
+            function.name,
+            function.moon_name,
+            function.source,
+            function.c_signature,
+            "",
+            "skipped",
+            reason,
+          ),
+        )
       }
     }
   }
@@ -220,12 +370,50 @@ pub fn generate_with_config(
     declarations.push(line)
   }
   declarations.push(function_text)
+  if config.unsupported_policy == UnsupportedPolicy::Error && unsupported > 0 {
+    fail(
+      "generation rejected " +
+      unsupported.to_string() +
+      " unsupported declarations",
+    )
+  }
   let path_parts = normalized_path(header).split("/").to_array()
+  let included_seen : Map[String, Bool] = Map([])
+  let included_files : Array[Json] = []
+  for entry in nodes {
+    let source = normalized_path(entry.source.file)
+    if source != "" &&
+      !same_header(source, header) &&
+      !included_seen.contains(source) {
+      included_seen[source] = true
+      included_files.push(Json::string(source))
+    }
+  }
+  let declaration_reports : Array[Json] = []
+  for item in enum_reports {
+    declaration_reports.push(item)
+  }
+  for item in items {
+    declaration_reports.push(item)
+  }
   let report = Json::object({
-    "schema": Json::string("moonbindgen-report-v1"),
+    "schema": Json::string("moonbindgen-report-v2"),
     "header": Json::string(path_parts[path_parts.length() - 1].to_owned()),
+    "clang": Json::object({
+      "version": Json::string(metadata.clang_version),
+      "target": Json::string(metadata.clang_target),
+    }),
+    "included_files": Json::array(included_files),
     "generated": Json::number(generated.to_double()),
     "skipped": Json::number(skipped.to_double()),
+    "summary": Json::object({
+      "functions_generated": Json::number(generated.to_double()),
+      "functions_skipped": Json::number(skipped.to_double()),
+      "enums_generated": Json::number(enum_generated.to_double()),
+      "enums_skipped": Json::number(enum_skipped.to_double()),
+      "unsupported": Json::number(unsupported.to_double()),
+    }),
+    "declarations": Json::array(declaration_reports),
     "functions": Json::array(items),
     "enums": Json::array(enum_reports),
   }).stringify(indent=2)

@@ -19,11 +19,11 @@ priv struct CFunction {
 
 ///|
 fn function_return(signature : String) -> String? {
-  let parts = signature.split(" (").to_array()
+  let parts = signature.split("(").to_array()
   if parts.length() < 2 {
     None
   } else {
-    Some(parts[0].to_owned())
+    Some(parts[0].trim().to_owned())
   }
 }
 

@@ -200,3 +200,40 @@ test "tracks explicit and inherited Clang source locations" {
   assert_eq(nodes[2].source.file, "main.h")
   assert_eq(nodes[2].source.line, 4)
 }
+
+///|
+test "emits auditable report schema v2" {
+  let ast =
+    #|{"kind":"TranslationUnitDecl","inner":[{"kind":"TypedefDecl","name":"foreign_t","loc":{"file":"include/base.h","line":2},"type":{"qualType":"int"}},{"kind":"FunctionDecl","name":"sum","mangledName":"sum","loc":{"file":"fixture.h","line":7},"type":{"qualType":"int (int, int)"},"inner":[{"kind":"ParmVarDecl","name":"left","type":{"qualType":"int"}},{"kind":"ParmVarDecl","name":"right","type":{"qualType":"int"}}]}]}
+  let result = generate_with_metadata(
+    ast,
+    "fixture.h",
+    GenerateConfig::default(),
+    ToolMetadata::new("clang version 23.1.1", "x86_64-pc-windows-msvc"),
+  )
+  assert_true(result.report.contains("moonbindgen-report-v2"))
+  assert_true(result.report.contains("clang version 23.1.1"))
+  assert_true(result.report.contains("x86_64-pc-windows-msvc"))
+  assert_true(result.report.contains("include/base.h"))
+  assert_true(result.report.contains("\"line\": 7"))
+  assert_true(result.report.contains("\"reason_code\": \"generated\""))
+  assert_true(result.report.contains("pub extern \\\"C\\\" fn sum"))
+}
+
+///|
+test "strict policy rejects unsupported declarations" {
+  let ast =
+    #|{"kind":"TranslationUnitDecl","inner":[{"kind":"FunctionDecl","name":"unsafe_name","loc":{"file":"fixture.h","line":3},"type":{"qualType":"char *(void)"}}]}
+  let config = parse_config(
+    (
+      #|{"schema":"moonbindgen-config-v1","unsupported_policy":"error"}
+    ),
+  )
+  try generate_with_config(ast, "fixture.h", config) catch {
+    Failure(message) =>
+      assert_true(message.contains("unsupported declarations"))
+    _ => fail("expected a policy failure")
+  } noraise {
+    _ => fail("expected strict policy rejection")
+  }
+}
