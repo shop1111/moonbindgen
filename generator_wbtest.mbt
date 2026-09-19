@@ -46,3 +46,20 @@ test "rejects unknown Clang AST root" {
   }
   assert_true(rejected)
 }
+
+///|
+test "extracts a typed C function model" {
+  let node = @json.parse(
+    (
+      #|{"kind":"FunctionDecl","name":"sum","mangledName":"sum","type":{"qualType":"int (int, int)"},"inner":[{"kind":"ParmVarDecl","name":"left","type":{"qualType":"int"}},{"kind":"ParmVarDecl","name":"right","type":{"qualType":"int"}}]}
+    ),
+  )
+  guard c_function(node) is Some(function) else {
+    fail("expected a C function")
+  }
+  assert_eq(function.name, "sum")
+  assert_eq(function.return_type, "int")
+  assert_eq(function.parameters.length(), 2)
+  assert_eq(function.parameters[0].name, "left")
+  assert_eq(function.parameters[1].c_type, "int")
+}
