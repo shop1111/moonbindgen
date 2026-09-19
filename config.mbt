@@ -77,6 +77,21 @@ fn string_map(
 }
 
 ///|
+fn valid_type_override(name : String) -> Bool {
+  match name {
+    "Bool"
+    | "Byte"
+    | "Int"
+    | "UInt"
+    | "Int64"
+    | "UInt64"
+    | "Float"
+    | "Double" => true
+    _ => false
+  }
+}
+
+///|
 pub fn parse_config(text : String) -> GenerateConfig raise ConfigError {
   let json = @json.parse(text) catch {
     _ => raise ConfigError::InvalidConfig("configuration is not valid JSON")
@@ -113,11 +128,19 @@ pub fn parse_config(text : String) -> GenerateConfig raise ConfigError {
       UnsupportedPolicy::Report
     }
   }
+  let type_overrides = string_map(json, "type_overrides")
+  for c_type, moon_type in type_overrides {
+    if !valid_type_override(moon_type) {
+      invalid_config(
+        "type_overrides[" + c_type + "] is not a supported C ABI type",
+      )
+    }
+  }
   {
     include_functions: string_set(json, "include_functions"),
     exclude_functions: string_set(json, "exclude_functions"),
     renames: string_map(json, "renames"),
-    type_overrides: string_map(json, "type_overrides"),
+    type_overrides,
     utf8_inputs: string_set(json, "utf8_inputs"),
     unsupported_policy,
   }
@@ -135,4 +158,25 @@ fn GenerateConfig::allows(self : GenerateConfig, name : String) -> Bool {
 ///|
 fn GenerateConfig::renamed(self : GenerateConfig, name : String) -> String {
   self.renames.get(name).unwrap_or(name)
+}
+
+///|
+fn GenerateConfig::type_override(
+  self : GenerateConfig,
+  raw : String,
+  canonical : String,
+) -> String? {
+  match self.type_overrides.get(raw) {
+    Some(value) => Some(value)
+    None => self.type_overrides.get(canonical)
+  }
+}
+
+///|
+fn GenerateConfig::is_utf8_input(
+  self : GenerateConfig,
+  function_name : String,
+  parameter_name : String,
+) -> Bool {
+  self.utf8_inputs.contains(function_name + "." + parameter_name)
 }

@@ -2,6 +2,7 @@
 priv struct CParameter {
   name : String
   c_type : String
+  canonical_type : String
 }
 
 ///|
@@ -11,6 +12,7 @@ priv struct CFunction {
   symbol : String
   c_signature : String
   return_type : String
+  canonical_return_type : String
   parameters : Array[CParameter]
   source : SourceLocation
 }
@@ -39,6 +41,10 @@ fn c_function(node : Json, source : SourceLocation) -> CFunction? {
     Some(value) => value
     None => return None
   }
+  let canonical_signature = canonical_type_spelling(node).unwrap_or(signature)
+  let canonical_return_type = function_return(canonical_signature).unwrap_or(
+    return_type,
+  )
   let parameters : Array[CParameter] = []
   let mut index = 0
   for child in array_field(node, "inner") {
@@ -47,11 +53,12 @@ fn c_function(node : Json, source : SourceLocation) -> CFunction? {
         Some(value) => value
         None => return None
       }
+      let canonical_type = canonical_type_spelling(child).unwrap_or(c_type)
       let name = match text_field(child, "name") {
         Some(value) => value
         None => "arg" + index.to_string()
       }
-      parameters.push({ name, c_type })
+      parameters.push({ name, c_type, canonical_type })
       index += 1
     }
   }
@@ -65,6 +72,7 @@ fn c_function(node : Json, source : SourceLocation) -> CFunction? {
     symbol,
     c_signature: signature,
     return_type,
+    canonical_return_type,
     parameters,
     source,
   })
@@ -78,6 +86,7 @@ fn CFunction::with_moon_name(self : CFunction, name : String) -> CFunction {
     symbol: self.symbol,
     c_signature: self.c_signature,
     return_type: self.return_type,
+    canonical_return_type: self.canonical_return_type,
     parameters: self.parameters,
     source: self.source,
   }

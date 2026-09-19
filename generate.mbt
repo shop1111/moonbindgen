@@ -185,7 +185,7 @@ pub fn generate_with_config(
       _ => value_names[function.moon_name] = function.name
     }
     let (rendered, reason) = render_function(
-      function, aliases, opaque_types, enums,
+      function, aliases, opaque_types, enums, config,
     )
     match rendered {
       Some(code) => {

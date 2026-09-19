@@ -39,6 +39,18 @@ fn type_spelling(node : Json) -> String? {
 }
 
 ///|
+fn canonical_type_spelling(node : Json) -> String? {
+  match field(node, "type") {
+    Some(ty) =>
+      match text_field(ty, "desugaredQualType") {
+        Some(value) => Some(value)
+        None => text_field(ty, "qualType")
+      }
+    None => None
+  }
+}
+
+///|
 fn source_file(node : Json) -> String? {
   match field(node, "loc") {
     Some(loc) => text_field(loc, "file")

@@ -60,9 +60,11 @@ test "extracts a typed C function model" {
   assert_eq(function.name, "sum")
   assert_eq(function.moon_name, "sum")
   assert_eq(function.return_type, "int")
+  assert_eq(function.canonical_return_type, "int")
   assert_eq(function.parameters.length(), 2)
   assert_eq(function.parameters[0].name, "left")
   assert_eq(function.parameters[1].c_type, "int")
+  assert_eq(function.parameters[1].canonical_type, "int")
   assert_eq(function.source.line, 7)
 }
 
@@ -83,19 +85,74 @@ test "uses sanitized parameter names without duplicates" {
     symbol: "RUN",
     c_signature: "int (int, int, int)",
     return_type: "int",
+    canonical_return_type: "int",
     parameters: [
-      { name: "self", c_type: "int" },
-      { name: "Value", c_type: "int" },
-      { name: "value", c_type: "int" },
+      { name: "self", c_type: "int", canonical_type: "int" },
+      { name: "Value", c_type: "int", canonical_type: "int" },
+      { name: "value", c_type: "int", canonical_type: "int" },
     ],
     source: { file: "fixture.h", line: 1 },
   }
-  let (rendered, _) = render_function(function, {}, {}, {})
+  let (rendered, _) = render_function(
+    function,
+    Map([]),
+    Map([]),
+    Map([]),
+    GenerateConfig::default(),
+  )
   guard rendered is Some(code) else { fail("expected rendered function") }
   assert_true(code.contains("run("))
   assert_true(code.contains("c_self : Int"))
   assert_true(code.contains("value : Int"))
   assert_true(code.contains("value_2 : Int"))
+}
+
+///|
+test "uses canonical types and explicitly borrowed UTF-8 inputs" {
+  let config = parse_config(
+    (
+      #|{"schema":"moonbindgen-config-v1","utf8_inputs":["open.path"]}
+    ),
+  )
+  let function : CFunction = {
+    name: "open",
+    moon_name: "open",
+    symbol: "open",
+    c_signature: "result_t (string_t)",
+    return_type: "result_t",
+    canonical_return_type: "int",
+    parameters: [
+      { name: "path", c_type: "string_t", canonical_type: "const char *" },
+    ],
+    source: { file: "fixture.h", line: 1 },
+  }
+  let (rendered, _) = render_function(
+    function,
+    Map([]),
+    Map([]),
+    Map([]),
+    config,
+  )
+  guard rendered is Some(code) else { fail("expected rendered function") }
+  assert_true(code.contains("#borrow(path)"))
+  assert_true(code.contains("path : Bytes"))
+  assert_true(code.contains(") -> Int"))
+}
+
+///|
+test "rejects unsafe type override targets" {
+  try
+    parse_config(
+      (
+        #|{"schema":"moonbindgen-config-v1","type_overrides":{"size_t":"Dangerous"}}
+      ),
+    )
+  catch {
+    ConfigError::InvalidConfig(message) =>
+      assert_true(message.contains("supported C ABI type"))
+  } noraise {
+    _ => fail("expected invalid type override")
+  }
 }
 
 ///|

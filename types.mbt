@@ -15,6 +15,12 @@ fn normalized_type(raw : String) -> String {
 }
 
 ///|
+priv struct ResolvedType {
+  moon_type : String
+  borrowed : Bool
+}
+
+///|
 fn resolve_type(
   raw : String,
   aliases : Map[String, String],
@@ -31,6 +37,7 @@ fn resolve_type(
   }
   match ctype {
     "void" => if result { Some("Unit") } else { None }
+    "char" | "signed char" | "unsigned char" => Some("Byte")
     "int" | "signed int" => Some("Int")
     "unsigned int" => Some("UInt")
     "float" => Some("Float")
@@ -58,5 +65,33 @@ fn resolve_type(
       } else {
         None
       }
+  }
+}
+
+///|
+fn resolve_configured_type(
+  raw : String,
+  canonical : String,
+  aliases : Map[String, String],
+  opaque_types : Map[String, Bool],
+  enums : Map[String, Bool],
+  config : GenerateConfig,
+  utf8_input~ : Bool,
+  result~ : Bool,
+) -> ResolvedType? {
+  match config.type_override(raw, canonical) {
+    Some(moon_type) => return Some({ moon_type, borrowed: false })
+    None => ()
+  }
+  if utf8_input {
+    if normalized_type(raw) == "char*" || normalized_type(canonical) == "char*" {
+      return Some({ moon_type: "Bytes", borrowed: true })
+    }
+    return None
+  }
+  let source = if canonical == "" { raw } else { canonical }
+  match resolve_type(source, aliases, opaque_types, enums, result~) {
+    Some(moon_type) => Some({ moon_type, borrowed: false })
+    None => None
   }
 }
