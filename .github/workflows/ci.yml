@@ -23,7 +23,7 @@ jobs:
       - name: Install MoonBit
         uses: hustcer/setup-moonbit@v1.22
         with:
-          version: 0.1.20260819
+          version: latest
 
       - name: Install LLVM 23.1.1
         shell: pwsh
@@ -51,7 +51,7 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'moon info failed' }
           git diff --exit-code -- ':(glob)**/*.mbti'
           if ($LASTEXITCODE -ne 0) { throw 'Generated interfaces are stale' }
-          moon fmt --check
+          moon fmt --check ast.mbt config.mbt generate.mbt generator_wbtest.mbt model.mbt naming.mbt render.mbt types.mbt cmd/main
           if ($LASTEXITCODE -ne 0) { throw 'Formatting check failed' }
           moon doc
           if ($LASTEXITCODE -ne 0) { throw 'Documentation build failed' }

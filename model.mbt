@@ -58,7 +58,7 @@ fn c_function(node : Json, source : SourceLocation) -> CFunction? {
         Some(value) => value
         None => "arg" + index.to_string()
       }
-      parameters.push({ name, c_type, canonical_type })
+      parameters.push({ name, c_type, canonical_type, })
       index += 1
     }
   }

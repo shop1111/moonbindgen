@@ -17,12 +17,12 @@ pub fn ToolMetadata::new(
   clang_version : String,
   clang_target : String,
 ) -> ToolMetadata {
-  { clang_version, clang_target }
+  { clang_version, clang_target, }
 }
 
 ///|
 pub fn ToolMetadata::unknown() -> ToolMetadata {
-  { clang_version: "unknown", clang_target: "unknown" }
+  { clang_version: "unknown", clang_target: "unknown", }
 }
 
 ///|
@@ -55,9 +55,9 @@ fn source_for_report(
 ) -> SourceLocation {
   if same_header(source.file, header) {
     let parts = normalized_path(source.file).split("/").to_array()
-    { file: parts[parts.length() - 1].to_owned(), line: source.line }
+    { file: parts[parts.length() - 1].to_owned(), line: source.line, }
   } else {
-    { file: normalized_path(source.file), line: source.line }
+    { file: normalized_path(source.file), line: source.line, }
   }
 }
 
@@ -430,5 +430,5 @@ pub fn generate_with_metadata(
     "functions": Json::array(items),
     "enums": Json::array(enum_reports),
   }).stringify(indent=2)
-  { bindings: declarations.join("\n"), report, generated, skipped }
+  { bindings: declarations.join("\n"), report, generated, skipped, }
 }

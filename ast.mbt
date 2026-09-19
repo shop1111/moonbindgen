@@ -83,7 +83,7 @@ fn located_nodes(ast : Json) -> Array[LocatedNode] {
       Some(loc) => int_field(loc, "line").unwrap_or(0)
       None => 0
     }
-    result.push({ node, source: { file: current_file, line } })
+    result.push({ node, source: { file: current_file, line, }, })
   }
   result
 }

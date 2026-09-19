@@ -19,7 +19,7 @@ repository = "https://github.com/shop1111/moonbindgen"
 
 license = "MIT"
 
-keywords = [ ]
+keywords = [ "ffi", "bindings", "clang", "code-generation" ]
 
 preferred_target = "native"
 

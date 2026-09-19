@@ -54,7 +54,7 @@ test "extracts a typed C function model" {
       #|{"kind":"FunctionDecl","name":"sum","mangledName":"sum","type":{"qualType":"int (int, int)"},"inner":[{"kind":"ParmVarDecl","name":"left","type":{"qualType":"int"}},{"kind":"ParmVarDecl","name":"right","type":{"qualType":"int"}}]}
     ),
   )
-  guard c_function(node, { file: "fixture.h", line: 7 }) is Some(function) else {
+  guard c_function(node, { file: "fixture.h", line: 7, }) is Some(function) else {
     fail("expected a C function")
   }
   assert_eq(function.name, "sum")
@@ -87,11 +87,11 @@ test "uses sanitized parameter names without duplicates" {
     return_type: "int",
     canonical_return_type: "int",
     parameters: [
-      { name: "self", c_type: "int", canonical_type: "int" },
-      { name: "Value", c_type: "int", canonical_type: "int" },
-      { name: "value", c_type: "int", canonical_type: "int" },
+      { name: "self", c_type: "int", canonical_type: "int", },
+      { name: "Value", c_type: "int", canonical_type: "int", },
+      { name: "value", c_type: "int", canonical_type: "int", },
     ],
-    source: { file: "fixture.h", line: 1 },
+    source: { file: "fixture.h", line: 1, },
   }
   let (rendered, _) = render_function(
     function,
@@ -122,9 +122,9 @@ test "uses canonical types and explicitly borrowed UTF-8 inputs" {
     return_type: "result_t",
     canonical_return_type: "int",
     parameters: [
-      { name: "path", c_type: "string_t", canonical_type: "const char *" },
+      { name: "path", c_type: "string_t", canonical_type: "const char *", },
     ],
-    source: { file: "fixture.h", line: 1 },
+    source: { file: "fixture.h", line: 1, },
   }
   let (rendered, _) = render_function(
     function,

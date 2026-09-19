@@ -1,0 +1,5 @@
+examples/sqlite/sqlite3.c linguist-vendored
+examples/sqlite/sqlite3.h linguist-vendored
+examples/native_fixture/fixture.c linguist-vendored
+examples/**/bindings.mbt linguist-generated
+examples/**/report.json linguist-generated

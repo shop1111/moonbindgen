@@ -80,18 +80,18 @@ fn resolve_configured_type(
   result~ : Bool,
 ) -> ResolvedType? {
   match config.type_override(raw, canonical) {
-    Some(moon_type) => return Some({ moon_type, borrowed: false })
+    Some(moon_type) => return Some({ moon_type, borrowed: false, })
     None => ()
   }
   if utf8_input {
     if normalized_type(raw) == "char*" || normalized_type(canonical) == "char*" {
-      return Some({ moon_type: "Bytes", borrowed: true })
+      return Some({ moon_type: "Bytes", borrowed: true, })
     }
     return None
   }
   let source = if canonical == "" { raw } else { canonical }
   match resolve_type(source, aliases, opaque_types, enums, result~) {
-    Some(moon_type) => Some({ moon_type, borrowed: false })
+    Some(moon_type) => Some({ moon_type, borrowed: false, })
     None => None
   }
 }

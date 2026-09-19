@@ -1,18 +1,53 @@
 // Generated using `moon info`, DON'T EDIT IT
 package "shop1111/moonbindgen"
 
+import {
+  "moonbitlang/core/debug",
+}
+
 // Values
 pub fn generate(String, String) -> GenerateResult raise
 
+pub fn generate_with_config(String, String, GenerateConfig) -> GenerateResult raise
+
+pub fn generate_with_metadata(String, String, GenerateConfig, ToolMetadata) -> GenerateResult raise
+
+pub fn parse_config(String) -> GenerateConfig raise ConfigError
+
 // Errors
+pub(all) suberror ConfigError {
+  InvalidConfig(String)
+} derive(Eq, @debug.Debug)
 
 // Types and methods
+pub struct GenerateConfig {
+  include_functions : Map[String, Bool]
+  exclude_functions : Map[String, Bool]
+  renames : Map[String, String]
+  type_overrides : Map[String, String]
+  utf8_inputs : Map[String, Bool]
+  unsupported_policy : UnsupportedPolicy
+}
+pub fn GenerateConfig::default() -> Self
+
 pub struct GenerateResult {
   bindings : String
   report : String
   generated : Int
   skipped : Int
 }
+
+pub struct ToolMetadata {
+  clang_version : String
+  clang_target : String
+}
+pub fn ToolMetadata::new(String, String) -> Self
+pub fn ToolMetadata::unknown() -> Self
+
+pub(all) enum UnsupportedPolicy {
+  Report
+  Error
+} derive(Eq, @debug.Debug)
 
 // Type aliases
 

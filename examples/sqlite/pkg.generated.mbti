@@ -60,9 +60,17 @@ pub fn sqlite3_column_int64(C_sqlite3_stmt, Int) -> Int64
 
 pub fn sqlite3_column_type(C_sqlite3_stmt, Int) -> Int
 
+pub fn sqlite3_column_value(C_sqlite3_stmt, Int) -> C_sqlite3_value
+
+pub fn sqlite3_context_db_handle(C_sqlite3_context) -> C_sqlite3
+
 pub fn sqlite3_data_count(C_sqlite3_stmt) -> Int
 
 pub fn sqlite3_db_cacheflush(C_sqlite3) -> Int
+
+pub fn sqlite3_db_handle(C_sqlite3_stmt) -> C_sqlite3
+
+pub fn sqlite3_db_mutex(C_sqlite3) -> C_sqlite3_mutex
 
 pub fn sqlite3_db_release_memory(C_sqlite3) -> Int
 
@@ -106,6 +114,8 @@ pub fn sqlite3_memory_highwater(Int) -> Int64
 
 pub fn sqlite3_memory_used() -> Int64
 
+pub fn sqlite3_mutex_alloc(Int) -> C_sqlite3_mutex
+
 pub fn sqlite3_mutex_enter(C_sqlite3_mutex) -> Unit
 
 pub fn sqlite3_mutex_free(C_sqlite3_mutex) -> Unit
@@ -117,6 +127,8 @@ pub fn sqlite3_mutex_leave(C_sqlite3_mutex) -> Unit
 pub fn sqlite3_mutex_notheld(C_sqlite3_mutex) -> Int
 
 pub fn sqlite3_mutex_try(C_sqlite3_mutex) -> Int
+
+pub fn sqlite3_next_stmt(C_sqlite3, C_sqlite3_stmt) -> C_sqlite3_stmt
 
 pub fn sqlite3_os_end() -> Int
 
@@ -180,11 +192,15 @@ pub fn sqlite3_stmt_scanstatus_reset(C_sqlite3_stmt) -> Unit
 
 pub fn sqlite3_stmt_status(C_sqlite3_stmt, Int, Int) -> Int
 
+pub fn sqlite3_str_appendchar(C_sqlite3_str, Int, Byte) -> Unit
+
 pub fn sqlite3_str_errcode(C_sqlite3_str) -> Int
 
 pub fn sqlite3_str_free(C_sqlite3_str) -> Unit
 
 pub fn sqlite3_str_length(C_sqlite3_str) -> Int
+
+pub fn sqlite3_str_new(C_sqlite3) -> C_sqlite3_str
 
 pub fn sqlite3_str_reset(C_sqlite3_str) -> Unit
 
@@ -207,6 +223,8 @@ pub fn sqlite3_value_bytes(C_sqlite3_value) -> Int
 pub fn sqlite3_value_bytes16(C_sqlite3_value) -> Int
 
 pub fn sqlite3_value_double(C_sqlite3_value) -> Double
+
+pub fn sqlite3_value_dup(C_sqlite3_value) -> C_sqlite3_value
 
 pub fn sqlite3_value_encoding(C_sqlite3_value) -> Int
 
