@@ -1,0 +1,5 @@
+{
+  "schema": "moonbindgen-config-v1",
+  "utf8_inputs": ["abi_path_length.path"],
+  "unsupported_policy": "error"
+}

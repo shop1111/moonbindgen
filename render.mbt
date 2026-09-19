@@ -69,7 +69,7 @@ fn render_function(
     " = \"" +
     function.symbol +
     "\"\n"
-  if params.length() > 2 || (params.length() == 2 && declaration.length() > 105) {
+  if params.length() > 2 || declaration.length() > 110 {
     let body = params.map(param => "  " + param + ",").join("\n")
     let multiline = "///|\n" +
       attributes +

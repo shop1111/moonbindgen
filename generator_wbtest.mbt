@@ -237,3 +237,49 @@ test "strict policy rejects unsupported declarations" {
     _ => fail("expected strict policy rejection")
   }
 }
+
+///|
+test "rejects typedef cycles deterministically" {
+  let aliases : Map[String, String] = Map([
+    ("left_t", "right_t"),
+    ("right_t", "left_t"),
+  ])
+  assert_eq(
+    resolve_type("left_t", aliases, Map([]), Map([]), result=false),
+    None,
+  )
+}
+
+///|
+test "reports renamed output collisions" {
+  let ast =
+    #|{"kind":"TranslationUnitDecl","inner":[{"kind":"FunctionDecl","name":"first","loc":{"file":"fixture.h","line":1},"type":{"qualType":"int (void)"}},{"kind":"FunctionDecl","name":"second","loc":{"line":2},"type":{"qualType":"int (void)"}}]}
+  let config = parse_config(
+    (
+      #|{"schema":"moonbindgen-config-v1","renames":{"first":"same","second":"same"}}
+    ),
+  )
+  let result = generate_with_config(ast, "fixture.h", config)
+  assert_eq(result.generated, 1)
+  assert_eq(result.skipped, 1)
+  assert_true(result.report.contains("\"reason_code\": \"name_collision\""))
+}
+
+///|
+test "reports an enum that exceeds the MoonBit Int boundary" {
+  let ast =
+    #|{"kind":"TranslationUnitDecl","inner":[{"kind":"EnumDecl","name":"limit","loc":{"file":"fixture.h","line":1},"inner":[{"kind":"EnumConstantDecl","name":"LIMIT_MAX","inner":[{"value":"2147483647"}]},{"kind":"EnumConstantDecl","name":"LIMIT_OVER"}]}]}
+  let result = generate(ast, "fixture.h")
+  assert_true(result.report.contains("enum_value_out_of_range"))
+  assert_true(!result.bindings.contains("c_limit_max"))
+}
+
+///|
+test "generation output is byte deterministic" {
+  let ast =
+    #|{"kind":"TranslationUnitDecl","inner":[{"kind":"FunctionDecl","name":"sum","loc":{"file":"fixture.h","line":1},"type":{"qualType":"int (int, int)"},"inner":[{"kind":"ParmVarDecl","name":"left","type":{"qualType":"int"}},{"kind":"ParmVarDecl","name":"right","type":{"qualType":"int"}}]}]}
+  let first = generate(ast, "fixture.h")
+  let second = generate(ast, "fixture.h")
+  assert_eq(first.bindings, second.bindings)
+  assert_eq(first.report, second.report)
+}

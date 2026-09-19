@@ -49,6 +49,19 @@ fn reason_code(status : String, reason : String) -> String {
 }
 
 ///|
+fn source_for_report(
+  source : SourceLocation,
+  header : String,
+) -> SourceLocation {
+  if same_header(source.file, header) {
+    let parts = normalized_path(source.file).split("/").to_array()
+    { file: parts[parts.length() - 1].to_owned(), line: source.line }
+  } else {
+    { file: normalized_path(source.file), line: source.line }
+  }
+}
+
+///|
 fn report_item(
   kind : String,
   name : String,
@@ -201,7 +214,7 @@ pub fn generate_with_metadata(
                 "enum",
                 enum_name,
                 moonbit_value_name(enum_name),
-                entry.source,
+                source_for_report(entry.source, header),
                 "enum " + enum_name,
                 lines.join("\n"),
                 "generated",
@@ -217,7 +230,7 @@ pub fn generate_with_metadata(
               "enum",
               enum_name,
               moonbit_value_name(enum_name),
-              entry.source,
+              source_for_report(entry.source, header),
               "enum " + enum_name,
               "",
               "skipped",
@@ -260,7 +273,7 @@ pub fn generate_with_metadata(
           "function",
           name,
           moonbit_value_name(config.renamed(name)),
-          entry.source,
+          source_for_report(entry.source, header),
           type_spelling(node).unwrap_or(""),
           "",
           "skipped",
@@ -276,7 +289,7 @@ pub fn generate_with_metadata(
           "function",
           name,
           moonbit_value_name(config.renamed(name)),
-          entry.source,
+          source_for_report(entry.source, header),
           type_spelling(node).unwrap_or(""),
           "",
           "skipped",
@@ -300,7 +313,7 @@ pub fn generate_with_metadata(
             "function",
             function.name,
             function.moon_name,
-            function.source,
+            source_for_report(function.source, header),
             function.c_signature,
             "",
             "skipped",
@@ -323,7 +336,7 @@ pub fn generate_with_metadata(
             "function",
             function.name,
             function.moon_name,
-            function.source,
+            source_for_report(function.source, header),
             function.c_signature,
             code.trim().to_owned(),
             "generated",
@@ -339,7 +352,7 @@ pub fn generate_with_metadata(
             "function",
             function.name,
             function.moon_name,
-            function.source,
+            source_for_report(function.source, header),
             function.c_signature,
             "",
             "skipped",
