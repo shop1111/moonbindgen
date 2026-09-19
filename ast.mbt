@@ -15,6 +15,14 @@ fn text_field(node : Json, name : String) -> String? {
 }
 
 ///|
+fn int_field(node : Json, name : String) -> Int? {
+  match field(node, name) {
+    Some(Json::Number(value, ..)) => Some(value.to_int())
+    _ => None
+  }
+}
+
+///|
 fn array_field(node : Json, name : String) -> Array[Json] {
   match field(node, name) {
     Some(Json::Array(items)) => items
@@ -36,6 +44,36 @@ fn source_file(node : Json) -> String? {
     Some(loc) => text_field(loc, "file")
     None => None
   }
+}
+
+///|
+priv struct SourceLocation {
+  file : String
+  line : Int
+}
+
+///|
+priv struct LocatedNode {
+  node : Json
+  source : SourceLocation
+}
+
+///|
+fn located_nodes(ast : Json) -> Array[LocatedNode] {
+  let result : Array[LocatedNode] = []
+  let mut current_file = ""
+  for node in array_field(ast, "inner") {
+    match source_file(node) {
+      Some(path) => current_file = path
+      None => ()
+    }
+    let line = match field(node, "loc") {
+      Some(loc) => int_field(loc, "line").unwrap_or(0)
+      None => 0
+    }
+    result.push({ node, source: { file: current_file, line } })
+  }
+  result
 }
 
 ///|

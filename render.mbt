@@ -5,6 +5,7 @@ fn render_function(
   opaque_types : Map[String, Bool],
   enums : Map[String, Bool],
 ) -> (String?, String) {
+  ignore(function.source.line)
   if function.c_signature.contains("...") {
     return (None, "variadic function")
   }

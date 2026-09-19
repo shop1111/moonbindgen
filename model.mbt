@@ -11,6 +11,7 @@ priv struct CFunction {
   c_signature : String
   return_type : String
   parameters : Array[CParameter]
+  source : SourceLocation
 }
 
 ///|
@@ -24,7 +25,7 @@ fn function_return(signature : String) -> String? {
 }
 
 ///|
-fn c_function(node : Json) -> CFunction? {
+fn c_function(node : Json, source : SourceLocation) -> CFunction? {
   let name = match text_field(node, "name") {
     Some(value) => value
     None => return None
@@ -57,5 +58,5 @@ fn c_function(node : Json) -> CFunction? {
     Some(value) => value
     None => name
   }
-  Some({ name, symbol, c_signature: signature, return_type, parameters })
+  Some({ name, symbol, c_signature: signature, return_type, parameters, source })
 }

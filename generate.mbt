@@ -40,14 +40,10 @@ pub fn generate(ast_text : String, header : String) -> GenerateResult raise {
   let enums : Map[String, Bool] = Map([])
   let enum_lines : Array[String] = []
   let enum_reports : Array[Json] = []
-  let nodes = array_field(ast, "inner")
-  let mut current_file = ""
-  for node in nodes {
-    match source_file(node) {
-      Some(path) => current_file = path
-      None => ()
-    }
-    let on_header = same_header(current_file, header)
+  let nodes = located_nodes(ast)
+  for entry in nodes {
+    let node = entry.node
+    let on_header = same_header(entry.source.file, header)
     match text_field(node, "kind") {
       Some("TypedefDecl") =>
         match (text_field(node, "name"), type_spelling(node)) {
@@ -122,13 +118,9 @@ pub fn generate(ast_text : String, header : String) -> GenerateResult raise {
   let seen : Map[String, Bool] = Map([])
   let mut generated = 0
   let mut skipped = 0
-  current_file = ""
-  for node in nodes {
-    match source_file(node) {
-      Some(path) => current_file = path
-      None => ()
-    }
-    if !same_header(current_file, header) ||
+  for entry in nodes {
+    let node = entry.node
+    if !same_header(entry.source.file, header) ||
       text_field(node, "kind") != Some("FunctionDecl") {
       continue
     }
@@ -151,7 +143,7 @@ pub fn generate(ast_text : String, header : String) -> GenerateResult raise {
       continue
     }
     seen[name] = true
-    let function = match c_function(node) {
+    let function = match c_function(node, entry.source) {
       Some(value) => value
       None => fail("Unrecognized Clang FunctionDecl structure")
     }

@@ -54,7 +54,7 @@ test "extracts a typed C function model" {
       #|{"kind":"FunctionDecl","name":"sum","mangledName":"sum","type":{"qualType":"int (int, int)"},"inner":[{"kind":"ParmVarDecl","name":"left","type":{"qualType":"int"}},{"kind":"ParmVarDecl","name":"right","type":{"qualType":"int"}}]}
     ),
   )
-  guard c_function(node) is Some(function) else {
+  guard c_function(node, { file: "fixture.h", line: 7 }) is Some(function) else {
     fail("expected a C function")
   }
   assert_eq(function.name, "sum")
@@ -62,4 +62,20 @@ test "extracts a typed C function model" {
   assert_eq(function.parameters.length(), 2)
   assert_eq(function.parameters[0].name, "left")
   assert_eq(function.parameters[1].c_type, "int")
+  assert_eq(function.source.line, 7)
+}
+
+///|
+test "tracks explicit and inherited Clang source locations" {
+  let ast = @json.parse(
+    (
+      #|{"inner":[{"kind":"TypedefDecl","name":"included_t","loc":{"file":"include/base.h","line":1}},{"kind":"TypedefDecl","name":"second_t","loc":{"line":2}},{"kind":"FunctionDecl","name":"run","loc":{"file":"main.h","line":4},"type":{"qualType":"int (int)"},"inner":[{"kind":"ParmVarDecl","name":"value","type":{"qualType":"int"}}]}]}
+    ),
+  )
+  let nodes = located_nodes(ast)
+  assert_eq(nodes.length(), 3)
+  assert_eq(nodes[0].source.file, "include/base.h")
+  assert_eq(nodes[1].source.file, "include/base.h")
+  assert_eq(nodes[2].source.file, "main.h")
+  assert_eq(nodes[2].source.line, 4)
 }
