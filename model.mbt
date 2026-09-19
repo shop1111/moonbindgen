@@ -7,6 +7,7 @@ priv struct CParameter {
 ///|
 priv struct CFunction {
   name : String
+  moon_name : String
   symbol : String
   c_signature : String
   return_type : String
@@ -58,5 +59,13 @@ fn c_function(node : Json, source : SourceLocation) -> CFunction? {
     Some(value) => value
     None => name
   }
-  Some({ name, symbol, c_signature: signature, return_type, parameters, source })
+  Some({
+    name,
+    moon_name: moonbit_value_name(name),
+    symbol,
+    c_signature: signature,
+    return_type,
+    parameters,
+    source,
+  })
 }

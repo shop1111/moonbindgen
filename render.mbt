@@ -21,17 +21,25 @@ fn render_function(
     None => return (None, "unsupported return type: " + function.return_type)
   }
   let params : Array[String] = []
-  for index, parameter in function.parameters {
-    ignore(parameter.name)
+  let parameter_names : Map[String, Int] = Map([])
+  for parameter in function.parameters {
     let mtype = match
       resolve_type(parameter.c_type, aliases, opaque_types, enums, result=false) {
       Some(value) => value
       None => return (None, "unsupported parameter type: " + parameter.c_type)
     }
-    params.push("arg" + index.to_string() + " : " + mtype)
+    let base_name = moonbit_value_name(parameter.name)
+    let count = parameter_names.get(base_name).unwrap_or(0) + 1
+    parameter_names[base_name] = count
+    let name = if count == 1 {
+      base_name
+    } else {
+      base_name + "_" + count.to_string()
+    }
+    params.push(name + " : " + mtype)
   }
   let declaration = "pub extern \"C\" fn " +
-    function.name +
+    function.moon_name +
     "(" +
     params.join(", ") +
     ") -> " +
@@ -42,7 +50,7 @@ fn render_function(
   if params.length() > 2 || (params.length() == 2 && declaration.length() > 105) {
     let body = params.map(param => "  " + param + ",").join("\n")
     let multiline = "///|\npub extern \"C\" fn " +
-      function.name +
+      function.moon_name +
       "(\n" +
       body +
       "\n) -> " +

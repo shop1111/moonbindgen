@@ -49,7 +49,7 @@ fn resolve_type(
           base = base[7:].to_owned()
         }
         if opaque_types.contains(base) {
-          Some("C_" + base)
+          Some(opaque_type_name(base))
         } else {
           None
         }

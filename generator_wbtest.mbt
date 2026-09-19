@@ -58,11 +58,44 @@ test "extracts a typed C function model" {
     fail("expected a C function")
   }
   assert_eq(function.name, "sum")
+  assert_eq(function.moon_name, "sum")
   assert_eq(function.return_type, "int")
   assert_eq(function.parameters.length(), 2)
   assert_eq(function.parameters[0].name, "left")
   assert_eq(function.parameters[1].c_type, "int")
   assert_eq(function.source.line, 7)
+}
+
+///|
+test "normalizes MoonBit identifiers and keywords" {
+  assert_eq(moonbit_value_name("sqlite3_step"), "sqlite3_step")
+  assert_eq(moonbit_value_name("HTTP-Open"), "http_open")
+  assert_eq(moonbit_value_name("self"), "c_self")
+  assert_eq(moonbit_value_name("42value"), "c_42value")
+  assert_eq(opaque_type_name("HTTP-Handle"), "C_http_handle")
+}
+
+///|
+test "uses sanitized parameter names without duplicates" {
+  let function : CFunction = {
+    name: "RUN",
+    moon_name: moonbit_value_name("RUN"),
+    symbol: "RUN",
+    c_signature: "int (int, int, int)",
+    return_type: "int",
+    parameters: [
+      { name: "self", c_type: "int" },
+      { name: "Value", c_type: "int" },
+      { name: "value", c_type: "int" },
+    ],
+    source: { file: "fixture.h", line: 1 },
+  }
+  let (rendered, _) = render_function(function, {}, {}, {})
+  guard rendered is Some(code) else { fail("expected rendered function") }
+  assert_true(code.contains("run("))
+  assert_true(code.contains("c_self : Int"))
+  assert_true(code.contains("value : Int"))
+  assert_true(code.contains("value_2 : Int"))
 }
 
 ///|
