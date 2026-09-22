@@ -18,6 +18,12 @@ pub fn parse_config(String) -> GenerateConfig raise ConfigError
 pub(all) suberror ConfigError {
   InvalidConfig(String)
 } derive(Eq, @debug.Debug)
+#deprecated
+pub fn ConfigError::equal(Self, Self) -> Bool
+#deprecated
+pub fn ConfigError::not_equal(Self, Self) -> Bool
+#deprecated
+pub fn ConfigError::to_repr(Self) -> @debug.Repr
 
 // Types and methods
 pub struct GenerateConfig {
@@ -48,6 +54,12 @@ pub(all) enum UnsupportedPolicy {
   Report
   Error
 } derive(Eq, @debug.Debug)
+#deprecated
+pub fn UnsupportedPolicy::equal(Self, Self) -> Bool
+#deprecated
+pub fn UnsupportedPolicy::not_equal(Self, Self) -> Bool
+#deprecated
+pub fn UnsupportedPolicy::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 

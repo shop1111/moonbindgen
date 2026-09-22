@@ -140,7 +140,10 @@ pub extern "C" fn sqlite3_stmt_readonly(pstmt : C_sqlite3_stmt) -> Int = "sqlite
 pub extern "C" fn sqlite3_stmt_isexplain(pstmt : C_sqlite3_stmt) -> Int = "sqlite3_stmt_isexplain"
 
 ///|
-pub extern "C" fn sqlite3_stmt_explain(pstmt : C_sqlite3_stmt, emode : Int) -> Int = "sqlite3_stmt_explain"
+pub extern "C" fn sqlite3_stmt_explain(
+  pstmt : C_sqlite3_stmt,
+  emode : Int,
+) -> Int = "sqlite3_stmt_explain"
 
 ///|
 pub extern "C" fn sqlite3_stmt_busy(arg0 : C_sqlite3_stmt) -> Int = "sqlite3_stmt_busy"
@@ -215,7 +218,10 @@ pub extern "C" fn sqlite3_column_double(
 pub extern "C" fn sqlite3_column_int(arg0 : C_sqlite3_stmt, icol : Int) -> Int = "sqlite3_column_int"
 
 ///|
-pub extern "C" fn sqlite3_column_int64(arg0 : C_sqlite3_stmt, icol : Int) -> Int64 = "sqlite3_column_int64"
+pub extern "C" fn sqlite3_column_int64(
+  arg0 : C_sqlite3_stmt,
+  icol : Int,
+) -> Int64 = "sqlite3_column_int64"
 
 ///|
 pub extern "C" fn sqlite3_column_value(
@@ -224,10 +230,16 @@ pub extern "C" fn sqlite3_column_value(
 ) -> C_sqlite3_value = "sqlite3_column_value"
 
 ///|
-pub extern "C" fn sqlite3_column_bytes(arg0 : C_sqlite3_stmt, icol : Int) -> Int = "sqlite3_column_bytes"
+pub extern "C" fn sqlite3_column_bytes(
+  arg0 : C_sqlite3_stmt,
+  icol : Int,
+) -> Int = "sqlite3_column_bytes"
 
 ///|
-pub extern "C" fn sqlite3_column_bytes16(arg0 : C_sqlite3_stmt, icol : Int) -> Int = "sqlite3_column_bytes16"
+pub extern "C" fn sqlite3_column_bytes16(
+  arg0 : C_sqlite3_stmt,
+  icol : Int,
+) -> Int = "sqlite3_column_bytes16"
 
 ///|
 pub extern "C" fn sqlite3_column_type(arg0 : C_sqlite3_stmt, icol : Int) -> Int = "sqlite3_column_type"
@@ -307,9 +319,7 @@ pub extern "C" fn sqlite3_result_double(
 ) -> Unit = "sqlite3_result_double"
 
 ///|
-pub extern "C" fn sqlite3_result_error_toobig(
-  arg0 : C_sqlite3_context,
-) -> Unit = "sqlite3_result_error_toobig"
+pub extern "C" fn sqlite3_result_error_toobig(arg0 : C_sqlite3_context) -> Unit = "sqlite3_result_error_toobig"
 
 ///|
 pub extern "C" fn sqlite3_result_error_nomem(arg0 : C_sqlite3_context) -> Unit = "sqlite3_result_error_nomem"
@@ -321,7 +331,10 @@ pub extern "C" fn sqlite3_result_error_code(
 ) -> Unit = "sqlite3_result_error_code"
 
 ///|
-pub extern "C" fn sqlite3_result_int(arg0 : C_sqlite3_context, arg1 : Int) -> Unit = "sqlite3_result_int"
+pub extern "C" fn sqlite3_result_int(
+  arg0 : C_sqlite3_context,
+  arg1 : Int,
+) -> Unit = "sqlite3_result_int"
 
 ///|
 pub extern "C" fn sqlite3_result_int64(
@@ -399,7 +412,10 @@ pub extern "C" fn sqlite3_enable_load_extension(
 pub extern "C" fn sqlite3_reset_auto_extension() -> Unit = "sqlite3_reset_auto_extension"
 
 ///|
-pub extern "C" fn sqlite3_blob_reopen(arg0 : C_sqlite3_blob, arg1 : Int64) -> Int = "sqlite3_blob_reopen"
+pub extern "C" fn sqlite3_blob_reopen(
+  arg0 : C_sqlite3_blob,
+  arg1 : Int64,
+) -> Int = "sqlite3_blob_reopen"
 
 ///|
 pub extern "C" fn sqlite3_blob_close(arg0 : C_sqlite3_blob) -> Int = "sqlite3_blob_close"
@@ -408,7 +424,10 @@ pub extern "C" fn sqlite3_blob_close(arg0 : C_sqlite3_blob) -> Int = "sqlite3_bl
 pub extern "C" fn sqlite3_blob_bytes(arg0 : C_sqlite3_blob) -> Int = "sqlite3_blob_bytes"
 
 ///|
-pub extern "C" fn sqlite3_vfs_register(arg0 : C_sqlite3_vfs, makedflt : Int) -> Int = "sqlite3_vfs_register"
+pub extern "C" fn sqlite3_vfs_register(
+  arg0 : C_sqlite3_vfs,
+  makedflt : Int,
+) -> Int = "sqlite3_vfs_register"
 
 ///|
 pub extern "C" fn sqlite3_vfs_unregister(arg0 : C_sqlite3_vfs) -> Int = "sqlite3_vfs_unregister"
@@ -504,9 +523,7 @@ pub extern "C" fn sqlite3_vtab_in(
 ) -> Int = "sqlite3_vtab_in"
 
 ///|
-pub extern "C" fn sqlite3_stmt_scanstatus_reset(
-  arg0 : C_sqlite3_stmt,
-) -> Unit = "sqlite3_stmt_scanstatus_reset"
+pub extern "C" fn sqlite3_stmt_scanstatus_reset(arg0 : C_sqlite3_stmt) -> Unit = "sqlite3_stmt_scanstatus_reset"
 
 ///|
 pub extern "C" fn sqlite3_db_cacheflush(arg0 : C_sqlite3) -> Int = "sqlite3_db_cacheflush"

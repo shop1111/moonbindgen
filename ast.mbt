@@ -1,7 +1,7 @@
 ///|
 fn field(node : Json, name : String) -> Json? {
   match node {
-    Json::Object(fields) => fields.get(name)
+    Object(fields) => fields.get(name)
     _ => None
   }
 }
@@ -9,7 +9,7 @@ fn field(node : Json, name : String) -> Json? {
 ///|
 fn text_field(node : Json, name : String) -> String? {
   match field(node, name) {
-    Some(Json::String(value)) => Some(value)
+    Some(String(value)) => Some(value)
     _ => None
   }
 }
@@ -17,7 +17,7 @@ fn text_field(node : Json, name : String) -> String? {
 ///|
 fn int_field(node : Json, name : String) -> Int? {
   match field(node, name) {
-    Some(Json::Number(value, ..)) => Some(value.to_int())
+    Some(Number(value, ..)) => Some(value.to_int())
     _ => None
   }
 }
@@ -25,7 +25,7 @@ fn int_field(node : Json, name : String) -> Int? {
 ///|
 fn array_field(node : Json, name : String) -> Array[Json] {
   match field(node, name) {
-    Some(Json::Array(items)) => items
+    Some(Array(items)) => items
     _ => []
   }
 }

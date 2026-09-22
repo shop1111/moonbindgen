@@ -1,4 +1,5 @@
 ///|
+/// Generated MoonBit declarations, their audit report, and function counts.
 pub struct GenerateResult {
   bindings : String
   report : String
@@ -7,12 +8,14 @@ pub struct GenerateResult {
 }
 
 ///|
+/// Clang identity recorded in `moonbindgen-report-v2` output.
 pub struct ToolMetadata {
   clang_version : String
   clang_target : String
 }
 
 ///|
+/// Creates metadata from the first Clang version line and target triple.
 pub fn ToolMetadata::new(
   clang_version : String,
   clang_target : String,
@@ -21,6 +24,8 @@ pub fn ToolMetadata::new(
 }
 
 ///|
+/// Creates placeholder metadata for callers that already have AST JSON but do
+/// not know which Clang executable produced it.
 pub fn ToolMetadata::unknown() -> ToolMetadata {
   { clang_version: "unknown", clang_target: "unknown", }
 }
@@ -103,6 +108,11 @@ fn enum_number(node : Json) -> Int? {
 }
 
 ///|
+/// Generates bindings with the default configuration and unknown Clang
+/// metadata.
+///
+/// Raises when `ast_text` is not a recognized Clang translation-unit AST or
+/// when a contradictory declaration structure cannot be interpreted safely.
 pub fn generate(ast_text : String, header : String) -> GenerateResult raise {
   generate_with_metadata(
     ast_text,
@@ -113,6 +123,10 @@ pub fn generate(ast_text : String, header : String) -> GenerateResult raise {
 }
 
 ///|
+/// Generates bindings with explicit configuration and unknown Clang metadata.
+///
+/// `header` identifies the main header whose functions are eligible for
+/// emission; included headers may still contribute typedef and enum facts.
 pub fn generate_with_config(
   ast_text : String,
   header : String,
@@ -122,6 +136,12 @@ pub fn generate_with_config(
 }
 
 ///|
+/// Generates deterministic bindings and a `moonbindgen-report-v2` audit report
+/// with explicit configuration and Clang metadata.
+///
+/// Raises for malformed AST JSON, unsupported declarations under strict policy,
+/// name collisions that cannot be represented safely, or contradictory Clang
+/// declaration structures.
 pub fn generate_with_metadata(
   ast_text : String,
   header : String,
@@ -383,7 +403,7 @@ pub fn generate_with_metadata(
     declarations.push(line)
   }
   declarations.push(function_text)
-  if config.unsupported_policy == UnsupportedPolicy::Error && unsupported > 0 {
+  if config.unsupported_policy == Error && unsupported > 0 {
     fail(
       "generation rejected " +
       unsupported.to_string() +
