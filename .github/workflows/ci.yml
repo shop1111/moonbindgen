@@ -24,6 +24,20 @@ jobs:
         uses: hustcer/setup-moonbit@v1.22
         with:
           version: latest
+          core-version: 0.10.14+7d59c7ec9
+
+      - name: Verify release toolchain
+        shell: pwsh
+        run: |
+          $expected = Get-Content -Raw -Encoding UTF8 toolchain.json | ConvertFrom-Json
+          $actual = (& moon version --all) -join "`n"
+          $actual
+          if (-not $actual.Contains($expected.moon)) { throw "Unexpected Moon version" }
+          if (-not $actual.Contains($expected.moonc)) { throw "Unexpected Moonc version" }
+          $coreModule = Join-Path $env:USERPROFILE '.moon/lib/core/moon.mod'
+          if (-not (Test-Path -LiteralPath $coreModule)) { throw 'MoonBit core manifest not found' }
+          $coreManifest = Get-Content -Raw -Encoding UTF8 -LiteralPath $coreModule
+          if (-not $coreManifest.Contains("version = `"$($expected.core)`"")) { throw 'Unexpected Core version' }
 
       - name: Install LLVM 23.1.1
         shell: pwsh
@@ -39,6 +53,18 @@ jobs:
       - name: Resolve dependencies
         shell: pwsh
         run: moon update
+
+      - name: Run strict all-target gates
+        shell: pwsh
+        run: |
+          moon fmt --check
+          if ($LASTEXITCODE -ne 0) { throw 'Format check failed' }
+          moon check --target all --deny-warn --warn-list +73
+          if ($LASTEXITCODE -ne 0) { throw 'Strict all-target check failed' }
+          moon build --target all --deny-warn
+          if ($LASTEXITCODE -ne 0) { throw 'Strict all-target build failed' }
+          moon test --target all --deny-warn
+          if ($LASTEXITCODE -ne 0) { throw 'Strict all-target tests failed' }
 
       - name: Run native verification
         shell: pwsh
@@ -61,7 +87,7 @@ jobs:
         run: |
           $packageFiles = (& moon package --list) -join "`n"
           if ($LASTEXITCODE -ne 0) { throw 'Package listing failed' }
-          $forbidden = @('submission/', '2026年9月MoonBit', 'fixtures/', 'scripts/', '.github/', 'examples/')
+          $forbidden = @('submission/', '2026年9月MoonBit', 'fixtures/', 'scripts/', '.github/', 'examples/', 'dist/')
           foreach ($entry in $forbidden) {
             if ($packageFiles.Contains($entry)) { throw "Forbidden release entry: $entry" }
           }

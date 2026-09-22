@@ -148,7 +148,7 @@ test "rejects unsafe type override targets" {
       ),
     )
   catch {
-    ConfigError::InvalidConfig(message) =>
+    InvalidConfig(message) =>
       assert_true(message.contains("supported C ABI type"))
   } noraise {
     _ => fail("expected invalid type override")
@@ -167,7 +167,7 @@ test "parses versioned generation configuration" {
   assert_eq(config.renamed("open"), "db_open")
   assert_eq(config.type_overrides.get("size_t"), Some("UInt64"))
   assert_true(config.utf8_inputs.contains("open.path"))
-  assert_eq(config.unsupported_policy, UnsupportedPolicy::Error)
+  assert_eq(config.unsupported_policy, Error)
 }
 
 ///|
@@ -179,8 +179,7 @@ test "rejects unknown configuration fields" {
       ),
     )
   catch {
-    ConfigError::InvalidConfig(message) =>
-      assert_true(message.contains("unknown"))
+    InvalidConfig(message) => assert_true(message.contains("unknown"))
   } noraise {
     _ => fail("expected invalid configuration")
   }

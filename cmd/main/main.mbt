@@ -261,7 +261,7 @@ async fn main {
       }
     }
     @lib.parse_config(text) catch {
-      @lib.ConfigError::InvalidConfig(message) => {
+      InvalidConfig(message) => {
         die(2, "Invalid configuration: " + message)
         return
       }

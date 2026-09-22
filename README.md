@@ -30,11 +30,41 @@ Clang 23 JSON AST ──► provenance-aware declaration model
 
 The main header controls which declarations are emitted. Included headers may supply typedef and enum facts, but their functions are not emitted. Clang nodes that omit a repeated filename inherit the most recent explicit provenance; malformed or contradictory declaration structures stop generation instead of being guessed.
 
-## Requirements and quick start
+## Requirements and installation
 
-- MoonBit `0.1.20260819` with the Native target
+- MoonBit `0.1.20260920 (914d7da)` with Moonc/Core `0.10.14+7d59c7ec9`
 - Clang `23.x`; CI and local evidence use LLVM `23.1.1`
 - Windows x64 is the currently verified environment, not a cross-platform promise
+
+The checked release toolchain is recorded in [`toolchain.json`](toolchain.json). CI rejects a different compiler or core version instead of silently accepting formatter or diagnostic drift.
+
+To consume the generator as a library:
+
+```powershell
+moon add shop1111/moonbindgen@0.1.0
+```
+
+Add the root package to `moon.pkg`:
+
+```text
+import {
+  "shop1111/moonbindgen" @bindgen,
+}
+```
+
+The public entry points are `generate`, `generate_with_config`, `generate_with_metadata`, and `parse_config`. They accept Clang AST JSON; invoking Clang remains the responsibility of the CLI or the embedding application.
+
+```moonbit
+let config_text =
+  #|{"schema":"moonbindgen-config-v1","unsupported_policy":"report"}
+let config = @bindgen.parse_config(config_text)
+let result = @bindgen.generate_with_config(clang_ast_json, "library.h", config)
+println(result.bindings)
+```
+
+Windows users can also download `moonbindgen-v0.1.0-windows-x86_64.zip` from the GitHub Release, extract `moonbindgen.exe`, and keep Clang 23 available separately. The executable is not a general C/C++ compiler bundle.
+
+## CLI quick start
 
 ```powershell
 moon run -q cmd/main -- generate fixtures/basic.h --out _build/basic --clang 'C:\Program Files\LLVM\bin\clang.exe'
@@ -106,4 +136,4 @@ Exact upstream provenance, checksums, licensing, and the one comment-only local 
 
 ## Release hygiene
 
-`.moonignore` keeps fixtures, examples, scripts, CI configuration, tests, the local competition charter, and `submission/` out of the Mooncakes package. The SQLite amalgamation is marked vendored for GitHub language statistics. Before a future release, run the full verification gate, `moon info`, format-check the handwritten MoonBit packages, run `moon doc`, and inspect `moon package --list`; publishing, tags, releases, and Gitlink import are intentionally outside this milestone.
+`.moonignore` keeps fixtures, examples, scripts, CI configuration, tests, generated release assets, the local competition charter, and `submission/` out of the Mooncakes package. The SQLite amalgamation is marked vendored for GitHub language statistics. Run the full verification gate, `moon info`, `moon doc`, and `moon package --list` before publishing. `scripts/package-release.ps1` builds the stripped Windows CLI, creates deterministic release archives, and writes `SHA256SUMS.txt`; Gitlink mirroring is outside the 0.1.0 release.
