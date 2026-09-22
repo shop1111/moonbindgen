@@ -6,10 +6,13 @@ $ErrorActionPreference = 'Stop'
 $projectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 $buildRoot = [System.IO.Path]::GetFullPath((Join-Path $projectRoot '_build'))
 $stageRoot = [System.IO.Path]::GetFullPath((Join-Path $buildRoot 'release-stage'))
+$packageStageRoot = [System.IO.Path]::GetFullPath((Join-Path $buildRoot 'release-package-stage'))
 $distRoot = [System.IO.Path]::GetFullPath((Join-Path $projectRoot 'dist'))
 
-if (-not $stageRoot.StartsWith($buildRoot + [System.IO.Path]::DirectorySeparatorChar, [System.StringComparison]::OrdinalIgnoreCase)) {
-  throw 'Release staging directory escaped _build'
+foreach ($path in @($stageRoot, $packageStageRoot)) {
+  if (-not $path.StartsWith($buildRoot + [System.IO.Path]::DirectorySeparatorChar, [System.StringComparison]::OrdinalIgnoreCase)) {
+    throw 'Release staging directory escaped _build'
+  }
 }
 
 function Write-DeterministicZip {
@@ -93,7 +96,11 @@ try {
   $packageAsset = Join-Path $distRoot "shop1111-moonbindgen-$Version.zip"
   $checksumAsset = Join-Path $distRoot 'SHA256SUMS.txt'
   Write-DeterministicZip -SourceDirectory $stageRoot -Destination $binaryAsset
-  Copy-Item -Force -LiteralPath $package -Destination $packageAsset
+  if (Test-Path -LiteralPath $packageStageRoot) {
+    Remove-Item -Recurse -Force -LiteralPath $packageStageRoot
+  }
+  Expand-Archive -LiteralPath $package -DestinationPath $packageStageRoot
+  Write-DeterministicZip -SourceDirectory $packageStageRoot -Destination $packageAsset
 
   $checksumLines = @($binaryAsset, $packageAsset) | ForEach-Object {
     $hash = Get-FileHash -Algorithm SHA256 -LiteralPath $_
