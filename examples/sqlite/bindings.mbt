@@ -45,6 +45,25 @@ pub type C_sqlite3_backup
 pub type C_sqlite3_snapshot
 
 ///|
+#borrow(mbg_absent)
+extern "C" fn mbg_bridge_sqlite3_libversion(
+  mbg_absent : FixedArray[Int],
+) -> Bytes = "mbg_bridge_sqlite3_libversion"
+
+///|
+pub fn sqlite3_libversion() -> String? raise {
+  let mbg_absent = FixedArray::make(1, 0)
+  let bytes = mbg_bridge_sqlite3_libversion(mbg_absent)
+  if mbg_absent[0] == 1 {
+    None
+  } else if mbg_absent[0] == 2 {
+    fail("returned C string is too large")
+  } else {
+    Some(@utf8.decode(bytes))
+  }
+}
+
+///|
 pub extern "C" fn sqlite3_libversion_number() -> Int = "sqlite3_libversion_number"
 
 ///|
@@ -118,6 +137,20 @@ pub extern "C" fn sqlite3_memory_used() -> Int64 = "sqlite3_memory_used"
 pub extern "C" fn sqlite3_memory_highwater(resetflag : Int) -> Int64 = "sqlite3_memory_highwater"
 
 ///|
+#borrow(filename, mbg_status)
+extern "C" fn mbg_bridge_sqlite3_open(
+  filename : Bytes,
+  mbg_status : FixedArray[Int],
+) -> C_sqlite3 = "mbg_bridge_sqlite3_open"
+
+///|
+pub fn sqlite3_open(filename : Bytes) -> (Int, C_sqlite3) {
+  let mbg_status = FixedArray::make(1, 0)
+  let value = mbg_bridge_sqlite3_open(filename, mbg_status)
+  (mbg_status[0], value)
+}
+
+///|
 pub extern "C" fn sqlite3_errcode(db : C_sqlite3) -> Int = "sqlite3_errcode"
 
 ///|
@@ -132,6 +165,26 @@ pub extern "C" fn sqlite3_limit(
   id : Int,
   newval : Int,
 ) -> Int = "sqlite3_limit"
+
+///|
+#borrow(zsql, mbg_status)
+extern "C" fn mbg_bridge_sqlite3_prepare_v2(
+  db : C_sqlite3,
+  zsql : Bytes,
+  nbyte : Int,
+  mbg_status : FixedArray[Int],
+) -> C_sqlite3_stmt = "mbg_bridge_sqlite3_prepare_v2"
+
+///|
+pub fn sqlite3_prepare_v2(
+  db : C_sqlite3,
+  zsql : Bytes,
+  nbyte : Int,
+) -> (Int, C_sqlite3_stmt) {
+  let mbg_status = FixedArray::make(1, 0)
+  let value = mbg_bridge_sqlite3_prepare_v2(db, zsql, nbyte, mbg_status)
+  (mbg_status[0], value)
+}
 
 ///|
 pub extern "C" fn sqlite3_stmt_readonly(pstmt : C_sqlite3_stmt) -> Int = "sqlite3_stmt_readonly"

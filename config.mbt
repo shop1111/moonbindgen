@@ -27,6 +27,10 @@ pub struct GenerateConfig {
   renames : Map[String, String]
   type_overrides : Map[String, String]
   utf8_inputs : Map[String, Bool]
+  output_params : Map[String, Bool]
+  null_inputs : Map[String, Bool]
+  utf8_borrowed_returns : Map[String, Bool]
+  utf8_owned_returns : Map[String, String]
   unsupported_policy : UnsupportedPolicy
 }
 
@@ -55,6 +59,10 @@ pub fn GenerateConfig::default() -> GenerateConfig {
     renames: Map([]),
     type_overrides: Map([]),
     utf8_inputs: Map([]),
+    output_params: Map([]),
+    null_inputs: Map([]),
+    utf8_borrowed_returns: Map([]),
+    utf8_owned_returns: Map([]),
     unsupported_policy: Report,
   }
 }
@@ -120,6 +128,24 @@ fn valid_type_override(name : String) -> Bool {
 }
 
 ///|
+fn valid_c_identifier(name : String) -> Bool {
+  if name == "" {
+    return false
+  }
+  let mut first = true
+  for char in name {
+    if first && !(char.is_ascii_alphabetic() || char == '_') {
+      return false
+    }
+    if !(char.is_ascii_alphabetic() || char.is_ascii_digit() || char == '_') {
+      return false
+    }
+    first = false
+  }
+  true
+}
+
+///|
 /// Parses and validates a `moonbindgen-config-v1` JSON document.
 ///
 /// Unknown fields, unsafe type overrides, and schema mismatches raise
@@ -143,6 +169,10 @@ pub fn parse_config(text : String) -> GenerateConfig raise ConfigError {
       | "renames"
       | "type_overrides"
       | "utf8_inputs"
+      | "output_params"
+      | "null_inputs"
+      | "utf8_borrowed_returns"
+      | "utf8_owned_returns"
       | "unsupported_policy" => ()
       _ => invalid_config("unknown configuration field: " + key)
     }
@@ -168,12 +198,33 @@ pub fn parse_config(text : String) -> GenerateConfig raise ConfigError {
       )
     }
   }
+  let output_params = string_set(json, "output_params")
+  let null_inputs = string_set(json, "null_inputs")
+  let utf8_borrowed_returns = string_set(json, "utf8_borrowed_returns")
+  let utf8_owned_returns = string_map(json, "utf8_owned_returns")
+  for name, free_fn in utf8_owned_returns {
+    if !valid_c_identifier(free_fn) {
+      invalid_config("utf8_owned_returns[" + name + "] needs a C function name")
+    }
+    if utf8_borrowed_returns.contains(name) {
+      invalid_config("return string ownership conflicts for: " + name)
+    }
+  }
+  for key, _ in output_params {
+    if null_inputs.contains(key) {
+      invalid_config("output_params and null_inputs conflict for: " + key)
+    }
+  }
   {
     include_functions: string_set(json, "include_functions"),
     exclude_functions: string_set(json, "exclude_functions"),
     renames: string_map(json, "renames"),
     type_overrides,
     utf8_inputs: string_set(json, "utf8_inputs"),
+    output_params,
+    null_inputs,
+    utf8_borrowed_returns,
+    utf8_owned_returns,
     unsupported_policy,
   }
 }
@@ -211,4 +262,36 @@ fn GenerateConfig::is_utf8_input(
   parameter_name : String,
 ) -> Bool {
   self.utf8_inputs.contains(function_name + "." + parameter_name)
+}
+
+///|
+fn GenerateConfig::is_output(
+  self : GenerateConfig,
+  function_name : String,
+  parameter_name : String,
+) -> Bool {
+  self.output_params.contains(function_name + "." + parameter_name)
+}
+
+///|
+fn GenerateConfig::is_null_input(
+  self : GenerateConfig,
+  function_name : String,
+  parameter_name : String,
+) -> Bool {
+  self.null_inputs.contains(function_name + "." + parameter_name)
+}
+
+///|
+fn GenerateConfig::has_bridge(self : GenerateConfig, name : String) -> Bool {
+  if self.utf8_borrowed_returns.contains(name) ||
+    self.utf8_owned_returns.contains(name) {
+    return true
+  }
+  for key, _ in self.output_params {
+    if key.has_prefix(name + ".") {
+      return true
+    }
+  }
+  false
 }

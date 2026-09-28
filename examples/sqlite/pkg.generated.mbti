@@ -106,6 +106,8 @@ pub fn sqlite3_keyword_count() -> Int
 
 pub fn sqlite3_last_insert_rowid(C_sqlite3) -> Int64
 
+pub fn sqlite3_libversion() -> String? raise
+
 pub fn sqlite3_libversion_number() -> Int
 
 pub fn sqlite3_limit(C_sqlite3, Int, Int) -> Int
@@ -130,9 +132,13 @@ pub fn sqlite3_mutex_try(C_sqlite3_mutex) -> Int
 
 pub fn sqlite3_next_stmt(C_sqlite3, C_sqlite3_stmt) -> C_sqlite3_stmt
 
+pub fn sqlite3_open(Bytes) -> (Int, C_sqlite3)
+
 pub fn sqlite3_os_end() -> Int
 
 pub fn sqlite3_os_init() -> Int
+
+pub fn sqlite3_prepare_v2(C_sqlite3, Bytes, Int) -> (Int, C_sqlite3_stmt)
 
 pub fn sqlite3_release_memory(Int) -> Int
 

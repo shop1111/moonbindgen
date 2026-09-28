@@ -32,6 +32,10 @@ pub struct GenerateConfig {
   renames : Map[String, String]
   type_overrides : Map[String, String]
   utf8_inputs : Map[String, Bool]
+  output_params : Map[String, Bool]
+  null_inputs : Map[String, Bool]
+  utf8_borrowed_returns : Map[String, Bool]
+  utf8_owned_returns : Map[String, String]
   unsupported_policy : UnsupportedPolicy
 }
 pub fn GenerateConfig::default() -> Self
@@ -39,6 +43,7 @@ pub fn GenerateConfig::default() -> Self
 pub struct GenerateResult {
   bindings : String
   report : String
+  shim : String?
   generated : Int
   skipped : Int
 }
