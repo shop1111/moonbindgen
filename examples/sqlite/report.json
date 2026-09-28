@@ -9,14 +9,14 @@
     "c:/program files/llvm/lib/clang/23/include/__stdarg___gnuc_va_list.h",
     "c:/program files/llvm/lib/clang/23/include/__stdarg_va_list.h"
   ],
-  "generated": 128,
-  "skipped": 170,
+  "generated": 131,
+  "skipped": 167,
   "summary": {
-    "functions_generated": 128,
-    "functions_skipped": 170,
+    "functions_generated": 131,
+    "functions_skipped": 167,
     "enums_generated": 0,
     "enums_skipped": 0,
-    "unsupported": 170
+    "unsupported": 167
   },
   "declarations": [
     {
@@ -28,10 +28,11 @@
         "line": 189
       },
       "c_signature": "const char *(void)",
-      "moonbit_signature": "",
-      "status": "skipped",
-      "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "moonbit_signature": "///|\n#borrow(mbg_absent)\nextern \"C\" fn mbg_bridge_sqlite3_libversion(\n  mbg_absent : FixedArray[Int],\n) -> Bytes = \"mbg_bridge_sqlite3_libversion\"\n\n///|\npub fn sqlite3_libversion() -> String? raise {\n  let mbg_absent = FixedArray::make(1, 0)\n  let bytes = mbg_bridge_sqlite3_libversion(mbg_absent)\n  if mbg_absent[0] == 1 {\n    None\n  } else if mbg_absent[0] == 2 {\n    fail(\"returned C string is too large\")\n  } else {\n    Some(@utf8.decode(bytes))\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true
     },
     {
       "kind": "function",
@@ -714,10 +715,11 @@
         "line": 3990
       },
       "c_signature": "int (const char *, sqlite3 **)",
-      "moonbit_signature": "",
-      "status": "skipped",
-      "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "moonbit_signature": "///|\n#borrow(filename, mbg_status)\nextern \"C\" fn mbg_bridge_sqlite3_open(\n  filename : Bytes,\n  mbg_status : FixedArray[Int],\n) -> C_sqlite3 = \"mbg_bridge_sqlite3_open\"\n\n///|\npub fn sqlite3_open(filename : Bytes) -> (Int, C_sqlite3) {\n  let mbg_status = FixedArray::make(1, 0)\n  let value = mbg_bridge_sqlite3_open(filename, mbg_status)\n  (mbg_status[0], value)\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true
     },
     {
       "kind": "function",
@@ -1022,10 +1024,11 @@
         "line": 4602
       },
       "c_signature": "int (sqlite3 *, const char *, int, sqlite3_stmt **, const char **)",
-      "moonbit_signature": "",
-      "status": "skipped",
-      "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "moonbit_signature": "///|\n#borrow(zsql, mbg_status)\nextern \"C\" fn mbg_bridge_sqlite3_prepare_v2(\n  db : C_sqlite3,\n  zsql : Bytes,\n  nbyte : Int,\n  mbg_status : FixedArray[Int],\n) -> C_sqlite3_stmt = \"mbg_bridge_sqlite3_prepare_v2\"\n\n///|\npub fn sqlite3_prepare_v2(\n  db : C_sqlite3,\n  zsql : Bytes,\n  nbyte : Int,\n) -> (Int, C_sqlite3_stmt) {\n  let mbg_status = FixedArray::make(1, 0)\n  let value = mbg_bridge_sqlite3_prepare_v2(db, zsql, nbyte, mbg_status)\n  (mbg_status[0], value)\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true
     },
     {
       "kind": "function",
@@ -4202,10 +4205,11 @@
         "line": 189
       },
       "c_signature": "const char *(void)",
-      "moonbit_signature": "",
-      "status": "skipped",
-      "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "moonbit_signature": "///|\n#borrow(mbg_absent)\nextern \"C\" fn mbg_bridge_sqlite3_libversion(\n  mbg_absent : FixedArray[Int],\n) -> Bytes = \"mbg_bridge_sqlite3_libversion\"\n\n///|\npub fn sqlite3_libversion() -> String? raise {\n  let mbg_absent = FixedArray::make(1, 0)\n  let bytes = mbg_bridge_sqlite3_libversion(mbg_absent)\n  if mbg_absent[0] == 1 {\n    None\n  } else if mbg_absent[0] == 2 {\n    fail(\"returned C string is too large\")\n  } else {\n    Some(@utf8.decode(bytes))\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true
     },
     {
       "kind": "function",
@@ -4888,10 +4892,11 @@
         "line": 3990
       },
       "c_signature": "int (const char *, sqlite3 **)",
-      "moonbit_signature": "",
-      "status": "skipped",
-      "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "moonbit_signature": "///|\n#borrow(filename, mbg_status)\nextern \"C\" fn mbg_bridge_sqlite3_open(\n  filename : Bytes,\n  mbg_status : FixedArray[Int],\n) -> C_sqlite3 = \"mbg_bridge_sqlite3_open\"\n\n///|\npub fn sqlite3_open(filename : Bytes) -> (Int, C_sqlite3) {\n  let mbg_status = FixedArray::make(1, 0)\n  let value = mbg_bridge_sqlite3_open(filename, mbg_status)\n  (mbg_status[0], value)\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true
     },
     {
       "kind": "function",
@@ -5196,10 +5201,11 @@
         "line": 4602
       },
       "c_signature": "int (sqlite3 *, const char *, int, sqlite3_stmt **, const char **)",
-      "moonbit_signature": "",
-      "status": "skipped",
-      "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "moonbit_signature": "///|\n#borrow(zsql, mbg_status)\nextern \"C\" fn mbg_bridge_sqlite3_prepare_v2(\n  db : C_sqlite3,\n  zsql : Bytes,\n  nbyte : Int,\n  mbg_status : FixedArray[Int],\n) -> C_sqlite3_stmt = \"mbg_bridge_sqlite3_prepare_v2\"\n\n///|\npub fn sqlite3_prepare_v2(\n  db : C_sqlite3,\n  zsql : Bytes,\n  nbyte : Int,\n) -> (Int, C_sqlite3_stmt) {\n  let mbg_status = FixedArray::make(1, 0)\n  let value = mbg_bridge_sqlite3_prepare_v2(db, zsql, nbyte, mbg_status)\n  (mbg_status[0], value)\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true
     },
     {
       "kind": "function",
@@ -8366,5 +8372,6 @@
       "reason": "unsupported parameter type: const char *"
     }
   ],
-  "enums": []
+  "enums": [],
+  "has_shim": true
 }

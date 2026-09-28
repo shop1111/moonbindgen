@@ -4,15 +4,29 @@ package "shop1111/moonbindgen/examples/native_fixture"
 // Values
 pub fn abi_add(Int, Int) -> Int
 
+pub fn abi_borrowed_text(Int) -> String? raise
+
+pub fn abi_free_count() -> Int
+
+pub fn abi_handle_out(Int) -> (Int, C_abi_handle)
+
+pub fn abi_handle_value(C_abi_handle) -> Int
+
 pub fn abi_mix(UInt64) -> UInt64
 
+pub fn abi_owned_text(Int) -> String? raise
+
 pub fn abi_path_length(Bytes) -> Int
+
+pub fn abi_scalar_out(Int) -> (Int, Int)
 
 pub fn abi_scale(Double) -> Double
 
 // Errors
 
 // Types and methods
+#external
+pub type C_abi_handle
 
 // Type aliases
 

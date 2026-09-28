@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0 - 2026-09-28
+
+- Generate opt-in C bridges and MoonBit wrappers for one scalar or opaque-handle output pointer with an `int` status.
+- Copy borrowed or explicitly owned UTF-8 C string returns into `String?`, calling a declared compatible release function for owned values.
+- Check and replace the optional C shim alongside bindings and reports, with rollback on output failure.
+- Run the SQLite `SELECT 42` proof through generated open and prepare bindings; cover null, failure, decoding, and release paths in the Native fixture.
+
 ## 0.1.0 - 2026-09-22
 
 - Generate conservative MoonBit Native C FFI declarations from Clang 23 JSON AST.

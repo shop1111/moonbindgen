@@ -59,7 +59,7 @@ try {
   if (-not $help.Output.Contains('Usage:')) { throw 'CLI help text is incomplete' }
   $version = Invoke-MoonBindgen @('--version')
   Assert-ExitCode 'CLI --version' $version 0
-  if ($version.Output.Trim() -ne 'moonbindgen 0.1.0') { throw 'CLI version is not 0.1.0' }
+  if ($version.Output.Trim() -ne 'moonbindgen 0.2.0') { throw 'CLI version is not 0.2.0' }
   Assert-ExitCode 'CLI usage error' (Invoke-MoonBindgen @('generate')) 2
 
   New-Item -ItemType Directory -Force -Path '_build/verify' | Out-Null
@@ -95,6 +95,9 @@ try {
   $a = Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $first 'bindings.mbt')
   $b = Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $second 'bindings.mbt')
   if ($a -cne $b) { throw 'Generated bindings are not deterministic' }
+  if (Test-Path -LiteralPath (Join-Path $first 'bindings_shim.c')) {
+    throw 'Unconfigured fixture unexpectedly generated a C shim'
+  }
   $reportA = Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $first 'report.json')
   $reportB = Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $second 'report.json')
   if ($reportA -cne $reportB) { throw 'Generated reports are not deterministic' }
@@ -115,6 +118,14 @@ try {
   ) 6
   & moon run -q cmd/main -- generate fixtures/basic.h --out $first --clang $Clang
   if ($LASTEXITCODE -ne 0) { throw 'Fixture restoration after drift test failed' }
+  [System.IO.File]::WriteAllText((Join-Path $first 'bindings_shim.c'), 'stale shim', $utf8NoBom)
+  Assert-ExitCode 'CLI unexpected C shim drift' (
+    Invoke-MoonBindgen @('generate', 'fixtures/basic.h', '--out', $first, '--clang', $Clang, '--check')
+  ) 6
+  & moon run -q cmd/main -- generate fixtures/basic.h --out $first --clang $Clang
+  if ($LASTEXITCODE -ne 0 -or (Test-Path -LiteralPath (Join-Path $first 'bindings_shim.c'))) {
+    throw 'Unneeded C shim was not removed'
+  }
 
   $includeOutput = '_build/verify/include'
   & moon run -q cmd/main -- generate fixtures/with_include.h --out $includeOutput --clang $Clang -- -Ifixtures/includes
@@ -135,25 +146,54 @@ try {
   if ($LASTEXITCODE -ne 0) { throw 'Native ABI fixture generation failed' }
   & moon run -q cmd/main -- generate examples/native_fixture/fixture.h --out examples/native_fixture --clang $Clang --config examples/native_fixture/config.json --check
   if ($LASTEXITCODE -ne 0) { throw 'Native ABI fixture drifted' }
+  $nativeShim = 'examples/native_fixture/bindings_shim.c'
+  $nativeShimText = Get-Content -Raw -Encoding UTF8 -LiteralPath $nativeShim
+  if (-not $nativeShimText.Contains('abi_free_text(mbg_text)')) {
+    throw 'Owned string release is missing from generated C shim'
+  }
+  $nativeBindingsText = Get-Content -Raw -Encoding UTF8 -LiteralPath 'examples/native_fixture/bindings.mbt'
+  $nativeReportText = Get-Content -Raw -Encoding UTF8 -LiteralPath 'examples/native_fixture/report.json'
+  $lockedShim = [System.IO.File]::Open($nativeShim, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::None)
+  try {
+    Assert-ExitCode 'CLI third-artifact rollback' (
+      Invoke-MoonBindgen @('generate', 'examples/native_fixture/fixture.h', '--out', 'examples/native_fixture', '--clang', $Clang, '--config', 'examples/native_fixture/config.json')
+    ) 5
+  } finally {
+    $lockedShim.Dispose()
+  }
+  if ((Get-Content -Raw -Encoding UTF8 -LiteralPath 'examples/native_fixture/bindings.mbt') -cne $nativeBindingsText -or
+      (Get-Content -Raw -Encoding UTF8 -LiteralPath 'examples/native_fixture/report.json') -cne $nativeReportText -or
+      (Get-Content -Raw -Encoding UTF8 -LiteralPath $nativeShim) -cne $nativeShimText) {
+    throw 'Failed three-artifact replacement changed output'
+  }
+  [System.IO.File]::AppendAllText($nativeShim, "`n// drift", $utf8NoBom)
+  Assert-ExitCode 'CLI C shim drift' (
+    Invoke-MoonBindgen @('generate', 'examples/native_fixture/fixture.h', '--out', 'examples/native_fixture', '--clang', $Clang, '--config', 'examples/native_fixture/config.json', '--check')
+  ) 6
+  & moon run -q cmd/main -- generate examples/native_fixture/fixture.h --out examples/native_fixture --clang $Clang --config examples/native_fixture/config.json
+  if ($LASTEXITCODE -ne 0) { throw 'Native ABI fixture restoration failed' }
   & moon fmt examples/native_fixture/bindings.mbt
   if ($LASTEXITCODE -ne 0) { throw 'Native ABI fixture formatting failed' }
   $nativeResult = & moon run -q examples/native_fixture
-  if ($LASTEXITCODE -ne 0 -or ($nativeResult -join "`n").Trim() -ne 'Native ABI fixture => 42, 42, 10, 7') {
+  if ($LASTEXITCODE -ne 0 -or ($nativeResult -join "`n").Trim() -ne 'Native ABI fixture => 42, outputs and strings') {
     throw 'Generated native ABI fixture failed'
   }
 
-  & moon run -q cmd/main -- generate examples/sqlite/sqlite3.h --out examples/sqlite --clang $Clang
+  & moon run -q cmd/main -- generate examples/sqlite/sqlite3.h --out examples/sqlite --clang $Clang --config examples/sqlite/config.json
   if ($LASTEXITCODE -ne 0) { throw 'SQLite generation failed' }
   $sqliteReport = Get-Content -Raw -Encoding UTF8 -LiteralPath 'examples/sqlite/report.json' | ConvertFrom-Json
-  if ($sqliteReport.generated -ne 128 -or $sqliteReport.skipped -ne 170) {
+  if ($sqliteReport.generated -ne 131 -or $sqliteReport.skipped -ne 167) {
     throw 'SQLite coverage changed'
   }
-  foreach ($name in @('sqlite3_step', 'sqlite3_column_int', 'sqlite3_finalize', 'sqlite3_close')) {
+  foreach ($name in @('sqlite3_open', 'sqlite3_prepare_v2', 'sqlite3_libversion', 'sqlite3_step', 'sqlite3_column_int', 'sqlite3_finalize', 'sqlite3_close')) {
     if (-not ($sqliteReport.functions | Where-Object { $_.c_name -eq $name -and $_.status -eq 'generated' })) {
       throw "Required SQLite binding missing: $name"
     }
   }
-  & moon run -q cmd/main -- generate examples/sqlite/sqlite3.h --out examples/sqlite --clang $Clang --check
+  if (-not (Test-Path -LiteralPath 'examples/sqlite/bindings_shim.c')) {
+    throw 'SQLite C shim was not generated'
+  }
+  & moon run -q cmd/main -- generate examples/sqlite/sqlite3.h --out examples/sqlite --clang $Clang --config examples/sqlite/config.json --check
   if ($LASTEXITCODE -ne 0) { throw 'SQLite generated artifacts drifted' }
   & moon fmt examples/sqlite/bindings.mbt
   if ($LASTEXITCODE -ne 0) { throw 'SQLite binding formatting failed' }

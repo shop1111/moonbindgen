@@ -1,0 +1,7 @@
+{
+  "schema": "moonbindgen-config-v1",
+  "utf8_inputs": ["sqlite3_open.filename", "sqlite3_prepare_v2.zSql"],
+  "output_params": ["sqlite3_open.ppDb", "sqlite3_prepare_v2.ppStmt"],
+  "null_inputs": ["sqlite3_prepare_v2.pzTail"],
+  "utf8_borrowed_returns": ["sqlite3_libversion"]
+}

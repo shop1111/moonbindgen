@@ -8,5 +8,5 @@ supported_targets = "native"
 pkgtype(kind: "executable")
 
 options(
-  "native-stub": [ "fixture.c" ],
+  "native-stub": [ "fixture.c", "bindings_shim.c" ],
 )

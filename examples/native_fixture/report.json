@@ -6,11 +6,11 @@
     "target": "x86_64-pc-windows-msvc"
   },
   "included_files": [],
-  "generated": 4,
-  "skipped": 0,
+  "generated": 10,
+  "skipped": 1,
   "summary": {
-    "functions_generated": 4,
-    "functions_skipped": 0,
+    "functions_generated": 10,
+    "functions_skipped": 1,
     "enums_generated": 0,
     "enums_skipped": 0,
     "unsupported": 0
@@ -22,7 +22,7 @@
       "moonbit_name": "abi_add",
       "source": {
         "file": "fixture.h",
-        "line": 6
+        "line": 7
       },
       "c_signature": "result_t (int, int)",
       "moonbit_signature": "///|\npub extern \"C\" fn abi_add(left : Int, right : Int) -> Int = \"abi_add\"",
@@ -36,7 +36,7 @@
       "moonbit_name": "abi_mix",
       "source": {
         "file": "fixture.h",
-        "line": 7
+        "line": 8
       },
       "c_signature": "unsigned long long (unsigned long long)",
       "moonbit_signature": "///|\npub extern \"C\" fn abi_mix(value : UInt64) -> UInt64 = \"abi_mix\"",
@@ -50,7 +50,7 @@
       "moonbit_name": "abi_scale",
       "source": {
         "file": "fixture.h",
-        "line": 8
+        "line": 9
       },
       "c_signature": "double (double)",
       "moonbit_signature": "///|\npub extern \"C\" fn abi_scale(value : Double) -> Double = \"abi_scale\"",
@@ -64,10 +64,112 @@
       "moonbit_name": "abi_path_length",
       "source": {
         "file": "fixture.h",
-        "line": 9
+        "line": 10
       },
       "c_signature": "int (const char *)",
       "moonbit_signature": "///|\n#borrow(path)\npub extern \"C\" fn abi_path_length(path : Bytes) -> Int = \"abi_path_length\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": ""
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_scalar_out",
+      "moonbit_name": "abi_scalar_out",
+      "source": {
+        "file": "fixture.h",
+        "line": 11
+      },
+      "c_signature": "int (int, int *)",
+      "moonbit_signature": "///|\n#borrow(mbg_status)\nextern \"C\" fn mbg_bridge_abi_scalar_out(\n  seed : Int,\n  mbg_status : FixedArray[Int],\n) -> Int = \"mbg_bridge_abi_scalar_out\"\n\n///|\npub fn abi_scalar_out(seed : Int) -> (Int, Int) {\n  let mbg_status = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_scalar_out(seed, mbg_status)\n  (mbg_status[0], value)\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_handle_out",
+      "moonbit_name": "abi_handle_out",
+      "source": {
+        "file": "fixture.h",
+        "line": 12
+      },
+      "c_signature": "int (int, abi_handle **)",
+      "moonbit_signature": "///|\n#borrow(mbg_status)\nextern \"C\" fn mbg_bridge_abi_handle_out(\n  seed : Int,\n  mbg_status : FixedArray[Int],\n) -> C_abi_handle = \"mbg_bridge_abi_handle_out\"\n\n///|\npub fn abi_handle_out(seed : Int) -> (Int, C_abi_handle) {\n  let mbg_status = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_handle_out(seed, mbg_status)\n  (mbg_status[0], value)\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_handle_value",
+      "moonbit_name": "abi_handle_value",
+      "source": {
+        "file": "fixture.h",
+        "line": 13
+      },
+      "c_signature": "int (abi_handle *)",
+      "moonbit_signature": "///|\npub extern \"C\" fn abi_handle_value(handle : C_abi_handle) -> Int = \"abi_handle_value\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": ""
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_borrowed_text",
+      "moonbit_name": "abi_borrowed_text",
+      "source": {
+        "file": "fixture.h",
+        "line": 14
+      },
+      "c_signature": "const char *(int)",
+      "moonbit_signature": "///|\n#borrow(mbg_absent)\nextern \"C\" fn mbg_bridge_abi_borrowed_text(\n  mode : Int,\n  mbg_absent : FixedArray[Int],\n) -> Bytes = \"mbg_bridge_abi_borrowed_text\"\n\n///|\npub fn abi_borrowed_text(mode : Int) -> String? raise {\n  let mbg_absent = FixedArray::make(1, 0)\n  let bytes = mbg_bridge_abi_borrowed_text(mode, mbg_absent)\n  if mbg_absent[0] == 1 {\n    None\n  } else if mbg_absent[0] == 2 {\n    fail(\"returned C string is too large\")\n  } else {\n    Some(@utf8.decode(bytes))\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_owned_text",
+      "moonbit_name": "abi_owned_text",
+      "source": {
+        "file": "fixture.h",
+        "line": 15
+      },
+      "c_signature": "char *(int)",
+      "moonbit_signature": "///|\n#borrow(mbg_absent)\nextern \"C\" fn mbg_bridge_abi_owned_text(\n  mode : Int,\n  mbg_absent : FixedArray[Int],\n) -> Bytes = \"mbg_bridge_abi_owned_text\"\n\n///|\npub fn abi_owned_text(mode : Int) -> String? raise {\n  let mbg_absent = FixedArray::make(1, 0)\n  let bytes = mbg_bridge_abi_owned_text(mode, mbg_absent)\n  if mbg_absent[0] == 1 {\n    None\n  } else if mbg_absent[0] == 2 {\n    fail(\"returned C string is too large\")\n  } else {\n    Some(@utf8.decode(bytes))\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_free_text",
+      "moonbit_name": "abi_free_text",
+      "source": {
+        "file": "fixture.h",
+        "line": 16
+      },
+      "c_signature": "void (char *)",
+      "moonbit_signature": "",
+      "status": "skipped",
+      "reason_code": "filtered",
+      "reason": "filtered by configuration"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_free_count",
+      "moonbit_name": "abi_free_count",
+      "source": {
+        "file": "fixture.h",
+        "line": 17
+      },
+      "c_signature": "int (void)",
+      "moonbit_signature": "///|\npub extern \"C\" fn abi_free_count() -> Int = \"abi_free_count\"",
       "status": "generated",
       "reason_code": "generated",
       "reason": ""
@@ -80,7 +182,7 @@
       "moonbit_name": "abi_add",
       "source": {
         "file": "fixture.h",
-        "line": 6
+        "line": 7
       },
       "c_signature": "result_t (int, int)",
       "moonbit_signature": "///|\npub extern \"C\" fn abi_add(left : Int, right : Int) -> Int = \"abi_add\"",
@@ -94,7 +196,7 @@
       "moonbit_name": "abi_mix",
       "source": {
         "file": "fixture.h",
-        "line": 7
+        "line": 8
       },
       "c_signature": "unsigned long long (unsigned long long)",
       "moonbit_signature": "///|\npub extern \"C\" fn abi_mix(value : UInt64) -> UInt64 = \"abi_mix\"",
@@ -108,7 +210,7 @@
       "moonbit_name": "abi_scale",
       "source": {
         "file": "fixture.h",
-        "line": 8
+        "line": 9
       },
       "c_signature": "double (double)",
       "moonbit_signature": "///|\npub extern \"C\" fn abi_scale(value : Double) -> Double = \"abi_scale\"",
@@ -122,14 +224,117 @@
       "moonbit_name": "abi_path_length",
       "source": {
         "file": "fixture.h",
-        "line": 9
+        "line": 10
       },
       "c_signature": "int (const char *)",
       "moonbit_signature": "///|\n#borrow(path)\npub extern \"C\" fn abi_path_length(path : Bytes) -> Int = \"abi_path_length\"",
       "status": "generated",
       "reason_code": "generated",
       "reason": ""
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_scalar_out",
+      "moonbit_name": "abi_scalar_out",
+      "source": {
+        "file": "fixture.h",
+        "line": 11
+      },
+      "c_signature": "int (int, int *)",
+      "moonbit_signature": "///|\n#borrow(mbg_status)\nextern \"C\" fn mbg_bridge_abi_scalar_out(\n  seed : Int,\n  mbg_status : FixedArray[Int],\n) -> Int = \"mbg_bridge_abi_scalar_out\"\n\n///|\npub fn abi_scalar_out(seed : Int) -> (Int, Int) {\n  let mbg_status = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_scalar_out(seed, mbg_status)\n  (mbg_status[0], value)\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_handle_out",
+      "moonbit_name": "abi_handle_out",
+      "source": {
+        "file": "fixture.h",
+        "line": 12
+      },
+      "c_signature": "int (int, abi_handle **)",
+      "moonbit_signature": "///|\n#borrow(mbg_status)\nextern \"C\" fn mbg_bridge_abi_handle_out(\n  seed : Int,\n  mbg_status : FixedArray[Int],\n) -> C_abi_handle = \"mbg_bridge_abi_handle_out\"\n\n///|\npub fn abi_handle_out(seed : Int) -> (Int, C_abi_handle) {\n  let mbg_status = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_handle_out(seed, mbg_status)\n  (mbg_status[0], value)\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_handle_value",
+      "moonbit_name": "abi_handle_value",
+      "source": {
+        "file": "fixture.h",
+        "line": 13
+      },
+      "c_signature": "int (abi_handle *)",
+      "moonbit_signature": "///|\npub extern \"C\" fn abi_handle_value(handle : C_abi_handle) -> Int = \"abi_handle_value\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": ""
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_borrowed_text",
+      "moonbit_name": "abi_borrowed_text",
+      "source": {
+        "file": "fixture.h",
+        "line": 14
+      },
+      "c_signature": "const char *(int)",
+      "moonbit_signature": "///|\n#borrow(mbg_absent)\nextern \"C\" fn mbg_bridge_abi_borrowed_text(\n  mode : Int,\n  mbg_absent : FixedArray[Int],\n) -> Bytes = \"mbg_bridge_abi_borrowed_text\"\n\n///|\npub fn abi_borrowed_text(mode : Int) -> String? raise {\n  let mbg_absent = FixedArray::make(1, 0)\n  let bytes = mbg_bridge_abi_borrowed_text(mode, mbg_absent)\n  if mbg_absent[0] == 1 {\n    None\n  } else if mbg_absent[0] == 2 {\n    fail(\"returned C string is too large\")\n  } else {\n    Some(@utf8.decode(bytes))\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_owned_text",
+      "moonbit_name": "abi_owned_text",
+      "source": {
+        "file": "fixture.h",
+        "line": 15
+      },
+      "c_signature": "char *(int)",
+      "moonbit_signature": "///|\n#borrow(mbg_absent)\nextern \"C\" fn mbg_bridge_abi_owned_text(\n  mode : Int,\n  mbg_absent : FixedArray[Int],\n) -> Bytes = \"mbg_bridge_abi_owned_text\"\n\n///|\npub fn abi_owned_text(mode : Int) -> String? raise {\n  let mbg_absent = FixedArray::make(1, 0)\n  let bytes = mbg_bridge_abi_owned_text(mode, mbg_absent)\n  if mbg_absent[0] == 1 {\n    None\n  } else if mbg_absent[0] == 2 {\n    fail(\"returned C string is too large\")\n  } else {\n    Some(@utf8.decode(bytes))\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_free_text",
+      "moonbit_name": "abi_free_text",
+      "source": {
+        "file": "fixture.h",
+        "line": 16
+      },
+      "c_signature": "void (char *)",
+      "moonbit_signature": "",
+      "status": "skipped",
+      "reason_code": "filtered",
+      "reason": "filtered by configuration"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_free_count",
+      "moonbit_name": "abi_free_count",
+      "source": {
+        "file": "fixture.h",
+        "line": 17
+      },
+      "c_signature": "int (void)",
+      "moonbit_signature": "///|\npub extern \"C\" fn abi_free_count() -> Int = \"abi_free_count\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": ""
     }
   ],
-  "enums": []
+  "enums": [],
+  "has_shim": true
 }

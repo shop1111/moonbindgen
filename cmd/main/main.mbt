@@ -1,12 +1,12 @@
 ///|
 fn usage() -> String {
   (
-    #|MoonBindgen 0.1.0
+    #|MoonBindgen 0.2.0
     #|Usage:
     #|  moonbindgen generate <header> --out <dir> [--clang <exe>] [--config <json>] [--check] [-- <clang arguments...>]
     #|
     #|Options:
-    #|  --check          Compare bindings.mbt and report.json without writing
+    #|  --check          Compare all generated artifacts without writing
     #|  --config <json>  Read moonbindgen-config-v1 generation settings
     #|  --clang <exe>    Use the specified Clang 23 executable
     #|  --help           Show this help
@@ -79,81 +79,84 @@ async fn safe_write(path : String, content : String) -> Bool {
 }
 
 ///|
-async fn restore_output(
-  bindings_path : String,
-  report_path : String,
-  bindings_backup : String,
-  report_backup : String,
-  had_bindings : Bool,
-  had_report : Bool,
-) -> Unit {
-  safe_remove(bindings_path)
-  safe_remove(report_path)
-  if had_bindings {
-    ignore(safe_rename(bindings_backup, bindings_path))
-  }
-  if had_report {
-    ignore(safe_rename(report_backup, report_path))
-  }
-}
-
-///|
 async fn replace_outputs(
   out_dir : String,
   bindings : String,
   report : String,
+  shim : String?,
 ) -> Bool {
   if !@fs.exists(out_dir) {
     @fs.mkdir(out_dir, recursive=true) catch {
       _ => return false
     }
   }
-  let bindings_path = out_dir + "/bindings.mbt"
-  let report_path = out_dir + "/report.json"
-  let bindings_temp = out_dir + "/.bindings.mbt.moonbindgen-tmp"
-  let report_temp = out_dir + "/.report.json.moonbindgen-tmp"
-  let bindings_backup = out_dir + "/.bindings.mbt.moonbindgen-backup"
-  let report_backup = out_dir + "/.report.json.moonbindgen-backup"
-  safe_remove(bindings_temp)
-  safe_remove(report_temp)
-  safe_remove(bindings_backup)
-  safe_remove(report_backup)
-  if !safe_write(bindings_temp, bindings) || !safe_write(report_temp, report) {
-    safe_remove(bindings_temp)
-    safe_remove(report_temp)
-    return false
+  let paths = [
+    out_dir + "/bindings.mbt",
+    out_dir + "/report.json",
+    out_dir + "/bindings_shim.c",
+  ]
+  let contents = [Some(bindings), Some(report), shim]
+  let temps = paths.map(path => path + ".moonbindgen-tmp")
+  let backups = paths.map(path => path + ".moonbindgen-backup")
+  let backed_up = [false, false, false]
+  let installed = [false, false, false]
+  for index in 0..<3 {
+    safe_remove(temps[index])
+    safe_remove(backups[index])
   }
-  let had_bindings = @fs.exists(bindings_path)
-  let had_report = @fs.exists(report_path)
-  if had_bindings && !safe_rename(bindings_path, bindings_backup) {
-    safe_remove(bindings_temp)
-    safe_remove(report_temp)
-    return false
-  }
-  if had_report && !safe_rename(report_path, report_backup) {
-    if had_bindings {
-      ignore(safe_rename(bindings_backup, bindings_path))
+  for index in 0..<3 {
+    match contents[index] {
+      Some(value) if !safe_write(temps[index], value) => {
+        for temp in temps {
+          safe_remove(temp)
+        }
+        return false
+      }
+      _ => ()
     }
-    safe_remove(bindings_temp)
-    safe_remove(report_temp)
-    return false
   }
-  if !safe_rename(bindings_temp, bindings_path) {
-    restore_output(
-      bindings_path, report_path, bindings_backup, report_backup, had_bindings, had_report,
-    )
-    safe_remove(report_temp)
-    return false
+  let mut success = true
+  for index in 0..<3 {
+    if @fs.exists(paths[index]) {
+      if safe_rename(paths[index], backups[index]) {
+        backed_up[index] = true
+      } else {
+        success = false
+        break
+      }
+    }
   }
-  if !safe_rename(report_temp, report_path) {
-    restore_output(
-      bindings_path, report_path, bindings_backup, report_backup, had_bindings, had_report,
-    )
-    return false
+  if success {
+    for index in 0..<3 {
+      match contents[index] {
+        Some(_) =>
+          if safe_rename(temps[index], paths[index]) {
+            installed[index] = true
+          } else {
+            success = false
+            break
+          }
+        None => ()
+      }
+    }
   }
-  safe_remove(bindings_backup)
-  safe_remove(report_backup)
-  true
+  if !success {
+    for index in 0..<3 {
+      if installed[index] {
+        safe_remove(paths[index])
+      }
+      if backed_up[index] {
+        ignore(safe_rename(backups[index], paths[index]))
+      }
+    }
+  }
+  for index in 0..<3 {
+    safe_remove(temps[index])
+    if success {
+      safe_remove(backups[index])
+    }
+  }
+  success
 }
 
 ///|
@@ -164,7 +167,7 @@ async fn main {
     return
   }
   if args.length() == 2 && args[1] == "--version" {
-    println("moonbindgen 0.1.0")
+    println("moonbindgen 0.2.0")
     return
   }
   if args.length() >= 3 && args[1] == "generate" && args[2] == "--help" {
@@ -284,6 +287,7 @@ async fn main {
   }
   let bindings_path = out_dir + "/bindings.mbt"
   let report_path = out_dir + "/report.json"
+  let shim_path = out_dir + "/bindings_shim.c"
   if check_only {
     let current_bindings = @fs.read_file(bindings_path).text() catch {
       _ => {
@@ -297,14 +301,23 @@ async fn main {
         return
       }
     }
-    if current_bindings != result.bindings || current_report != result.report {
+    let shim_matches = match result.shim {
+      Some(expected) => {
+        let actual = @fs.read_file(shim_path).text() catch { _ => "" }
+        @fs.exists(shim_path) && actual == expected
+      }
+      None => !@fs.exists(shim_path)
+    }
+    if current_bindings != result.bindings ||
+      current_report != result.report ||
+      !shim_matches {
       die(6, "Generated artifacts are out of date")
       return
     }
     println("Generated artifacts are up to date")
     return
   }
-  if !replace_outputs(out_dir, result.bindings, result.report) {
+  if !replace_outputs(out_dir, result.bindings, result.report, result.shim) {
     die(5, "Could not safely replace generated artifacts in: " + out_dir)
     return
   }

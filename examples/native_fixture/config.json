@@ -1,5 +1,13 @@
 {
   "schema": "moonbindgen-config-v1",
+  "include_functions": [
+    "abi_add", "abi_mix", "abi_scale", "abi_path_length",
+    "abi_scalar_out", "abi_handle_out", "abi_handle_value",
+    "abi_borrowed_text", "abi_owned_text", "abi_free_count"
+  ],
   "utf8_inputs": ["abi_path_length.path"],
+  "output_params": ["abi_scalar_out.value", "abi_handle_out.handle"],
+  "utf8_borrowed_returns": ["abi_borrowed_text"],
+  "utf8_owned_returns": { "abi_owned_text": "abi_free_text" },
   "unsupported_policy": "error"
 }

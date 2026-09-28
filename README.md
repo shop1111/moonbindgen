@@ -2,7 +2,7 @@
 
 MoonBindgen is a pure MoonBit Native command-line generator for conservative C FFI declarations. It delegates C parsing to Clang 23, converts the JSON AST into a typed declaration model, lowers only verified direct-ABI types, and writes deterministic MoonBit declarations together with an auditable report.
 
-The project deliberately does not pretend that syntax implies ownership. It rejects callbacks, by-value structs, output pointers, returned strings, variadic functions, and pointers whose lifetime is unclear. A configured call-scoped `const char *` input is the only string shortcut: it becomes `Bytes` with `#borrow`.
+The project deliberately does not pretend that syntax implies ownership. It rejects callbacks, by-value structs, variadic functions, and pointers whose lifetime is unclear. Explicit configuration enables one status-and-output parameter or a borrowed/owned UTF-8 return; these functions receive generated C bridges. A configured call-scoped `const char *` input becomes `Bytes` with `#borrow`.
 
 ## Why this project
 
@@ -23,9 +23,9 @@ Clang 23 JSON AST ──► provenance-aware declaration model
                             ▼
                   conservative ABI lowering
                             │
-              ┌─────────────┴─────────────┐
-              ▼                           ▼
-        bindings.mbt          moonbindgen-report-v2
+         ┌──────────────┼────────────────┐
+         ▼              ▼                ▼
+   bindings.mbt   optional C shim   report.json (v2)
 ```
 
 The main header controls which declarations are emitted. Included headers may supply typedef and enum facts, but their functions are not emitted. Clang nodes that omit a repeated filename inherit the most recent explicit provenance; malformed or contradictory declaration structures stop generation instead of being guessed.
@@ -41,7 +41,7 @@ The checked release toolchain is recorded in [`toolchain.json`](toolchain.json).
 To consume the generator as a library:
 
 ```powershell
-moon add shop1111/moonbindgen@0.1.0
+moon add shop1111/moonbindgen@0.2.0
 ```
 
 Add the root package to `moon.pkg`:
@@ -62,7 +62,7 @@ let result = @bindgen.generate_with_config(clang_ast_json, "library.h", config)
 println(result.bindings)
 ```
 
-Windows users can also download `moonbindgen-v0.1.0-windows-x86_64.zip` from the GitHub Release, extract `moonbindgen.exe`, and keep Clang 23 available separately. The executable is not a general C/C++ compiler bundle.
+Windows users can also download `moonbindgen-v0.2.0-windows-x86_64.zip` from the GitHub Release, extract `moonbindgen.exe`, and keep Clang 23 available separately. The executable is not a general C/C++ compiler bundle.
 
 ## CLI quick start
 
@@ -71,7 +71,7 @@ moon run -q cmd/main -- generate fixtures/basic.h --out _build/basic --clang 'C:
 moon run -q cmd/main -- generate fixtures/basic.h --out _build/basic --clang 'C:\Program Files\LLVM\bin\clang.exe' --check
 ```
 
-Arguments after `--` go directly to Clang, for example `-- -Ivendor/include -DFEATURE=1`. `--check` compares both generated files and writes nothing; drift exits with code 6. Run `--help` for the complete interface. Exit codes distinguish usage/configuration (2), Clang (3), generation policy (4), output I/O (5), and drift (6).
+Arguments after `--` go directly to Clang, for example `-- -Ivendor/include -DFEATURE=1`. `--check` compares all generated artifacts and writes nothing; drift exits with code 6. Run `--help` for the complete interface. Exit codes distinguish usage/configuration (2), Clang (3), generation policy (4), output I/O (5), and drift (6).
 
 ## Configuration v1
 
@@ -91,6 +91,26 @@ Arguments after `--` go directly to Clang, for example `-- -Ivendor/include -DFE
 
 `unsupported_policy` is `report` by default. With `error`, any unsupported declaration rejects the whole generation before official output files are replaced.
 
+### Explicit C bridges
+
+The SQLite example uses the additional config-v1 fields below:
+
+```json
+{
+  "schema": "moonbindgen-config-v1",
+  "utf8_inputs": ["sqlite3_open.filename", "sqlite3_prepare_v2.zSql"],
+  "output_params": ["sqlite3_open.ppDb", "sqlite3_prepare_v2.ppStmt"],
+  "null_inputs": ["sqlite3_prepare_v2.pzTail"],
+  "utf8_borrowed_returns": ["sqlite3_libversion"]
+}
+```
+
+`output_params` selects exactly one scalar `T*` or opaque-handle `T**` output for a function returning an `int` status; its MoonBit wrapper returns `(Int, T)`. The status and output value are both preserved on failure, so callers must follow the C library's cleanup contract. `null_inputs` omits an explicitly nullable pointer argument. Other output pointers remain unsupported.
+
+`utf8_borrowed_returns` copies a borrowed `char*` / `const char*` before its owner can change. `utf8_owned_returns` maps an owned `char*` function to a declared `void free_name(char*)` or `void free_name(void*)` function; the bridge copies first and calls that function once. Both yield `String?`: C `NULL` becomes `None`, and malformed UTF-8 raises a decoding error. An owned return without a declared compatible release function is rejected; the caller must confirm the library's ownership contract.
+
+When a bridge is needed, generation also writes `bindings_shim.c`. Place it alongside the C header, or provide the header's directory to the C compiler; include the generated file in the consumer package's `native-stub` list and import `moonbitlang/core/encoding/utf8` in `moon.pkg` for string wrappers. For example, `examples/sqlite/moon.pkg` uses `"native-stub": [ "sqlite3.c", "bindings_shim.c" ]`. `--check` compares all generated artifacts, including the presence or absence of this C file.
+
 ## Supported ABI surface
 
 | C declaration | MoonBit output | Policy |
@@ -100,13 +120,15 @@ Arguments after `--` go directly to Clang, for example `-- -Ivendor/include -DFE
 | typedef chains and 32-bit enums | Canonical scalar / `Int` | Resolved from Clang facts |
 | pointer to an opaque struct typedef | `#external` type | Raw pointer; caller owns lifetime rules |
 | configured input `const char *` | `Bytes` plus `#borrow` | Valid only for the duration of the call |
-| returned strings, output pointers, callbacks, variadics, by-value structs | none | Reported and skipped, or rejected in strict mode |
+| configured `int` status plus one scalar `T*` or opaque `T**` output | `(Int, T)` plus generated C bridge | Explicit output parameter; no inferred cleanup |
+| configured UTF-8 `char*` return | `String?` plus generated C bridge | Borrowed copy or copy and configured release |
+| other pointers, callbacks, variadics, by-value structs | none | Reported and skipped, or rejected in strict mode |
 
-MoonBindgen emits a raw FFI layer. It does not generate a general C shim, callback trampolines, resource-safe wrappers, C++, or broad platform guarantees in version 0.1.x.
+MoonBindgen emits raw FFI declarations and narrowly configured bridges. It does not generate callback trampolines, general resource-safe wrappers, C++, or broad platform guarantees in version 0.2.x.
 
 ## Auditable report v2
 
-`report.json` uses `moonbindgen-report-v2`. It records the Clang version and target, referenced include files, declaration kind and source line, original C signature, emitted MoonBit declaration, status, stable reason code, and summary counts. Existing v2 fields and reason codes will not be repurposed within 0.1.x; compatible fields may be added.
+`report.json` uses `moonbindgen-report-v2`. It records the Clang version and target, referenced include files, declaration kind and source line, original C signature, emitted MoonBit declaration, status, stable reason code, and summary counts. Bridged declarations include `bridge: true`, and a generated C file sets `has_shim: true`. Existing v2 fields and reason codes are preserved.
 
 ```json
 {
@@ -123,9 +145,9 @@ MoonBindgen emits a raw FFI layer. It does not generate a general C shim, callba
 ./scripts/verify.ps1
 ```
 
-The gate runs strict Native check/build/test, coverage analysis, two-run byte determinism, report schema assertions, include provenance, invalid-header rejection, artifact drift checks, a generated C fixture that compiles/links/calls scalars and a borrowed UTF-8 input, and the SQLite query below.
+The gate runs strict Native check/build/test, coverage analysis, two-run byte determinism, report schema assertions, include provenance, invalid-header rejection, three-artifact drift and rollback checks, a generated C fixture that exercises scalar and handle outputs plus borrowed and owned strings, and the SQLite query below.
 
-`examples/sqlite` vendors the official SQLite 3.53.4 amalgamation. On Clang 23.1.1, MoonBindgen generates 128 functions and reports 170 unsupported functions. A small handwritten shim demonstrates the explicitly out-of-scope output-pointer boundary for open/prepare; generated declarations then execute `SELECT 42` through `sqlite3_step`, `sqlite3_column_int`, `sqlite3_finalize`, and `sqlite3_close`.
+`examples/sqlite` vendors the official SQLite 3.53.4 amalgamation. On Clang 23.1.1, MoonBindgen generates 131 functions and reports 167 skipped functions. Generated bridges call `sqlite3_open`, `sqlite3_prepare_v2`, and `sqlite3_libversion`; generated declarations then execute `SELECT 42` through `sqlite3_step`, `sqlite3_column_int`, `sqlite3_finalize`, and `sqlite3_close`.
 
 ```powershell
 moon run -q examples/sqlite
@@ -136,4 +158,4 @@ Exact upstream provenance, checksums, licensing, and the one comment-only local 
 
 ## Release hygiene
 
-`.moonignore` keeps fixtures, examples, scripts, CI configuration, tests, generated release assets, the local competition charter, and `submission/` out of the Mooncakes package. The SQLite amalgamation is marked vendored for GitHub language statistics. Run the full verification gate, `moon info`, `moon doc`, and `moon package --list` before publishing. `scripts/package-release.ps1` builds the stripped Windows CLI, creates deterministic release archives, and writes `SHA256SUMS.txt`; Gitlink mirroring is outside the 0.1.0 release.
+`.moonignore` keeps fixtures, examples, scripts, CI configuration, tests, generated release assets, the local competition charter, and `submission/` out of the Mooncakes package. The SQLite amalgamation is marked vendored for GitHub language statistics. Run the full verification gate, `moon info`, `moon doc`, and `moon package --list` before publishing. `scripts/package-release.ps1` builds the stripped Windows CLI, creates deterministic release archives, and writes `SHA256SUMS.txt`.

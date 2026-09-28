@@ -282,3 +282,82 @@ test "generation output is byte deterministic" {
   assert_eq(first.bindings, second.bindings)
   assert_eq(first.report, second.report)
 }
+
+///|
+test "generates explicit output and UTF-8 return bridges" {
+  let ast =
+    #|{"kind":"TranslationUnitDecl","inner":[{"kind":"TypedefDecl","name":"handle","loc":{"file":"fixture.h","line":1},"type":{"qualType":"struct handle"}},{"kind":"FunctionDecl","name":"create","loc":{"line":2},"type":{"qualType":"int (handle **, const char **)"},"inner":[{"kind":"ParmVarDecl","name":"out","type":{"qualType":"handle **"}},{"kind":"ParmVarDecl","name":"tail","type":{"qualType":"const char **"}}]},{"kind":"FunctionDecl","name":"count","loc":{"line":3},"type":{"qualType":"int (int *)"},"inner":[{"kind":"ParmVarDecl","name":"value","type":{"qualType":"int *"}}]},{"kind":"FunctionDecl","name":"borrowed","loc":{"line":4},"type":{"qualType":"const char *(void)"}},{"kind":"FunctionDecl","name":"owned","loc":{"line":5},"type":{"qualType":"char *(void)"}},{"kind":"FunctionDecl","name":"release","loc":{"line":6},"type":{"qualType":"void (char *)"},"inner":[{"kind":"ParmVarDecl","name":"text","type":{"qualType":"char *"}}]}]}
+  let config = parse_config(
+    (
+      #|{"schema":"moonbindgen-config-v1","output_params":["create.out","count.value"],"null_inputs":["create.tail"],"utf8_borrowed_returns":["borrowed"],"utf8_owned_returns":{"owned":"release"}}
+    ),
+  )
+  let result = generate_with_config(ast, "fixture.h", config)
+  assert_eq(result.generated, 4)
+  assert_eq(result.skipped, 1)
+  assert_true(result.bindings.contains("pub fn create() -> (Int, C_handle)"))
+  assert_true(result.bindings.contains("pub fn count() -> (Int, Int)"))
+  assert_true(result.bindings.contains("pub fn owned() -> String? raise"))
+  assert_true(result.report.contains("\"has_shim\": true"))
+  guard result.shim is Some(shim) else { fail("expected a C shim") }
+  assert_true(shim.contains("create(&mbg_value, NULL)"))
+  assert_true(shim.contains("release(mbg_text)"))
+  let second = generate_with_config(ast, "fixture.h", config)
+  assert_eq(result.bindings, second.bindings)
+  assert_eq(result.report, second.report)
+  assert_eq(result.shim, second.shim)
+}
+
+///|
+test "rejects conflicting and unverified bridge settings" {
+  try
+    parse_config(
+      (
+        #|{"schema":"moonbindgen-config-v1","utf8_borrowed_returns":["text"],"utf8_owned_returns":{"text":"release"}}
+      ),
+    )
+  catch {
+    InvalidConfig(message) => assert_true(message.contains("conflicts"))
+  } noraise {
+    _ => fail("expected ownership conflict")
+  }
+  let ast =
+    #|{"kind":"TranslationUnitDecl","inner":[{"kind":"FunctionDecl","name":"text","loc":{"file":"fixture.h","line":1},"type":{"qualType":"char *(void)"}}]}
+  let config = parse_config(
+    (
+      #|{"schema":"moonbindgen-config-v1","utf8_owned_returns":{"text":"missing_free"}}
+    ),
+  )
+  try generate_with_config(ast, "fixture.h", config) catch {
+    Failure(message) => assert_true(message.contains("release function"))
+    _ => fail("expected release function rejection")
+  } noraise {
+    _ => fail("expected invalid bridge rejection")
+  }
+  let bad_release_ast =
+    #|{"kind":"TranslationUnitDecl","inner":[{"kind":"FunctionDecl","name":"text","loc":{"file":"fixture.h","line":1},"type":{"qualType":"char *(void)"}},{"kind":"FunctionDecl","name":"release","loc":{"line":2},"type":{"qualType":"int (int)"},"inner":[{"kind":"ParmVarDecl","name":"value","type":{"qualType":"int"}}]}]}
+  let bad_release = parse_config(
+    (
+      #|{"schema":"moonbindgen-config-v1","utf8_owned_returns":{"text":"release"}}
+    ),
+  )
+  try generate_with_config(bad_release_ast, "fixture.h", bad_release) catch {
+    Failure(message) => assert_true(message.contains("invalid string release"))
+    _ => fail("expected release signature rejection")
+  } noraise {
+    _ => fail("expected release signature rejection")
+  }
+  let bad_output_ast =
+    #|{"kind":"TranslationUnitDecl","inner":[{"kind":"FunctionDecl","name":"read","loc":{"file":"fixture.h","line":1},"type":{"qualType":"int (void *)"},"inner":[{"kind":"ParmVarDecl","name":"value","type":{"qualType":"void *"}}]}]}
+  let bad_output = parse_config(
+    (
+      #|{"schema":"moonbindgen-config-v1","output_params":["read.value"]}
+    ),
+  )
+  try generate_with_config(bad_output_ast, "fixture.h", bad_output) catch {
+    Failure(message) => assert_true(message.contains("unsupported output"))
+    _ => fail("expected output type rejection")
+  } noraise {
+    _ => fail("expected output type rejection")
+  }
+}
