@@ -361,3 +361,49 @@ test "rejects conflicting and unverified bridge settings" {
     _ => fail("expected output type rejection")
   }
 }
+
+///|
+test "v2 buffer configuration is positional and rejects ambiguous policies" {
+  let config = parse_config(
+    (
+      #|{"schema":"moonbindgen-config-v2","buffers":[{"function":"read","pointer":0,"length":1,"direction":"in","retention":"call"}],"return_buffers":[{"function":"view","length_function":"view_size","length_args":[0]}]}
+    ),
+  )
+  assert_eq(config.schema_version, 2)
+  assert_eq(config.buffers.length(), 1)
+  assert_eq(config.buffers[0].pointer, 0)
+  assert_eq(config.return_buffers[0].length_function, "view_size")
+  let invalid = [
+    (
+      #|{"schema":"moonbindgen-config-v1","buffers":[]}
+    ),
+    (
+      #|{"schema":"moonbindgen-config-v2","buffers":[{"function":"read","pointer":0,"length":0,"direction":"in"}]}
+    ),
+    (
+      #|{"schema":"moonbindgen-config-v2","buffers":[{"function":"read","pointer":0.5,"length":1,"direction":"in"}]}
+    ),
+    (
+      #|{"schema":"moonbindgen-config-v2","type_overrides":{"short":"Int"}}
+    ),
+  ]
+  for value in invalid {
+    let mut rejected = false
+    ignore(parse_config(value)) catch {
+      InvalidConfig(_) => rejected = true
+    }
+    assert_true(rejected)
+  }
+}
+
+///|
+test "C type model distinguishes data, records, arrays, and callbacks" {
+  assert_true(is_v2_byte_pointer("const void *", const_required=true))
+  assert_true(is_v2_byte_pointer("unsigned char *", const_required=false))
+  assert_true(!is_v2_byte_pointer("void (*)(void *)", const_required=false))
+  assert_true(!is_v2_byte_pointer("const int *", const_required=true))
+  assert_true(c_type_model("struct sample").record)
+  assert_true(c_type_model("enum mode").enumeration)
+  assert_true(c_type_model("char[8]").array)
+  assert_true(c_type_model("void (*)(void *)").function_pointer)
+}

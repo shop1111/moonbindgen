@@ -57,7 +57,7 @@ jobs:
       - name: Run strict all-target gates
         shell: pwsh
         run: |
-          moon fmt --check
+          python scripts/check_source_format.py
           if ($LASTEXITCODE -ne 0) { throw 'Format check failed' }
           moon check --target all --deny-warn --warn-list +73
           if ($LASTEXITCODE -ne 0) { throw 'Strict all-target check failed' }
@@ -77,7 +77,7 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'moon info failed' }
           git diff --exit-code -- ':(glob)**/*.mbti'
           if ($LASTEXITCODE -ne 0) { throw 'Generated interfaces are stale' }
-          moon fmt --check ast.mbt config.mbt generate.mbt generator_wbtest.mbt model.mbt naming.mbt render.mbt types.mbt cmd/main
+          python scripts/check_source_format.py
           if ($LASTEXITCODE -ne 0) { throw 'Formatting check failed' }
           moon doc
           if ($LASTEXITCODE -ne 0) { throw 'Documentation build failed' }
@@ -92,3 +92,55 @@ jobs:
             if ($packageFiles.Contains($entry)) { throw "Forbidden release entry: $entry" }
           }
           $packageFiles
+
+  linux-verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Install MoonBit
+        uses: hustcer/setup-moonbit@v1.22
+        with:
+          version: latest
+          core-version: 0.10.14+7d59c7ec9
+
+      - name: Install LLVM 23.1.1
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 -o "$RUNNER_TEMP/llvm.tar.xz" \
+            https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.1/LLVM-23.1.1-Linux-X64.tar.xz
+          mkdir -p "$RUNNER_TEMP/llvm"
+          tar -xJf "$RUNNER_TEMP/llvm.tar.xz" -C "$RUNNER_TEMP/llvm"
+          clang_path=$(find "$RUNNER_TEMP/llvm" -path '*/bin/clang' -print -quit)
+          test -n "$clang_path" && test -x "$clang_path"
+          echo "$(dirname "$clang_path")" >> "$GITHUB_PATH"
+          echo "CLANG_PATH=$clang_path" >> "$GITHUB_ENV"
+          "$clang_path" --version
+
+      - name: Resolve dependencies
+        run: moon update
+
+      - name: Verify formatting and Linux Native calls
+        run: |
+          python3 scripts/check_source_format.py
+          python3 scripts/verify_portable.py --clang "$CLANG_PATH"
+
+      - name: Run generated bindings under AddressSanitizer
+        run: |
+          python3 scripts/run-asan.py --repo-root . --no-disable-mimalloc \
+            --pkg examples/native_fixture/moon.pkg \
+            --pkg examples/buffer_fixture/moon.pkg \
+            --pkg examples/sqlite/moon.pkg \
+            --run examples/native_fixture \
+            --run examples/buffer_fixture \
+            --run examples/sqlite
+
+      - name: Verify generated interfaces and package
+        run: |
+          moon info
+          git diff --exit-code -- ':(glob)**/*.mbti'
+          moon doc
+          moon package --list

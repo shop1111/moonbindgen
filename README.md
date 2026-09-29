@@ -2,7 +2,7 @@
 
 MoonBindgen is a pure MoonBit Native command-line generator for conservative C FFI declarations. It delegates C parsing to Clang 23, converts the JSON AST into a typed declaration model, lowers only verified direct-ABI types, and writes deterministic MoonBit declarations together with an auditable report.
 
-The project deliberately does not pretend that syntax implies ownership. It rejects callbacks, by-value structs, variadic functions, and pointers whose lifetime is unclear. Explicit configuration enables one status-and-output parameter or a borrowed/owned UTF-8 return; these functions receive generated C bridges. A configured call-scoped `const char *` input becomes `Bytes` with `#borrow`.
+The project deliberately does not pretend that syntax implies ownership. It rejects callbacks, by-value structs, variadic functions, and pointers whose lifetime is unclear. Explicit configuration enables status-and-output parameters, borrowed/owned UTF-8 returns, and byte buffers with stated length and lifetime policies; these functions receive generated C bridges. A configured call-scoped `const char *` input becomes `Bytes` with `#borrow`.
 
 ## Why this project
 
@@ -13,7 +13,7 @@ C interoperability is an ecosystem multiplier: one trustworthy generator can red
 ## Architecture
 
 ```text
-C header + config-v1
+C header + config-v1/v2
         │
         ▼
 Clang 23 JSON AST ──► provenance-aware declaration model
@@ -21,7 +21,7 @@ Clang 23 JSON AST ──► provenance-aware declaration model
              typedef/enum/opaque-type environment
                             │
                             ▼
-                  conservative ABI lowering
+             ABI and policy-checked lowering
                             │
          ┌──────────────┼────────────────┐
          ▼              ▼                ▼
@@ -34,14 +34,14 @@ The main header controls which declarations are emitted. Included headers may su
 
 - MoonBit `0.1.20260920 (914d7da)` with Moonc/Core `0.10.14+7d59c7ec9`
 - Clang `23.x`; CI and local evidence use LLVM `23.1.1`
-- Windows x64 is the currently verified environment, not a cross-platform promise
+- Windows x64 and Ubuntu 24.04 are verified with MoonBit/Core and Clang 23.1.1. The Linux CI runner regenerates, compiles, and calls the Native fixtures and SQLite example, then reruns them with AddressSanitizer instrumentation.
 
 The checked release toolchain is recorded in [`toolchain.json`](toolchain.json). CI rejects a different compiler or core version instead of silently accepting formatter or diagnostic drift.
 
 To consume the generator as a library:
 
 ```powershell
-moon add shop1111/moonbindgen@0.2.0
+moon add shop1111/moonbindgen@0.3.0
 ```
 
 Add the root package to `moon.pkg`:
@@ -62,7 +62,7 @@ let result = @bindgen.generate_with_config(clang_ast_json, "library.h", config)
 println(result.bindings)
 ```
 
-Windows users can also download `moonbindgen-v0.2.0-windows-x86_64.zip` from the GitHub Release, extract `moonbindgen.exe`, and keep Clang 23 available separately. The executable is not a general C/C++ compiler bundle.
+Windows users can also download `moonbindgen-v0.3.0-windows-x86_64.zip` from the GitHub Release after the v0.3.0 gates pass, extract `moonbindgen.exe`, and keep Clang 23 available separately. The executable is not a general C/C++ compiler bundle.
 
 ## CLI quick start
 
@@ -111,6 +111,38 @@ The SQLite example uses the additional config-v1 fields below:
 
 When a bridge is needed, generation also writes `bindings_shim.c`. Place it alongside the C header, or provide the header's directory to the C compiler; include the generated file in the consumer package's `native-stub` list and import `moonbitlang/core/encoding/utf8` in `moon.pkg` for string wrappers. For example, `examples/sqlite/moon.pkg` uses `"native-stub": [ "sqlite3.c", "bindings_shim.c" ]`. `--check` compares all generated artifacts, including the presence or absence of this C file.
 
+## Configuration v2: byte buffers
+
+`moonbindgen-config-v2` keeps the v1 filters and string policies. New buffer policies use zero-based C parameter positions, so they also work when a header omits parameter names. A policy must identify the pointer and length; MoonBindgen checks their Clang types and emits a C bridge with a range check. `type_overrides` are rejected in v2 because an arbitrary scalar remapping cannot establish ABI compatibility.
+
+```json
+{
+  "schema": "moonbindgen-config-v2",
+  "buffers": [{
+    "function": "sqlite3_bind_blob",
+    "pointer": 2,
+    "length": 3,
+    "direction": "in",
+    "retention": "copy",
+    "copy_parameter": 4,
+    "copy_symbol": "SQLITE_TRANSIENT"
+  }],
+  "return_buffers": [{
+    "function": "sqlite3_column_blob",
+    "length_function": "sqlite3_column_bytes",
+    "length_args": [0, 1],
+    "null_function": "sqlite3_column_type",
+    "null_symbol": "SQLITE_NULL"
+  }]
+}
+```
+
+An `in` buffer accepts MoonBit `Bytes`; its length is taken from the value and checked before C is called. Use `retention: "call"` only if C does not retain the pointer. For a C API that copies during the call, use `retention: "copy"` and, when required, a declared destructor/copy token parameter such as SQLite's `SQLITE_TRANSIENT`. The token fields accept C identifiers only, and the generated C must compile against the supplied header. An `out` buffer takes an `Int` capacity, rejects negative values, and returns `Bytes` or `(Int, Bytes)` when C returns an integer status. Callers must interpret status before reading output.
+
+`return_buffers` copies a borrowed `const` byte pointer using a companion length function before another C call can invalidate it. It returns `Bytes?`: `None` denotes the configured null discriminator; an empty non-null value is `Some(Bytes::make(0, b'\x00'))`. Without a discriminator, a zero-length NULL is treated as empty. A negative length, a length above `INT32_MAX`, or a NULL pointer with positive length raises an error. Companion functions must have declared signatures matching the selected argument positions. Current v2 supports one buffer policy per function, byte pointers with integer lengths, and functions returning `int` or `void`; unsupported combinations remain in the report.
+
+For `short`, `unsigned short`, `long`, `unsigned long`, `size_t`, `ptrdiff_t`, and `_Bool`, v2 emits C bridges with target-aware range checks instead of assuming a MoonBit scalar has the same C ABI. The generated C is compiled by the consumer's target C compiler. The original v1 schema and its outputs remain available.
+
 ## Supported ABI surface
 
 | C declaration | MoonBit output | Policy |
@@ -122,13 +154,18 @@ When a bridge is needed, generation also writes `bindings_shim.c`. Place it alon
 | configured input `const char *` | `Bytes` plus `#borrow` | Valid only for the duration of the call |
 | configured `int` status plus one scalar `T*` or opaque `T**` output | `(Int, T)` plus generated C bridge | Explicit output parameter; no inferred cleanup |
 | configured UTF-8 `char*` return | `String?` plus generated C bridge | Borrowed copy or copy and configured release |
+| configured byte pointer and length | `Bytes` input or output plus generated C bridge | Explicit call/copy retention and capacity |
+| borrowed byte pointer return and length function | `Bytes?` plus generated C bridge | Copied while valid; optional null discriminator |
+| target-dependent scalar in config-v2 | `Int`, `UInt`, `Int64`, `UInt64`, or `Bool` | C bridge checks target range |
 | other pointers, callbacks, variadics, by-value structs | none | Reported and skipped, or rejected in strict mode |
 
-MoonBindgen emits raw FFI declarations and narrowly configured bridges. It does not generate callback trampolines, general resource-safe wrappers, C++, or broad platform guarantees in version 0.2.x.
+MoonBindgen emits raw FFI declarations and narrowly configured bridges. Resource-safe wrappers, value structures, and callbacks are later milestones; C++ and unprovable pointer lifetimes remain outside the supported surface.
 
 ## Auditable report v2
 
 `report.json` uses `moonbindgen-report-v2`. It records the Clang version and target, referenced include files, declaration kind and source line, original C signature, emitted MoonBit declaration, status, stable reason code, and summary counts. Bridged declarations include `bridge: true`, and a generated C file sets `has_shim: true`. Existing v2 fields and reason codes are preserved.
+
+For a config-v2 run, the report additionally records `config_schema` and each generated buffer/scalar policy. Config-v1 retains its previous report format.
 
 ```json
 {
@@ -145,13 +182,14 @@ MoonBindgen emits raw FFI declarations and narrowly configured bridges. It does 
 ./scripts/verify.ps1
 ```
 
-The gate runs strict Native check/build/test, coverage analysis, two-run byte determinism, report schema assertions, include provenance, invalid-header rejection, three-artifact drift and rollback checks, a generated C fixture that exercises scalar and handle outputs plus borrowed and owned strings, and the SQLite query below.
+The gate runs strict Native check/build/test, coverage analysis, two-run byte determinism, report schema assertions, include provenance, invalid-header rejection, three-artifact drift and rollback checks, a generated C fixture that exercises scalar and handle outputs plus borrowed and owned strings, a byte-buffer fixture, and the SQLite calls below. `scripts/verify_portable.py` runs all-target checks plus real Native calls on each CI host; the Linux job additionally compiles and runs generated examples with AddressSanitizer. This ASan gate retains MoonBit's bundled mimalloc allocator because the current prebuilt runtime links against it, so it does not promise ASan coverage of MoonBit-managed heap allocations.
 
-`examples/sqlite` vendors the official SQLite 3.53.4 amalgamation. On Clang 23.1.1, MoonBindgen generates 131 functions and reports 167 skipped functions. Generated bridges call `sqlite3_open`, `sqlite3_prepare_v2`, and `sqlite3_libversion`; generated declarations then execute `SELECT 42` through `sqlite3_step`, `sqlite3_column_int`, `sqlite3_finalize`, and `sqlite3_close`.
+`examples/sqlite` vendors the official SQLite 3.53.4 amalgamation. On Clang 23.1.1, MoonBindgen generates 133 functions and reports 165 skipped functions. It executes `SELECT 42`, then binds and reads an embedded-NUL BLOB, a zero-length BLOB, and SQL NULL through generated v2 bridges.
 
 ```powershell
 moon run -q examples/sqlite
 # SELECT 42 => 42
+# SQLite BLOB => 3 bytes, empty, NULL
 ```
 
 Exact upstream provenance, checksums, licensing, and the one comment-only local edit are recorded in [THIRD_PARTY.md](THIRD_PARTY.md).

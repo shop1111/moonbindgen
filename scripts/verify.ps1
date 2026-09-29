@@ -59,7 +59,7 @@ try {
   if (-not $help.Output.Contains('Usage:')) { throw 'CLI help text is incomplete' }
   $version = Invoke-MoonBindgen @('--version')
   Assert-ExitCode 'CLI --version' $version 0
-  if ($version.Output.Trim() -ne 'moonbindgen 0.2.0') { throw 'CLI version is not 0.2.0' }
+  if ($version.Output.Trim() -ne 'moonbindgen 0.3.0') { throw 'CLI version is not 0.3.0' }
   Assert-ExitCode 'CLI usage error' (Invoke-MoonBindgen @('generate')) 2
 
   New-Item -ItemType Directory -Force -Path '_build/verify' | Out-Null
@@ -182,10 +182,10 @@ try {
   & moon run -q cmd/main -- generate examples/sqlite/sqlite3.h --out examples/sqlite --clang $Clang --config examples/sqlite/config.json
   if ($LASTEXITCODE -ne 0) { throw 'SQLite generation failed' }
   $sqliteReport = Get-Content -Raw -Encoding UTF8 -LiteralPath 'examples/sqlite/report.json' | ConvertFrom-Json
-  if ($sqliteReport.generated -ne 131 -or $sqliteReport.skipped -ne 167) {
+  if ($sqliteReport.generated -ne 133 -or $sqliteReport.skipped -ne 165) {
     throw 'SQLite coverage changed'
   }
-  foreach ($name in @('sqlite3_open', 'sqlite3_prepare_v2', 'sqlite3_libversion', 'sqlite3_step', 'sqlite3_column_int', 'sqlite3_finalize', 'sqlite3_close')) {
+  foreach ($name in @('sqlite3_open', 'sqlite3_prepare_v2', 'sqlite3_libversion', 'sqlite3_step', 'sqlite3_column_int', 'sqlite3_bind_blob', 'sqlite3_column_blob', 'sqlite3_finalize', 'sqlite3_close')) {
     if (-not ($sqliteReport.functions | Where-Object { $_.c_name -eq $name -and $_.status -eq 'generated' })) {
       throw "Required SQLite binding missing: $name"
     }
@@ -198,8 +198,21 @@ try {
   & moon fmt examples/sqlite/bindings.mbt
   if ($LASTEXITCODE -ne 0) { throw 'SQLite binding formatting failed' }
   $query = & moon run -q examples/sqlite
-  if ($LASTEXITCODE -ne 0 -or ($query -join "`n").Trim() -ne 'SELECT 42 => 42') {
+  if ($LASTEXITCODE -ne 0 -or ($query -join "`n").Trim() -ne "SELECT 42 => 42`nSQLite BLOB => 3 bytes, empty, NULL") {
     throw 'SQLite query failed'
+  }
+
+  & moon run -q cmd/main -- generate examples/buffer_fixture/fixture.h --out examples/buffer_fixture --clang $Clang --config examples/buffer_fixture/config.json
+  if ($LASTEXITCODE -ne 0) { throw 'Buffer fixture generation failed' }
+  & moon run -q cmd/main -- generate examples/buffer_fixture/fixture.h --out examples/buffer_fixture --clang $Clang --config examples/buffer_fixture/config.json --check
+  if ($LASTEXITCODE -ne 0) { throw 'Buffer fixture drifted' }
+  $bufferReport = Get-Content -Raw -Encoding UTF8 -LiteralPath 'examples/buffer_fixture/report.json' | ConvertFrom-Json
+  if ($bufferReport.config_schema -ne 'moonbindgen-config-v2' -or $bufferReport.generated -ne 8) {
+    throw 'Unexpected v2 buffer report'
+  }
+  $bufferResult = & moon run -q examples/buffer_fixture
+  if ($LASTEXITCODE -ne 0 -or ($bufferResult -join "`n").Trim() -ne 'Buffer fixture => 42, zero, NULL, and invalid lengths') {
+    throw 'Generated buffer ABI fixture failed'
   }
   Write-Output 'MoonBindgen verification passed: fixture, diagnostics, SQLite SELECT 42.'
 } finally {

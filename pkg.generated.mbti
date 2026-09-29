@@ -26,7 +26,18 @@ pub fn ConfigError::not_equal(Self, Self) -> Bool
 pub fn ConfigError::to_repr(Self) -> @debug.Repr
 
 // Types and methods
+pub struct BufferPolicy {
+  function_name : String
+  pointer : Int
+  length : Int
+  direction : String
+  retention : String
+  copy_parameter : Int
+  copy_symbol : String
+}
+
 pub struct GenerateConfig {
+  schema_version : Int
   include_functions : Map[String, Bool]
   exclude_functions : Map[String, Bool]
   renames : Map[String, String]
@@ -37,6 +48,8 @@ pub struct GenerateConfig {
   utf8_borrowed_returns : Map[String, Bool]
   utf8_owned_returns : Map[String, String]
   unsupported_policy : UnsupportedPolicy
+  buffers : Array[BufferPolicy]
+  return_buffers : Array[ReturnBufferPolicy]
 }
 pub fn GenerateConfig::default() -> Self
 
@@ -46,6 +59,14 @@ pub struct GenerateResult {
   shim : String?
   generated : Int
   skipped : Int
+}
+
+pub struct ReturnBufferPolicy {
+  function_name : String
+  length_function : String
+  length_args : Array[Int]
+  null_function : String
+  null_symbol : String
 }
 
 pub struct ToolMetadata {

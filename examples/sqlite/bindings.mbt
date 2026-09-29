@@ -193,13 +193,33 @@ pub extern "C" fn sqlite3_stmt_readonly(pstmt : C_sqlite3_stmt) -> Int = "sqlite
 pub extern "C" fn sqlite3_stmt_isexplain(pstmt : C_sqlite3_stmt) -> Int = "sqlite3_stmt_isexplain"
 
 ///|
-pub extern "C" fn sqlite3_stmt_explain(
-  pstmt : C_sqlite3_stmt,
-  emode : Int,
-) -> Int = "sqlite3_stmt_explain"
+pub extern "C" fn sqlite3_stmt_explain(pstmt : C_sqlite3_stmt, emode : Int) -> Int = "sqlite3_stmt_explain"
 
 ///|
 pub extern "C" fn sqlite3_stmt_busy(arg0 : C_sqlite3_stmt) -> Int = "sqlite3_stmt_busy"
+
+///|
+#borrow(data, mbg_error)
+extern "C" fn mbg_bridge_sqlite3_bind_blob(
+  arg0 : C_sqlite3_stmt,
+  arg1 : Int,
+  data : Bytes,
+  mbg_error : FixedArray[Int],
+) -> Int = "mbg_bridge_sqlite3_bind_blob"
+
+///|
+pub fn sqlite3_bind_blob(
+  arg0 : C_sqlite3_stmt,
+  arg1 : Int,
+  data : Bytes,
+) -> Int raise {
+  let mbg_error = FixedArray::make(1, 0)
+  let value = mbg_bridge_sqlite3_bind_blob(arg0, arg1, data, mbg_error)
+  if mbg_error[0] != 0 {
+    fail("buffer length exceeds supported range")
+  }
+  value
+}
 
 ///|
 pub extern "C" fn sqlite3_bind_double(
@@ -262,19 +282,34 @@ pub extern "C" fn sqlite3_step(arg0 : C_sqlite3_stmt) -> Int = "sqlite3_step"
 pub extern "C" fn sqlite3_data_count(pstmt : C_sqlite3_stmt) -> Int = "sqlite3_data_count"
 
 ///|
-pub extern "C" fn sqlite3_column_double(
+#borrow(mbg_absent)
+extern "C" fn mbg_bridge_sqlite3_column_blob(
   arg0 : C_sqlite3_stmt,
-  icol : Int,
-) -> Double = "sqlite3_column_double"
+  arg1 : Int,
+  mbg_absent : FixedArray[Int],
+) -> Bytes = "mbg_bridge_sqlite3_column_blob"
+
+///|
+pub fn sqlite3_column_blob(arg0 : C_sqlite3_stmt, arg1 : Int) -> Bytes? raise {
+  let mbg_absent = FixedArray::make(1, 0)
+  let value = mbg_bridge_sqlite3_column_blob(arg0, arg1, mbg_absent)
+  if mbg_absent[0] == 1 {
+    None
+  } else if mbg_absent[0] != 0 {
+    fail("invalid returned buffer length or pointer")
+  } else {
+    Some(value)
+  }
+}
+
+///|
+pub extern "C" fn sqlite3_column_double(arg0 : C_sqlite3_stmt, icol : Int) -> Double = "sqlite3_column_double"
 
 ///|
 pub extern "C" fn sqlite3_column_int(arg0 : C_sqlite3_stmt, icol : Int) -> Int = "sqlite3_column_int"
 
 ///|
-pub extern "C" fn sqlite3_column_int64(
-  arg0 : C_sqlite3_stmt,
-  icol : Int,
-) -> Int64 = "sqlite3_column_int64"
+pub extern "C" fn sqlite3_column_int64(arg0 : C_sqlite3_stmt, icol : Int) -> Int64 = "sqlite3_column_int64"
 
 ///|
 pub extern "C" fn sqlite3_column_value(
@@ -283,16 +318,10 @@ pub extern "C" fn sqlite3_column_value(
 ) -> C_sqlite3_value = "sqlite3_column_value"
 
 ///|
-pub extern "C" fn sqlite3_column_bytes(
-  arg0 : C_sqlite3_stmt,
-  icol : Int,
-) -> Int = "sqlite3_column_bytes"
+pub extern "C" fn sqlite3_column_bytes(arg0 : C_sqlite3_stmt, icol : Int) -> Int = "sqlite3_column_bytes"
 
 ///|
-pub extern "C" fn sqlite3_column_bytes16(
-  arg0 : C_sqlite3_stmt,
-  icol : Int,
-) -> Int = "sqlite3_column_bytes16"
+pub extern "C" fn sqlite3_column_bytes16(arg0 : C_sqlite3_stmt, icol : Int) -> Int = "sqlite3_column_bytes16"
 
 ///|
 pub extern "C" fn sqlite3_column_type(arg0 : C_sqlite3_stmt, icol : Int) -> Int = "sqlite3_column_type"
@@ -384,16 +413,10 @@ pub extern "C" fn sqlite3_result_error_code(
 ) -> Unit = "sqlite3_result_error_code"
 
 ///|
-pub extern "C" fn sqlite3_result_int(
-  arg0 : C_sqlite3_context,
-  arg1 : Int,
-) -> Unit = "sqlite3_result_int"
+pub extern "C" fn sqlite3_result_int(arg0 : C_sqlite3_context, arg1 : Int) -> Unit = "sqlite3_result_int"
 
 ///|
-pub extern "C" fn sqlite3_result_int64(
-  arg0 : C_sqlite3_context,
-  arg1 : Int64,
-) -> Unit = "sqlite3_result_int64"
+pub extern "C" fn sqlite3_result_int64(arg0 : C_sqlite3_context, arg1 : Int64) -> Unit = "sqlite3_result_int64"
 
 ///|
 pub extern "C" fn sqlite3_result_null(arg0 : C_sqlite3_context) -> Unit = "sqlite3_result_null"
@@ -465,10 +488,7 @@ pub extern "C" fn sqlite3_enable_load_extension(
 pub extern "C" fn sqlite3_reset_auto_extension() -> Unit = "sqlite3_reset_auto_extension"
 
 ///|
-pub extern "C" fn sqlite3_blob_reopen(
-  arg0 : C_sqlite3_blob,
-  arg1 : Int64,
-) -> Int = "sqlite3_blob_reopen"
+pub extern "C" fn sqlite3_blob_reopen(arg0 : C_sqlite3_blob, arg1 : Int64) -> Int = "sqlite3_blob_reopen"
 
 ///|
 pub extern "C" fn sqlite3_blob_close(arg0 : C_sqlite3_blob) -> Int = "sqlite3_blob_close"
@@ -477,10 +497,7 @@ pub extern "C" fn sqlite3_blob_close(arg0 : C_sqlite3_blob) -> Int = "sqlite3_bl
 pub extern "C" fn sqlite3_blob_bytes(arg0 : C_sqlite3_blob) -> Int = "sqlite3_blob_bytes"
 
 ///|
-pub extern "C" fn sqlite3_vfs_register(
-  arg0 : C_sqlite3_vfs,
-  makedflt : Int,
-) -> Int = "sqlite3_vfs_register"
+pub extern "C" fn sqlite3_vfs_register(arg0 : C_sqlite3_vfs, makedflt : Int) -> Int = "sqlite3_vfs_register"
 
 ///|
 pub extern "C" fn sqlite3_vfs_unregister(arg0 : C_sqlite3_vfs) -> Int = "sqlite3_vfs_unregister"
@@ -576,7 +593,9 @@ pub extern "C" fn sqlite3_vtab_in(
 ) -> Int = "sqlite3_vtab_in"
 
 ///|
-pub extern "C" fn sqlite3_stmt_scanstatus_reset(arg0 : C_sqlite3_stmt) -> Unit = "sqlite3_stmt_scanstatus_reset"
+pub extern "C" fn sqlite3_stmt_scanstatus_reset(
+  arg0 : C_sqlite3_stmt,
+) -> Unit = "sqlite3_stmt_scanstatus_reset"
 
 ///|
 pub extern "C" fn sqlite3_db_cacheflush(arg0 : C_sqlite3) -> Int = "sqlite3_db_cacheflush"

@@ -2,6 +2,8 @@
 #include <moonbit.h>
 #include <stdint.h>
 #include <string.h>
+#include <limits.h>
+#include <stddef.h>
 #include "sqlite3.h"
 
 MOONBIT_FFI_EXPORT moonbit_bytes_t mbg_bridge_sqlite3_libversion(int32_t *mbg_absent) {
@@ -31,4 +33,25 @@ MOONBIT_FFI_EXPORT sqlite3_stmt* mbg_bridge_sqlite3_prepare_v2(sqlite3 * p0, moo
   sqlite3_stmt* mbg_value = 0;
   mbg_status[0] = sqlite3_prepare_v2(p0, (const char *)p1, p2, &mbg_value, NULL);
   return mbg_value;
+}
+
+MOONBIT_FFI_EXPORT int32_t mbg_bridge_sqlite3_bind_blob(sqlite3_stmt * p0, int p1, moonbit_bytes_t p2, int32_t *mbg_error) {
+  size_t mbg_len = (size_t)Moonbit_array_length(p2);
+  if (mbg_len > INT32_MAX) { mbg_error[0] = 1; return 0; }
+  mbg_error[0] = 0;
+  return sqlite3_bind_blob(p0, p1, (const void *)p2, (int)mbg_len, SQLITE_TRANSIENT);
+}
+
+MOONBIT_FFI_EXPORT moonbit_bytes_t mbg_bridge_sqlite3_column_blob(sqlite3_stmt * p0, int p1, int32_t *mbg_absent) {
+  int mbg_is_null = sqlite3_column_type(p0, p1) == SQLITE_NULL;
+  const void *mbg_pointer = sqlite3_column_blob(p0, p1);
+  long long mbg_size = (long long)sqlite3_column_bytes(p0, p1);
+  if (mbg_is_null) { mbg_absent[0] = 1; return moonbit_make_bytes(0, 0); }
+  if (mbg_size < 0 || mbg_size > INT32_MAX || (mbg_pointer == NULL && mbg_size > 0)) {
+    mbg_absent[0] = 2; return moonbit_make_bytes(0, 0);
+  }
+  mbg_absent[0] = 0;
+  moonbit_bytes_t mbg_bytes = moonbit_make_bytes((int32_t)mbg_size, 0);
+  if (mbg_size > 0) memcpy(mbg_bytes, mbg_pointer, (size_t)mbg_size);
+  return mbg_bytes;
 }
