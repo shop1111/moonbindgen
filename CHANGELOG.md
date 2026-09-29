@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.0 - pending verification
+## 0.3.0 - 2026-09-29
 
 - Add `moonbindgen-config-v2` with position-based input, output, and borrowed-return byte-buffer policies. Invalid signatures and conflicting policies fail with explicit diagnostics.
 - Generate length-checked C bridges for buffers and target-dependent `short`, `long`, `size_t`, `ptrdiff_t`, and `_Bool` scalars.

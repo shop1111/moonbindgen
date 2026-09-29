@@ -34,7 +34,7 @@ The main header controls which declarations are emitted. Included headers may su
 
 - MoonBit `0.1.20260920 (914d7da)` with Moonc/Core `0.10.14+7d59c7ec9`
 - Clang `23.x`; CI and local evidence use LLVM `23.1.1`
-- Windows x64 is locally verified. The Linux runner compiles and calls the same fixtures under Clang 23.1.1 and runs AddressSanitizer; treat Linux support as verified only after its CI job passes.
+- Windows x64 and Ubuntu 24.04 are verified with MoonBit/Core and Clang 23.1.1. The Linux CI runner regenerates, compiles, and calls the Native fixtures and SQLite example, then reruns them with AddressSanitizer instrumentation.
 
 The checked release toolchain is recorded in [`toolchain.json`](toolchain.json). CI rejects a different compiler or core version instead of silently accepting formatter or diagnostic drift.
 
