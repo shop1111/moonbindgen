@@ -80,7 +80,7 @@ def macos_flags() -> tuple[str, dict[str, str]]:
 
 
 def linux_flags() -> tuple[str, dict[str, str]]:
-    cc = shutil.which("cc") or "gcc"
+    cc = os.environ.get("CLANG_PATH") or shutil.which("clang") or shutil.which("cc") or "gcc"
     return (cc, {"cc-flags": ASAN_COMPILE_FLAGS, "detect_leaks": "1"})
 
 
@@ -639,10 +639,12 @@ def main():
 
     # Build environment
     env = os.environ.copy()
-    # MOON_CC/MOON_AR only needed on macOS (Apple Clang lacks LSan)
+    # Use the pinned LLVM compiler on Linux as well as macOS.
     if platform.system() == "Darwin":
         env["MOON_CC"] = cc_path
         env["MOON_AR"] = "/usr/bin/ar"
+    elif platform.system() == "Linux":
+        env["MOON_CC"] = cc_path
     asan_opts = f"detect_leaks={detect_leaks}:fast_unwind_on_malloc=0"
     env["ASAN_OPTIONS"] = asan_opts
     lsan_suppressions = repo_root / ".lsan-suppressions"

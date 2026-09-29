@@ -130,7 +130,7 @@ jobs:
 
       - name: Run generated bindings under AddressSanitizer
         run: |
-          python3 scripts/run-asan.py --repo-root . \
+          python3 scripts/run-asan.py --repo-root . --no-disable-mimalloc \
             --pkg examples/native_fixture/moon.pkg \
             --pkg examples/buffer_fixture/moon.pkg \
             --pkg examples/sqlite/moon.pkg \

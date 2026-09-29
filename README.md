@@ -182,7 +182,7 @@ For a config-v2 run, the report additionally records `config_schema` and each ge
 ./scripts/verify.ps1
 ```
 
-The gate runs strict Native check/build/test, coverage analysis, two-run byte determinism, report schema assertions, include provenance, invalid-header rejection, three-artifact drift and rollback checks, a generated C fixture that exercises scalar and handle outputs plus borrowed and owned strings, a byte-buffer fixture, and the SQLite calls below. `scripts/verify_portable.py` runs all-target checks plus real Native calls on each CI host; the Linux job additionally runs generated examples under AddressSanitizer.
+The gate runs strict Native check/build/test, coverage analysis, two-run byte determinism, report schema assertions, include provenance, invalid-header rejection, three-artifact drift and rollback checks, a generated C fixture that exercises scalar and handle outputs plus borrowed and owned strings, a byte-buffer fixture, and the SQLite calls below. `scripts/verify_portable.py` runs all-target checks plus real Native calls on each CI host; the Linux job additionally compiles and runs generated examples with AddressSanitizer. This ASan gate retains MoonBit's bundled mimalloc allocator because the current prebuilt runtime links against it, so it does not promise ASan coverage of MoonBit-managed heap allocations.
 
 `examples/sqlite` vendors the official SQLite 3.53.4 amalgamation. On Clang 23.1.1, MoonBindgen generates 133 functions and reports 165 skipped functions. It executes `SELECT 42`, then binds and reads an embedded-NUL BLOB, a zero-length BLOB, and SQL NULL through generated v2 bridges.
 
