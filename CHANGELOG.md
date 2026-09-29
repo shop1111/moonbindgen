@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.4.0 - pending verification
+## 0.4.0 - 2026-09-29
 
 - Generate named result structs for multiple configured scalar and opaque-handle outputs, including target-dependent scalar conversion and preserved C status on failure.
 - Generate managed opaque resources when a create function, exact-handle `void` release, and optional `void` retain function are declared. Closing is idempotent, retained instances release independently, and the last reference invokes a C finalizer.
