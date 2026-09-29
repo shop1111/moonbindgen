@@ -59,7 +59,7 @@ try {
   if (-not $help.Output.Contains('Usage:')) { throw 'CLI help text is incomplete' }
   $version = Invoke-MoonBindgen @('--version')
   Assert-ExitCode 'CLI --version' $version 0
-  if ($version.Output.Trim() -ne 'moonbindgen 0.3.0') { throw 'CLI version is not 0.3.0' }
+  if ($version.Output.Trim() -ne 'moonbindgen 0.4.0') { throw 'CLI version is not 0.4.0' }
   Assert-ExitCode 'CLI usage error' (Invoke-MoonBindgen @('generate')) 2
 
   New-Item -ItemType Directory -Force -Path '_build/verify' | Out-Null
@@ -214,7 +214,21 @@ try {
   if ($LASTEXITCODE -ne 0 -or ($bufferResult -join "`n").Trim() -ne 'Buffer fixture => 42, zero, NULL, and invalid lengths') {
     throw 'Generated buffer ABI fixture failed'
   }
-  Write-Output 'MoonBindgen verification passed: fixture, diagnostics, SQLite SELECT 42.'
+  & moon run -q cmd/main -- generate examples/multi_fixture/fixture.h --out examples/multi_fixture --clang $Clang --config examples/multi_fixture/config.json
+  if ($LASTEXITCODE -ne 0) { throw 'Multi-output fixture generation failed' }
+  & moon run -q cmd/main -- generate examples/multi_fixture/fixture.h --out examples/multi_fixture --clang $Clang --config examples/multi_fixture/config.json --check
+  if ($LASTEXITCODE -ne 0) { throw 'Multi-output fixture drifted' }
+  $multiReport = Get-Content -Raw -Encoding UTF8 -LiteralPath 'examples/multi_fixture/report.json' | ConvertFrom-Json
+  if ($multiReport.config_schema -ne 'moonbindgen-config-v2' -or $multiReport.generated -ne 8 -or
+      -not ($multiReport.functions | Where-Object { $_.c_name -eq 'make_pair' -and $_.policy -eq 'multi_output' }) -or
+      -not ($multiReport.functions | Where-Object { $_.c_name -eq 'token_new' -and $_.policy -eq 'managed_resource' })) {
+    throw 'Unexpected v2 resource report'
+  }
+  $multiResult = & moon run -q examples/multi_fixture
+  if ($LASTEXITCODE -ne 0 -or ($multiResult -join "`n").Trim() -ne 'Multi-output and resource fixture => named fields, close once, retain') {
+    throw 'Generated multi-output and resource fixture failed'
+  }
+  Write-Output 'MoonBindgen verification passed: fixtures, diagnostics, SQLite BLOB.'
 } finally {
   Pop-Location
 }

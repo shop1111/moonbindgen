@@ -33,7 +33,9 @@ pub fn ToolMetadata::unknown() -> ToolMetadata {
 
 ///|
 fn reason_code(status : String, reason : String) -> String {
-  if status == "generated" {
+  if status == "generated" && reason.contains("manual resource management") {
+    "manual_resource_management"
+  } else if status == "generated" {
     "generated"
   } else if reason == "filtered by configuration" {
     "filtered"
@@ -174,6 +176,8 @@ pub fn generate_with_metadata(
   let nodes = located_nodes(ast)
   validate_bridge_config(nodes, header, config)
   validate_v2_buffers(nodes, header, config)
+  validate_v2_multi_outputs(nodes, header, config)
+  validate_v2_resources(nodes, header, config)
   for entry in nodes {
     let node = entry.node
     let on_header = same_header(entry.source.file, header)
@@ -357,8 +361,21 @@ pub fn generate_with_metadata(
       }
       _ => value_names[function.moon_name] = function.name
     }
-    let bridged = config.has_bridge(function.name)
-    let generation_policy = if config.buffer_for(function.name) is Some(buffer) {
+    let manual_resource = v2_resource_needs_manual_release(
+      nodes,
+      config,
+      function.name,
+    )
+    let bridged = config.has_bridge(function.name) && !manual_resource
+    let generation_policy = if manual_resource {
+      "manual_resource"
+    } else if config.resource_create_for(function.name) is Some(_) {
+      "managed_resource"
+    } else if config.resource_view_for(function.name) is Some(_) {
+      "borrowed_resource_view"
+    } else if config.multi_output_for(function.name) is Some(_) {
+      "multi_output"
+    } else if config.buffer_for(function.name) is Some(buffer) {
       if buffer.direction == "in" {
         "input_buffer"
       } else {
@@ -373,8 +390,18 @@ pub fn generate_with_metadata(
     } else {
       "direct"
     }
-    let (rendered, shim_code, reason) = if config.buffer_for(function.name)
-      is Some(_) ||
+    let (rendered, shim_code, reason) = if manual_resource {
+      let (code, reason) = render_function(
+        function, aliases, opaque_types, enums, config,
+      )
+      (code, None, reason)
+    } else if config.resource_create_for(function.name) is Some(_) {
+      render_v2_resource_create(function, aliases, opaque_types, enums, config)
+    } else if config.resource_view_for(function.name) is Some(_) {
+      render_v2_resource_view(function, config)
+    } else if config.multi_output_for(function.name) is Some(_) {
+      render_v2_multi_output(function, aliases, opaque_types, enums, config)
+    } else if config.buffer_for(function.name) is Some(_) ||
       config.return_buffer_for(function.name) is Some(_) {
       render_v2_buffer(function, aliases, opaque_types, enums, config)
     } else if bridged {
@@ -407,7 +434,11 @@ pub fn generate_with_metadata(
             function.c_signature,
             code.trim().to_owned(),
             "generated",
-            "",
+            if manual_resource {
+              "release may fail; manual resource management required"
+            } else {
+              ""
+            },
             bridge=shim_code is Some(_),
             policy=if config.schema_version == 2 {
               generation_policy

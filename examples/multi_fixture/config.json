@@ -1,0 +1,22 @@
+{
+  "schema": "moonbindgen-config-v2",
+  "multi_outputs": [
+    {
+      "function": "make_pair",
+      "outputs": [
+        { "index": 1, "name": "left" },
+        { "index": 2, "name": "right" },
+        { "index": 3, "name": "handle" }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "name": "token",
+      "create": "token_new",
+      "release": "token_free",
+      "retain": "token_retain",
+      "views": ["token_borrow"]
+    }
+  ]
+}

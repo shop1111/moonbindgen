@@ -60,6 +60,13 @@ def main() -> None:
         "Buffer fixture => 42, zero, NULL, and invalid lengths"
     )
     generate(
+        "examples/multi_fixture/fixture.h", "examples/multi_fixture",
+        "examples/multi_fixture/config.json", args.clang,
+    )
+    assert run("moon", "run", "-q", "examples/multi_fixture") == (
+        "Multi-output and resource fixture => named fields, close once, retain"
+    )
+    generate(
         "examples/sqlite/sqlite3.h", "examples/sqlite",
         "examples/sqlite/config.json", args.clang,
     )

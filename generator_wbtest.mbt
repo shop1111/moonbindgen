@@ -407,3 +407,47 @@ test "C type model distinguishes data, records, arrays, and callbacks" {
   assert_true(c_type_model("char[8]").array)
   assert_true(c_type_model("void (*)(void *)").function_pointer)
 }
+
+///|
+test "v2 named multi-output policy rejects ambiguous fields" {
+  let config = parse_config(
+    (
+      #|{"schema":"moonbindgen-config-v2","multi_outputs":[{"function":"read","outputs":[{"index":1,"name":"first"},{"index":2,"name":"second"}]}]}
+    ),
+  )
+  assert_eq(config.multi_outputs.length(), 1)
+  assert_eq(config.multi_outputs[0].outputs[1].name, "second")
+  let invalid = [
+    (
+      #|{"schema":"moonbindgen-config-v1","multi_outputs":[]}
+    ),
+    (
+      #|{"schema":"moonbindgen-config-v2","multi_outputs":[{"function":"read","outputs":[{"index":1,"name":"same"},{"index":2,"name":"same"}]}]}
+    ),
+    (
+      #|{"schema":"moonbindgen-config-v2","multi_outputs":[{"function":"read","outputs":[{"index":1,"name":"status"},{"index":2,"name":"other"}]}]}
+    ),
+  ]
+  for value in invalid {
+    let mut rejected = false
+    ignore(parse_config(value)) catch {
+      InvalidConfig(_) => rejected = true
+    }
+    assert_true(rejected)
+  }
+}
+
+///|
+test "fallible resource release stays manual in v2 report" {
+  let ast =
+    #|{"kind":"TranslationUnitDecl","inner":[{"kind":"TypedefDecl","name":"token","loc":{"file":"manual.h","line":1},"type":{"qualType":"struct token"}},{"kind":"FunctionDecl","name":"token_new","loc":{"line":2},"type":{"qualType":"token *(void)"}},{"kind":"FunctionDecl","name":"token_close","loc":{"line":3},"type":{"qualType":"int (token *)"},"inner":[{"kind":"ParmVarDecl","name":"value","type":{"qualType":"token *"}}]}]}
+  let config = parse_config(
+    (
+      #|{"schema":"moonbindgen-config-v2","resources":[{"name":"token","create":"token_new","release":"token_close"}]}
+    ),
+  )
+  let result = generate_with_config(ast, "manual.h", config)
+  assert_true(result.bindings.contains("fn token_new() -> C_token"))
+  assert_true(!result.bindings.contains("MbgResource_token"))
+  assert_true(result.report.contains("manual_resource_management"))
+}
