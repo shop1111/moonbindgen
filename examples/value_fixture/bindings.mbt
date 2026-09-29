@@ -160,6 +160,9 @@ pub fn point_score(arg0 : MbgValue_point) -> Int raise {
 }
 
 ///|
+pub extern "C" fn point_long_bits() -> Int = "point_long_bits"
+
+///|
 type MbgRawValue_point_passthrough
 
 ///|

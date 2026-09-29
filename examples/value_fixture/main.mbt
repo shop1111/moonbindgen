@@ -12,5 +12,17 @@ fn main raise {
     alias_value.y != 10 {
     @abort.abort("value struct field conversion failed")
   }
+  let wide = 2147483648L
+  if point_long_bits() == 32 {
+    let mut rejected = false
+    ignore(point_make(0, wide, 0.0, true)) catch {
+      _ => rejected = true
+    }
+    if !rejected {
+      @abort.abort("narrow C long accepted an out-of-range field")
+    }
+  } else if point_make(0, wide, 0.0, true).y != wide {
+    @abort.abort("wide C long was truncated")
+  }
   println("Value struct fixture => by-value arguments and return")
 }

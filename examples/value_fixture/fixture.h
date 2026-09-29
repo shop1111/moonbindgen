@@ -11,6 +11,7 @@ typedef struct point {
 point point_make(int x, long y, double z, _Bool valid);
 point point_add(point left, point right);
 int point_score(point value);
+int point_long_bits(void);
 typedef point point_alias;
 point_alias point_passthrough(point_alias value);
 

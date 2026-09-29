@@ -19,6 +19,8 @@ int point_score(point value) {
   return value.x + (int)value.y + (int)value.z + (value.valid ? 1 : 0);
 }
 
+int point_long_bits(void) { return (int)(sizeof(long) * 8); }
+
 point_alias point_passthrough(point_alias value) { return value; }
 
 packed_bits packed_bits_identity(packed_bits value) { return value; }

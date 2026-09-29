@@ -233,7 +233,7 @@ try {
   & moon run -q cmd/main -- generate examples/value_fixture/fixture.h --out examples/value_fixture --clang $Clang --config examples/value_fixture/config.json --check
   if ($LASTEXITCODE -ne 0) { throw 'Value fixture drifted' }
   $valueReport = Get-Content -Raw -Encoding UTF8 -LiteralPath 'examples/value_fixture/report.json' | ConvertFrom-Json
-  if ($valueReport.generated -ne 4 -or $valueReport.skipped -ne 2 -or
+  if ($valueReport.generated -ne 5 -or $valueReport.skipped -ne 2 -or
       -not ($valueReport.functions | Where-Object { $_.c_name -eq 'point_add' -and $_.policy -eq 'value_struct' -and $_.abi_decision -eq 'compiled_field_bridge' }) -or
       -not ($valueReport.functions | Where-Object { $_.c_name -eq 'packed_bits_identity' -and $_.reason -like '*bit-field*' }) -or
       -not ($valueReport.functions | Where-Object { $_.c_name -eq 'flex_bytes_identity' -and $_.reason -like '*array*' })) {

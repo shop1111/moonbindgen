@@ -6,10 +6,10 @@
     "target": "x86_64-pc-windows-msvc"
   },
   "included_files": [],
-  "generated": 4,
+  "generated": 5,
   "skipped": 2,
   "summary": {
-    "functions_generated": 4,
+    "functions_generated": 5,
     "functions_skipped": 2,
     "enums_generated": 0,
     "enums_skipped": 0,
@@ -69,11 +69,27 @@
     },
     {
       "kind": "function",
+      "c_name": "point_long_bits",
+      "moonbit_name": "point_long_bits",
+      "source": {
+        "file": "fixture.h",
+        "line": 14
+      },
+      "c_signature": "int (void)",
+      "moonbit_signature": "///|\npub extern \"C\" fn point_long_bits() -> Int = \"point_long_bits\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct",
+      "abi_decision": "direct_verified"
+    },
+    {
+      "kind": "function",
       "c_name": "point_passthrough",
       "moonbit_name": "point_passthrough",
       "source": {
         "file": "fixture.h",
-        "line": 15
+        "line": 16
       },
       "c_signature": "point_alias (point_alias)",
       "moonbit_signature": "///|\ntype MbgRawValue_point_passthrough\n\n///|\nextern \"C\" fn mbg_value_point_passthrough(\n  p0_x : Int,\n  p0_y : Int64,\n  p0_z : Double,\n  p0_valid : Bool,\n) -> MbgRawValue_point_passthrough = \"mbg_value_point_passthrough\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_error(\n  raw : MbgRawValue_point_passthrough,\n) -> Int = \"mbg_value_point_passthrough_error\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_x(\n  raw : MbgRawValue_point_passthrough,\n) -> Int = \"mbg_value_point_passthrough_x\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_y(\n  raw : MbgRawValue_point_passthrough,\n) -> Int64 = \"mbg_value_point_passthrough_y\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_z(\n  raw : MbgRawValue_point_passthrough,\n) -> Double = \"mbg_value_point_passthrough_z\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_valid(\n  raw : MbgRawValue_point_passthrough,\n) -> Bool = \"mbg_value_point_passthrough_valid\"\n\n///|\npub fn point_passthrough(arg0 : MbgValue_point) -> MbgValue_point raise {\n  let raw = mbg_value_point_passthrough(arg0.x, arg0.y, arg0.z, arg0.valid)\n  if mbg_value_point_passthrough_error(raw) != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  {\n    x: mbg_value_point_passthrough_x(raw),\n    y: mbg_value_point_passthrough_y(raw),\n    z: mbg_value_point_passthrough_z(raw),\n    valid: mbg_value_point_passthrough_valid(raw),\n  }\n}",
@@ -90,7 +106,7 @@
       "moonbit_name": "packed_bits_identity",
       "source": {
         "file": "fixture.h",
-        "line": 22
+        "line": 23
       },
       "c_signature": "packed_bits (packed_bits)",
       "moonbit_signature": "",
@@ -105,7 +121,7 @@
       "moonbit_name": "flex_bytes_identity",
       "source": {
         "file": "fixture.h",
-        "line": 29
+        "line": 30
       },
       "c_signature": "flex_bytes (flex_bytes)",
       "moonbit_signature": "",
@@ -169,11 +185,27 @@
     },
     {
       "kind": "function",
+      "c_name": "point_long_bits",
+      "moonbit_name": "point_long_bits",
+      "source": {
+        "file": "fixture.h",
+        "line": 14
+      },
+      "c_signature": "int (void)",
+      "moonbit_signature": "///|\npub extern \"C\" fn point_long_bits() -> Int = \"point_long_bits\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct",
+      "abi_decision": "direct_verified"
+    },
+    {
+      "kind": "function",
       "c_name": "point_passthrough",
       "moonbit_name": "point_passthrough",
       "source": {
         "file": "fixture.h",
-        "line": 15
+        "line": 16
       },
       "c_signature": "point_alias (point_alias)",
       "moonbit_signature": "///|\ntype MbgRawValue_point_passthrough\n\n///|\nextern \"C\" fn mbg_value_point_passthrough(\n  p0_x : Int,\n  p0_y : Int64,\n  p0_z : Double,\n  p0_valid : Bool,\n) -> MbgRawValue_point_passthrough = \"mbg_value_point_passthrough\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_error(\n  raw : MbgRawValue_point_passthrough,\n) -> Int = \"mbg_value_point_passthrough_error\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_x(\n  raw : MbgRawValue_point_passthrough,\n) -> Int = \"mbg_value_point_passthrough_x\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_y(\n  raw : MbgRawValue_point_passthrough,\n) -> Int64 = \"mbg_value_point_passthrough_y\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_z(\n  raw : MbgRawValue_point_passthrough,\n) -> Double = \"mbg_value_point_passthrough_z\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_valid(\n  raw : MbgRawValue_point_passthrough,\n) -> Bool = \"mbg_value_point_passthrough_valid\"\n\n///|\npub fn point_passthrough(arg0 : MbgValue_point) -> MbgValue_point raise {\n  let raw = mbg_value_point_passthrough(arg0.x, arg0.y, arg0.z, arg0.valid)\n  if mbg_value_point_passthrough_error(raw) != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  {\n    x: mbg_value_point_passthrough_x(raw),\n    y: mbg_value_point_passthrough_y(raw),\n    z: mbg_value_point_passthrough_z(raw),\n    valid: mbg_value_point_passthrough_valid(raw),\n  }\n}",
@@ -190,7 +222,7 @@
       "moonbit_name": "packed_bits_identity",
       "source": {
         "file": "fixture.h",
-        "line": 22
+        "line": 23
       },
       "c_signature": "packed_bits (packed_bits)",
       "moonbit_signature": "",
@@ -205,7 +237,7 @@
       "moonbit_name": "flex_bytes_identity",
       "source": {
         "file": "fixture.h",
-        "line": 29
+        "line": 30
       },
       "c_signature": "flex_bytes (flex_bytes)",
       "moonbit_signature": "",
