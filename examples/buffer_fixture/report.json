@@ -1,0 +1,342 @@
+{
+  "schema": "moonbindgen-report-v2",
+  "header": "fixture.h",
+  "clang": {
+    "version": "clang version 23.1.1 (https://github.com/llvm/llvm-project 6dfe1677ab8dffbc6ec13d53a1e0215d75147689)",
+    "target": "x86_64-pc-windows-msvc"
+  },
+  "included_files": [
+    "c:/program files/llvm/lib/clang/23/include/__stddef_ptrdiff_t.h",
+    "c:/program files/llvm/lib/clang/23/include/__stddef_size_t.h",
+    "c:/program files/llvm/lib/clang/23/include/__stddef_wchar_t.h",
+    "c:/program files/llvm/lib/clang/23/include/__stddef_max_align_t.h"
+  ],
+  "generated": 8,
+  "skipped": 2,
+  "summary": {
+    "functions_generated": 8,
+    "functions_skipped": 2,
+    "enums_generated": 0,
+    "enums_skipped": 0,
+    "unsupported": 0
+  },
+  "declarations": [
+    {
+      "kind": "function",
+      "c_name": "abi_buffer_sum",
+      "moonbit_name": "abi_buffer_sum",
+      "source": {
+        "file": "fixture.h",
+        "line": 8
+      },
+      "c_signature": "int (const void *, int)",
+      "moonbit_signature": "///|\n#borrow(data, mbg_error)\nextern \"C\" fn mbg_bridge_abi_buffer_sum(\n  data : Bytes,\n  mbg_error : FixedArray[Int],\n) -> Int = \"mbg_bridge_abi_buffer_sum\"\n\n///|\npub fn abi_buffer_sum(data : Bytes) -> Int raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_buffer_sum(data, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"buffer length exceeds supported range\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "input_buffer"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_buffer_fill",
+      "moonbit_name": "abi_buffer_fill",
+      "source": {
+        "file": "fixture.h",
+        "line": 9
+      },
+      "c_signature": "void (int, void *)",
+      "moonbit_signature": "///|\n#borrow(mbg_error)\nextern \"C\" fn mbg_bridge_abi_buffer_fill(\n  arg0 : Int,\n  mbg_error : FixedArray[Int],\n) -> Bytes = \"mbg_bridge_abi_buffer_fill\"\n\n///|\npub fn abi_buffer_fill(arg0 : Int) -> Bytes raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_buffer_fill(arg0, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"negative output buffer capacity\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "output_buffer"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_buffer_view",
+      "moonbit_name": "abi_buffer_view",
+      "source": {
+        "file": "fixture.h",
+        "line": 10
+      },
+      "c_signature": "const void *(int)",
+      "moonbit_signature": "///|\n#borrow(mbg_absent)\nextern \"C\" fn mbg_bridge_abi_buffer_view(\n  arg0 : Int,\n  mbg_absent : FixedArray[Int],\n) -> Bytes = \"mbg_bridge_abi_buffer_view\"\n\n///|\npub fn abi_buffer_view(arg0 : Int) -> Bytes? raise {\n  let mbg_absent = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_buffer_view(arg0, mbg_absent)\n  if mbg_absent[0] == 1 {\n    None\n  } else if mbg_absent[0] != 0 {\n    fail(\"invalid returned buffer length or pointer\")\n  } else {\n    Some(value)\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "borrowed_return_buffer"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_buffer_view_length",
+      "moonbit_name": "abi_buffer_view_length",
+      "source": {
+        "file": "fixture.h",
+        "line": 11
+      },
+      "c_signature": "int (int)",
+      "moonbit_signature": "",
+      "status": "skipped",
+      "reason_code": "filtered",
+      "reason": "filtered by configuration"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_buffer_view_null",
+      "moonbit_name": "abi_buffer_view_null",
+      "source": {
+        "file": "fixture.h",
+        "line": 12
+      },
+      "c_signature": "int (int)",
+      "moonbit_signature": "",
+      "status": "skipped",
+      "reason_code": "filtered",
+      "reason": "filtered by configuration"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_short",
+      "moonbit_name": "abi_short",
+      "source": {
+        "file": "fixture.h",
+        "line": 13
+      },
+      "c_signature": "short (short)",
+      "moonbit_signature": "///|\n#borrow(mbg_error)\nextern \"C\" fn mbg_bridge_abi_short(\n  arg0 : Int,\n  mbg_error : FixedArray[Int],\n) -> Int = \"mbg_bridge_abi_short\"\n\n///|\npub fn abi_short(arg0 : Int) -> Int raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_short(arg0, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "scalar_abi_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_ushort",
+      "moonbit_name": "abi_ushort",
+      "source": {
+        "file": "fixture.h",
+        "line": 14
+      },
+      "c_signature": "unsigned short (unsigned short)",
+      "moonbit_signature": "///|\n#borrow(mbg_error)\nextern \"C\" fn mbg_bridge_abi_ushort(\n  arg0 : UInt,\n  mbg_error : FixedArray[Int],\n) -> UInt = \"mbg_bridge_abi_ushort\"\n\n///|\npub fn abi_ushort(arg0 : UInt) -> UInt raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_ushort(arg0, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "scalar_abi_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_long",
+      "moonbit_name": "abi_long",
+      "source": {
+        "file": "fixture.h",
+        "line": 15
+      },
+      "c_signature": "long (long)",
+      "moonbit_signature": "///|\n#borrow(mbg_error)\nextern \"C\" fn mbg_bridge_abi_long(\n  arg0 : Int64,\n  mbg_error : FixedArray[Int],\n) -> Int64 = \"mbg_bridge_abi_long\"\n\n///|\npub fn abi_long(arg0 : Int64) -> Int64 raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_long(arg0, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "scalar_abi_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_size",
+      "moonbit_name": "abi_size",
+      "source": {
+        "file": "fixture.h",
+        "line": 16
+      },
+      "c_signature": "size_t (size_t)",
+      "moonbit_signature": "///|\n#borrow(mbg_error)\nextern \"C\" fn mbg_bridge_abi_size(\n  arg0 : UInt64,\n  mbg_error : FixedArray[Int],\n) -> UInt64 = \"mbg_bridge_abi_size\"\n\n///|\npub fn abi_size(arg0 : UInt64) -> UInt64 raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_size(arg0, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "scalar_abi_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_bool",
+      "moonbit_name": "abi_bool",
+      "source": {
+        "file": "fixture.h",
+        "line": 17
+      },
+      "c_signature": "_Bool (_Bool)",
+      "moonbit_signature": "///|\n#borrow(mbg_error)\nextern \"C\" fn mbg_bridge_abi_bool(\n  arg0 : Bool,\n  mbg_error : FixedArray[Int],\n) -> Bool = \"mbg_bridge_abi_bool\"\n\n///|\npub fn abi_bool(arg0 : Bool) -> Bool raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_bool(arg0, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "scalar_abi_bridge"
+    }
+  ],
+  "functions": [
+    {
+      "kind": "function",
+      "c_name": "abi_buffer_sum",
+      "moonbit_name": "abi_buffer_sum",
+      "source": {
+        "file": "fixture.h",
+        "line": 8
+      },
+      "c_signature": "int (const void *, int)",
+      "moonbit_signature": "///|\n#borrow(data, mbg_error)\nextern \"C\" fn mbg_bridge_abi_buffer_sum(\n  data : Bytes,\n  mbg_error : FixedArray[Int],\n) -> Int = \"mbg_bridge_abi_buffer_sum\"\n\n///|\npub fn abi_buffer_sum(data : Bytes) -> Int raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_buffer_sum(data, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"buffer length exceeds supported range\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "input_buffer"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_buffer_fill",
+      "moonbit_name": "abi_buffer_fill",
+      "source": {
+        "file": "fixture.h",
+        "line": 9
+      },
+      "c_signature": "void (int, void *)",
+      "moonbit_signature": "///|\n#borrow(mbg_error)\nextern \"C\" fn mbg_bridge_abi_buffer_fill(\n  arg0 : Int,\n  mbg_error : FixedArray[Int],\n) -> Bytes = \"mbg_bridge_abi_buffer_fill\"\n\n///|\npub fn abi_buffer_fill(arg0 : Int) -> Bytes raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_buffer_fill(arg0, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"negative output buffer capacity\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "output_buffer"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_buffer_view",
+      "moonbit_name": "abi_buffer_view",
+      "source": {
+        "file": "fixture.h",
+        "line": 10
+      },
+      "c_signature": "const void *(int)",
+      "moonbit_signature": "///|\n#borrow(mbg_absent)\nextern \"C\" fn mbg_bridge_abi_buffer_view(\n  arg0 : Int,\n  mbg_absent : FixedArray[Int],\n) -> Bytes = \"mbg_bridge_abi_buffer_view\"\n\n///|\npub fn abi_buffer_view(arg0 : Int) -> Bytes? raise {\n  let mbg_absent = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_buffer_view(arg0, mbg_absent)\n  if mbg_absent[0] == 1 {\n    None\n  } else if mbg_absent[0] != 0 {\n    fail(\"invalid returned buffer length or pointer\")\n  } else {\n    Some(value)\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "borrowed_return_buffer"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_buffer_view_length",
+      "moonbit_name": "abi_buffer_view_length",
+      "source": {
+        "file": "fixture.h",
+        "line": 11
+      },
+      "c_signature": "int (int)",
+      "moonbit_signature": "",
+      "status": "skipped",
+      "reason_code": "filtered",
+      "reason": "filtered by configuration"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_buffer_view_null",
+      "moonbit_name": "abi_buffer_view_null",
+      "source": {
+        "file": "fixture.h",
+        "line": 12
+      },
+      "c_signature": "int (int)",
+      "moonbit_signature": "",
+      "status": "skipped",
+      "reason_code": "filtered",
+      "reason": "filtered by configuration"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_short",
+      "moonbit_name": "abi_short",
+      "source": {
+        "file": "fixture.h",
+        "line": 13
+      },
+      "c_signature": "short (short)",
+      "moonbit_signature": "///|\n#borrow(mbg_error)\nextern \"C\" fn mbg_bridge_abi_short(\n  arg0 : Int,\n  mbg_error : FixedArray[Int],\n) -> Int = \"mbg_bridge_abi_short\"\n\n///|\npub fn abi_short(arg0 : Int) -> Int raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_short(arg0, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "scalar_abi_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_ushort",
+      "moonbit_name": "abi_ushort",
+      "source": {
+        "file": "fixture.h",
+        "line": 14
+      },
+      "c_signature": "unsigned short (unsigned short)",
+      "moonbit_signature": "///|\n#borrow(mbg_error)\nextern \"C\" fn mbg_bridge_abi_ushort(\n  arg0 : UInt,\n  mbg_error : FixedArray[Int],\n) -> UInt = \"mbg_bridge_abi_ushort\"\n\n///|\npub fn abi_ushort(arg0 : UInt) -> UInt raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_ushort(arg0, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "scalar_abi_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_long",
+      "moonbit_name": "abi_long",
+      "source": {
+        "file": "fixture.h",
+        "line": 15
+      },
+      "c_signature": "long (long)",
+      "moonbit_signature": "///|\n#borrow(mbg_error)\nextern \"C\" fn mbg_bridge_abi_long(\n  arg0 : Int64,\n  mbg_error : FixedArray[Int],\n) -> Int64 = \"mbg_bridge_abi_long\"\n\n///|\npub fn abi_long(arg0 : Int64) -> Int64 raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_long(arg0, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "scalar_abi_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_size",
+      "moonbit_name": "abi_size",
+      "source": {
+        "file": "fixture.h",
+        "line": 16
+      },
+      "c_signature": "size_t (size_t)",
+      "moonbit_signature": "///|\n#borrow(mbg_error)\nextern \"C\" fn mbg_bridge_abi_size(\n  arg0 : UInt64,\n  mbg_error : FixedArray[Int],\n) -> UInt64 = \"mbg_bridge_abi_size\"\n\n///|\npub fn abi_size(arg0 : UInt64) -> UInt64 raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_size(arg0, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "scalar_abi_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "abi_bool",
+      "moonbit_name": "abi_bool",
+      "source": {
+        "file": "fixture.h",
+        "line": 17
+      },
+      "c_signature": "_Bool (_Bool)",
+      "moonbit_signature": "///|\n#borrow(mbg_error)\nextern \"C\" fn mbg_bridge_abi_bool(\n  arg0 : Bool,\n  mbg_error : FixedArray[Int],\n) -> Bool = \"mbg_bridge_abi_bool\"\n\n///|\npub fn abi_bool(arg0 : Bool) -> Bool raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_abi_bool(arg0, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "scalar_abi_bridge"
+    }
+  ],
+  "enums": [],
+  "config_schema": "moonbindgen-config-v2",
+  "has_shim": true
+}

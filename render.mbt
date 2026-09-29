@@ -69,7 +69,9 @@ fn render_function(
     " = \"" +
     function.symbol +
     "\"\n"
-  if params.length() > 2 || declaration.length() > 110 {
+  let multiline_v2 = config.schema_version == 2 && declaration.length() > 112
+  let multiline_v1 = config.schema_version == 1 && declaration.length() > 110
+  if params.length() > 2 || multiline_v1 || multiline_v2 {
     let body = params.map(param => "  " + param + ",").join("\n")
     let multiline = "///|\n" +
       attributes +

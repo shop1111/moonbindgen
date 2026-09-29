@@ -1,7 +1,13 @@
 {
-  "schema": "moonbindgen-config-v1",
+  "schema": "moonbindgen-config-v2",
   "utf8_inputs": ["sqlite3_open.filename", "sqlite3_prepare_v2.zSql"],
   "output_params": ["sqlite3_open.ppDb", "sqlite3_prepare_v2.ppStmt"],
   "null_inputs": ["sqlite3_prepare_v2.pzTail"],
-  "utf8_borrowed_returns": ["sqlite3_libversion"]
+  "utf8_borrowed_returns": ["sqlite3_libversion"],
+  "buffers": [
+    {"function": "sqlite3_bind_blob", "pointer": 2, "length": 3, "direction": "in", "retention": "copy", "copy_parameter": 4, "copy_symbol": "SQLITE_TRANSIENT"}
+  ],
+  "return_buffers": [
+    {"function": "sqlite3_column_blob", "length_function": "sqlite3_column_bytes", "length_args": [0, 1], "null_function": "sqlite3_column_type", "null_symbol": "SQLITE_NULL"}
+  ]
 }

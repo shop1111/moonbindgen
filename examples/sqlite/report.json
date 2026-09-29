@@ -9,14 +9,14 @@
     "c:/program files/llvm/lib/clang/23/include/__stdarg___gnuc_va_list.h",
     "c:/program files/llvm/lib/clang/23/include/__stdarg_va_list.h"
   ],
-  "generated": 131,
-  "skipped": 167,
+  "generated": 133,
+  "skipped": 165,
   "summary": {
-    "functions_generated": 131,
-    "functions_skipped": 167,
+    "functions_generated": 133,
+    "functions_skipped": 165,
     "enums_generated": 0,
     "enums_skipped": 0,
-    "unsupported": 167
+    "unsupported": 165
   },
   "declarations": [
     {
@@ -32,7 +32,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "bridge": true
+      "bridge": true,
+      "policy": "configured_bridge"
     },
     {
       "kind": "function",
@@ -60,7 +61,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_libversion_number() -> Int = \"sqlite3_libversion_number\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -102,7 +104,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_threadsafe() -> Int = \"sqlite3_threadsafe\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -116,7 +119,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_close(arg0 : C_sqlite3) -> Int = \"sqlite3_close\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -130,7 +134,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_close_v2(arg0 : C_sqlite3) -> Int = \"sqlite3_close_v2\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -158,7 +163,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_initialize() -> Int = \"sqlite3_initialize\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -172,7 +178,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_shutdown() -> Int = \"sqlite3_shutdown\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -186,7 +193,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_os_init() -> Int = \"sqlite3_os_init\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -200,7 +208,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_os_end() -> Int = \"sqlite3_os_end\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -242,7 +251,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_extended_result_codes(\n  arg0 : C_sqlite3,\n  onoff : Int,\n) -> Int = \"sqlite3_extended_result_codes\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -256,7 +266,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_last_insert_rowid(arg0 : C_sqlite3) -> Int64 = \"sqlite3_last_insert_rowid\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -270,7 +281,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_set_last_insert_rowid(\n  arg0 : C_sqlite3,\n  arg1 : Int64,\n) -> Unit = \"sqlite3_set_last_insert_rowid\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -284,7 +296,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_changes(arg0 : C_sqlite3) -> Int = \"sqlite3_changes\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -298,7 +311,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_changes64(arg0 : C_sqlite3) -> Int64 = \"sqlite3_changes64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -312,7 +326,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_total_changes(arg0 : C_sqlite3) -> Int = \"sqlite3_total_changes\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -326,7 +341,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_total_changes64(arg0 : C_sqlite3) -> Int64 = \"sqlite3_total_changes64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -340,7 +356,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_interrupt(arg0 : C_sqlite3) -> Unit = \"sqlite3_interrupt\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -354,7 +371,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_is_interrupted(arg0 : C_sqlite3) -> Int = \"sqlite3_is_interrupted\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -410,7 +428,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_busy_timeout(arg0 : C_sqlite3, ms : Int) -> Int = \"sqlite3_busy_timeout\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -424,7 +443,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_setlk_timeout(\n  arg0 : C_sqlite3,\n  ms : Int,\n  flags : Int,\n) -> Int = \"sqlite3_setlk_timeout\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -606,7 +626,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_memory_used() -> Int64 = \"sqlite3_memory_used\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -620,7 +641,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_memory_highwater(resetflag : Int) -> Int64 = \"sqlite3_memory_highwater\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -719,7 +741,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "bridge": true
+      "bridge": true,
+      "policy": "configured_bridge"
     },
     {
       "kind": "function",
@@ -901,7 +924,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_errcode(db : C_sqlite3) -> Int = \"sqlite3_errcode\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -915,7 +939,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_extended_errcode(db : C_sqlite3) -> Int = \"sqlite3_extended_errcode\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -971,7 +996,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_error_offset(db : C_sqlite3) -> Int = \"sqlite3_error_offset\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -999,7 +1025,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_limit(\n  arg0 : C_sqlite3,\n  id : Int,\n  newval : Int,\n) -> Int = \"sqlite3_limit\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1028,7 +1055,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "bridge": true
+      "bridge": true,
+      "policy": "configured_bridge"
     },
     {
       "kind": "function",
@@ -1126,7 +1154,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_stmt_readonly(pstmt : C_sqlite3_stmt) -> Int = \"sqlite3_stmt_readonly\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1140,7 +1169,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_stmt_isexplain(pstmt : C_sqlite3_stmt) -> Int = \"sqlite3_stmt_isexplain\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1154,7 +1184,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_stmt_explain(pstmt : C_sqlite3_stmt, emode : Int) -> Int = \"sqlite3_stmt_explain\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1168,7 +1199,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_stmt_busy(arg0 : C_sqlite3_stmt) -> Int = \"sqlite3_stmt_busy\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1179,10 +1211,12 @@
         "line": 5009
       },
       "c_signature": "int (sqlite3_stmt *, int, const void *, int, void (*)(void *))",
-      "moonbit_signature": "",
-      "status": "skipped",
-      "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "moonbit_signature": "///|\n#borrow(data, mbg_error)\nextern \"C\" fn mbg_bridge_sqlite3_bind_blob(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  data : Bytes,\n  mbg_error : FixedArray[Int],\n) -> Int = \"mbg_bridge_sqlite3_bind_blob\"\n\n///|\npub fn sqlite3_bind_blob(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  data : Bytes,\n) -> Int raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_sqlite3_bind_blob(arg0, arg1, data, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"buffer length exceeds supported range\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "input_buffer"
     },
     {
       "kind": "function",
@@ -1210,7 +1244,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_double(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  arg2 : Double,\n) -> Int = \"sqlite3_bind_double\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1224,7 +1259,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_int(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  arg2 : Int,\n) -> Int = \"sqlite3_bind_int\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1238,7 +1274,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_int64(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  arg2 : Int64,\n) -> Int = \"sqlite3_bind_int64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1252,7 +1289,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_null(arg0 : C_sqlite3_stmt, arg1 : Int) -> Int = \"sqlite3_bind_null\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1308,7 +1346,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_value(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  arg2 : C_sqlite3_value,\n) -> Int = \"sqlite3_bind_value\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1336,7 +1375,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_zeroblob(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  n : Int,\n) -> Int = \"sqlite3_bind_zeroblob\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1350,7 +1390,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_zeroblob64(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  arg2 : UInt64,\n) -> Int = \"sqlite3_bind_zeroblob64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1364,7 +1405,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_parameter_count(arg0 : C_sqlite3_stmt) -> Int = \"sqlite3_bind_parameter_count\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1406,7 +1448,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_clear_bindings(arg0 : C_sqlite3_stmt) -> Int = \"sqlite3_clear_bindings\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1420,7 +1463,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_count(pstmt : C_sqlite3_stmt) -> Int = \"sqlite3_column_count\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1574,7 +1618,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_step(arg0 : C_sqlite3_stmt) -> Int = \"sqlite3_step\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1588,7 +1633,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_data_count(pstmt : C_sqlite3_stmt) -> Int = \"sqlite3_data_count\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1599,10 +1645,12 @@
         "line": 5580
       },
       "c_signature": "const void *(sqlite3_stmt *, int)",
-      "moonbit_signature": "",
-      "status": "skipped",
-      "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "moonbit_signature": "///|\n#borrow(mbg_absent)\nextern \"C\" fn mbg_bridge_sqlite3_column_blob(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  mbg_absent : FixedArray[Int],\n) -> Bytes = \"mbg_bridge_sqlite3_column_blob\"\n\n///|\npub fn sqlite3_column_blob(arg0 : C_sqlite3_stmt, arg1 : Int) -> Bytes? raise {\n  let mbg_absent = FixedArray::make(1, 0)\n  let value = mbg_bridge_sqlite3_column_blob(arg0, arg1, mbg_absent)\n  if mbg_absent[0] == 1 {\n    None\n  } else if mbg_absent[0] != 0 {\n    fail(\"invalid returned buffer length or pointer\")\n  } else {\n    Some(value)\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "borrowed_return_buffer"
     },
     {
       "kind": "function",
@@ -1613,10 +1661,11 @@
         "line": 5581
       },
       "c_signature": "double (sqlite3_stmt *, int)",
-      "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_double(\n  arg0 : C_sqlite3_stmt,\n  icol : Int,\n) -> Double = \"sqlite3_column_double\"",
+      "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_double(arg0 : C_sqlite3_stmt, icol : Int) -> Double = \"sqlite3_column_double\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1630,7 +1679,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_int(arg0 : C_sqlite3_stmt, icol : Int) -> Int = \"sqlite3_column_int\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1644,7 +1694,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_int64(arg0 : C_sqlite3_stmt, icol : Int) -> Int64 = \"sqlite3_column_int64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1686,7 +1737,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_value(\n  arg0 : C_sqlite3_stmt,\n  icol : Int,\n) -> C_sqlite3_value = \"sqlite3_column_value\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1700,7 +1752,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_bytes(arg0 : C_sqlite3_stmt, icol : Int) -> Int = \"sqlite3_column_bytes\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1714,7 +1767,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_bytes16(arg0 : C_sqlite3_stmt, icol : Int) -> Int = \"sqlite3_column_bytes16\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1728,7 +1782,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_type(arg0 : C_sqlite3_stmt, icol : Int) -> Int = \"sqlite3_column_type\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1742,7 +1797,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_finalize(pstmt : C_sqlite3_stmt) -> Int = \"sqlite3_finalize\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1756,7 +1812,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_reset(pstmt : C_sqlite3_stmt) -> Int = \"sqlite3_reset\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1826,7 +1883,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_aggregate_count(arg0 : C_sqlite3_context) -> Int = \"sqlite3_aggregate_count\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1840,7 +1898,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_expired(arg0 : C_sqlite3_stmt) -> Int = \"sqlite3_expired\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1854,7 +1913,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_transfer_bindings(\n  arg0 : C_sqlite3_stmt,\n  arg1 : C_sqlite3_stmt,\n) -> Int = \"sqlite3_transfer_bindings\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1868,7 +1928,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_global_recover() -> Int = \"sqlite3_global_recover\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1882,7 +1943,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_thread_cleanup() -> Unit = \"sqlite3_thread_cleanup\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1924,7 +1986,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_double(arg0 : C_sqlite3_value) -> Double = \"sqlite3_value_double\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1938,7 +2001,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_int(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_int\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -1952,7 +2016,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_int64(arg0 : C_sqlite3_value) -> Int64 = \"sqlite3_value_int64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2036,7 +2101,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_bytes(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_bytes\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2050,7 +2116,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_bytes16(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_bytes16\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2064,7 +2131,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_type(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_type\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2078,7 +2146,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_numeric_type(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_numeric_type\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2092,7 +2161,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_nochange(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_nochange\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2106,7 +2176,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_frombind(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_frombind\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2120,7 +2191,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_encoding(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_encoding\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2134,7 +2206,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_subtype(arg0 : C_sqlite3_value) -> UInt = \"sqlite3_value_subtype\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2148,7 +2221,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_dup(arg0 : C_sqlite3_value) -> C_sqlite3_value = \"sqlite3_value_dup\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2162,7 +2236,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_free(arg0 : C_sqlite3_value) -> Unit = \"sqlite3_value_free\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2204,7 +2279,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_context_db_handle(\n  arg0 : C_sqlite3_context,\n) -> C_sqlite3 = \"sqlite3_context_db_handle\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2302,7 +2378,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_double(\n  arg0 : C_sqlite3_context,\n  arg1 : Double,\n) -> Unit = \"sqlite3_result_double\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2341,10 +2418,11 @@
         "line": 6589
       },
       "c_signature": "void (sqlite3_context *)",
-      "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_error_toobig(\n  arg0 : C_sqlite3_context,\n) -> Unit = \"sqlite3_result_error_toobig\"",
+      "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_error_toobig(arg0 : C_sqlite3_context) -> Unit = \"sqlite3_result_error_toobig\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2358,7 +2436,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_error_nomem(arg0 : C_sqlite3_context) -> Unit = \"sqlite3_result_error_nomem\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2372,7 +2451,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_error_code(\n  arg0 : C_sqlite3_context,\n  arg1 : Int,\n) -> Unit = \"sqlite3_result_error_code\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2386,7 +2466,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_int(arg0 : C_sqlite3_context, arg1 : Int) -> Unit = \"sqlite3_result_int\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2397,10 +2478,11 @@
         "line": 6593
       },
       "c_signature": "void (sqlite3_context *, sqlite3_int64)",
-      "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_int64(\n  arg0 : C_sqlite3_context,\n  arg1 : Int64,\n) -> Unit = \"sqlite3_result_int64\"",
+      "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_int64(arg0 : C_sqlite3_context, arg1 : Int64) -> Unit = \"sqlite3_result_int64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2414,7 +2496,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_null(arg0 : C_sqlite3_context) -> Unit = \"sqlite3_result_null\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2498,7 +2581,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_value(\n  arg0 : C_sqlite3_context,\n  arg1 : C_sqlite3_value,\n) -> Unit = \"sqlite3_result_value\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2526,7 +2610,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_zeroblob(\n  arg0 : C_sqlite3_context,\n  n : Int,\n) -> Unit = \"sqlite3_result_zeroblob\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2540,7 +2625,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_zeroblob64(\n  arg0 : C_sqlite3_context,\n  n : UInt64,\n) -> Int = \"sqlite3_result_zeroblob64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2554,7 +2640,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_subtype(\n  arg0 : C_sqlite3_context,\n  arg1 : UInt,\n) -> Unit = \"sqlite3_result_subtype\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2638,7 +2725,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_sleep(arg0 : Int) -> Int = \"sqlite3_sleep\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2652,7 +2740,7 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: unsigned long"
+      "reason": "unsupported parameter type: void *"
     },
     {
       "kind": "function",
@@ -2666,7 +2754,7 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: unsigned long"
+      "reason": "unsupported parameter type: const char *"
     },
     {
       "kind": "function",
@@ -2680,7 +2768,7 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: unsigned long"
+      "reason": "unsupported parameter type: const void *"
     },
     {
       "kind": "function",
@@ -2694,7 +2782,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_get_autocommit(arg0 : C_sqlite3) -> Int = \"sqlite3_get_autocommit\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2708,7 +2797,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_db_handle(arg0 : C_sqlite3_stmt) -> C_sqlite3 = \"sqlite3_db_handle\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2778,7 +2868,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_next_stmt(\n  pdb : C_sqlite3,\n  pstmt : C_sqlite3_stmt,\n) -> C_sqlite3_stmt = \"sqlite3_next_stmt\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2848,7 +2939,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_enable_shared_cache(arg0 : Int) -> Int = \"sqlite3_enable_shared_cache\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2862,7 +2954,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_release_memory(arg0 : Int) -> Int = \"sqlite3_release_memory\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2876,7 +2969,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_db_release_memory(arg0 : C_sqlite3) -> Int = \"sqlite3_db_release_memory\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2890,7 +2984,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_soft_heap_limit64(n : Int64) -> Int64 = \"sqlite3_soft_heap_limit64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2904,7 +2999,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_hard_heap_limit64(n : Int64) -> Int64 = \"sqlite3_hard_heap_limit64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2918,7 +3014,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_soft_heap_limit(n : Int) -> Unit = \"sqlite3_soft_heap_limit\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -2960,7 +3057,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_enable_load_extension(\n  db : C_sqlite3,\n  onoff : Int,\n) -> Int = \"sqlite3_enable_load_extension\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3002,7 +3100,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_reset_auto_extension() -> Unit = \"sqlite3_reset_auto_extension\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3100,7 +3199,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_blob_reopen(arg0 : C_sqlite3_blob, arg1 : Int64) -> Int = \"sqlite3_blob_reopen\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3114,7 +3214,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_blob_close(arg0 : C_sqlite3_blob) -> Int = \"sqlite3_blob_close\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3128,7 +3229,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_blob_bytes(arg0 : C_sqlite3_blob) -> Int = \"sqlite3_blob_bytes\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3184,7 +3286,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_vfs_register(arg0 : C_sqlite3_vfs, makedflt : Int) -> Int = \"sqlite3_vfs_register\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3198,7 +3301,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_vfs_unregister(arg0 : C_sqlite3_vfs) -> Int = \"sqlite3_vfs_unregister\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3212,7 +3316,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_mutex_alloc(arg0 : Int) -> C_sqlite3_mutex = \"sqlite3_mutex_alloc\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3226,7 +3331,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_mutex_free(arg0 : C_sqlite3_mutex) -> Unit = \"sqlite3_mutex_free\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3240,7 +3346,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_mutex_enter(arg0 : C_sqlite3_mutex) -> Unit = \"sqlite3_mutex_enter\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3254,7 +3361,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_mutex_try(arg0 : C_sqlite3_mutex) -> Int = \"sqlite3_mutex_try\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3268,7 +3376,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_mutex_leave(arg0 : C_sqlite3_mutex) -> Unit = \"sqlite3_mutex_leave\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3282,7 +3391,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_mutex_held(arg0 : C_sqlite3_mutex) -> Int = \"sqlite3_mutex_held\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3296,7 +3406,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_mutex_notheld(arg0 : C_sqlite3_mutex) -> Int = \"sqlite3_mutex_notheld\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3310,7 +3421,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_db_mutex(arg0 : C_sqlite3) -> C_sqlite3_mutex = \"sqlite3_db_mutex\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3352,7 +3464,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_keyword_count() -> Int = \"sqlite3_keyword_count\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3394,7 +3507,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_str_new(arg0 : C_sqlite3) -> C_sqlite3_str = \"sqlite3_str_new\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3422,7 +3536,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_str_free(arg0 : C_sqlite3_str) -> Unit = \"sqlite3_str_free\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3492,7 +3607,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_str_appendchar(\n  arg0 : C_sqlite3_str,\n  n : Int,\n  c : Byte,\n) -> Unit = \"sqlite3_str_appendchar\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3506,7 +3622,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_str_reset(arg0 : C_sqlite3_str) -> Unit = \"sqlite3_str_reset\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3520,7 +3637,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_str_truncate(arg0 : C_sqlite3_str, n : Int) -> Unit = \"sqlite3_str_truncate\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3534,7 +3652,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_str_errcode(arg0 : C_sqlite3_str) -> Int = \"sqlite3_str_errcode\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3548,7 +3667,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_str_length(arg0 : C_sqlite3_str) -> Int = \"sqlite3_str_length\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3632,7 +3752,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_stmt_status(\n  arg0 : C_sqlite3_stmt,\n  op : Int,\n  resetflg : Int,\n) -> Int = \"sqlite3_stmt_status\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3660,7 +3781,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_backup_step(p : C_sqlite3_backup, npage : Int) -> Int = \"sqlite3_backup_step\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3674,7 +3796,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_backup_finish(p : C_sqlite3_backup) -> Int = \"sqlite3_backup_finish\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3688,7 +3811,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_backup_remaining(p : C_sqlite3_backup) -> Int = \"sqlite3_backup_remaining\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3702,7 +3826,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_backup_pagecount(p : C_sqlite3_backup) -> Int = \"sqlite3_backup_pagecount\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3814,7 +3939,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_wal_autocheckpoint(db : C_sqlite3, n : Int) -> Int = \"sqlite3_wal_autocheckpoint\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3870,7 +3996,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_vtab_on_conflict(arg0 : C_sqlite3) -> Int = \"sqlite3_vtab_on_conflict\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3884,7 +4011,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_vtab_nochange(arg0 : C_sqlite3_context) -> Int = \"sqlite3_vtab_nochange\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3912,7 +4040,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_vtab_distinct(arg0 : C_sqlite3_index_info) -> Int = \"sqlite3_vtab_distinct\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -3926,7 +4055,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_vtab_in(\n  arg0 : C_sqlite3_index_info,\n  icons : Int,\n  bhandle : Int,\n) -> Int = \"sqlite3_vtab_in\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4010,7 +4140,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_stmt_scanstatus_reset(\n  arg0 : C_sqlite3_stmt,\n) -> Unit = \"sqlite3_stmt_scanstatus_reset\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4024,7 +4155,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_db_cacheflush(arg0 : C_sqlite3) -> Int = \"sqlite3_db_cacheflush\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4038,7 +4170,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_system_errno(arg0 : C_sqlite3) -> Int = \"sqlite3_system_errno\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4080,7 +4213,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_snapshot_free(arg0 : C_sqlite3_snapshot) -> Unit = \"sqlite3_snapshot_free\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4094,7 +4228,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_snapshot_cmp(\n  p1 : C_sqlite3_snapshot,\n  p2 : C_sqlite3_snapshot,\n) -> Int = \"sqlite3_snapshot_cmp\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4209,7 +4344,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "bridge": true
+      "bridge": true,
+      "policy": "configured_bridge"
     },
     {
       "kind": "function",
@@ -4237,7 +4373,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_libversion_number() -> Int = \"sqlite3_libversion_number\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4279,7 +4416,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_threadsafe() -> Int = \"sqlite3_threadsafe\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4293,7 +4431,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_close(arg0 : C_sqlite3) -> Int = \"sqlite3_close\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4307,7 +4446,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_close_v2(arg0 : C_sqlite3) -> Int = \"sqlite3_close_v2\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4335,7 +4475,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_initialize() -> Int = \"sqlite3_initialize\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4349,7 +4490,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_shutdown() -> Int = \"sqlite3_shutdown\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4363,7 +4505,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_os_init() -> Int = \"sqlite3_os_init\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4377,7 +4520,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_os_end() -> Int = \"sqlite3_os_end\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4419,7 +4563,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_extended_result_codes(\n  arg0 : C_sqlite3,\n  onoff : Int,\n) -> Int = \"sqlite3_extended_result_codes\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4433,7 +4578,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_last_insert_rowid(arg0 : C_sqlite3) -> Int64 = \"sqlite3_last_insert_rowid\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4447,7 +4593,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_set_last_insert_rowid(\n  arg0 : C_sqlite3,\n  arg1 : Int64,\n) -> Unit = \"sqlite3_set_last_insert_rowid\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4461,7 +4608,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_changes(arg0 : C_sqlite3) -> Int = \"sqlite3_changes\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4475,7 +4623,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_changes64(arg0 : C_sqlite3) -> Int64 = \"sqlite3_changes64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4489,7 +4638,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_total_changes(arg0 : C_sqlite3) -> Int = \"sqlite3_total_changes\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4503,7 +4653,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_total_changes64(arg0 : C_sqlite3) -> Int64 = \"sqlite3_total_changes64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4517,7 +4668,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_interrupt(arg0 : C_sqlite3) -> Unit = \"sqlite3_interrupt\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4531,7 +4683,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_is_interrupted(arg0 : C_sqlite3) -> Int = \"sqlite3_is_interrupted\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4587,7 +4740,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_busy_timeout(arg0 : C_sqlite3, ms : Int) -> Int = \"sqlite3_busy_timeout\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4601,7 +4755,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_setlk_timeout(\n  arg0 : C_sqlite3,\n  ms : Int,\n  flags : Int,\n) -> Int = \"sqlite3_setlk_timeout\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4783,7 +4938,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_memory_used() -> Int64 = \"sqlite3_memory_used\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4797,7 +4953,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_memory_highwater(resetflag : Int) -> Int64 = \"sqlite3_memory_highwater\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -4896,7 +5053,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "bridge": true
+      "bridge": true,
+      "policy": "configured_bridge"
     },
     {
       "kind": "function",
@@ -5078,7 +5236,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_errcode(db : C_sqlite3) -> Int = \"sqlite3_errcode\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5092,7 +5251,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_extended_errcode(db : C_sqlite3) -> Int = \"sqlite3_extended_errcode\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5148,7 +5308,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_error_offset(db : C_sqlite3) -> Int = \"sqlite3_error_offset\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5176,7 +5337,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_limit(\n  arg0 : C_sqlite3,\n  id : Int,\n  newval : Int,\n) -> Int = \"sqlite3_limit\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5205,7 +5367,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "bridge": true
+      "bridge": true,
+      "policy": "configured_bridge"
     },
     {
       "kind": "function",
@@ -5303,7 +5466,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_stmt_readonly(pstmt : C_sqlite3_stmt) -> Int = \"sqlite3_stmt_readonly\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5317,7 +5481,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_stmt_isexplain(pstmt : C_sqlite3_stmt) -> Int = \"sqlite3_stmt_isexplain\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5331,7 +5496,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_stmt_explain(pstmt : C_sqlite3_stmt, emode : Int) -> Int = \"sqlite3_stmt_explain\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5345,7 +5511,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_stmt_busy(arg0 : C_sqlite3_stmt) -> Int = \"sqlite3_stmt_busy\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5356,10 +5523,12 @@
         "line": 5009
       },
       "c_signature": "int (sqlite3_stmt *, int, const void *, int, void (*)(void *))",
-      "moonbit_signature": "",
-      "status": "skipped",
-      "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "moonbit_signature": "///|\n#borrow(data, mbg_error)\nextern \"C\" fn mbg_bridge_sqlite3_bind_blob(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  data : Bytes,\n  mbg_error : FixedArray[Int],\n) -> Int = \"mbg_bridge_sqlite3_bind_blob\"\n\n///|\npub fn sqlite3_bind_blob(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  data : Bytes,\n) -> Int raise {\n  let mbg_error = FixedArray::make(1, 0)\n  let value = mbg_bridge_sqlite3_bind_blob(arg0, arg1, data, mbg_error)\n  if mbg_error[0] != 0 {\n    fail(\"buffer length exceeds supported range\")\n  }\n  value\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "input_buffer"
     },
     {
       "kind": "function",
@@ -5387,7 +5556,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_double(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  arg2 : Double,\n) -> Int = \"sqlite3_bind_double\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5401,7 +5571,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_int(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  arg2 : Int,\n) -> Int = \"sqlite3_bind_int\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5415,7 +5586,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_int64(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  arg2 : Int64,\n) -> Int = \"sqlite3_bind_int64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5429,7 +5601,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_null(arg0 : C_sqlite3_stmt, arg1 : Int) -> Int = \"sqlite3_bind_null\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5485,7 +5658,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_value(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  arg2 : C_sqlite3_value,\n) -> Int = \"sqlite3_bind_value\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5513,7 +5687,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_zeroblob(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  n : Int,\n) -> Int = \"sqlite3_bind_zeroblob\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5527,7 +5702,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_zeroblob64(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  arg2 : UInt64,\n) -> Int = \"sqlite3_bind_zeroblob64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5541,7 +5717,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_bind_parameter_count(arg0 : C_sqlite3_stmt) -> Int = \"sqlite3_bind_parameter_count\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5583,7 +5760,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_clear_bindings(arg0 : C_sqlite3_stmt) -> Int = \"sqlite3_clear_bindings\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5597,7 +5775,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_count(pstmt : C_sqlite3_stmt) -> Int = \"sqlite3_column_count\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5751,7 +5930,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_step(arg0 : C_sqlite3_stmt) -> Int = \"sqlite3_step\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5765,7 +5945,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_data_count(pstmt : C_sqlite3_stmt) -> Int = \"sqlite3_data_count\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5776,10 +5957,12 @@
         "line": 5580
       },
       "c_signature": "const void *(sqlite3_stmt *, int)",
-      "moonbit_signature": "",
-      "status": "skipped",
-      "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "moonbit_signature": "///|\n#borrow(mbg_absent)\nextern \"C\" fn mbg_bridge_sqlite3_column_blob(\n  arg0 : C_sqlite3_stmt,\n  arg1 : Int,\n  mbg_absent : FixedArray[Int],\n) -> Bytes = \"mbg_bridge_sqlite3_column_blob\"\n\n///|\npub fn sqlite3_column_blob(arg0 : C_sqlite3_stmt, arg1 : Int) -> Bytes? raise {\n  let mbg_absent = FixedArray::make(1, 0)\n  let value = mbg_bridge_sqlite3_column_blob(arg0, arg1, mbg_absent)\n  if mbg_absent[0] == 1 {\n    None\n  } else if mbg_absent[0] != 0 {\n    fail(\"invalid returned buffer length or pointer\")\n  } else {\n    Some(value)\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "borrowed_return_buffer"
     },
     {
       "kind": "function",
@@ -5790,10 +5973,11 @@
         "line": 5581
       },
       "c_signature": "double (sqlite3_stmt *, int)",
-      "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_double(\n  arg0 : C_sqlite3_stmt,\n  icol : Int,\n) -> Double = \"sqlite3_column_double\"",
+      "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_double(arg0 : C_sqlite3_stmt, icol : Int) -> Double = \"sqlite3_column_double\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5807,7 +5991,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_int(arg0 : C_sqlite3_stmt, icol : Int) -> Int = \"sqlite3_column_int\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5821,7 +6006,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_int64(arg0 : C_sqlite3_stmt, icol : Int) -> Int64 = \"sqlite3_column_int64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5863,7 +6049,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_value(\n  arg0 : C_sqlite3_stmt,\n  icol : Int,\n) -> C_sqlite3_value = \"sqlite3_column_value\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5877,7 +6064,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_bytes(arg0 : C_sqlite3_stmt, icol : Int) -> Int = \"sqlite3_column_bytes\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5891,7 +6079,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_bytes16(arg0 : C_sqlite3_stmt, icol : Int) -> Int = \"sqlite3_column_bytes16\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5905,7 +6094,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_column_type(arg0 : C_sqlite3_stmt, icol : Int) -> Int = \"sqlite3_column_type\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5919,7 +6109,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_finalize(pstmt : C_sqlite3_stmt) -> Int = \"sqlite3_finalize\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -5933,7 +6124,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_reset(pstmt : C_sqlite3_stmt) -> Int = \"sqlite3_reset\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6003,7 +6195,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_aggregate_count(arg0 : C_sqlite3_context) -> Int = \"sqlite3_aggregate_count\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6017,7 +6210,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_expired(arg0 : C_sqlite3_stmt) -> Int = \"sqlite3_expired\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6031,7 +6225,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_transfer_bindings(\n  arg0 : C_sqlite3_stmt,\n  arg1 : C_sqlite3_stmt,\n) -> Int = \"sqlite3_transfer_bindings\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6045,7 +6240,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_global_recover() -> Int = \"sqlite3_global_recover\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6059,7 +6255,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_thread_cleanup() -> Unit = \"sqlite3_thread_cleanup\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6101,7 +6298,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_double(arg0 : C_sqlite3_value) -> Double = \"sqlite3_value_double\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6115,7 +6313,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_int(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_int\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6129,7 +6328,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_int64(arg0 : C_sqlite3_value) -> Int64 = \"sqlite3_value_int64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6213,7 +6413,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_bytes(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_bytes\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6227,7 +6428,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_bytes16(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_bytes16\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6241,7 +6443,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_type(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_type\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6255,7 +6458,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_numeric_type(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_numeric_type\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6269,7 +6473,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_nochange(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_nochange\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6283,7 +6488,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_frombind(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_frombind\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6297,7 +6503,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_encoding(arg0 : C_sqlite3_value) -> Int = \"sqlite3_value_encoding\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6311,7 +6518,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_subtype(arg0 : C_sqlite3_value) -> UInt = \"sqlite3_value_subtype\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6325,7 +6533,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_dup(arg0 : C_sqlite3_value) -> C_sqlite3_value = \"sqlite3_value_dup\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6339,7 +6548,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_value_free(arg0 : C_sqlite3_value) -> Unit = \"sqlite3_value_free\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6381,7 +6591,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_context_db_handle(\n  arg0 : C_sqlite3_context,\n) -> C_sqlite3 = \"sqlite3_context_db_handle\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6479,7 +6690,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_double(\n  arg0 : C_sqlite3_context,\n  arg1 : Double,\n) -> Unit = \"sqlite3_result_double\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6518,10 +6730,11 @@
         "line": 6589
       },
       "c_signature": "void (sqlite3_context *)",
-      "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_error_toobig(\n  arg0 : C_sqlite3_context,\n) -> Unit = \"sqlite3_result_error_toobig\"",
+      "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_error_toobig(arg0 : C_sqlite3_context) -> Unit = \"sqlite3_result_error_toobig\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6535,7 +6748,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_error_nomem(arg0 : C_sqlite3_context) -> Unit = \"sqlite3_result_error_nomem\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6549,7 +6763,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_error_code(\n  arg0 : C_sqlite3_context,\n  arg1 : Int,\n) -> Unit = \"sqlite3_result_error_code\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6563,7 +6778,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_int(arg0 : C_sqlite3_context, arg1 : Int) -> Unit = \"sqlite3_result_int\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6574,10 +6790,11 @@
         "line": 6593
       },
       "c_signature": "void (sqlite3_context *, sqlite3_int64)",
-      "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_int64(\n  arg0 : C_sqlite3_context,\n  arg1 : Int64,\n) -> Unit = \"sqlite3_result_int64\"",
+      "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_int64(arg0 : C_sqlite3_context, arg1 : Int64) -> Unit = \"sqlite3_result_int64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6591,7 +6808,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_null(arg0 : C_sqlite3_context) -> Unit = \"sqlite3_result_null\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6675,7 +6893,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_value(\n  arg0 : C_sqlite3_context,\n  arg1 : C_sqlite3_value,\n) -> Unit = \"sqlite3_result_value\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6703,7 +6922,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_zeroblob(\n  arg0 : C_sqlite3_context,\n  n : Int,\n) -> Unit = \"sqlite3_result_zeroblob\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6717,7 +6937,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_zeroblob64(\n  arg0 : C_sqlite3_context,\n  n : UInt64,\n) -> Int = \"sqlite3_result_zeroblob64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6731,7 +6952,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_result_subtype(\n  arg0 : C_sqlite3_context,\n  arg1 : UInt,\n) -> Unit = \"sqlite3_result_subtype\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6815,7 +7037,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_sleep(arg0 : Int) -> Int = \"sqlite3_sleep\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6829,7 +7052,7 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: unsigned long"
+      "reason": "unsupported parameter type: void *"
     },
     {
       "kind": "function",
@@ -6843,7 +7066,7 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: unsigned long"
+      "reason": "unsupported parameter type: const char *"
     },
     {
       "kind": "function",
@@ -6857,7 +7080,7 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: unsigned long"
+      "reason": "unsupported parameter type: const void *"
     },
     {
       "kind": "function",
@@ -6871,7 +7094,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_get_autocommit(arg0 : C_sqlite3) -> Int = \"sqlite3_get_autocommit\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6885,7 +7109,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_db_handle(arg0 : C_sqlite3_stmt) -> C_sqlite3 = \"sqlite3_db_handle\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -6955,7 +7180,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_next_stmt(\n  pdb : C_sqlite3,\n  pstmt : C_sqlite3_stmt,\n) -> C_sqlite3_stmt = \"sqlite3_next_stmt\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7025,7 +7251,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_enable_shared_cache(arg0 : Int) -> Int = \"sqlite3_enable_shared_cache\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7039,7 +7266,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_release_memory(arg0 : Int) -> Int = \"sqlite3_release_memory\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7053,7 +7281,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_db_release_memory(arg0 : C_sqlite3) -> Int = \"sqlite3_db_release_memory\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7067,7 +7296,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_soft_heap_limit64(n : Int64) -> Int64 = \"sqlite3_soft_heap_limit64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7081,7 +7311,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_hard_heap_limit64(n : Int64) -> Int64 = \"sqlite3_hard_heap_limit64\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7095,7 +7326,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_soft_heap_limit(n : Int) -> Unit = \"sqlite3_soft_heap_limit\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7137,7 +7369,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_enable_load_extension(\n  db : C_sqlite3,\n  onoff : Int,\n) -> Int = \"sqlite3_enable_load_extension\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7179,7 +7412,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_reset_auto_extension() -> Unit = \"sqlite3_reset_auto_extension\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7277,7 +7511,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_blob_reopen(arg0 : C_sqlite3_blob, arg1 : Int64) -> Int = \"sqlite3_blob_reopen\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7291,7 +7526,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_blob_close(arg0 : C_sqlite3_blob) -> Int = \"sqlite3_blob_close\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7305,7 +7541,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_blob_bytes(arg0 : C_sqlite3_blob) -> Int = \"sqlite3_blob_bytes\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7361,7 +7598,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_vfs_register(arg0 : C_sqlite3_vfs, makedflt : Int) -> Int = \"sqlite3_vfs_register\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7375,7 +7613,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_vfs_unregister(arg0 : C_sqlite3_vfs) -> Int = \"sqlite3_vfs_unregister\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7389,7 +7628,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_mutex_alloc(arg0 : Int) -> C_sqlite3_mutex = \"sqlite3_mutex_alloc\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7403,7 +7643,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_mutex_free(arg0 : C_sqlite3_mutex) -> Unit = \"sqlite3_mutex_free\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7417,7 +7658,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_mutex_enter(arg0 : C_sqlite3_mutex) -> Unit = \"sqlite3_mutex_enter\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7431,7 +7673,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_mutex_try(arg0 : C_sqlite3_mutex) -> Int = \"sqlite3_mutex_try\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7445,7 +7688,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_mutex_leave(arg0 : C_sqlite3_mutex) -> Unit = \"sqlite3_mutex_leave\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7459,7 +7703,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_mutex_held(arg0 : C_sqlite3_mutex) -> Int = \"sqlite3_mutex_held\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7473,7 +7718,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_mutex_notheld(arg0 : C_sqlite3_mutex) -> Int = \"sqlite3_mutex_notheld\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7487,7 +7733,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_db_mutex(arg0 : C_sqlite3) -> C_sqlite3_mutex = \"sqlite3_db_mutex\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7529,7 +7776,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_keyword_count() -> Int = \"sqlite3_keyword_count\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7571,7 +7819,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_str_new(arg0 : C_sqlite3) -> C_sqlite3_str = \"sqlite3_str_new\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7599,7 +7848,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_str_free(arg0 : C_sqlite3_str) -> Unit = \"sqlite3_str_free\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7669,7 +7919,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_str_appendchar(\n  arg0 : C_sqlite3_str,\n  n : Int,\n  c : Byte,\n) -> Unit = \"sqlite3_str_appendchar\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7683,7 +7934,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_str_reset(arg0 : C_sqlite3_str) -> Unit = \"sqlite3_str_reset\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7697,7 +7949,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_str_truncate(arg0 : C_sqlite3_str, n : Int) -> Unit = \"sqlite3_str_truncate\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7711,7 +7964,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_str_errcode(arg0 : C_sqlite3_str) -> Int = \"sqlite3_str_errcode\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7725,7 +7979,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_str_length(arg0 : C_sqlite3_str) -> Int = \"sqlite3_str_length\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7809,7 +8064,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_stmt_status(\n  arg0 : C_sqlite3_stmt,\n  op : Int,\n  resetflg : Int,\n) -> Int = \"sqlite3_stmt_status\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7837,7 +8093,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_backup_step(p : C_sqlite3_backup, npage : Int) -> Int = \"sqlite3_backup_step\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7851,7 +8108,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_backup_finish(p : C_sqlite3_backup) -> Int = \"sqlite3_backup_finish\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7865,7 +8123,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_backup_remaining(p : C_sqlite3_backup) -> Int = \"sqlite3_backup_remaining\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7879,7 +8138,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_backup_pagecount(p : C_sqlite3_backup) -> Int = \"sqlite3_backup_pagecount\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -7991,7 +8251,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_wal_autocheckpoint(db : C_sqlite3, n : Int) -> Int = \"sqlite3_wal_autocheckpoint\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -8047,7 +8308,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_vtab_on_conflict(arg0 : C_sqlite3) -> Int = \"sqlite3_vtab_on_conflict\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -8061,7 +8323,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_vtab_nochange(arg0 : C_sqlite3_context) -> Int = \"sqlite3_vtab_nochange\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -8089,7 +8352,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_vtab_distinct(arg0 : C_sqlite3_index_info) -> Int = \"sqlite3_vtab_distinct\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -8103,7 +8367,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_vtab_in(\n  arg0 : C_sqlite3_index_info,\n  icons : Int,\n  bhandle : Int,\n) -> Int = \"sqlite3_vtab_in\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -8187,7 +8452,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_stmt_scanstatus_reset(\n  arg0 : C_sqlite3_stmt,\n) -> Unit = \"sqlite3_stmt_scanstatus_reset\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -8201,7 +8467,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_db_cacheflush(arg0 : C_sqlite3) -> Int = \"sqlite3_db_cacheflush\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -8215,7 +8482,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_system_errno(arg0 : C_sqlite3) -> Int = \"sqlite3_system_errno\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -8257,7 +8525,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_snapshot_free(arg0 : C_sqlite3_snapshot) -> Unit = \"sqlite3_snapshot_free\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -8271,7 +8540,8 @@
       "moonbit_signature": "///|\npub extern \"C\" fn sqlite3_snapshot_cmp(\n  p1 : C_sqlite3_snapshot,\n  p2 : C_sqlite3_snapshot,\n) -> Int = \"sqlite3_snapshot_cmp\"",
       "status": "generated",
       "reason_code": "generated",
-      "reason": ""
+      "reason": "",
+      "policy": "direct"
     },
     {
       "kind": "function",
@@ -8373,5 +8643,6 @@
     }
   ],
   "enums": [],
+  "config_schema": "moonbindgen-config-v2",
   "has_shim": true
 }

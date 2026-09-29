@@ -12,6 +12,8 @@ pub fn sqlite3_backup_remaining(C_sqlite3_backup) -> Int
 
 pub fn sqlite3_backup_step(C_sqlite3_backup, Int) -> Int
 
+pub fn sqlite3_bind_blob(C_sqlite3_stmt, Int, Bytes) -> Int raise
+
 pub fn sqlite3_bind_double(C_sqlite3_stmt, Int, Double) -> Int
 
 pub fn sqlite3_bind_int(C_sqlite3_stmt, Int, Int) -> Int
@@ -45,6 +47,8 @@ pub fn sqlite3_clear_bindings(C_sqlite3_stmt) -> Int
 pub fn sqlite3_close(C_sqlite3) -> Int
 
 pub fn sqlite3_close_v2(C_sqlite3) -> Int
+
+pub fn sqlite3_column_blob(C_sqlite3_stmt, Int) -> Bytes? raise
 
 pub fn sqlite3_column_bytes(C_sqlite3_stmt, Int) -> Int
 
