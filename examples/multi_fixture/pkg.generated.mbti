@@ -1,0 +1,56 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "shop1111/moonbindgen/examples/multi_fixture"
+
+// Values
+pub fn make_pair(Int) -> MbgResult_make_pair raise
+
+pub fn token_borrow(MbgResource_token) -> MbgView_token_borrow? raise
+
+pub fn token_borrow_raw(C_token) -> C_token
+
+pub fn token_free(C_token) -> Unit
+
+pub fn token_free_count() -> Int
+
+pub fn token_new(Int) -> MbgResource_token? raise
+
+pub fn token_new_raw(Int) -> C_token
+
+pub fn token_release_count() -> Int
+
+pub fn token_retain(C_token) -> Unit
+
+pub fn token_value(C_token) -> Int
+
+// Errors
+
+// Types and methods
+#external
+pub type C_token
+
+type MbgRaw_make_pair
+
+pub type MbgResource_token
+pub fn MbgResource_token::close(Self) -> Bool
+pub fn MbgResource_token::is_closed(Self) -> Bool
+pub fn MbgResource_token::retain(Self) -> Self raise
+pub fn MbgResource_token::unsafe_raw(Self) -> C_token raise
+pub fn[T] MbgResource_token::with_raw(Self, (C_token) -> T) -> T raise
+
+pub(all) struct MbgResult_make_pair {
+  status : Int
+  left : Int
+  right : Int64
+  handle : C_token
+}
+
+pub struct MbgView_token_borrow {
+  owner : MbgResource_token
+  raw : C_token
+}
+pub fn MbgView_token_borrow::unsafe_raw(Self) -> C_token raise
+pub fn[T] MbgView_token_borrow::with_raw(Self, (C_token) -> T) -> T raise
+
+// Type aliases
+
+// Traits

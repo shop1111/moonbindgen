@@ -2,7 +2,7 @@
 
 MoonBindgen is a pure MoonBit Native command-line generator for conservative C FFI declarations. It delegates C parsing to Clang 23, converts the JSON AST into a typed declaration model, lowers only verified direct-ABI types, and writes deterministic MoonBit declarations together with an auditable report.
 
-The project deliberately does not pretend that syntax implies ownership. It rejects callbacks, by-value structs, variadic functions, and pointers whose lifetime is unclear. Explicit configuration enables status-and-output parameters, borrowed/owned UTF-8 returns, and byte buffers with stated length and lifetime policies; these functions receive generated C bridges. A configured call-scoped `const char *` input becomes `Bytes` with `#borrow`.
+The project deliberately does not pretend that syntax implies ownership. It rejects callbacks, by-value structs, variadic functions, and pointers whose lifetime is unclear. Explicit configuration enables named outputs, managed opaque resources, borrowed/owned UTF-8 returns, and byte buffers with stated length and lifetime policies; these functions receive generated C bridges. A configured call-scoped `const char *` input becomes `Bytes` with `#borrow`.
 
 ## Why this project
 
@@ -41,7 +41,7 @@ The checked release toolchain is recorded in [`toolchain.json`](toolchain.json).
 To consume the generator as a library:
 
 ```powershell
-moon add shop1111/moonbindgen@0.3.0
+moon add shop1111/moonbindgen@0.4.0
 ```
 
 Add the root package to `moon.pkg`:
@@ -62,7 +62,7 @@ let result = @bindgen.generate_with_config(clang_ast_json, "library.h", config)
 println(result.bindings)
 ```
 
-Windows users can also download `moonbindgen-v0.3.0-windows-x86_64.zip` from the GitHub Release after the v0.3.0 gates pass, extract `moonbindgen.exe`, and keep Clang 23 available separately. The executable is not a general C/C++ compiler bundle.
+Windows users can also download `moonbindgen-v0.4.0-windows-x86_64.zip` from the GitHub Release, extract `moonbindgen.exe`, and keep Clang 23 available separately. The executable is not a general C/C++ compiler bundle.
 
 ## CLI quick start
 
@@ -143,6 +143,35 @@ An `in` buffer accepts MoonBit `Bytes`; its length is taken from the value and c
 
 For `short`, `unsigned short`, `long`, `unsigned long`, `size_t`, `ptrdiff_t`, and `_Bool`, v2 emits C bridges with target-aware range checks instead of assuming a MoonBit scalar has the same C ABI. The generated C is compiled by the consumer's target C compiler. The original v1 schema and its outputs remain available.
 
+## Configuration v2: named outputs and resources
+
+`multi_outputs` names two or more scalar or opaque-handle outputs by zero-based C argument position. The generated function returns a public struct with those fields and a `status` field when C returns `int`. Values are initialized before C is called, so a failure status cannot expose uninitialized memory; callers still have to follow the library's error contract before using them. Target-dependent scalar fields are read through C accessors, and the raw C result object is released after the public value has been assembled.
+
+```json
+{
+  "schema": "moonbindgen-config-v2",
+  "multi_outputs": [{
+    "function": "make_pair",
+    "outputs": [
+      { "index": 1, "name": "left" },
+      { "index": 2, "name": "right" },
+      { "index": 3, "name": "handle" }
+    ]
+  }],
+  "resources": [{
+    "name": "token",
+    "create": "token_new",
+    "release": "token_free",
+    "retain": "token_retain",
+    "views": ["token_borrow"]
+  }]
+}
+```
+
+A resource policy requires a create function returning an opaque pointer and an exact-handle `void` release function. The generated managed type owns a shared state: `close()` releases at most once and reports whether it released the handle; the C finalizer releases an unclosed handle when the last MoonBit reference is dropped. An optional `void` retain function enables a second managed owner through `retain()`. A listed same-handle view function returns a view that holds its owner, preventing finalization while the view lives. Use `resource.with_raw(fn(raw) { ... })` or `view.with_raw(fn(raw) { ... })` to keep the owner alive throughout a C call. `unsafe_raw()` only checks that the owner is open when it returns; the caller must keep the resource or view alive for the entire use of the raw pointer. The `*_raw` declarations remain available for APIs whose lifetime rules need manual handling. These wrappers do not claim cross-thread synchronization.
+
+If a configured release function returns a status instead of `void`, MoonBindgen emits the raw create declaration and marks it `manual_resource_management` in the report. A generated close/finalizer cannot safely hide a failing release operation. Current resource views take and return the same opaque handle; views of other pointer types remain unsupported.
+
 ## Supported ABI surface
 
 | C declaration | MoonBit output | Policy |
@@ -157,9 +186,11 @@ For `short`, `unsigned short`, `long`, `unsigned long`, `size_t`, `ptrdiff_t`, a
 | configured byte pointer and length | `Bytes` input or output plus generated C bridge | Explicit call/copy retention and capacity |
 | borrowed byte pointer return and length function | `Bytes?` plus generated C bridge | Copied while valid; optional null discriminator |
 | target-dependent scalar in config-v2 | `Int`, `UInt`, `Int64`, `UInt64`, or `Bool` | C bridge checks target range |
+| configured multiple scalar/handle outputs | Public named result struct | Status preserved; fields initialized on failure |
+| configured create/void-release handle | Managed resource and optional borrowed view | Close once, optional retain, finalizer; raw escape is explicit |
 | other pointers, callbacks, variadics, by-value structs | none | Reported and skipped, or rejected in strict mode |
 
-MoonBindgen emits raw FFI declarations and narrowly configured bridges. Resource-safe wrappers, value structures, and callbacks are later milestones; C++ and unprovable pointer lifetimes remain outside the supported surface.
+MoonBindgen emits auditable raw declarations alongside configured wrappers. Value structures and callbacks are later milestones; C++ and unprovable pointer lifetimes remain outside the supported surface.
 
 ## Auditable report v2
 
@@ -182,7 +213,7 @@ For a config-v2 run, the report additionally records `config_schema` and each ge
 ./scripts/verify.ps1
 ```
 
-The gate runs strict Native check/build/test, coverage analysis, two-run byte determinism, report schema assertions, include provenance, invalid-header rejection, three-artifact drift and rollback checks, a generated C fixture that exercises scalar and handle outputs plus borrowed and owned strings, a byte-buffer fixture, and the SQLite calls below. `scripts/verify_portable.py` runs all-target checks plus real Native calls on each CI host; the Linux job additionally compiles and runs generated examples with AddressSanitizer. This ASan gate retains MoonBit's bundled mimalloc allocator because the current prebuilt runtime links against it, so it does not promise ASan coverage of MoonBit-managed heap allocations.
+The gate runs strict Native check/build/test, coverage analysis, two-run byte determinism, report schema assertions, include provenance, invalid-header rejection, three-artifact drift and rollback checks, generated C fixtures for strings, buffers, named outputs, resources, and the SQLite calls below. `scripts/verify_portable.py` runs all-target checks plus real Native calls on each CI host; the Linux job additionally compiles and runs generated examples with AddressSanitizer. This ASan gate retains MoonBit's bundled mimalloc allocator because the current prebuilt runtime links against it, so it does not promise ASan coverage of MoonBit-managed heap allocations.
 
 `examples/sqlite` vendors the official SQLite 3.53.4 amalgamation. On Clang 23.1.1, MoonBindgen generates 133 functions and reports 165 skipped functions. It executes `SELECT 42`, then binds and reads an embedded-NUL BLOB, a zero-length BLOB, and SQL NULL through generated v2 bridges.
 

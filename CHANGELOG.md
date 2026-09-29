@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0 - 2026-09-29
+
+- Generate named result structs for multiple configured scalar and opaque-handle outputs, including target-dependent scalar conversion and preserved C status on failure.
+- Generate managed opaque resources when a create function, exact-handle `void` release, and optional `void` retain function are declared. Closing is idempotent, retained instances release independently, and the last reference invokes a C finalizer.
+- Generate borrowed same-handle views that keep the managed owner alive and reject access after explicit close. A release function that can fail remains a raw binding and is marked for manual management in the report.
+- Exercise named outputs, failed calls, duplicate close, retain, finalizer, and borrowed-view lifetime in a generated Native fixture on Windows and Linux, including Linux AddressSanitizer.
+
 ## 0.3.0 - 2026-09-29
 
 - Add `moonbindgen-config-v2` with position-based input, output, and borrowed-return byte-buffer policies. Invalid signatures and conflicting policies fail with explicit diagnostics.

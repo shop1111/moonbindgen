@@ -1,0 +1,271 @@
+{
+  "schema": "moonbindgen-report-v2",
+  "header": "fixture.h",
+  "clang": {
+    "version": "clang version 23.1.1 (https://github.com/llvm/llvm-project 6dfe1677ab8dffbc6ec13d53a1e0215d75147689)",
+    "target": "x86_64-pc-windows-msvc"
+  },
+  "included_files": [],
+  "generated": 8,
+  "skipped": 0,
+  "summary": {
+    "functions_generated": 8,
+    "functions_skipped": 0,
+    "enums_generated": 0,
+    "enums_skipped": 0,
+    "unsupported": 0
+  },
+  "declarations": [
+    {
+      "kind": "function",
+      "c_name": "make_pair",
+      "moonbit_name": "make_pair",
+      "source": {
+        "file": "fixture.h",
+        "line": 6
+      },
+      "c_signature": "int (int, int *, long *, token **)",
+      "moonbit_signature": "///|\ntype MbgRaw_make_pair\n\n///|\npub(all) struct MbgResult_make_pair {\n  status : Int\n  left : Int\n  right : Int64\n  handle : C_token\n}\n\n///|\nextern \"C\" fn mbg_bridge_make_pair(\n  arg0 : Int,\n) -> MbgRaw_make_pair = \"mbg_bridge_make_pair\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_bridge_make_pair_error(\n  raw : MbgRaw_make_pair,\n) -> Int = \"mbg_bridge_make_pair_error\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_bridge_make_pair_status(\n  raw : MbgRaw_make_pair,\n) -> Int = \"mbg_bridge_make_pair_status\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_bridge_make_pair_out1(\n  raw : MbgRaw_make_pair,\n) -> Int = \"mbg_bridge_make_pair_out1\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_bridge_make_pair_out2(\n  raw : MbgRaw_make_pair,\n) -> Int64 = \"mbg_bridge_make_pair_out2\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_bridge_make_pair_out3(\n  raw : MbgRaw_make_pair,\n) -> C_token = \"mbg_bridge_make_pair_out3\"\n\n///|\npub fn make_pair(arg0 : Int) -> MbgResult_make_pair raise {\n  let raw = mbg_bridge_make_pair(arg0)\n  if mbg_bridge_make_pair_error(raw) != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  {\n    status: mbg_bridge_make_pair_status(raw),\n    left: mbg_bridge_make_pair_out1(raw),\n    right: mbg_bridge_make_pair_out2(raw),\n    handle: mbg_bridge_make_pair_out3(raw),\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "multi_output"
+    },
+    {
+      "kind": "function",
+      "c_name": "token_value",
+      "moonbit_name": "token_value",
+      "source": {
+        "file": "fixture.h",
+        "line": 7
+      },
+      "c_signature": "int (token *)",
+      "moonbit_signature": "///|\npub extern \"C\" fn token_value(handle : C_token) -> Int = \"token_value\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct"
+    },
+    {
+      "kind": "function",
+      "c_name": "token_new",
+      "moonbit_name": "token_new",
+      "source": {
+        "file": "fixture.h",
+        "line": 8
+      },
+      "c_signature": "token *(int)",
+      "moonbit_signature": "///|\npub type MbgResource_token\n\n///|\npub extern \"C\" fn token_new_raw(arg0 : Int) -> C_token = \"token_new\"\n\n///|\nextern \"C\" fn mbg_resource_token_new(\n  arg0 : Int,\n) -> MbgResource_token = \"mbg_resource_token_new\"\n\n///|\n#borrow(state)\nextern \"C\" fn mbg_resource_token_new_error(\n  state : MbgResource_token,\n) -> Int = \"mbg_resource_token_new_error\"\n\n///|\n#borrow(state)\nextern \"C\" fn mbg_resource_token_new_valid(\n  state : MbgResource_token,\n) -> Bool = \"mbg_resource_token_new_valid\"\n\n///|\n#borrow(state)\nextern \"C\" fn mbg_resource_token_new_close(\n  state : MbgResource_token,\n) -> Bool = \"mbg_resource_token_new_close\"\n\n///|\n#borrow(state)\nextern \"C\" fn mbg_resource_token_new_raw(\n  state : MbgResource_token,\n) -> C_token = \"mbg_resource_token_new_raw\"\n\n///|\n#borrow(state)\nextern \"C\" fn mbg_resource_token_new_retain(\n  state : MbgResource_token,\n) -> MbgResource_token = \"mbg_resource_token_new_retain\"\n\n///|\npub fn token_new(arg0 : Int) -> MbgResource_token? raise {\n  let state = mbg_resource_token_new(arg0)\n  if mbg_resource_token_new_error(state) != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  if mbg_resource_token_new_valid(state) { Some(state) } else { None }\n}\n\n///|\npub fn MbgResource_token::close(self : MbgResource_token) -> Bool {\n  mbg_resource_token_new_close(self)\n}\n\n///|\npub fn MbgResource_token::is_closed(self : MbgResource_token) -> Bool {\n  !mbg_resource_token_new_valid(self)\n}\n\n///|\npub fn MbgResource_token::unsafe_raw(self : MbgResource_token) -> C_token raise {\n  if self.is_closed() {\n    fail(\"resource is closed\")\n  }\n  mbg_resource_token_new_raw(self)\n}\n\n///|\npub fn[T] MbgResource_token::with_raw(self : MbgResource_token, action : (C_token) -> T) -> T raise {\n  if self.is_closed() {\n    fail(\"resource is closed\")\n  }\n  let result = action(mbg_resource_token_new_raw(self))\n  ignore(self.is_closed())\n  result\n}\n\n///|\npub fn MbgResource_token::retain(self : MbgResource_token) -> MbgResource_token raise {\n  if self.is_closed() {\n    fail(\"resource is closed\")\n  }\n  mbg_resource_token_new_retain(self)\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "managed_resource"
+    },
+    {
+      "kind": "function",
+      "c_name": "token_retain",
+      "moonbit_name": "token_retain",
+      "source": {
+        "file": "fixture.h",
+        "line": 9
+      },
+      "c_signature": "void (token *)",
+      "moonbit_signature": "///|\npub extern \"C\" fn token_retain(handle : C_token) -> Unit = \"token_retain\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct"
+    },
+    {
+      "kind": "function",
+      "c_name": "token_borrow",
+      "moonbit_name": "token_borrow",
+      "source": {
+        "file": "fixture.h",
+        "line": 10
+      },
+      "c_signature": "token *(token *)",
+      "moonbit_signature": "///|\npub struct MbgView_token_borrow {\n  owner : MbgResource_token\n  raw : C_token\n}\n\n///|\npub extern \"C\" fn token_borrow_raw(raw : C_token) -> C_token = \"token_borrow\"\n\n///|\n#borrow(owner, absent)\nextern \"C\" fn mbg_view_token_borrow(\n  owner : MbgResource_token,\n  absent : FixedArray[Int],\n) -> C_token = \"mbg_view_token_borrow\"\n\n///|\npub fn token_borrow(owner : MbgResource_token) -> MbgView_token_borrow? raise {\n  let absent = FixedArray::make(1, 0)\n  let raw = mbg_view_token_borrow(owner, absent)\n  if absent[0] == 2 {\n    fail(\"resource is closed\")\n  } else if absent[0] == 1 {\n    None\n  } else {\n    Some({ owner, raw, })\n  }\n}\n\n///|\npub fn MbgView_token_borrow::unsafe_raw(self : MbgView_token_borrow) -> C_token raise {\n  if self.owner.is_closed() {\n    fail(\"resource is closed\")\n  }\n  self.raw\n}\n\n///|\npub fn[T] MbgView_token_borrow::with_raw(self : MbgView_token_borrow, action : (C_token) -> T) -> T raise {\n  if self.owner.is_closed() {\n    fail(\"resource is closed\")\n  }\n  let result = action(self.raw)\n  ignore(self.owner.is_closed())\n  result\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "borrowed_resource_view"
+    },
+    {
+      "kind": "function",
+      "c_name": "token_free",
+      "moonbit_name": "token_free",
+      "source": {
+        "file": "fixture.h",
+        "line": 11
+      },
+      "c_signature": "void (token *)",
+      "moonbit_signature": "///|\npub extern \"C\" fn token_free(handle : C_token) -> Unit = \"token_free\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct"
+    },
+    {
+      "kind": "function",
+      "c_name": "token_free_count",
+      "moonbit_name": "token_free_count",
+      "source": {
+        "file": "fixture.h",
+        "line": 12
+      },
+      "c_signature": "int (void)",
+      "moonbit_signature": "///|\npub extern \"C\" fn token_free_count() -> Int = \"token_free_count\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct"
+    },
+    {
+      "kind": "function",
+      "c_name": "token_release_count",
+      "moonbit_name": "token_release_count",
+      "source": {
+        "file": "fixture.h",
+        "line": 13
+      },
+      "c_signature": "int (void)",
+      "moonbit_signature": "///|\npub extern \"C\" fn token_release_count() -> Int = \"token_release_count\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct"
+    }
+  ],
+  "functions": [
+    {
+      "kind": "function",
+      "c_name": "make_pair",
+      "moonbit_name": "make_pair",
+      "source": {
+        "file": "fixture.h",
+        "line": 6
+      },
+      "c_signature": "int (int, int *, long *, token **)",
+      "moonbit_signature": "///|\ntype MbgRaw_make_pair\n\n///|\npub(all) struct MbgResult_make_pair {\n  status : Int\n  left : Int\n  right : Int64\n  handle : C_token\n}\n\n///|\nextern \"C\" fn mbg_bridge_make_pair(\n  arg0 : Int,\n) -> MbgRaw_make_pair = \"mbg_bridge_make_pair\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_bridge_make_pair_error(\n  raw : MbgRaw_make_pair,\n) -> Int = \"mbg_bridge_make_pair_error\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_bridge_make_pair_status(\n  raw : MbgRaw_make_pair,\n) -> Int = \"mbg_bridge_make_pair_status\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_bridge_make_pair_out1(\n  raw : MbgRaw_make_pair,\n) -> Int = \"mbg_bridge_make_pair_out1\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_bridge_make_pair_out2(\n  raw : MbgRaw_make_pair,\n) -> Int64 = \"mbg_bridge_make_pair_out2\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_bridge_make_pair_out3(\n  raw : MbgRaw_make_pair,\n) -> C_token = \"mbg_bridge_make_pair_out3\"\n\n///|\npub fn make_pair(arg0 : Int) -> MbgResult_make_pair raise {\n  let raw = mbg_bridge_make_pair(arg0)\n  if mbg_bridge_make_pair_error(raw) != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  {\n    status: mbg_bridge_make_pair_status(raw),\n    left: mbg_bridge_make_pair_out1(raw),\n    right: mbg_bridge_make_pair_out2(raw),\n    handle: mbg_bridge_make_pair_out3(raw),\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "multi_output"
+    },
+    {
+      "kind": "function",
+      "c_name": "token_value",
+      "moonbit_name": "token_value",
+      "source": {
+        "file": "fixture.h",
+        "line": 7
+      },
+      "c_signature": "int (token *)",
+      "moonbit_signature": "///|\npub extern \"C\" fn token_value(handle : C_token) -> Int = \"token_value\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct"
+    },
+    {
+      "kind": "function",
+      "c_name": "token_new",
+      "moonbit_name": "token_new",
+      "source": {
+        "file": "fixture.h",
+        "line": 8
+      },
+      "c_signature": "token *(int)",
+      "moonbit_signature": "///|\npub type MbgResource_token\n\n///|\npub extern \"C\" fn token_new_raw(arg0 : Int) -> C_token = \"token_new\"\n\n///|\nextern \"C\" fn mbg_resource_token_new(\n  arg0 : Int,\n) -> MbgResource_token = \"mbg_resource_token_new\"\n\n///|\n#borrow(state)\nextern \"C\" fn mbg_resource_token_new_error(\n  state : MbgResource_token,\n) -> Int = \"mbg_resource_token_new_error\"\n\n///|\n#borrow(state)\nextern \"C\" fn mbg_resource_token_new_valid(\n  state : MbgResource_token,\n) -> Bool = \"mbg_resource_token_new_valid\"\n\n///|\n#borrow(state)\nextern \"C\" fn mbg_resource_token_new_close(\n  state : MbgResource_token,\n) -> Bool = \"mbg_resource_token_new_close\"\n\n///|\n#borrow(state)\nextern \"C\" fn mbg_resource_token_new_raw(\n  state : MbgResource_token,\n) -> C_token = \"mbg_resource_token_new_raw\"\n\n///|\n#borrow(state)\nextern \"C\" fn mbg_resource_token_new_retain(\n  state : MbgResource_token,\n) -> MbgResource_token = \"mbg_resource_token_new_retain\"\n\n///|\npub fn token_new(arg0 : Int) -> MbgResource_token? raise {\n  let state = mbg_resource_token_new(arg0)\n  if mbg_resource_token_new_error(state) != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  if mbg_resource_token_new_valid(state) { Some(state) } else { None }\n}\n\n///|\npub fn MbgResource_token::close(self : MbgResource_token) -> Bool {\n  mbg_resource_token_new_close(self)\n}\n\n///|\npub fn MbgResource_token::is_closed(self : MbgResource_token) -> Bool {\n  !mbg_resource_token_new_valid(self)\n}\n\n///|\npub fn MbgResource_token::unsafe_raw(self : MbgResource_token) -> C_token raise {\n  if self.is_closed() {\n    fail(\"resource is closed\")\n  }\n  mbg_resource_token_new_raw(self)\n}\n\n///|\npub fn[T] MbgResource_token::with_raw(self : MbgResource_token, action : (C_token) -> T) -> T raise {\n  if self.is_closed() {\n    fail(\"resource is closed\")\n  }\n  let result = action(mbg_resource_token_new_raw(self))\n  ignore(self.is_closed())\n  result\n}\n\n///|\npub fn MbgResource_token::retain(self : MbgResource_token) -> MbgResource_token raise {\n  if self.is_closed() {\n    fail(\"resource is closed\")\n  }\n  mbg_resource_token_new_retain(self)\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "managed_resource"
+    },
+    {
+      "kind": "function",
+      "c_name": "token_retain",
+      "moonbit_name": "token_retain",
+      "source": {
+        "file": "fixture.h",
+        "line": 9
+      },
+      "c_signature": "void (token *)",
+      "moonbit_signature": "///|\npub extern \"C\" fn token_retain(handle : C_token) -> Unit = \"token_retain\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct"
+    },
+    {
+      "kind": "function",
+      "c_name": "token_borrow",
+      "moonbit_name": "token_borrow",
+      "source": {
+        "file": "fixture.h",
+        "line": 10
+      },
+      "c_signature": "token *(token *)",
+      "moonbit_signature": "///|\npub struct MbgView_token_borrow {\n  owner : MbgResource_token\n  raw : C_token\n}\n\n///|\npub extern \"C\" fn token_borrow_raw(raw : C_token) -> C_token = \"token_borrow\"\n\n///|\n#borrow(owner, absent)\nextern \"C\" fn mbg_view_token_borrow(\n  owner : MbgResource_token,\n  absent : FixedArray[Int],\n) -> C_token = \"mbg_view_token_borrow\"\n\n///|\npub fn token_borrow(owner : MbgResource_token) -> MbgView_token_borrow? raise {\n  let absent = FixedArray::make(1, 0)\n  let raw = mbg_view_token_borrow(owner, absent)\n  if absent[0] == 2 {\n    fail(\"resource is closed\")\n  } else if absent[0] == 1 {\n    None\n  } else {\n    Some({ owner, raw, })\n  }\n}\n\n///|\npub fn MbgView_token_borrow::unsafe_raw(self : MbgView_token_borrow) -> C_token raise {\n  if self.owner.is_closed() {\n    fail(\"resource is closed\")\n  }\n  self.raw\n}\n\n///|\npub fn[T] MbgView_token_borrow::with_raw(self : MbgView_token_borrow, action : (C_token) -> T) -> T raise {\n  if self.owner.is_closed() {\n    fail(\"resource is closed\")\n  }\n  let result = action(self.raw)\n  ignore(self.owner.is_closed())\n  result\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "borrowed_resource_view"
+    },
+    {
+      "kind": "function",
+      "c_name": "token_free",
+      "moonbit_name": "token_free",
+      "source": {
+        "file": "fixture.h",
+        "line": 11
+      },
+      "c_signature": "void (token *)",
+      "moonbit_signature": "///|\npub extern \"C\" fn token_free(handle : C_token) -> Unit = \"token_free\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct"
+    },
+    {
+      "kind": "function",
+      "c_name": "token_free_count",
+      "moonbit_name": "token_free_count",
+      "source": {
+        "file": "fixture.h",
+        "line": 12
+      },
+      "c_signature": "int (void)",
+      "moonbit_signature": "///|\npub extern \"C\" fn token_free_count() -> Int = \"token_free_count\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct"
+    },
+    {
+      "kind": "function",
+      "c_name": "token_release_count",
+      "moonbit_name": "token_release_count",
+      "source": {
+        "file": "fixture.h",
+        "line": 13
+      },
+      "c_signature": "int (void)",
+      "moonbit_signature": "///|\npub extern \"C\" fn token_release_count() -> Int = \"token_release_count\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct"
+    }
+  ],
+  "enums": [],
+  "config_schema": "moonbindgen-config-v2",
+  "has_shim": true
+}

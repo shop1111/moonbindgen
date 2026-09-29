@@ -133,9 +133,11 @@ jobs:
           python3 scripts/run-asan.py --repo-root . --no-disable-mimalloc \
             --pkg examples/native_fixture/moon.pkg \
             --pkg examples/buffer_fixture/moon.pkg \
+            --pkg examples/multi_fixture/moon.pkg \
             --pkg examples/sqlite/moon.pkg \
             --run examples/native_fixture \
             --run examples/buffer_fixture \
+            --run examples/multi_fixture \
             --run examples/sqlite
 
       - name: Verify generated interfaces and package

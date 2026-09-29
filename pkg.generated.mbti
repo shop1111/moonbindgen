@@ -50,6 +50,8 @@ pub struct GenerateConfig {
   unsupported_policy : UnsupportedPolicy
   buffers : Array[BufferPolicy]
   return_buffers : Array[ReturnBufferPolicy]
+  multi_outputs : Array[MultiOutputPolicy]
+  resources : Array[ResourcePolicy]
 }
 pub fn GenerateConfig::default() -> Self
 
@@ -59,6 +61,24 @@ pub struct GenerateResult {
   shim : String?
   generated : Int
   skipped : Int
+}
+
+pub struct MultiOutputPolicy {
+  function_name : String
+  outputs : Array[NamedOutput]
+}
+
+pub struct NamedOutput {
+  index : Int
+  name : String
+}
+
+pub struct ResourcePolicy {
+  name : String
+  create : String
+  release : String
+  retain : String
+  views : Array[String]
 }
 
 pub struct ReturnBufferPolicy {

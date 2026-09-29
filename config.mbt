@@ -35,6 +35,8 @@ pub struct GenerateConfig {
   unsupported_policy : UnsupportedPolicy
   buffers : Array[BufferPolicy]
   return_buffers : Array[ReturnBufferPolicy]
+  multi_outputs : Array[MultiOutputPolicy]
+  resources : Array[ResourcePolicy]
 }
 
 ///|
@@ -57,6 +59,30 @@ pub struct ReturnBufferPolicy {
   length_args : Array[Int]
   null_function : String
   null_symbol : String
+}
+
+///|
+/// A named C output argument, addressed by zero-based parameter position.
+pub struct NamedOutput {
+  index : Int
+  name : String
+}
+
+///|
+/// A config-v2 result assembled from multiple explicit C output arguments.
+pub struct MultiOutputPolicy {
+  function_name : String
+  outputs : Array[NamedOutput]
+}
+
+///|
+/// A managed opaque handle with a void release function and optional retain.
+pub struct ResourcePolicy {
+  name : String
+  create : String
+  release : String
+  retain : String
+  views : Array[String]
 }
 
 ///|
@@ -92,6 +118,8 @@ pub fn GenerateConfig::default() -> GenerateConfig {
     unsupported_policy: Report,
     buffers: [],
     return_buffers: [],
+    multi_outputs: [],
+    resources: [],
   }
 }
 
@@ -363,6 +391,141 @@ fn parse_return_buffers(
 }
 
 ///|
+fn parse_multi_outputs(
+  json : Json,
+) -> Array[MultiOutputPolicy] raise ConfigError {
+  let result : Array[MultiOutputPolicy] = []
+  let values = match field(json, "multi_outputs") {
+    None => return result
+    Some(Array(items)) => items
+    _ => {
+      invalid_config("multi_outputs must be an array")
+      return result
+    }
+  }
+  for item in values {
+    guard item is Object(fields) else {
+      invalid_config("multi_outputs entries must be objects")
+      continue
+    }
+    for key, _ in fields {
+      if key != "function" && key != "outputs" {
+        invalid_config("unknown multi-output field: " + key)
+      }
+    }
+    let function_name = required_string(item, "function")
+    let outputs : Array[NamedOutput] = []
+    match field(item, "outputs") {
+      Some(Array(entries)) =>
+        for entry in entries {
+          guard entry is Object(output_fields) else {
+            invalid_config("multi-output fields must be objects")
+            continue
+          }
+          for key, _ in output_fields {
+            if key != "index" && key != "name" {
+              invalid_config("unknown named output field: " + key)
+            }
+          }
+          let index = required_index(entry, "index")
+          let name = required_string(entry, "name")
+          if !valid_c_identifier(name) ||
+            moonbit_value_name(name) != name ||
+            name == "status" {
+            invalid_config("invalid named output field: " + name)
+          }
+          for previous in outputs {
+            if previous.index == index || previous.name == name {
+              invalid_config("duplicate named output: " + function_name)
+            }
+          }
+          outputs.push({ index, name, })
+        }
+      _ => invalid_config("outputs must be an array: " + function_name)
+    }
+    if outputs.length() < 2 {
+      invalid_config(
+        "multi_outputs requires at least two fields: " + function_name,
+      )
+    }
+    for previous in result {
+      if previous.function_name == function_name {
+        invalid_config("duplicate multi-output function: " + function_name)
+      }
+    }
+    result.push({ function_name, outputs, })
+  }
+  result
+}
+
+///|
+fn parse_resources(json : Json) -> Array[ResourcePolicy] raise ConfigError {
+  let result : Array[ResourcePolicy] = []
+  let values = match field(json, "resources") {
+    None => return result
+    Some(Array(items)) => items
+    _ => {
+      invalid_config("resources must be an array")
+      return result
+    }
+  }
+  for item in values {
+    guard item is Object(fields) else {
+      invalid_config("resources entries must be objects")
+      continue
+    }
+    for key, _ in fields {
+      match key {
+        "name" | "create" | "release" | "retain" | "views" => ()
+        _ => invalid_config("unknown resource field: " + key)
+      }
+    }
+    let name = required_string(item, "name")
+    let create = required_string(item, "create")
+    let release = required_string(item, "release")
+    let retain = optional_string(item, "retain")
+    if !valid_c_identifier(name) ||
+      moonbit_value_name(name) != name ||
+      !valid_c_identifier(create) ||
+      !valid_c_identifier(release) ||
+      (retain != "" && !valid_c_identifier(retain)) {
+      invalid_config("invalid resource identifier: " + name)
+    }
+    let views : Array[String] = []
+    match field(item, "views") {
+      None => ()
+      Some(Array(items)) =>
+        for view in items {
+          match view {
+            String(value) if valid_c_identifier(value) => {
+              if views.contains(value) || value == create {
+                invalid_config("duplicate resource view: " + value)
+              }
+              views.push(value)
+            }
+            _ => invalid_config("views must contain C function names")
+          }
+        }
+      _ => invalid_config("views must be an array")
+    }
+    for previous in result {
+      if previous.name == name || previous.create == create {
+        invalid_config("duplicate resource name or create function: " + name)
+      }
+      for view in views {
+        if previous.views.contains(view) ||
+          previous.create == view ||
+          create == view {
+          invalid_config("resource view conflicts with another policy: " + view)
+        }
+      }
+    }
+    result.push({ name, create, release, retain, views, })
+  }
+  result
+}
+
+///|
 /// Parses and validates a `moonbindgen-config-v1` JSON document.
 ///
 /// Unknown fields, unsafe type overrides, and schema mismatches raise
@@ -392,7 +555,9 @@ pub fn parse_config(text : String) -> GenerateConfig raise ConfigError {
       | "utf8_owned_returns"
       | "unsupported_policy"
       | "buffers"
-      | "return_buffers" => ()
+      | "return_buffers"
+      | "multi_outputs"
+      | "resources" => ()
       _ => invalid_config("unknown configuration field: " + key)
     }
   }
@@ -409,9 +574,11 @@ pub fn parse_config(text : String) -> GenerateConfig raise ConfigError {
   if schema_version == 1 &&
     (
       field(json, "buffers") is Some(_) ||
-      field(json, "return_buffers") is Some(_)
+      field(json, "return_buffers") is Some(_) ||
+      field(json, "multi_outputs") is Some(_) ||
+      field(json, "resources") is Some(_)
     ) {
-    invalid_config("buffer policies require moonbindgen-config-v2")
+    invalid_config("positional policies require moonbindgen-config-v2")
   }
   let unsupported_policy = match text_field(json, "unsupported_policy") {
     None | Some("report") => Report
@@ -465,6 +632,8 @@ pub fn parse_config(text : String) -> GenerateConfig raise ConfigError {
     unsupported_policy,
     buffers: parse_buffers(json),
     return_buffers: parse_return_buffers(json),
+    multi_outputs: parse_multi_outputs(json),
+    resources: parse_resources(json),
   }
 }
 
@@ -542,6 +711,16 @@ fn GenerateConfig::has_bridge(self : GenerateConfig, name : String) -> Bool {
       return true
     }
   }
+  for policy in self.multi_outputs {
+    if policy.function_name == name {
+      return true
+    }
+  }
+  for policy in self.resources {
+    if policy.create == name || policy.views.contains(name) {
+      return true
+    }
+  }
   false
 }
 
@@ -565,6 +744,45 @@ fn GenerateConfig::return_buffer_for(
 ) -> ReturnBufferPolicy? {
   for policy in self.return_buffers {
     if policy.function_name == name {
+      return Some(policy)
+    }
+  }
+  None
+}
+
+///|
+fn GenerateConfig::multi_output_for(
+  self : GenerateConfig,
+  name : String,
+) -> MultiOutputPolicy? {
+  for policy in self.multi_outputs {
+    if policy.function_name == name {
+      return Some(policy)
+    }
+  }
+  None
+}
+
+///|
+fn GenerateConfig::resource_create_for(
+  self : GenerateConfig,
+  name : String,
+) -> ResourcePolicy? {
+  for policy in self.resources {
+    if policy.create == name {
+      return Some(policy)
+    }
+  }
+  None
+}
+
+///|
+fn GenerateConfig::resource_view_for(
+  self : GenerateConfig,
+  name : String,
+) -> ResourcePolicy? {
+  for policy in self.resources {
+    if policy.views.contains(name) {
       return Some(policy)
     }
   }
