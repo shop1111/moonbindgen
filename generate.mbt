@@ -81,6 +81,7 @@ fn report_item(
   reason : String,
   bridge? : Bool = false,
   policy? : String = "",
+  abi? : String = "",
 ) -> Json {
   let fields : Map[String, Json] = {
     "kind": Json::string(kind),
@@ -101,6 +102,9 @@ fn report_item(
   }
   if policy != "" {
     fields["policy"] = Json::string(policy)
+  }
+  if abi != "" {
+    fields["abi_decision"] = Json::string(abi)
   }
   Json::object(fields)
 }
@@ -278,6 +282,8 @@ pub fn generate_with_metadata(
       _ => ()
     }
   }
+  let records = value_records(nodes, aliases, enums)
+  let value_used : Map[String, Bool] = Map([])
   let function_lines : Array[String] = []
   let shim_lines : Array[String] = []
   let items : Array[Json] = []
@@ -366,9 +372,12 @@ pub fn generate_with_metadata(
       config,
       function.name,
     )
+    let value_record = uses_v2_value_record(function, config, aliases, records)
     let bridged = config.has_bridge(function.name) && !manual_resource
     let generation_policy = if manual_resource {
       "manual_resource"
+    } else if value_record {
+      "value_struct"
     } else if config.resource_create_for(function.name) is Some(_) {
       "managed_resource"
     } else if config.resource_view_for(function.name) is Some(_) {
@@ -395,6 +404,10 @@ pub fn generate_with_metadata(
         function, aliases, opaque_types, enums, config,
       )
       (code, None, reason)
+    } else if value_record {
+      render_v2_value_function(
+        function, aliases, opaque_types, enums, records, config, value_used,
+      )
     } else if config.resource_create_for(function.name) is Some(_) {
       render_v2_resource_create(function, aliases, opaque_types, enums, config)
     } else if config.resource_view_for(function.name) is Some(_) {
@@ -445,6 +458,17 @@ pub fn generate_with_metadata(
             } else {
               ""
             },
+            abi=if config.schema_version == 2 {
+              if value_record {
+                "compiled_field_bridge"
+              } else if shim_code is Some(_) {
+                "compiled_c_bridge"
+              } else {
+                "direct_verified"
+              }
+            } else {
+              ""
+            },
           ),
         )
       }
@@ -461,6 +485,7 @@ pub fn generate_with_metadata(
             "",
             "skipped",
             reason,
+            abi=if config.schema_version == 2 { "unsupported" } else { "" },
           ),
         )
       }
@@ -485,6 +510,22 @@ pub fn generate_with_metadata(
   }
   for line in enum_lines {
     declarations.push(line)
+  }
+  let emitted_records : Map[String, Bool] = Map([])
+  for entry in nodes {
+    if text_field(entry.node, "kind") == Some("RecordDecl") {
+      match text_field(entry.node, "name") {
+        Some(name) if value_used.contains(name) &&
+          !emitted_records.contains(name) => {
+          emitted_records[name] = true
+          match records.get(name) {
+            Some(record) => declarations.push(value_record_decl(record))
+            None => ()
+          }
+        }
+        _ => ()
+      }
+    }
   }
   declarations.push(function_text)
   if config.unsupported_policy == Error && unsupported > 0 {

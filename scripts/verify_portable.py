@@ -67,6 +67,13 @@ def main() -> None:
         "Multi-output and resource fixture => named fields, close once, retain"
     )
     generate(
+        "examples/value_fixture/fixture.h", "examples/value_fixture",
+        "examples/value_fixture/config.json", args.clang,
+    )
+    assert run("moon", "run", "-q", "examples/value_fixture") == (
+        "Value struct fixture => by-value arguments and return"
+    )
+    generate(
         "examples/sqlite/sqlite3.h", "examples/sqlite",
         "examples/sqlite/config.json", args.clang,
     )

@@ -30,7 +30,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "multi_output"
+      "policy": "multi_output",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -45,7 +46,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -61,7 +63,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "managed_resource"
+      "policy": "managed_resource",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -76,7 +79,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -92,7 +96,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "borrowed_resource_view"
+      "policy": "borrowed_resource_view",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -107,7 +112,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -122,7 +128,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -137,7 +144,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     }
   ],
   "functions": [
@@ -155,7 +163,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "multi_output"
+      "policy": "multi_output",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -170,7 +179,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -186,7 +196,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "managed_resource"
+      "policy": "managed_resource",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -201,7 +212,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -217,7 +229,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "borrowed_resource_view"
+      "policy": "borrowed_resource_view",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -232,7 +245,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -247,7 +261,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -262,7 +277,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     }
   ],
   "enums": [],
