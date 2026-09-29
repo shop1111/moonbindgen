@@ -114,7 +114,7 @@ jobs:
             https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.1/LLVM-23.1.1-Linux-X64.tar.xz
           mkdir -p "$RUNNER_TEMP/llvm"
           tar -xJf "$RUNNER_TEMP/llvm.tar.xz" -C "$RUNNER_TEMP/llvm"
-          clang_path=$(find "$RUNNER_TEMP/llvm" -name clang -print -quit)
+          clang_path=$(find "$RUNNER_TEMP/llvm" -type f -path '*/bin/clang' -print -quit)
           test -n "$clang_path"
           echo "$(dirname "$clang_path")" >> "$GITHUB_PATH"
           echo "CLANG_PATH=$clang_path" >> "$GITHUB_ENV"
