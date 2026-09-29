@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.5.0 - pending verification
+## 0.5.0 - 2026-09-29
 
 - Lower complete C value structs with scalar fields through generated C field bridges for by-value arguments and results. Target compilation checks direct scalar field widths; padding and alignment stay entirely on the C side.
 - Follow typedef chains to supported structs, reject bit-fields and flexible or fixed arrays with auditable reasons, and record the v2 ABI decision without changing v1 report fields.

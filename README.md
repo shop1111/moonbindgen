@@ -62,7 +62,7 @@ let result = @bindgen.generate_with_config(clang_ast_json, "library.h", config)
 println(result.bindings)
 ```
 
-Windows users can also download `moonbindgen-v0.5.0-windows-x86_64.zip` from the GitHub Release after the v0.5.0 gates pass, extract `moonbindgen.exe`, and keep Clang 23 available separately. The executable is not a general C/C++ compiler bundle.
+Windows users can also download `moonbindgen-v0.5.0-windows-x86_64.zip` from the GitHub Release, extract `moonbindgen.exe`, and keep Clang 23 available separately. The executable is not a general C/C++ compiler bundle.
 
 ## CLI quick start
 
