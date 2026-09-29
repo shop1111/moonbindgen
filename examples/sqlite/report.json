@@ -33,7 +33,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "configured_bridge"
+      "policy": "configured_bridge",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -47,7 +48,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -62,7 +64,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -76,7 +79,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -90,7 +94,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -105,7 +110,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -120,7 +126,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -135,7 +142,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -149,7 +157,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -164,7 +173,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -179,7 +189,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -194,7 +205,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -209,7 +221,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -223,7 +236,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -237,7 +251,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -252,7 +267,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -267,7 +283,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -282,7 +299,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -297,7 +315,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -312,7 +331,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -327,7 +347,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -342,7 +363,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -357,7 +379,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -372,7 +395,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -386,7 +410,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -400,7 +425,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -414,7 +440,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: int (*)(void *, int)"
+      "reason": "unsupported parameter type: int (*)(void *, int)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -429,7 +456,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -444,7 +472,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -458,7 +487,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -472,7 +502,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: char **"
+      "reason": "unsupported parameter type: char **",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -486,7 +517,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -500,7 +532,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: char *"
+      "reason": "unsupported return type: char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -514,7 +547,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -528,7 +562,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: char *"
+      "reason": "unsupported return type: char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -542,7 +577,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -556,7 +592,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -570,7 +607,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -584,7 +622,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -598,7 +637,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -612,7 +652,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -627,7 +668,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -642,7 +684,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -656,7 +699,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -670,7 +714,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: int (*)(void *, int, const char *, const char *, const char *, const char *)"
+      "reason": "unsupported parameter type: int (*)(void *, int, const char *, const char *, const char *, const char *)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -684,7 +729,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -698,7 +744,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -712,7 +759,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: int (*)(unsigned int, void *, void *, void *)"
+      "reason": "unsupported parameter type: int (*)(unsigned int, void *, void *, void *)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -726,7 +774,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: int (*)(void *)"
+      "reason": "unsupported parameter type: int (*)(void *)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -742,7 +791,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "configured_bridge"
+      "policy": "configured_bridge",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -756,7 +806,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -770,7 +821,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -784,7 +836,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -798,7 +851,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_filename"
+      "reason": "unsupported parameter type: sqlite3_filename",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -812,7 +866,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_filename"
+      "reason": "unsupported parameter type: sqlite3_filename",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -826,7 +881,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -840,7 +896,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -854,7 +911,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -868,7 +926,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -882,7 +941,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -896,7 +956,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: sqlite3_filename"
+      "reason": "unsupported return type: sqlite3_filename",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -910,7 +971,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_filename"
+      "reason": "unsupported parameter type: sqlite3_filename",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -925,7 +987,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -940,7 +1003,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -954,7 +1018,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -968,7 +1033,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -982,7 +1048,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -997,7 +1064,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1011,7 +1079,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1026,7 +1095,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1040,7 +1110,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1056,7 +1127,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "configured_bridge"
+      "policy": "configured_bridge",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -1070,7 +1142,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1084,7 +1157,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1098,7 +1172,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1112,7 +1187,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1126,7 +1202,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1140,7 +1217,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: char *"
+      "reason": "unsupported return type: char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1155,7 +1233,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1170,7 +1249,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1185,7 +1265,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1200,7 +1281,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1216,7 +1298,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "input_buffer"
+      "policy": "input_buffer",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -1230,7 +1313,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1245,7 +1329,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1260,7 +1345,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1275,7 +1361,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1290,7 +1377,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1304,7 +1392,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1318,7 +1407,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1332,7 +1422,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1347,7 +1438,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1361,7 +1453,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1376,7 +1469,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1391,7 +1485,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1406,7 +1501,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1420,7 +1516,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1434,7 +1531,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1449,7 +1547,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1464,7 +1563,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1478,7 +1578,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1492,7 +1593,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1506,7 +1608,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1520,7 +1623,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1534,7 +1638,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1548,7 +1653,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1562,7 +1668,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1576,7 +1683,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1590,7 +1698,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1604,7 +1713,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1619,7 +1729,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1634,7 +1745,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1650,7 +1762,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "borrowed_return_buffer"
+      "policy": "borrowed_return_buffer",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -1665,7 +1778,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1680,7 +1794,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1695,7 +1810,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1709,7 +1825,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const unsigned char *"
+      "reason": "unsupported return type: const unsigned char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1723,7 +1840,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1738,7 +1856,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1753,7 +1872,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1768,7 +1888,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1783,7 +1904,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1798,7 +1920,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1813,7 +1936,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1827,7 +1951,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1841,7 +1966,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1855,7 +1981,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1869,7 +1996,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1884,7 +2012,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1899,7 +2028,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1914,7 +2044,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1929,7 +2060,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1944,7 +2076,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -1958,7 +2091,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void (*)(void *, sqlite3_int64, int)"
+      "reason": "unsupported parameter type: void (*)(void *, sqlite3_int64, int)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1972,7 +2106,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -1987,7 +2122,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2002,7 +2138,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2017,7 +2154,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2031,7 +2169,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2045,7 +2184,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const unsigned char *"
+      "reason": "unsupported return type: const unsigned char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2059,7 +2199,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2073,7 +2214,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2087,7 +2229,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2102,7 +2245,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2117,7 +2261,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2132,7 +2277,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2147,7 +2293,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2162,7 +2309,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2177,7 +2325,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2192,7 +2341,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2207,7 +2357,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2222,7 +2373,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2237,7 +2389,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2251,7 +2404,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2265,7 +2419,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2280,7 +2435,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2294,7 +2450,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2308,7 +2465,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2322,7 +2480,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2336,7 +2495,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2350,7 +2510,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2364,7 +2525,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2379,7 +2541,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2393,7 +2556,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2407,7 +2571,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2422,7 +2587,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2437,7 +2603,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2452,7 +2619,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2467,7 +2635,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2482,7 +2651,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2497,7 +2667,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2511,7 +2682,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2525,7 +2697,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2539,7 +2712,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2553,7 +2727,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2567,7 +2742,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2582,7 +2758,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2596,7 +2773,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2611,7 +2789,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2626,7 +2805,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2641,7 +2821,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2655,7 +2836,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2669,7 +2851,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2683,7 +2866,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2697,7 +2881,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2711,7 +2896,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2726,7 +2912,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2740,7 +2927,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2754,7 +2942,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2768,7 +2957,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2783,7 +2973,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2798,7 +2989,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2812,7 +3004,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2826,7 +3019,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: sqlite3_filename"
+      "reason": "unsupported return type: sqlite3_filename",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2840,7 +3034,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2854,7 +3049,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2869,7 +3065,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2883,7 +3080,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2897,7 +3095,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2911,7 +3110,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: unsigned int (*)(void *, const char *, unsigned int, unsigned int, unsigned int)"
+      "reason": "unsupported parameter type: unsigned int (*)(void *, const char *, unsigned int, unsigned int, unsigned int)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2925,7 +3125,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -2940,7 +3141,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2955,7 +3157,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2970,7 +3173,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -2985,7 +3189,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3000,7 +3205,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3015,7 +3221,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3029,7 +3236,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3043,7 +3251,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3058,7 +3267,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3072,7 +3282,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void (*)(void)"
+      "reason": "unsupported parameter type: void (*)(void)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3086,7 +3297,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void (*)(void)"
+      "reason": "unsupported parameter type: void (*)(void)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3101,7 +3313,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3115,7 +3328,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3129,7 +3343,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3143,7 +3358,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char **"
+      "reason": "unsupported parameter type: const char **",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3157,7 +3373,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3171,7 +3388,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3185,7 +3403,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3200,7 +3419,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3215,7 +3435,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3230,7 +3451,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3244,7 +3466,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3258,7 +3481,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3272,7 +3496,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3287,7 +3512,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3302,7 +3528,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3317,7 +3544,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3332,7 +3560,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3347,7 +3576,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3362,7 +3592,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3377,7 +3608,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3392,7 +3624,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3407,7 +3640,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3422,7 +3656,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3436,7 +3671,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3450,7 +3686,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3465,7 +3702,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3479,7 +3717,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char **"
+      "reason": "unsupported parameter type: const char **",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3493,7 +3732,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3508,7 +3748,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3522,7 +3763,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: char *"
+      "reason": "unsupported return type: char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3537,7 +3779,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3551,7 +3794,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3565,7 +3809,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3579,7 +3824,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3593,7 +3839,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3608,7 +3855,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3623,7 +3871,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3638,7 +3887,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3653,7 +3903,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3668,7 +3919,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3682,7 +3934,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: char *"
+      "reason": "unsupported return type: char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3696,7 +3949,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: int *"
+      "reason": "unsupported parameter type: int *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3710,7 +3964,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_int64 *"
+      "reason": "unsupported parameter type: sqlite3_int64 *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3724,7 +3979,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: int *"
+      "reason": "unsupported parameter type: int *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3738,7 +3994,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_int64 *"
+      "reason": "unsupported parameter type: sqlite3_int64 *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3753,7 +4010,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3767,7 +4025,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3782,7 +4041,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3797,7 +4057,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3812,7 +4073,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3827,7 +4089,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3841,7 +4104,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void (*)(void **, int)"
+      "reason": "unsupported parameter type: void (*)(void **, int)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3855,7 +4119,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3869,7 +4134,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3883,7 +4149,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3897,7 +4164,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3911,7 +4179,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3925,7 +4194,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3940,7 +4210,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -3954,7 +4225,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3968,7 +4240,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3982,7 +4255,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -3997,7 +4271,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4012,7 +4287,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4026,7 +4302,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4041,7 +4318,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4056,7 +4334,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4070,7 +4349,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_value **"
+      "reason": "unsupported parameter type: sqlite3_value **",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4084,7 +4364,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_value **"
+      "reason": "unsupported parameter type: sqlite3_value **",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4098,7 +4379,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_value **"
+      "reason": "unsupported parameter type: sqlite3_value **",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4112,7 +4394,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4126,7 +4409,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4141,7 +4425,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4156,7 +4441,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4171,7 +4457,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4185,7 +4472,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4199,7 +4487,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4214,7 +4503,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4229,7 +4519,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4243,7 +4534,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4257,7 +4549,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: unsigned char *"
+      "reason": "unsupported return type: unsigned char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4271,7 +4564,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4285,7 +4579,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4299,7 +4594,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4313,7 +4609,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4327,7 +4624,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     }
   ],
   "functions": [
@@ -4345,7 +4643,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "configured_bridge"
+      "policy": "configured_bridge",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -4359,7 +4658,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4374,7 +4674,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4388,7 +4689,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4402,7 +4704,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4417,7 +4720,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4432,7 +4736,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4447,7 +4752,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4461,7 +4767,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4476,7 +4783,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4491,7 +4799,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4506,7 +4815,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4521,7 +4831,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4535,7 +4846,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4549,7 +4861,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4564,7 +4877,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4579,7 +4893,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4594,7 +4909,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4609,7 +4925,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4624,7 +4941,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4639,7 +4957,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4654,7 +4973,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4669,7 +4989,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4684,7 +5005,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4698,7 +5020,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4712,7 +5035,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4726,7 +5050,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: int (*)(void *, int)"
+      "reason": "unsupported parameter type: int (*)(void *, int)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4741,7 +5066,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4756,7 +5082,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4770,7 +5097,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4784,7 +5112,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: char **"
+      "reason": "unsupported parameter type: char **",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4798,7 +5127,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4812,7 +5142,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: char *"
+      "reason": "unsupported return type: char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4826,7 +5157,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4840,7 +5172,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: char *"
+      "reason": "unsupported return type: char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4854,7 +5187,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4868,7 +5202,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4882,7 +5217,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4896,7 +5232,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4910,7 +5247,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4924,7 +5262,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4939,7 +5278,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4954,7 +5294,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -4968,7 +5309,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4982,7 +5324,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: int (*)(void *, int, const char *, const char *, const char *, const char *)"
+      "reason": "unsupported parameter type: int (*)(void *, int, const char *, const char *, const char *, const char *)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -4996,7 +5339,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5010,7 +5354,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5024,7 +5369,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: int (*)(unsigned int, void *, void *, void *)"
+      "reason": "unsupported parameter type: int (*)(unsigned int, void *, void *, void *)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5038,7 +5384,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: int (*)(void *)"
+      "reason": "unsupported parameter type: int (*)(void *)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5054,7 +5401,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "configured_bridge"
+      "policy": "configured_bridge",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -5068,7 +5416,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5082,7 +5431,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5096,7 +5446,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5110,7 +5461,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_filename"
+      "reason": "unsupported parameter type: sqlite3_filename",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5124,7 +5476,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_filename"
+      "reason": "unsupported parameter type: sqlite3_filename",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5138,7 +5491,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5152,7 +5506,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5166,7 +5521,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5180,7 +5536,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5194,7 +5551,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5208,7 +5566,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: sqlite3_filename"
+      "reason": "unsupported return type: sqlite3_filename",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5222,7 +5581,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_filename"
+      "reason": "unsupported parameter type: sqlite3_filename",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5237,7 +5597,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5252,7 +5613,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5266,7 +5628,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5280,7 +5643,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5294,7 +5658,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5309,7 +5674,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5323,7 +5689,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5338,7 +5705,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5352,7 +5720,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5368,7 +5737,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "configured_bridge"
+      "policy": "configured_bridge",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -5382,7 +5752,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5396,7 +5767,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5410,7 +5782,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5424,7 +5797,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5438,7 +5812,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5452,7 +5827,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: char *"
+      "reason": "unsupported return type: char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5467,7 +5843,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5482,7 +5859,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5497,7 +5875,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5512,7 +5891,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5528,7 +5908,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "input_buffer"
+      "policy": "input_buffer",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -5542,7 +5923,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5557,7 +5939,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5572,7 +5955,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5587,7 +5971,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5602,7 +5987,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5616,7 +6002,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5630,7 +6017,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5644,7 +6032,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5659,7 +6048,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5673,7 +6063,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5688,7 +6079,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5703,7 +6095,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5718,7 +6111,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5732,7 +6126,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5746,7 +6141,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5761,7 +6157,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5776,7 +6173,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5790,7 +6188,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5804,7 +6203,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5818,7 +6218,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5832,7 +6233,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5846,7 +6248,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5860,7 +6263,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5874,7 +6278,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5888,7 +6293,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5902,7 +6308,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5916,7 +6323,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -5931,7 +6339,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5946,7 +6355,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5962,7 +6372,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "borrowed_return_buffer"
+      "policy": "borrowed_return_buffer",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -5977,7 +6388,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -5992,7 +6404,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6007,7 +6420,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6021,7 +6435,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const unsigned char *"
+      "reason": "unsupported return type: const unsigned char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6035,7 +6450,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6050,7 +6466,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6065,7 +6482,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6080,7 +6498,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6095,7 +6514,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6110,7 +6530,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6125,7 +6546,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6139,7 +6561,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6153,7 +6576,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6167,7 +6591,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6181,7 +6606,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6196,7 +6622,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6211,7 +6638,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6226,7 +6654,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6241,7 +6670,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6256,7 +6686,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6270,7 +6701,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void (*)(void *, sqlite3_int64, int)"
+      "reason": "unsupported parameter type: void (*)(void *, sqlite3_int64, int)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6284,7 +6716,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6299,7 +6732,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6314,7 +6748,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6329,7 +6764,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6343,7 +6779,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6357,7 +6794,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const unsigned char *"
+      "reason": "unsupported return type: const unsigned char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6371,7 +6809,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6385,7 +6824,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6399,7 +6839,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const void *"
+      "reason": "unsupported return type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6414,7 +6855,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6429,7 +6871,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6444,7 +6887,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6459,7 +6903,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6474,7 +6919,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6489,7 +6935,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6504,7 +6951,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6519,7 +6967,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6534,7 +6983,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6549,7 +6999,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6563,7 +7014,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6577,7 +7029,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6592,7 +7045,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6606,7 +7060,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6620,7 +7075,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6634,7 +7090,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6648,7 +7105,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6662,7 +7120,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6676,7 +7135,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6691,7 +7151,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6705,7 +7166,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6719,7 +7181,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6734,7 +7197,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6749,7 +7213,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6764,7 +7229,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6779,7 +7245,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6794,7 +7261,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6809,7 +7277,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6823,7 +7292,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6837,7 +7307,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6851,7 +7322,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6865,7 +7337,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6879,7 +7352,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6894,7 +7368,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6908,7 +7383,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6923,7 +7399,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6938,7 +7415,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6953,7 +7431,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -6967,7 +7446,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6981,7 +7461,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -6995,7 +7476,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7009,7 +7491,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7023,7 +7506,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7038,7 +7522,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7052,7 +7537,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7066,7 +7552,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7080,7 +7567,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7095,7 +7583,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7110,7 +7599,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7124,7 +7614,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7138,7 +7629,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: sqlite3_filename"
+      "reason": "unsupported return type: sqlite3_filename",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7152,7 +7644,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7166,7 +7659,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7181,7 +7675,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7195,7 +7690,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7209,7 +7705,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7223,7 +7720,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: unsigned int (*)(void *, const char *, unsigned int, unsigned int, unsigned int)"
+      "reason": "unsupported parameter type: unsigned int (*)(void *, const char *, unsigned int, unsigned int, unsigned int)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7237,7 +7735,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7252,7 +7751,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7267,7 +7767,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7282,7 +7783,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7297,7 +7799,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7312,7 +7815,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7327,7 +7831,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7341,7 +7846,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7355,7 +7861,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7370,7 +7877,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7384,7 +7892,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void (*)(void)"
+      "reason": "unsupported parameter type: void (*)(void)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7398,7 +7907,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void (*)(void)"
+      "reason": "unsupported parameter type: void (*)(void)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7413,7 +7923,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7427,7 +7938,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7441,7 +7953,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7455,7 +7968,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char **"
+      "reason": "unsupported parameter type: const char **",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7469,7 +7983,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7483,7 +7998,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7497,7 +8013,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7512,7 +8029,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7527,7 +8045,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7542,7 +8061,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7556,7 +8076,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7570,7 +8091,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const void *"
+      "reason": "unsupported parameter type: const void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7584,7 +8106,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7599,7 +8122,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7614,7 +8138,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7629,7 +8154,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7644,7 +8170,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7659,7 +8186,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7674,7 +8202,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7689,7 +8218,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7704,7 +8234,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7719,7 +8250,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7734,7 +8266,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7748,7 +8281,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7762,7 +8296,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7777,7 +8312,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7791,7 +8327,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char **"
+      "reason": "unsupported parameter type: const char **",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7805,7 +8342,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7820,7 +8358,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7834,7 +8373,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: char *"
+      "reason": "unsupported return type: char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7849,7 +8389,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7863,7 +8404,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7877,7 +8419,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7891,7 +8434,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7905,7 +8449,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -7920,7 +8465,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7935,7 +8481,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7950,7 +8497,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7965,7 +8513,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7980,7 +8529,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -7994,7 +8544,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: char *"
+      "reason": "unsupported return type: char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8008,7 +8559,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: int *"
+      "reason": "unsupported parameter type: int *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8022,7 +8574,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_int64 *"
+      "reason": "unsupported parameter type: sqlite3_int64 *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8036,7 +8589,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: int *"
+      "reason": "unsupported parameter type: int *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8050,7 +8604,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_int64 *"
+      "reason": "unsupported parameter type: sqlite3_int64 *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8065,7 +8620,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -8079,7 +8635,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8094,7 +8651,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -8109,7 +8667,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -8124,7 +8683,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -8139,7 +8699,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -8153,7 +8714,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void (*)(void **, int)"
+      "reason": "unsupported parameter type: void (*)(void **, int)",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8167,7 +8729,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8181,7 +8744,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8195,7 +8759,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8209,7 +8774,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8223,7 +8789,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8237,7 +8804,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: void *"
+      "reason": "unsupported return type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8252,7 +8820,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -8266,7 +8835,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8280,7 +8850,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8294,7 +8865,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "variadic_function",
-      "reason": "variadic function"
+      "reason": "variadic function",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8309,7 +8881,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -8324,7 +8897,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -8338,7 +8912,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: const char *"
+      "reason": "unsupported return type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8353,7 +8928,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -8368,7 +8944,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -8382,7 +8959,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_value **"
+      "reason": "unsupported parameter type: sqlite3_value **",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8396,7 +8974,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_value **"
+      "reason": "unsupported parameter type: sqlite3_value **",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8410,7 +8989,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: sqlite3_value **"
+      "reason": "unsupported parameter type: sqlite3_value **",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8424,7 +9004,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8438,7 +9019,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8453,7 +9035,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -8468,7 +9051,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -8483,7 +9067,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -8497,7 +9082,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8511,7 +9097,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8526,7 +9113,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -8541,7 +9129,8 @@
       "status": "generated",
       "reason_code": "generated",
       "reason": "",
-      "policy": "direct"
+      "policy": "direct",
+      "abi_decision": "direct_verified"
     },
     {
       "kind": "function",
@@ -8555,7 +9144,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8569,7 +9159,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_return_type",
-      "reason": "unsupported return type: unsigned char *"
+      "reason": "unsupported return type: unsigned char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8583,7 +9174,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8597,7 +9189,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8611,7 +9204,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: void *"
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8625,7 +9219,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     },
     {
       "kind": "function",
@@ -8639,7 +9234,8 @@
       "moonbit_signature": "",
       "status": "skipped",
       "reason_code": "unsupported_parameter_type",
-      "reason": "unsupported parameter type: const char *"
+      "reason": "unsupported parameter type: const char *",
+      "abi_decision": "unsupported"
     }
   ],
   "enums": [],

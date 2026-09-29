@@ -1,0 +1,253 @@
+{
+  "schema": "moonbindgen-report-v2",
+  "header": "fixture.h",
+  "clang": {
+    "version": "clang version 23.1.1 (https://github.com/llvm/llvm-project 6dfe1677ab8dffbc6ec13d53a1e0215d75147689)",
+    "target": "x86_64-pc-windows-msvc"
+  },
+  "included_files": [],
+  "generated": 5,
+  "skipped": 2,
+  "summary": {
+    "functions_generated": 5,
+    "functions_skipped": 2,
+    "enums_generated": 0,
+    "enums_skipped": 0,
+    "unsupported": 2
+  },
+  "declarations": [
+    {
+      "kind": "function",
+      "c_name": "point_make",
+      "moonbit_name": "point_make",
+      "source": {
+        "file": "fixture.h",
+        "line": 11
+      },
+      "c_signature": "point (int, long, double, _Bool)",
+      "moonbit_signature": "///|\ntype MbgRawValue_point_make\n\n///|\nextern \"C\" fn mbg_value_point_make(\n  arg0 : Int,\n  arg1 : Int64,\n  arg2 : Double,\n  arg3 : Bool,\n) -> MbgRawValue_point_make = \"mbg_value_point_make\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_make_error(\n  raw : MbgRawValue_point_make,\n) -> Int = \"mbg_value_point_make_error\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_make_x(\n  raw : MbgRawValue_point_make,\n) -> Int = \"mbg_value_point_make_x\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_make_y(\n  raw : MbgRawValue_point_make,\n) -> Int64 = \"mbg_value_point_make_y\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_make_z(\n  raw : MbgRawValue_point_make,\n) -> Double = \"mbg_value_point_make_z\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_make_valid(\n  raw : MbgRawValue_point_make,\n) -> Bool = \"mbg_value_point_make_valid\"\n\n///|\npub fn point_make(\n  arg0 : Int,\n  arg1 : Int64,\n  arg2 : Double,\n  arg3 : Bool,\n) -> MbgValue_point raise {\n  let raw = mbg_value_point_make(arg0, arg1, arg2, arg3)\n  if mbg_value_point_make_error(raw) != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  {\n    x: mbg_value_point_make_x(raw),\n    y: mbg_value_point_make_y(raw),\n    z: mbg_value_point_make_z(raw),\n    valid: mbg_value_point_make_valid(raw),\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "value_struct",
+      "abi_decision": "compiled_field_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "point_add",
+      "moonbit_name": "point_add",
+      "source": {
+        "file": "fixture.h",
+        "line": 12
+      },
+      "c_signature": "point (point, point)",
+      "moonbit_signature": "///|\ntype MbgRawValue_point_add\n\n///|\nextern \"C\" fn mbg_value_point_add(\n  p0_x : Int,\n  p0_y : Int64,\n  p0_z : Double,\n  p0_valid : Bool,\n  p1_x : Int,\n  p1_y : Int64,\n  p1_z : Double,\n  p1_valid : Bool,\n) -> MbgRawValue_point_add = \"mbg_value_point_add\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_add_error(\n  raw : MbgRawValue_point_add,\n) -> Int = \"mbg_value_point_add_error\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_add_x(\n  raw : MbgRawValue_point_add,\n) -> Int = \"mbg_value_point_add_x\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_add_y(\n  raw : MbgRawValue_point_add,\n) -> Int64 = \"mbg_value_point_add_y\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_add_z(\n  raw : MbgRawValue_point_add,\n) -> Double = \"mbg_value_point_add_z\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_add_valid(\n  raw : MbgRawValue_point_add,\n) -> Bool = \"mbg_value_point_add_valid\"\n\n///|\npub fn point_add(arg0 : MbgValue_point, arg1 : MbgValue_point) -> MbgValue_point raise {\n  let raw = mbg_value_point_add(arg0.x, arg0.y, arg0.z, arg0.valid, arg1.x, arg1.y, arg1.z, arg1.valid)\n  if mbg_value_point_add_error(raw) != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  {\n    x: mbg_value_point_add_x(raw),\n    y: mbg_value_point_add_y(raw),\n    z: mbg_value_point_add_z(raw),\n    valid: mbg_value_point_add_valid(raw),\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "value_struct",
+      "abi_decision": "compiled_field_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "point_score",
+      "moonbit_name": "point_score",
+      "source": {
+        "file": "fixture.h",
+        "line": 13
+      },
+      "c_signature": "int (point)",
+      "moonbit_signature": "///|\ntype MbgRawValue_point_score\n\n///|\nextern \"C\" fn mbg_value_point_score(\n  p0_x : Int,\n  p0_y : Int64,\n  p0_z : Double,\n  p0_valid : Bool,\n) -> MbgRawValue_point_score = \"mbg_value_point_score\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_score_error(\n  raw : MbgRawValue_point_score,\n) -> Int = \"mbg_value_point_score_error\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_score_value(\n  raw : MbgRawValue_point_score,\n) -> Int = \"mbg_value_point_score_value\"\n\n///|\npub fn point_score(arg0 : MbgValue_point) -> Int raise {\n  let raw = mbg_value_point_score(arg0.x, arg0.y, arg0.z, arg0.valid)\n  if mbg_value_point_score_error(raw) != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  mbg_value_point_score_value(raw)\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "value_struct",
+      "abi_decision": "compiled_field_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "point_long_bits",
+      "moonbit_name": "point_long_bits",
+      "source": {
+        "file": "fixture.h",
+        "line": 14
+      },
+      "c_signature": "int (void)",
+      "moonbit_signature": "///|\npub extern \"C\" fn point_long_bits() -> Int = \"point_long_bits\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct",
+      "abi_decision": "direct_verified"
+    },
+    {
+      "kind": "function",
+      "c_name": "point_passthrough",
+      "moonbit_name": "point_passthrough",
+      "source": {
+        "file": "fixture.h",
+        "line": 16
+      },
+      "c_signature": "point_alias (point_alias)",
+      "moonbit_signature": "///|\ntype MbgRawValue_point_passthrough\n\n///|\nextern \"C\" fn mbg_value_point_passthrough(\n  p0_x : Int,\n  p0_y : Int64,\n  p0_z : Double,\n  p0_valid : Bool,\n) -> MbgRawValue_point_passthrough = \"mbg_value_point_passthrough\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_error(\n  raw : MbgRawValue_point_passthrough,\n) -> Int = \"mbg_value_point_passthrough_error\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_x(\n  raw : MbgRawValue_point_passthrough,\n) -> Int = \"mbg_value_point_passthrough_x\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_y(\n  raw : MbgRawValue_point_passthrough,\n) -> Int64 = \"mbg_value_point_passthrough_y\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_z(\n  raw : MbgRawValue_point_passthrough,\n) -> Double = \"mbg_value_point_passthrough_z\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_valid(\n  raw : MbgRawValue_point_passthrough,\n) -> Bool = \"mbg_value_point_passthrough_valid\"\n\n///|\npub fn point_passthrough(arg0 : MbgValue_point) -> MbgValue_point raise {\n  let raw = mbg_value_point_passthrough(arg0.x, arg0.y, arg0.z, arg0.valid)\n  if mbg_value_point_passthrough_error(raw) != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  {\n    x: mbg_value_point_passthrough_x(raw),\n    y: mbg_value_point_passthrough_y(raw),\n    z: mbg_value_point_passthrough_z(raw),\n    valid: mbg_value_point_passthrough_valid(raw),\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "value_struct",
+      "abi_decision": "compiled_field_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "packed_bits_identity",
+      "moonbit_name": "packed_bits_identity",
+      "source": {
+        "file": "fixture.h",
+        "line": 23
+      },
+      "c_signature": "packed_bits (packed_bits)",
+      "moonbit_signature": "",
+      "status": "skipped",
+      "reason_code": "unsupported_declaration",
+      "reason": "unsupported value record packed_bits: non-scalar, bit-field, array, or anonymous field",
+      "abi_decision": "unsupported"
+    },
+    {
+      "kind": "function",
+      "c_name": "flex_bytes_identity",
+      "moonbit_name": "flex_bytes_identity",
+      "source": {
+        "file": "fixture.h",
+        "line": 30
+      },
+      "c_signature": "flex_bytes (flex_bytes)",
+      "moonbit_signature": "",
+      "status": "skipped",
+      "reason_code": "unsupported_declaration",
+      "reason": "unsupported value record flex_bytes: non-scalar, bit-field, array, or anonymous field",
+      "abi_decision": "unsupported"
+    }
+  ],
+  "functions": [
+    {
+      "kind": "function",
+      "c_name": "point_make",
+      "moonbit_name": "point_make",
+      "source": {
+        "file": "fixture.h",
+        "line": 11
+      },
+      "c_signature": "point (int, long, double, _Bool)",
+      "moonbit_signature": "///|\ntype MbgRawValue_point_make\n\n///|\nextern \"C\" fn mbg_value_point_make(\n  arg0 : Int,\n  arg1 : Int64,\n  arg2 : Double,\n  arg3 : Bool,\n) -> MbgRawValue_point_make = \"mbg_value_point_make\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_make_error(\n  raw : MbgRawValue_point_make,\n) -> Int = \"mbg_value_point_make_error\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_make_x(\n  raw : MbgRawValue_point_make,\n) -> Int = \"mbg_value_point_make_x\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_make_y(\n  raw : MbgRawValue_point_make,\n) -> Int64 = \"mbg_value_point_make_y\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_make_z(\n  raw : MbgRawValue_point_make,\n) -> Double = \"mbg_value_point_make_z\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_make_valid(\n  raw : MbgRawValue_point_make,\n) -> Bool = \"mbg_value_point_make_valid\"\n\n///|\npub fn point_make(\n  arg0 : Int,\n  arg1 : Int64,\n  arg2 : Double,\n  arg3 : Bool,\n) -> MbgValue_point raise {\n  let raw = mbg_value_point_make(arg0, arg1, arg2, arg3)\n  if mbg_value_point_make_error(raw) != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  {\n    x: mbg_value_point_make_x(raw),\n    y: mbg_value_point_make_y(raw),\n    z: mbg_value_point_make_z(raw),\n    valid: mbg_value_point_make_valid(raw),\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "value_struct",
+      "abi_decision": "compiled_field_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "point_add",
+      "moonbit_name": "point_add",
+      "source": {
+        "file": "fixture.h",
+        "line": 12
+      },
+      "c_signature": "point (point, point)",
+      "moonbit_signature": "///|\ntype MbgRawValue_point_add\n\n///|\nextern \"C\" fn mbg_value_point_add(\n  p0_x : Int,\n  p0_y : Int64,\n  p0_z : Double,\n  p0_valid : Bool,\n  p1_x : Int,\n  p1_y : Int64,\n  p1_z : Double,\n  p1_valid : Bool,\n) -> MbgRawValue_point_add = \"mbg_value_point_add\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_add_error(\n  raw : MbgRawValue_point_add,\n) -> Int = \"mbg_value_point_add_error\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_add_x(\n  raw : MbgRawValue_point_add,\n) -> Int = \"mbg_value_point_add_x\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_add_y(\n  raw : MbgRawValue_point_add,\n) -> Int64 = \"mbg_value_point_add_y\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_add_z(\n  raw : MbgRawValue_point_add,\n) -> Double = \"mbg_value_point_add_z\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_add_valid(\n  raw : MbgRawValue_point_add,\n) -> Bool = \"mbg_value_point_add_valid\"\n\n///|\npub fn point_add(arg0 : MbgValue_point, arg1 : MbgValue_point) -> MbgValue_point raise {\n  let raw = mbg_value_point_add(arg0.x, arg0.y, arg0.z, arg0.valid, arg1.x, arg1.y, arg1.z, arg1.valid)\n  if mbg_value_point_add_error(raw) != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  {\n    x: mbg_value_point_add_x(raw),\n    y: mbg_value_point_add_y(raw),\n    z: mbg_value_point_add_z(raw),\n    valid: mbg_value_point_add_valid(raw),\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "value_struct",
+      "abi_decision": "compiled_field_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "point_score",
+      "moonbit_name": "point_score",
+      "source": {
+        "file": "fixture.h",
+        "line": 13
+      },
+      "c_signature": "int (point)",
+      "moonbit_signature": "///|\ntype MbgRawValue_point_score\n\n///|\nextern \"C\" fn mbg_value_point_score(\n  p0_x : Int,\n  p0_y : Int64,\n  p0_z : Double,\n  p0_valid : Bool,\n) -> MbgRawValue_point_score = \"mbg_value_point_score\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_score_error(\n  raw : MbgRawValue_point_score,\n) -> Int = \"mbg_value_point_score_error\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_score_value(\n  raw : MbgRawValue_point_score,\n) -> Int = \"mbg_value_point_score_value\"\n\n///|\npub fn point_score(arg0 : MbgValue_point) -> Int raise {\n  let raw = mbg_value_point_score(arg0.x, arg0.y, arg0.z, arg0.valid)\n  if mbg_value_point_score_error(raw) != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  mbg_value_point_score_value(raw)\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "value_struct",
+      "abi_decision": "compiled_field_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "point_long_bits",
+      "moonbit_name": "point_long_bits",
+      "source": {
+        "file": "fixture.h",
+        "line": 14
+      },
+      "c_signature": "int (void)",
+      "moonbit_signature": "///|\npub extern \"C\" fn point_long_bits() -> Int = \"point_long_bits\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct",
+      "abi_decision": "direct_verified"
+    },
+    {
+      "kind": "function",
+      "c_name": "point_passthrough",
+      "moonbit_name": "point_passthrough",
+      "source": {
+        "file": "fixture.h",
+        "line": 16
+      },
+      "c_signature": "point_alias (point_alias)",
+      "moonbit_signature": "///|\ntype MbgRawValue_point_passthrough\n\n///|\nextern \"C\" fn mbg_value_point_passthrough(\n  p0_x : Int,\n  p0_y : Int64,\n  p0_z : Double,\n  p0_valid : Bool,\n) -> MbgRawValue_point_passthrough = \"mbg_value_point_passthrough\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_error(\n  raw : MbgRawValue_point_passthrough,\n) -> Int = \"mbg_value_point_passthrough_error\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_x(\n  raw : MbgRawValue_point_passthrough,\n) -> Int = \"mbg_value_point_passthrough_x\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_y(\n  raw : MbgRawValue_point_passthrough,\n) -> Int64 = \"mbg_value_point_passthrough_y\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_z(\n  raw : MbgRawValue_point_passthrough,\n) -> Double = \"mbg_value_point_passthrough_z\"\n\n///|\n#borrow(raw)\nextern \"C\" fn mbg_value_point_passthrough_valid(\n  raw : MbgRawValue_point_passthrough,\n) -> Bool = \"mbg_value_point_passthrough_valid\"\n\n///|\npub fn point_passthrough(arg0 : MbgValue_point) -> MbgValue_point raise {\n  let raw = mbg_value_point_passthrough(arg0.x, arg0.y, arg0.z, arg0.valid)\n  if mbg_value_point_passthrough_error(raw) != 0 {\n    fail(\"C scalar argument is out of range\")\n  }\n  {\n    x: mbg_value_point_passthrough_x(raw),\n    y: mbg_value_point_passthrough_y(raw),\n    z: mbg_value_point_passthrough_z(raw),\n    valid: mbg_value_point_passthrough_valid(raw),\n  }\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "value_struct",
+      "abi_decision": "compiled_field_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "packed_bits_identity",
+      "moonbit_name": "packed_bits_identity",
+      "source": {
+        "file": "fixture.h",
+        "line": 23
+      },
+      "c_signature": "packed_bits (packed_bits)",
+      "moonbit_signature": "",
+      "status": "skipped",
+      "reason_code": "unsupported_declaration",
+      "reason": "unsupported value record packed_bits: non-scalar, bit-field, array, or anonymous field",
+      "abi_decision": "unsupported"
+    },
+    {
+      "kind": "function",
+      "c_name": "flex_bytes_identity",
+      "moonbit_name": "flex_bytes_identity",
+      "source": {
+        "file": "fixture.h",
+        "line": 30
+      },
+      "c_signature": "flex_bytes (flex_bytes)",
+      "moonbit_signature": "",
+      "status": "skipped",
+      "reason_code": "unsupported_declaration",
+      "reason": "unsupported value record flex_bytes: non-scalar, bit-field, array, or anonymous field",
+      "abi_decision": "unsupported"
+    }
+  ],
+  "enums": [],
+  "config_schema": "moonbindgen-config-v2",
+  "has_shim": true
+}

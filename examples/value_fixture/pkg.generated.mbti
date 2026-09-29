@@ -1,0 +1,35 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "shop1111/moonbindgen/examples/value_fixture"
+
+// Values
+pub fn point_add(MbgValue_point, MbgValue_point) -> MbgValue_point raise
+
+pub fn point_long_bits() -> Int
+
+pub fn point_make(Int, Int64, Double, Bool) -> MbgValue_point raise
+
+pub fn point_passthrough(MbgValue_point) -> MbgValue_point raise
+
+pub fn point_score(MbgValue_point) -> Int raise
+
+// Errors
+
+// Types and methods
+type MbgRawValue_point_add
+
+type MbgRawValue_point_make
+
+type MbgRawValue_point_passthrough
+
+type MbgRawValue_point_score
+
+pub(all) struct MbgValue_point {
+  x : Int
+  y : Int64
+  z : Double
+  valid : Bool
+}
+
+// Type aliases
+
+// Traits

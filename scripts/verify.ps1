@@ -59,7 +59,7 @@ try {
   if (-not $help.Output.Contains('Usage:')) { throw 'CLI help text is incomplete' }
   $version = Invoke-MoonBindgen @('--version')
   Assert-ExitCode 'CLI --version' $version 0
-  if ($version.Output.Trim() -ne 'moonbindgen 0.4.0') { throw 'CLI version is not 0.4.0' }
+  if ($version.Output.Trim() -ne 'moonbindgen 0.5.0') { throw 'CLI version is not 0.5.0' }
   Assert-ExitCode 'CLI usage error' (Invoke-MoonBindgen @('generate')) 2
 
   New-Item -ItemType Directory -Force -Path '_build/verify' | Out-Null
@@ -228,7 +228,22 @@ try {
   if ($LASTEXITCODE -ne 0 -or ($multiResult -join "`n").Trim() -ne 'Multi-output and resource fixture => named fields, close once, retain') {
     throw 'Generated multi-output and resource fixture failed'
   }
-  Write-Output 'MoonBindgen verification passed: fixtures, diagnostics, SQLite BLOB.'
+  & moon run -q cmd/main -- generate examples/value_fixture/fixture.h --out examples/value_fixture --clang $Clang --config examples/value_fixture/config.json
+  if ($LASTEXITCODE -ne 0) { throw 'Value fixture generation failed' }
+  & moon run -q cmd/main -- generate examples/value_fixture/fixture.h --out examples/value_fixture --clang $Clang --config examples/value_fixture/config.json --check
+  if ($LASTEXITCODE -ne 0) { throw 'Value fixture drifted' }
+  $valueReport = Get-Content -Raw -Encoding UTF8 -LiteralPath 'examples/value_fixture/report.json' | ConvertFrom-Json
+  if ($valueReport.generated -ne 5 -or $valueReport.skipped -ne 2 -or
+      -not ($valueReport.functions | Where-Object { $_.c_name -eq 'point_add' -and $_.policy -eq 'value_struct' -and $_.abi_decision -eq 'compiled_field_bridge' }) -or
+      -not ($valueReport.functions | Where-Object { $_.c_name -eq 'packed_bits_identity' -and $_.reason -like '*bit-field*' }) -or
+      -not ($valueReport.functions | Where-Object { $_.c_name -eq 'flex_bytes_identity' -and $_.reason -like '*array*' })) {
+    throw 'Unexpected value struct report'
+  }
+  $valueResult = & moon run -q examples/value_fixture
+  if ($LASTEXITCODE -ne 0 -or ($valueResult -join "`n").Trim() -ne 'Value struct fixture => by-value arguments and return') {
+    throw 'Generated value struct fixture failed'
+  }
+  Write-Output 'MoonBindgen verification passed: fixtures, value structs, SQLite BLOB.'
 } finally {
   Pop-Location
 }

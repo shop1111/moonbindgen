@@ -35,7 +35,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "input_buffer"
+      "policy": "input_buffer",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -51,7 +52,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "output_buffer"
+      "policy": "output_buffer",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -67,7 +69,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "borrowed_return_buffer"
+      "policy": "borrowed_return_buffer",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -111,7 +114,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "scalar_abi_bridge"
+      "policy": "scalar_abi_bridge",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -127,7 +131,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "scalar_abi_bridge"
+      "policy": "scalar_abi_bridge",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -143,7 +148,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "scalar_abi_bridge"
+      "policy": "scalar_abi_bridge",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -159,7 +165,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "scalar_abi_bridge"
+      "policy": "scalar_abi_bridge",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -175,7 +182,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "scalar_abi_bridge"
+      "policy": "scalar_abi_bridge",
+      "abi_decision": "compiled_c_bridge"
     }
   ],
   "functions": [
@@ -193,7 +201,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "input_buffer"
+      "policy": "input_buffer",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -209,7 +218,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "output_buffer"
+      "policy": "output_buffer",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -225,7 +235,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "borrowed_return_buffer"
+      "policy": "borrowed_return_buffer",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -269,7 +280,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "scalar_abi_bridge"
+      "policy": "scalar_abi_bridge",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -285,7 +297,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "scalar_abi_bridge"
+      "policy": "scalar_abi_bridge",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -301,7 +314,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "scalar_abi_bridge"
+      "policy": "scalar_abi_bridge",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -317,7 +331,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "scalar_abi_bridge"
+      "policy": "scalar_abi_bridge",
+      "abi_decision": "compiled_c_bridge"
     },
     {
       "kind": "function",
@@ -333,7 +348,8 @@
       "reason_code": "generated",
       "reason": "",
       "bridge": true,
-      "policy": "scalar_abi_bridge"
+      "policy": "scalar_abi_bridge",
+      "abi_decision": "compiled_c_bridge"
     }
   ],
   "enums": [],
