@@ -264,7 +264,18 @@ fn render_v2_resource_create(
     " raise {\n  if self.is_closed() {\n" +
     "    fail(\"resource is closed\")\n  }\n  " +
     bridge_name +
-    "_raw(self)\n}\n" +
+    "_raw(self)\n}\n\n" +
+    "///|\npub fn[T] " +
+    resource_type +
+    "::with_raw(self : " +
+    resource_type +
+    ", action : (" +
+    handle_type +
+    ") -> T) -> T raise {\n" +
+    "  if self.is_closed() {\n    fail(\"resource is closed\")\n  }\n" +
+    "  let result = action(" +
+    bridge_name +
+    "_raw(self))\n  ignore(self.is_closed())\n  result\n}\n" +
     (if policy.retain == "" {
       ""
     } else {

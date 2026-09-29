@@ -136,6 +136,16 @@ pub fn MbgResource_token::unsafe_raw(self : MbgResource_token) -> C_token raise 
 }
 
 ///|
+pub fn[T] MbgResource_token::with_raw(self : MbgResource_token, action : (C_token) -> T) -> T raise {
+  if self.is_closed() {
+    fail("resource is closed")
+  }
+  let result = action(mbg_resource_token_new_raw(self))
+  ignore(self.is_closed())
+  result
+}
+
+///|
 pub fn MbgResource_token::retain(self : MbgResource_token) -> MbgResource_token raise {
   if self.is_closed() {
     fail("resource is closed")

@@ -3,7 +3,7 @@ fn create_and_drop_resource() -> Unit raise {
   guard token_new(9) is Some(managed) else {
     @abort.abort("resource creation failed")
   }
-  ignore(token_value(managed.unsafe_raw()))
+  ignore(managed.with_raw(fn(raw) { token_value(raw) }))
 }
 
 ///|

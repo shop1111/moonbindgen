@@ -35,6 +35,7 @@ pub fn MbgResource_token::close(Self) -> Bool
 pub fn MbgResource_token::is_closed(Self) -> Bool
 pub fn MbgResource_token::retain(Self) -> Self raise
 pub fn MbgResource_token::unsafe_raw(Self) -> C_token raise
+pub fn[T] MbgResource_token::with_raw(Self, (C_token) -> T) -> T raise
 
 pub(all) struct MbgResult_make_pair {
   status : Int
