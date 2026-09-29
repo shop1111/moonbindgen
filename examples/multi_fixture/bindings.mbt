@@ -184,6 +184,16 @@ pub fn MbgView_token_borrow::unsafe_raw(self : MbgView_token_borrow) -> C_token 
 }
 
 ///|
+pub fn[T] MbgView_token_borrow::with_raw(self : MbgView_token_borrow, action : (C_token) -> T) -> T raise {
+  if self.owner.is_closed() {
+    fail("resource is closed")
+  }
+  let result = action(self.raw)
+  ignore(self.owner.is_closed())
+  result
+}
+
+///|
 pub extern "C" fn token_free(handle : C_token) -> Unit = "token_free"
 
 ///|

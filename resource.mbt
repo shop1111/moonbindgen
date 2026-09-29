@@ -439,7 +439,17 @@ fn render_v2_resource_view(
     handle_type +
     " raise {\n" +
     "  if self.owner.is_closed() {\n    fail(\"resource is closed\")\n" +
-    "  }\n  self.raw\n}\n"
+    "  }\n  self.raw\n}\n\n" +
+    "///|\npub fn[T] " +
+    view_type +
+    "::with_raw(self : " +
+    view_type +
+    ", action : (" +
+    handle_type +
+    ") -> T) -> T raise {\n" +
+    "  if self.owner.is_closed() {\n    fail(\"resource is closed\")\n  }\n" +
+    "  let result = action(self.raw)\n" +
+    "  ignore(self.owner.is_closed())\n  result\n}\n"
   let c = "extern " +
     function.return_type +
     " " +

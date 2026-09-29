@@ -20,7 +20,7 @@ fn make_borrowed_view() -> MbgView_token_borrow raise {
 ///|
 fn use_borrowed_view() -> Unit raise {
   let view = make_borrowed_view()
-  if token_value(view.unsafe_raw()) != 11 {
+  if view.with_raw(fn(raw) { token_value(raw) }) != 11 {
     @abort.abort("borrowed view did not retain its owner")
   }
 }

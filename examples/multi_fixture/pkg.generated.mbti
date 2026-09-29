@@ -48,6 +48,7 @@ pub struct MbgView_token_borrow {
   raw : C_token
 }
 pub fn MbgView_token_borrow::unsafe_raw(Self) -> C_token raise
+pub fn[T] MbgView_token_borrow::with_raw(Self, (C_token) -> T) -> T raise
 
 // Type aliases
 
