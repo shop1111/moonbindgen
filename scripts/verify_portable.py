@@ -74,6 +74,13 @@ def main() -> None:
         "Value struct fixture => by-value arguments and return"
     )
     generate(
+        "examples/callback_fixture/fixture.h", "examples/callback_fixture",
+        "examples/callback_fixture/config.json", args.clang,
+    )
+    assert run("moon", "run", "-q", "examples/callback_fixture") == (
+        "Callback fixture => call, unregister once, finalizer, closure release"
+    )
+    generate(
         "examples/sqlite/sqlite3.h", "examples/sqlite",
         "examples/sqlite/config.json", args.clang,
     )

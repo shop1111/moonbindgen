@@ -1,0 +1,31 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "shop1111/moonbindgen/examples/callback_fixture"
+
+// Values
+pub fn call_once(FuncRef[(Int) -> Int], Int) -> Int
+
+pub fn fire_listener(Int) -> Unit
+
+pub fn register_listener((Int) -> Unit) -> MbgRegistration_register_listener
+
+pub fn register_listener_raw(FuncRef[(MbgCallbackData_register_listener, Int) -> Unit], MbgCallbackData_register_listener) -> Unit
+
+pub fn register_listener_unregister_raw(MbgCallbackData_register_listener) -> Unit
+
+pub fn unregister_count() -> Int
+
+// Errors
+
+// Types and methods
+type CallbackProbe
+
+#external
+pub type MbgCallbackData_register_listener
+
+pub type MbgRegistration_register_listener
+pub fn MbgRegistration_register_listener::close(Self) -> Bool
+pub fn MbgRegistration_register_listener::is_closed(Self) -> Bool
+
+// Type aliases
+
+// Traits

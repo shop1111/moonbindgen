@@ -1,7 +1,7 @@
 ///|
 fn usage() -> String {
   (
-    #|MoonBindgen 0.5.0
+    #|MoonBindgen 0.6.0
     #|Usage:
     #|  moonbindgen generate <header> --out <dir> [--clang <exe>] [--config <json>] [--check] [-- <clang arguments...>]
     #|
@@ -167,7 +167,7 @@ async fn main {
     return
   }
   if args.length() == 2 && args[1] == "--version" {
-    println("moonbindgen 0.5.0")
+    println("moonbindgen 0.6.0")
     return
   }
   if args.length() >= 3 && args[1] == "generate" && args[2] == "--help" {

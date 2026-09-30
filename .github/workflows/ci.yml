@@ -135,11 +135,13 @@ jobs:
             --pkg examples/buffer_fixture/moon.pkg \
             --pkg examples/multi_fixture/moon.pkg \
             --pkg examples/value_fixture/moon.pkg \
+            --pkg examples/callback_fixture/moon.pkg \
             --pkg examples/sqlite/moon.pkg \
             --run examples/native_fixture \
             --run examples/buffer_fixture \
             --run examples/multi_fixture \
             --run examples/value_fixture \
+            --run examples/callback_fixture \
             --run examples/sqlite
 
       - name: Verify generated interfaces and package

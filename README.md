@@ -41,7 +41,7 @@ The checked release toolchain is recorded in [`toolchain.json`](toolchain.json).
 To consume the generator as a library:
 
 ```powershell
-moon add shop1111/moonbindgen@0.5.0
+moon add shop1111/moonbindgen@0.6.0
 ```
 
 Add the root package to `moon.pkg`:
@@ -62,7 +62,7 @@ let result = @bindgen.generate_with_config(clang_ast_json, "library.h", config)
 println(result.bindings)
 ```
 
-Windows users can also download `moonbindgen-v0.5.0-windows-x86_64.zip` from the GitHub Release, extract `moonbindgen.exe`, and keep Clang 23 available separately. The executable is not a general C/C++ compiler bundle.
+Windows users can also download `moonbindgen-v0.6.0-windows-x86_64.zip` from the GitHub Release, extract `moonbindgen.exe`, and keep Clang 23 available separately. The executable is not a general C/C++ compiler bundle.
 
 ## CLI quick start
 
@@ -178,6 +178,26 @@ For a complete `struct` whose fields are supported scalar types, v2 generates a 
 
 The generated report marks these functions `policy: "value_struct"` and `abi_decision: "compiled_field_bridge"`. Bit-fields, arrays (including flexible array members), nested records, unions, and pointer fields remain unsupported with a specific skip reason. `examples/value_fixture` compiles and calls both by-value directions and checks those rejections.
 
+## Config-v2 callbacks
+
+`callbacks` names a declared C function and its zero-based function-pointer parameter. A `call` lifetime exposes a closed `FuncRef` for direct scalar signatures. The C API must finish using that pointer before returning. MoonBit rejects a closure capturing local state for this direct form.
+
+```json
+{
+  "schema": "moonbindgen-config-v2",
+  "callbacks": [
+    { "function": "call_once", "callback": 0, "lifetime": "call" },
+    {
+      "function": "register_listener", "callback": 0,
+      "lifetime": "persistent", "user_data": 1,
+      "unregister": "unregister_listener", "thread": "same"
+    }
+  ]
+}
+```
+
+The initial persistent form accepts an exact `void (*)(void*, int)` callback, a `void*` user-data argument, and a declared `void unregister(void*)` function. The C library must invoke callbacks on the registering thread and stop using the user-data pointer when unregister returns. The generated `register_listener(fn(value) { ... })` returns a registration with `close()` and `is_closed()`; closing is idempotent, and dropping an open registration unregisters it. The C bridge holds the MoonBit closure until unregister and temporarily retains it during an invocation. Raw register and unregister declarations are available under `_raw` names for manual use; callers of those declarations own the callback and user-data lifetime. Cross-thread callbacks, missing unregister contracts, other persistent signatures, and target-dependent scalar callback arguments remain unsupported. `examples/callback_fixture` runs both lifetimes and checks unregister and finalizer counts.
+
 ## Supported ABI surface
 
 | C declaration | MoonBit output | Policy |
@@ -195,9 +215,11 @@ The generated report marks these functions `policy: "value_struct"` and `abi_dec
 | configured multiple scalar/handle outputs | Public named result struct | Status preserved; fields initialized on failure |
 | configured create/void-release handle | Managed resource and optional borrowed view | Close once, optional retain, finalizer; raw escape is explicit |
 | scalar-field C value struct | Public MoonBit record plus C field bridge | Target compiler validates field accesses and direct scalar widths |
-| other pointers, callbacks, variadics, complex records | none | Reported and skipped, or rejected in strict mode |
+| configured call-scoped scalar callback | Closed `FuncRef` direct declaration | Valid until the C call returns |
+| configured same-thread persistent `void (*)(void*, int)` callback | Registration object and C trampoline | Explicit `void unregister(void*)`; close or finalizer releases closure |
+| other pointers, cross-thread callbacks, variadics, complex records | none | Reported and skipped, or rejected in strict mode |
 
-MoonBindgen emits auditable raw declarations alongside configured wrappers. Callbacks are a later milestone; C++ and unprovable pointer lifetimes remain outside the supported surface.
+MoonBindgen emits auditable raw declarations alongside configured wrappers. C++ and unprovable pointer lifetimes remain outside the supported surface.
 
 ## Auditable report v2
 
@@ -220,7 +242,7 @@ For a config-v2 run, the report additionally records `config_schema`, each gener
 ./scripts/verify.ps1
 ```
 
-The gate runs strict Native check/build/test, coverage analysis, two-run byte determinism, report schema assertions, include provenance, invalid-header rejection, three-artifact drift and rollback checks, generated C fixtures for strings, buffers, named outputs, resources, value structs, and the SQLite calls below. `scripts/verify_portable.py` runs all-target checks plus real Native calls on each CI host; the Linux job additionally compiles and runs generated examples with AddressSanitizer. This ASan gate retains MoonBit's bundled mimalloc allocator because the current prebuilt runtime links against it, so it does not promise ASan coverage of MoonBit-managed heap allocations.
+The gate runs strict Native check/build/test, coverage analysis, two-run byte determinism, report schema assertions, include provenance, invalid-header rejection, three-artifact drift and rollback checks, generated C fixtures for strings, buffers, named outputs, resources, value structs, callbacks, and the SQLite calls below. `scripts/verify_portable.py` runs all-target checks plus real Native calls on each CI host; the Linux job additionally compiles and runs generated examples with AddressSanitizer. This ASan gate retains MoonBit's bundled mimalloc allocator because the current prebuilt runtime links against it, so it does not promise ASan coverage of MoonBit-managed heap allocations.
 
 `examples/sqlite` vendors the official SQLite 3.53.4 amalgamation. On Clang 23.1.1, MoonBindgen generates 133 functions and reports 165 skipped functions. It executes `SELECT 42`, then binds and reads an embedded-NUL BLOB, a zero-length BLOB, and SQL NULL through generated v2 bridges.
 

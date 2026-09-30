@@ -1,0 +1,14 @@
+{
+  "schema": "moonbindgen-config-v2",
+  "callbacks": [
+    { "function": "call_once", "callback": 0, "lifetime": "call" },
+    {
+      "function": "register_listener",
+      "callback": 0,
+      "lifetime": "persistent",
+      "user_data": 1,
+      "unregister": "unregister_listener",
+      "thread": "same"
+    }
+  ]
+}
