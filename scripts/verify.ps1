@@ -59,7 +59,7 @@ try {
   if (-not $help.Output.Contains('Usage:')) { throw 'CLI help text is incomplete' }
   $version = Invoke-MoonBindgen @('--version')
   Assert-ExitCode 'CLI --version' $version 0
-  if ($version.Output.Trim() -ne 'moonbindgen 0.5.0') { throw 'CLI version is not 0.5.0' }
+  if ($version.Output.Trim() -ne 'moonbindgen 0.6.0') { throw 'CLI version is not 0.6.0' }
   Assert-ExitCode 'CLI usage error' (Invoke-MoonBindgen @('generate')) 2
 
   New-Item -ItemType Directory -Force -Path '_build/verify' | Out-Null
