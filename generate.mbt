@@ -182,6 +182,7 @@ pub fn generate_with_metadata(
   validate_v2_buffers(nodes, header, config)
   validate_v2_multi_outputs(nodes, header, config)
   validate_v2_resources(nodes, header, config)
+  validate_v2_callbacks(nodes, header, config)
   for entry in nodes {
     let node = entry.node
     let on_header = same_header(entry.source.file, header)
@@ -376,6 +377,12 @@ pub fn generate_with_metadata(
     let bridged = config.has_bridge(function.name) && !manual_resource
     let generation_policy = if manual_resource {
       "manual_resource"
+    } else if config.callback_for(function.name) is Some(policy) {
+      if policy.lifetime == "call" {
+        "call_callback"
+      } else {
+        "persistent_callback"
+      }
     } else if value_record {
       "value_struct"
     } else if config.resource_create_for(function.name) is Some(_) {
@@ -404,6 +411,8 @@ pub fn generate_with_metadata(
         function, aliases, opaque_types, enums, config,
       )
       (code, None, reason)
+    } else if config.callback_for(function.name) is Some(_) {
+      render_v2_call_callback(function, aliases, opaque_types, enums, config)
     } else if value_record {
       render_v2_value_function(
         function, aliases, opaque_types, enums, records, config, value_used,

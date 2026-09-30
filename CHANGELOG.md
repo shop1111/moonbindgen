@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0 - 2026-09-30
+
+- Generate direct closed `FuncRef` calls for explicitly call-scoped scalar callbacks.
+- Generate same-thread persistent callback registrations for `void (*)(void*, int)` and a declared `void unregister(void*)` contract. Closing and finalization unregister once and release the retained closure; raw declarations remain available for manual use.
+- Reject missing or malformed callback contracts, cross-thread policies, and unsupported callback ABIs. Exercise call, registration, repeated close, finalization, and deterministic generation in a Native fixture, including Linux AddressSanitizer.
+
 ## 0.5.0 - 2026-09-29
 
 - Lower complete C value structs with scalar fields through generated C field bridges for by-value arguments and results. Target compilation checks direct scalar field widths; padding and alignment stay entirely on the C side.

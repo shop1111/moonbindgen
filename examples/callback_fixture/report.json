@@ -1,0 +1,185 @@
+{
+  "schema": "moonbindgen-report-v2",
+  "header": "fixture.h",
+  "clang": {
+    "version": "clang version 23.1.1 (https://github.com/llvm/llvm-project 6dfe1677ab8dffbc6ec13d53a1e0215d75147689)",
+    "target": "x86_64-pc-windows-msvc"
+  },
+  "included_files": [],
+  "generated": 4,
+  "skipped": 1,
+  "summary": {
+    "functions_generated": 4,
+    "functions_skipped": 1,
+    "enums_generated": 0,
+    "enums_skipped": 0,
+    "unsupported": 1
+  },
+  "declarations": [
+    {
+      "kind": "function",
+      "c_name": "call_once",
+      "moonbit_name": "call_once",
+      "source": {
+        "file": "fixture.h",
+        "line": 4
+      },
+      "c_signature": "int (int (*)(int), int)",
+      "moonbit_signature": "///|\npub extern \"C\" fn call_once(arg0 : FuncRef[(Int) -> Int], arg1 : Int) -> Int = \"call_once\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "call_callback",
+      "abi_decision": "direct_verified"
+    },
+    {
+      "kind": "function",
+      "c_name": "register_listener",
+      "moonbit_name": "register_listener",
+      "source": {
+        "file": "fixture.h",
+        "line": 5
+      },
+      "c_signature": "void (void (*)(void *, int), void *)",
+      "moonbit_signature": "///|\n#external\npub type MbgCallbackData_register_listener\n\n///|\npub extern \"C\" fn register_listener_raw(callback : FuncRef[(MbgCallbackData_register_listener, Int) -> Unit], user_data : MbgCallbackData_register_listener) -> Unit = \"register_listener\"\n\n///|\npub extern \"C\" fn register_listener_unregister_raw(user_data : MbgCallbackData_register_listener) -> Unit = \"unregister_listener\"\n\n///|\npub type MbgRegistration_register_listener\n\n///|\n#borrow(callback)\nextern \"C\" fn mbg_callback_register_listener(\n  invoke : FuncRef[((Int) -> Unit, Int) -> Unit],\n  callback : (Int) -> Unit,\n) -> MbgRegistration_register_listener = \"mbg_callback_register_listener\"\n\n///|\n#borrow(state)\nextern \"C\" fn mbg_callback_register_listener_close(\n  state : MbgRegistration_register_listener,\n) -> Bool = \"mbg_callback_register_listener_close\"\n\n///|\n#borrow(state)\nextern \"C\" fn mbg_callback_register_listener_active(\n  state : MbgRegistration_register_listener,\n) -> Bool = \"mbg_callback_register_listener_active\"\n\n///|\npub fn register_listener(callback : (Int) -> Unit) -> MbgRegistration_register_listener {\n  mbg_callback_register_listener(fn(f, value) { f(value) }, callback)\n}\n\n///|\npub fn MbgRegistration_register_listener::close(self : MbgRegistration_register_listener) -> Bool {\n  mbg_callback_register_listener_close(self)\n}\n\n///|\npub fn MbgRegistration_register_listener::is_closed(self : MbgRegistration_register_listener) -> Bool {\n  !mbg_callback_register_listener_active(self)\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "persistent_callback",
+      "abi_decision": "compiled_c_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "unregister_listener",
+      "moonbit_name": "unregister_listener",
+      "source": {
+        "file": "fixture.h",
+        "line": 6
+      },
+      "c_signature": "void (void *)",
+      "moonbit_signature": "",
+      "status": "skipped",
+      "reason_code": "unsupported_parameter_type",
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
+    },
+    {
+      "kind": "function",
+      "c_name": "fire_listener",
+      "moonbit_name": "fire_listener",
+      "source": {
+        "file": "fixture.h",
+        "line": 7
+      },
+      "c_signature": "void (int)",
+      "moonbit_signature": "///|\npub extern \"C\" fn fire_listener(value : Int) -> Unit = \"fire_listener\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct",
+      "abi_decision": "direct_verified"
+    },
+    {
+      "kind": "function",
+      "c_name": "unregister_count",
+      "moonbit_name": "unregister_count",
+      "source": {
+        "file": "fixture.h",
+        "line": 8
+      },
+      "c_signature": "int (void)",
+      "moonbit_signature": "///|\npub extern \"C\" fn unregister_count() -> Int = \"unregister_count\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct",
+      "abi_decision": "direct_verified"
+    }
+  ],
+  "functions": [
+    {
+      "kind": "function",
+      "c_name": "call_once",
+      "moonbit_name": "call_once",
+      "source": {
+        "file": "fixture.h",
+        "line": 4
+      },
+      "c_signature": "int (int (*)(int), int)",
+      "moonbit_signature": "///|\npub extern \"C\" fn call_once(arg0 : FuncRef[(Int) -> Int], arg1 : Int) -> Int = \"call_once\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "call_callback",
+      "abi_decision": "direct_verified"
+    },
+    {
+      "kind": "function",
+      "c_name": "register_listener",
+      "moonbit_name": "register_listener",
+      "source": {
+        "file": "fixture.h",
+        "line": 5
+      },
+      "c_signature": "void (void (*)(void *, int), void *)",
+      "moonbit_signature": "///|\n#external\npub type MbgCallbackData_register_listener\n\n///|\npub extern \"C\" fn register_listener_raw(callback : FuncRef[(MbgCallbackData_register_listener, Int) -> Unit], user_data : MbgCallbackData_register_listener) -> Unit = \"register_listener\"\n\n///|\npub extern \"C\" fn register_listener_unregister_raw(user_data : MbgCallbackData_register_listener) -> Unit = \"unregister_listener\"\n\n///|\npub type MbgRegistration_register_listener\n\n///|\n#borrow(callback)\nextern \"C\" fn mbg_callback_register_listener(\n  invoke : FuncRef[((Int) -> Unit, Int) -> Unit],\n  callback : (Int) -> Unit,\n) -> MbgRegistration_register_listener = \"mbg_callback_register_listener\"\n\n///|\n#borrow(state)\nextern \"C\" fn mbg_callback_register_listener_close(\n  state : MbgRegistration_register_listener,\n) -> Bool = \"mbg_callback_register_listener_close\"\n\n///|\n#borrow(state)\nextern \"C\" fn mbg_callback_register_listener_active(\n  state : MbgRegistration_register_listener,\n) -> Bool = \"mbg_callback_register_listener_active\"\n\n///|\npub fn register_listener(callback : (Int) -> Unit) -> MbgRegistration_register_listener {\n  mbg_callback_register_listener(fn(f, value) { f(value) }, callback)\n}\n\n///|\npub fn MbgRegistration_register_listener::close(self : MbgRegistration_register_listener) -> Bool {\n  mbg_callback_register_listener_close(self)\n}\n\n///|\npub fn MbgRegistration_register_listener::is_closed(self : MbgRegistration_register_listener) -> Bool {\n  !mbg_callback_register_listener_active(self)\n}",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "bridge": true,
+      "policy": "persistent_callback",
+      "abi_decision": "compiled_c_bridge"
+    },
+    {
+      "kind": "function",
+      "c_name": "unregister_listener",
+      "moonbit_name": "unregister_listener",
+      "source": {
+        "file": "fixture.h",
+        "line": 6
+      },
+      "c_signature": "void (void *)",
+      "moonbit_signature": "",
+      "status": "skipped",
+      "reason_code": "unsupported_parameter_type",
+      "reason": "unsupported parameter type: void *",
+      "abi_decision": "unsupported"
+    },
+    {
+      "kind": "function",
+      "c_name": "fire_listener",
+      "moonbit_name": "fire_listener",
+      "source": {
+        "file": "fixture.h",
+        "line": 7
+      },
+      "c_signature": "void (int)",
+      "moonbit_signature": "///|\npub extern \"C\" fn fire_listener(value : Int) -> Unit = \"fire_listener\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct",
+      "abi_decision": "direct_verified"
+    },
+    {
+      "kind": "function",
+      "c_name": "unregister_count",
+      "moonbit_name": "unregister_count",
+      "source": {
+        "file": "fixture.h",
+        "line": 8
+      },
+      "c_signature": "int (void)",
+      "moonbit_signature": "///|\npub extern \"C\" fn unregister_count() -> Int = \"unregister_count\"",
+      "status": "generated",
+      "reason_code": "generated",
+      "reason": "",
+      "policy": "direct",
+      "abi_decision": "direct_verified"
+    }
+  ],
+  "enums": [],
+  "config_schema": "moonbindgen-config-v2",
+  "has_shim": true
+}

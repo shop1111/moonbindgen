@@ -36,6 +36,15 @@ pub struct BufferPolicy {
   copy_symbol : String
 }
 
+pub struct CallbackPolicy {
+  function_name : String
+  callback : Int
+  lifetime : String
+  user_data : Int
+  unregister : String
+  thread : String
+}
+
 pub struct GenerateConfig {
   schema_version : Int
   include_functions : Map[String, Bool]
@@ -52,6 +61,7 @@ pub struct GenerateConfig {
   return_buffers : Array[ReturnBufferPolicy]
   multi_outputs : Array[MultiOutputPolicy]
   resources : Array[ResourcePolicy]
+  callbacks : Array[CallbackPolicy]
 }
 pub fn GenerateConfig::default() -> Self
 

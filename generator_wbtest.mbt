@@ -451,3 +451,78 @@ test "fallible resource release stays manual in v2 report" {
   assert_true(!result.bindings.contains("MbgResource_token"))
   assert_true(result.report.contains("manual_resource_management"))
 }
+
+///|
+test "v2 callback policy rejects missing lifetime contracts" {
+  let invalid = [
+    (
+      #|{"schema":"moonbindgen-config-v1","callbacks":[]}
+    ),
+    (
+      #|{"schema":"moonbindgen-config-v2","callbacks":[{"function":"run","callback":0,"lifetime":"forever"}]}
+    ),
+    (
+      #|{"schema":"moonbindgen-config-v2","callbacks":[{"function":"run","callback":0,"lifetime":"call","thread":"same"}]}
+    ),
+    (
+      #|{"schema":"moonbindgen-config-v2","callbacks":[{"function":"run","callback":0,"lifetime":"persistent","user_data":0,"unregister":"stop","thread":"same"}]}
+    ),
+    (
+      #|{"schema":"moonbindgen-config-v2","callbacks":[{"function":"run","callback":0,"lifetime":"persistent","user_data":1,"unregister":"stop","thread":"other"}]}
+    ),
+    (
+      #|{"schema":"moonbindgen-config-v2","callbacks":[{"function":"run","callback":0,"lifetime":"call","code":"evil()"}]}
+    ),
+  ]
+  for value in invalid {
+    let mut rejected = false
+    ignore(parse_config(value)) catch {
+      InvalidConfig(_) => rejected = true
+    }
+    assert_true(rejected)
+  }
+}
+
+///|
+test "v2 callback generation is deterministic and checks unregister ABI" {
+  let ast =
+    #|{"kind":"TranslationUnitDecl","inner":[{"kind":"FunctionDecl","name":"register_listener","loc":{"file":"callbacks.h","line":1},"type":{"qualType":"void (void (*)(void *, int), void *)"},"inner":[{"kind":"ParmVarDecl","type":{"qualType":"void (*)(void *, int)"}},{"kind":"ParmVarDecl","type":{"qualType":"void *"}}]},{"kind":"FunctionDecl","name":"unregister_listener","loc":{"line":2},"type":{"qualType":"void (void *)"},"inner":[{"kind":"ParmVarDecl","type":{"qualType":"void *"}}]}]}
+  let config = parse_config(
+    (
+      #|{"schema":"moonbindgen-config-v2","callbacks":[{"function":"register_listener","callback":0,"lifetime":"persistent","user_data":1,"unregister":"unregister_listener","thread":"same"}]}
+    ),
+  )
+  let first = generate_with_config(ast, "callbacks.h", config)
+  let second = generate_with_config(ast, "callbacks.h", config)
+  assert_eq(first.bindings, second.bindings)
+  assert_eq(first.report, second.report)
+  assert_eq(first.shim, second.shim)
+  assert_true(first.bindings.contains("fn register_listener_raw"))
+  assert_true(
+    first.bindings.contains("MbgRegistration_register_listener::close"),
+  )
+  assert_true(first.report.contains("persistent_callback"))
+  guard first.shim is Some(shim) else { fail("expected callback C bridge") }
+  assert_true(shim.contains("moonbit_decref(closure)"))
+  let missing = parse_config(
+    (
+      #|{"schema":"moonbindgen-config-v2","callbacks":[{"function":"register_listener","callback":0,"lifetime":"persistent","user_data":1,"unregister":"unknown","thread":"same"}]}
+    ),
+  )
+  let mut rejected = false
+  ignore(generate_with_config(ast, "callbacks.h", missing)) catch {
+    Failure(message) =>
+      rejected = message.contains("unknown callback unregister")
+    _ => ()
+  }
+  assert_true(rejected)
+  let bad_abi =
+    #|{"kind":"TranslationUnitDecl","inner":[{"kind":"FunctionDecl","name":"register_listener","loc":{"file":"callbacks.h","line":1},"type":{"qualType":"void (void (*)(void *, int), void *)"},"inner":[{"kind":"ParmVarDecl","type":{"qualType":"void (*)(void *, int)"}},{"kind":"ParmVarDecl","type":{"qualType":"void *"}}]},{"kind":"FunctionDecl","name":"unregister_listener","loc":{"line":2},"type":{"qualType":"int (void *)"},"inner":[{"kind":"ParmVarDecl","type":{"qualType":"void *"}}]}]}
+  let mut abi_rejected = false
+  ignore(generate_with_config(bad_abi, "callbacks.h", config)) catch {
+    Failure(message) =>
+      abi_rejected = message.contains("callback unregister must be void")
+    _ => ()
+  }
+  assert_true(abi_rejected)
+}

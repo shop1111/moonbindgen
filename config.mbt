@@ -37,6 +37,7 @@ pub struct GenerateConfig {
   return_buffers : Array[ReturnBufferPolicy]
   multi_outputs : Array[MultiOutputPolicy]
   resources : Array[ResourcePolicy]
+  callbacks : Array[CallbackPolicy]
 }
 
 ///|
@@ -86,6 +87,17 @@ pub struct ResourcePolicy {
 }
 
 ///|
+/// A position-based callback contract with an explicit lifetime boundary.
+pub struct CallbackPolicy {
+  function_name : String
+  callback : Int
+  lifetime : String
+  user_data : Int
+  unregister : String
+  thread : String
+}
+
+///|
 /// An error raised when generation configuration is malformed or unsupported.
 pub(all) suberror ConfigError {
   /// Carries a stable, user-facing validation message.
@@ -120,6 +132,7 @@ pub fn GenerateConfig::default() -> GenerateConfig {
     return_buffers: [],
     multi_outputs: [],
     resources: [],
+    callbacks: [],
   }
 }
 
@@ -526,6 +539,88 @@ fn parse_resources(json : Json) -> Array[ResourcePolicy] raise ConfigError {
 }
 
 ///|
+fn parse_callbacks(json : Json) -> Array[CallbackPolicy] raise ConfigError {
+  let result : Array[CallbackPolicy] = []
+  let values = match field(json, "callbacks") {
+    None => return result
+    Some(Array(items)) => items
+    _ => {
+      invalid_config("callbacks must be an array")
+      return result
+    }
+  }
+  for item in values {
+    guard item is Object(fields) else {
+      invalid_config("callbacks entries must be objects")
+      continue
+    }
+    for key, _ in fields {
+      match key {
+        "function"
+        | "callback"
+        | "lifetime"
+        | "user_data"
+        | "unregister"
+        | "thread" => ()
+        _ => invalid_config("unknown callback field: " + key)
+      }
+    }
+    let function_name = required_string(item, "function")
+    let callback = required_index(item, "callback")
+    let lifetime = required_string(item, "lifetime")
+    let user_data = if lifetime == "persistent" {
+      required_index(item, "user_data")
+    } else {
+      -1
+    }
+    let unregister = if lifetime == "persistent" {
+      required_string(item, "unregister")
+    } else {
+      ""
+    }
+    let thread = if lifetime == "persistent" {
+      required_string(item, "thread")
+    } else {
+      ""
+    }
+    if !valid_c_identifier(function_name) ||
+      (unregister != "" && !valid_c_identifier(unregister)) {
+      invalid_config("invalid callback function name: " + function_name)
+    }
+    if lifetime != "call" && lifetime != "persistent" {
+      invalid_config("callback lifetime must be call or persistent")
+    }
+    if lifetime == "call" &&
+      (
+        field(item, "user_data") is Some(_) ||
+        field(item, "unregister") is Some(_) ||
+        field(item, "thread") is Some(_)
+      ) {
+      invalid_config("call-scoped callback cannot declare persistent fields")
+    }
+    if lifetime == "persistent" && (thread != "same" || callback == user_data) {
+      invalid_config(
+        "persistent callback requires same thread and distinct user_data",
+      )
+    }
+    for previous in result {
+      if previous.function_name == function_name {
+        invalid_config("duplicate callback function: " + function_name)
+      }
+    }
+    result.push({
+      function_name,
+      callback,
+      lifetime,
+      user_data,
+      unregister,
+      thread,
+    })
+  }
+  result
+}
+
+///|
 /// Parses and validates a `moonbindgen-config-v1` JSON document.
 ///
 /// Unknown fields, unsafe type overrides, and schema mismatches raise
@@ -557,7 +652,8 @@ pub fn parse_config(text : String) -> GenerateConfig raise ConfigError {
       | "buffers"
       | "return_buffers"
       | "multi_outputs"
-      | "resources" => ()
+      | "resources"
+      | "callbacks" => ()
       _ => invalid_config("unknown configuration field: " + key)
     }
   }
@@ -576,7 +672,8 @@ pub fn parse_config(text : String) -> GenerateConfig raise ConfigError {
       field(json, "buffers") is Some(_) ||
       field(json, "return_buffers") is Some(_) ||
       field(json, "multi_outputs") is Some(_) ||
-      field(json, "resources") is Some(_)
+      field(json, "resources") is Some(_) ||
+      field(json, "callbacks") is Some(_)
     ) {
     invalid_config("positional policies require moonbindgen-config-v2")
   }
@@ -634,6 +731,7 @@ pub fn parse_config(text : String) -> GenerateConfig raise ConfigError {
     return_buffers: parse_return_buffers(json),
     multi_outputs: parse_multi_outputs(json),
     resources: parse_resources(json),
+    callbacks: parse_callbacks(json),
   }
 }
 
@@ -721,6 +819,11 @@ fn GenerateConfig::has_bridge(self : GenerateConfig, name : String) -> Bool {
       return true
     }
   }
+  for policy in self.callbacks {
+    if policy.function_name == name {
+      return true
+    }
+  }
   false
 }
 
@@ -783,6 +886,19 @@ fn GenerateConfig::resource_view_for(
 ) -> ResourcePolicy? {
   for policy in self.resources {
     if policy.views.contains(name) {
+      return Some(policy)
+    }
+  }
+  None
+}
+
+///|
+fn GenerateConfig::callback_for(
+  self : GenerateConfig,
+  name : String,
+) -> CallbackPolicy? {
+  for policy in self.callbacks {
+    if policy.function_name == name {
       return Some(policy)
     }
   }

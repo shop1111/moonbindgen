@@ -243,7 +243,21 @@ try {
   if ($LASTEXITCODE -ne 0 -or ($valueResult -join "`n").Trim() -ne 'Value struct fixture => by-value arguments and return') {
     throw 'Generated value struct fixture failed'
   }
-  Write-Output 'MoonBindgen verification passed: fixtures, value structs, SQLite BLOB.'
+  & moon run -q cmd/main -- generate examples/callback_fixture/fixture.h --out examples/callback_fixture --clang $Clang --config examples/callback_fixture/config.json
+  if ($LASTEXITCODE -ne 0) { throw 'Callback fixture generation failed' }
+  & moon run -q cmd/main -- generate examples/callback_fixture/fixture.h --out examples/callback_fixture --clang $Clang --config examples/callback_fixture/config.json --check
+  if ($LASTEXITCODE -ne 0) { throw 'Callback fixture drifted' }
+  $callbackReport = Get-Content -Raw -Encoding UTF8 -LiteralPath 'examples/callback_fixture/report.json' | ConvertFrom-Json
+  if ($callbackReport.generated -ne 4 -or $callbackReport.skipped -ne 1 -or
+      -not ($callbackReport.functions | Where-Object { $_.c_name -eq 'call_once' -and $_.policy -eq 'call_callback' }) -or
+      -not ($callbackReport.functions | Where-Object { $_.c_name -eq 'register_listener' -and $_.policy -eq 'persistent_callback' -and $_.bridge })) {
+    throw 'Unexpected callback report'
+  }
+  $callbackResult = & moon run -q examples/callback_fixture
+  if ($LASTEXITCODE -ne 0 -or ($callbackResult -join "`n").Trim() -ne 'Callback fixture => call, unregister once, finalizer, closure release') {
+    throw 'Generated callback fixture failed'
+  }
+  Write-Output 'MoonBindgen verification passed: fixtures, callbacks, SQLite BLOB.'
 } finally {
   Pop-Location
 }
