@@ -2,7 +2,7 @@
 package "shop1111/moonbindgen/examples/multi_fixture"
 
 // Values
-pub fn make_pair(Int) -> MbgResult_make_pair raise
+pub fn make_pair(Int32) -> MbgResult_make_pair raise
 
 pub fn token_borrow(MbgResource_token) -> MbgView_token_borrow? raise
 
@@ -10,17 +10,17 @@ pub fn token_borrow_raw(C_token) -> C_token
 
 pub fn token_free(C_token) -> Unit
 
-pub fn token_free_count() -> Int
+pub fn token_free_count() -> Int32
 
-pub fn token_new(Int) -> MbgResource_token? raise
+pub fn token_new(Int32) -> MbgResource_token? raise
 
-pub fn token_new_raw(Int) -> C_token
+pub fn token_new_raw(Int32) -> C_token
 
-pub fn token_release_count() -> Int
+pub fn token_release_count() -> Int32
 
 pub fn token_retain(C_token) -> Unit
 
-pub fn token_value(C_token) -> Int
+pub fn token_value(C_token) -> Int32
 
 // Errors
 
@@ -38,8 +38,8 @@ pub fn MbgResource_token::unsafe_raw(Self) -> C_token raise
 pub fn[T] MbgResource_token::with_raw(Self, (C_token) -> T) -> T raise
 
 pub(all) struct MbgResult_make_pair {
-  status : Int
-  left : Int
+  status : Int32
+  left : Int32
   right : Int64
   handle : C_token
 }

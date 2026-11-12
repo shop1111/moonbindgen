@@ -16,7 +16,7 @@ fn is_byte_length(raw : String) -> Bool {
 fn validate_companion(
   owner : CFunction,
   companion : CFunction,
-  args : Array[Int],
+  args : Array[Int32],
 ) -> Unit raise {
   if companion.c_signature.contains("...") ||
     !is_byte_length(companion.canonical_return_type) ||

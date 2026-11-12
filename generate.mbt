@@ -4,8 +4,8 @@ pub struct GenerateResult {
   bindings : String
   report : String
   shim : String?
-  generated : Int
-  skipped : Int
+  generated : Int32
+  skipped : Int32
 }
 
 ///|
@@ -79,9 +79,9 @@ fn report_item(
   moonbit_signature : String,
   status : String,
   reason : String,
-  bridge? : Bool = false,
-  policy? : String = "",
-  abi? : String = "",
+  bridge~ : Bool = false,
+  policy~ : String = "",
+  abi~ : String = "",
 ) -> Json {
   let fields : Map[String, Json] = {
     "kind": Json::string(kind),
@@ -110,7 +110,7 @@ fn report_item(
 }
 
 ///|
-fn enum_number(node : Json) -> Int? {
+fn enum_number(node : Json) -> Int32? {
   for child in array_field(node, "inner") {
     match text_field(child, "value") {
       Some(value) => {

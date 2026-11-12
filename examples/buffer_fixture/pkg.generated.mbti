@@ -4,19 +4,19 @@ package "shop1111/moonbindgen/examples/buffer_fixture"
 // Values
 pub fn abi_bool(Bool) -> Bool raise
 
-pub fn abi_buffer_fill(Int) -> Bytes raise
+pub fn abi_buffer_fill(Int32) -> Bytes raise
 
-pub fn abi_buffer_sum(Bytes) -> Int raise
+pub fn abi_buffer_sum(Bytes) -> Int32 raise
 
-pub fn abi_buffer_view(Int) -> Bytes? raise
+pub fn abi_buffer_view(Int32) -> Bytes? raise
 
 pub fn abi_long(Int64) -> Int64 raise
 
-pub fn abi_short(Int) -> Int raise
+pub fn abi_short(Int32) -> Int32 raise
 
 pub fn abi_size(UInt64) -> UInt64 raise
 
-pub fn abi_ushort(UInt) -> UInt raise
+pub fn abi_ushort(UInt32) -> UInt32 raise
 
 // Errors
 

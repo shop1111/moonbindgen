@@ -15,9 +15,10 @@ pub fn generate_with_metadata(String, String, GenerateConfig, ToolMetadata) -> G
 pub fn parse_config(String) -> GenerateConfig raise ConfigError
 
 // Errors
+#derive(Eq, @debug.Debug)
 pub(all) suberror ConfigError {
   InvalidConfig(String)
-} derive(Eq, @debug.Debug)
+}
 #deprecated
 pub fn ConfigError::equal(Self, Self) -> Bool
 #deprecated
@@ -28,25 +29,25 @@ pub fn ConfigError::to_repr(Self) -> @debug.Repr
 // Types and methods
 pub struct BufferPolicy {
   function_name : String
-  pointer : Int
-  length : Int
+  pointer : Int32
+  length : Int32
   direction : String
   retention : String
-  copy_parameter : Int
+  copy_parameter : Int32
   copy_symbol : String
 }
 
 pub struct CallbackPolicy {
   function_name : String
-  callback : Int
+  callback : Int32
   lifetime : String
-  user_data : Int
+  user_data : Int32
   unregister : String
   thread : String
 }
 
 pub struct GenerateConfig {
-  schema_version : Int
+  schema_version : Int32
   include_functions : Map[String, Bool]
   exclude_functions : Map[String, Bool]
   renames : Map[String, String]
@@ -69,8 +70,8 @@ pub struct GenerateResult {
   bindings : String
   report : String
   shim : String?
-  generated : Int
-  skipped : Int
+  generated : Int32
+  skipped : Int32
 }
 
 pub struct MultiOutputPolicy {
@@ -79,7 +80,7 @@ pub struct MultiOutputPolicy {
 }
 
 pub struct NamedOutput {
-  index : Int
+  index : Int32
   name : String
 }
 
@@ -94,7 +95,7 @@ pub struct ResourcePolicy {
 pub struct ReturnBufferPolicy {
   function_name : String
   length_function : String
-  length_args : Array[Int]
+  length_args : Array[Int32]
   null_function : String
   null_symbol : String
 }
@@ -106,10 +107,11 @@ pub struct ToolMetadata {
 pub fn ToolMetadata::new(String, String) -> Self
 pub fn ToolMetadata::unknown() -> Self
 
+#derive(Eq, @debug.Debug)
 pub(all) enum UnsupportedPolicy {
   Report
   Error
-} derive(Eq, @debug.Debug)
+}
 #deprecated
 pub fn UnsupportedPolicy::equal(Self, Self) -> Bool
 #deprecated

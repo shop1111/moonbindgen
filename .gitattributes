@@ -1,5 +1,6 @@
 examples/sqlite/sqlite3.c linguist-vendored
 examples/sqlite/sqlite3.h linguist-vendored
 examples/native_fixture/fixture.c linguist-vendored
-examples/**/bindings.mbt linguist-generated
-examples/**/report.json linguist-generated
+examples/**/bindings.mbt linguist-generated eol=lf
+examples/**/report.json linguist-generated eol=lf
+examples/**/bindings_shim.c eol=lf

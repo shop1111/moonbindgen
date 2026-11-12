@@ -1,12 +1,13 @@
 ///|
 /// Controls how generation handles declarations outside MoonBindgen's
 /// conservative ABI surface.
+#derive(Debug, Eq)
 pub(all) enum UnsupportedPolicy {
   /// Keep supported declarations and record unsupported ones in the report.
   Report
   /// Reject the complete generation when any unsupported declaration is found.
   Error
-} derive(Debug, Eq)
+}
 
 ///|
 #deprecated
@@ -22,7 +23,7 @@ pub extend UnsupportedPolicy with @debug.Debug::{to_repr}
 /// Use `GenerateConfig::default` for report-only generation, or `parse_config`
 /// when loading a user-supplied configuration file.
 pub struct GenerateConfig {
-  schema_version : Int
+  schema_version : Int32
   include_functions : Map[String, Bool]
   exclude_functions : Map[String, Bool]
   renames : Map[String, String]
@@ -44,11 +45,11 @@ pub struct GenerateConfig {
 /// A position-based byte buffer policy for a config-v2 C function.
 pub struct BufferPolicy {
   function_name : String
-  pointer : Int
-  length : Int
+  pointer : Int32
+  length : Int32
   direction : String
   retention : String
-  copy_parameter : Int
+  copy_parameter : Int32
   copy_symbol : String
 }
 
@@ -57,7 +58,7 @@ pub struct BufferPolicy {
 pub struct ReturnBufferPolicy {
   function_name : String
   length_function : String
-  length_args : Array[Int]
+  length_args : Array[Int32]
   null_function : String
   null_symbol : String
 }
@@ -65,7 +66,7 @@ pub struct ReturnBufferPolicy {
 ///|
 /// A named C output argument, addressed by zero-based parameter position.
 pub struct NamedOutput {
-  index : Int
+  index : Int32
   name : String
 }
 
@@ -90,19 +91,20 @@ pub struct ResourcePolicy {
 /// A position-based callback contract with an explicit lifetime boundary.
 pub struct CallbackPolicy {
   function_name : String
-  callback : Int
+  callback : Int32
   lifetime : String
-  user_data : Int
+  user_data : Int32
   unregister : String
   thread : String
 }
 
 ///|
 /// An error raised when generation configuration is malformed or unsupported.
+#derive(Debug, Eq)
 pub(all) suberror ConfigError {
   /// Carries a stable, user-facing validation message.
   InvalidConfig(String)
-} derive(Debug, Eq)
+}
 
 ///|
 #deprecated
@@ -226,7 +228,7 @@ fn required_string(json : Json, name : String) -> String raise ConfigError {
 }
 
 ///|
-fn required_index(json : Json, name : String) -> Int raise ConfigError {
+fn required_index(json : Json, name : String) -> Int32 raise ConfigError {
   match field(json, name) {
     Some(Number(number, ..)) if number >= 0.0 &&
       number == number.to_int().to_double() => number.to_int()
@@ -368,7 +370,7 @@ fn parse_return_buffers(
     }
     let function_name = required_string(item, "function")
     let length_function = required_string(item, "length_function")
-    let length_args : Array[Int] = []
+    let length_args : Array[Int32] = []
     match field(item, "length_args") {
       Some(Array(items)) =>
         for arg in items {

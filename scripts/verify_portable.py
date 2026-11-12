@@ -4,6 +4,7 @@
 import argparse
 import json
 import subprocess
+import sys
 from pathlib import Path
 
 
@@ -33,14 +34,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--clang", required=True)
     args = parser.parse_args()
-    expected = json.loads((ROOT / "toolchain.json").read_text(encoding="utf-8"))
-    version = run("moon", "version", "--all")
-    assert expected["moon"] in version and expected["moonc"] in version
-    core_manifest = (Path.home() / ".moon" / "lib" / "core" / "moon.mod").read_text(
-        encoding="utf-8"
-    )
-    assert f'version = "{expected["core"]}"' in core_manifest
-    assert f"clang version {expected['clang']}" in run(args.clang, "--version")
+    print(run(sys.executable, "scripts/check_toolchain.py", "--clang", args.clang))
     print(run("moon", "check", "--target", "all", "--deny-warn", "--warn-list", "+73"))
     print(run("moon", "build", "--target", "all", "--deny-warn"))
     print(run("moon", "test", "--target", "all", "--deny-warn"))
