@@ -7,3 +7,5 @@ target
 .moonagent/
 submission/
 2026年9月MoonBit 黑客松大赛章程 .md
+__pycache__/
+*.pyc
