@@ -26,7 +26,7 @@ fn render_function(
   }
   let params : Array[String] = []
   let borrowed : Array[String] = []
-  let parameter_names : Map[String, Int] = Map([])
+  let parameter_names : Map[String, Int32] = Map([])
   for parameter in function.parameters {
     let resolved = match
       resolve_configured_type(

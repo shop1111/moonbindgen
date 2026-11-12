@@ -1,6 +1,6 @@
 ///|
 priv struct MultiField {
-  index : Int
+  index : Int32
   name : String
   c_type : String
   moon_type : String
@@ -117,7 +117,7 @@ fn render_v2_multi_output(
     return (None, None, "missing multi-output policy")
   }
   let fields : Array[MultiField] = []
-  let output_by_index : Map[Int, MultiField] = Map([])
+  let output_by_index : Map[Int32, MultiField] = Map([])
   for output in policy.outputs {
     if output.index >= function.parameters.length() {
       return (None, None, "multi-output index is out of range")

@@ -32,16 +32,19 @@ The main header controls which declarations are emitted. Included headers may su
 
 ## Requirements and installation
 
-- MoonBit `0.1.20260920 (914d7da)` with Moonc/Core `0.10.14+7d59c7ec9`
+- MoonBit with Moonc/Core `0.10.20` or newer. Release 0.6.1 is verified on `moon 0.1.20261104 (940aa18)` with Moonc/Core `0.10.20+65efd5b93`.
 - Clang `23.x`; CI and local evidence use LLVM `23.1.1`
 - Windows x64 and Ubuntu 24.04 are verified with MoonBit/Core and Clang 23.1.1. The Linux CI runner regenerates, compiles, and calls the Native fixtures and SQLite example, then reruns them with AddressSanitizer instrumentation.
+- Generated bindings target the `native` backend only. The generator library itself checks, builds, and tests on `wasm`, `wasm-gc`, `js`, and `native`.
 
-The checked release toolchain is recorded in [`toolchain.json`](toolchain.json). CI rejects a different compiler or core version instead of silently accepting formatter or diagnostic drift.
+The verified release toolchain is recorded in [`toolchain.json`](toolchain.json) and checked by `scripts/check_toolchain.py`: Moonc and Core must be at least the recorded versions, and Clang must match exactly. CI installs the latest official MoonBit toolchain on every push, pull request, and weekly schedule, so formatter or diagnostic drift surfaces as a failing strict check instead of being masked by a pinned compiler.
+
+Generated `bindings.mbt` files spell 32-bit integers as `Int`. Current `moon fmt` rewrites that alias to `Int32`; both denote the same type, and the generated files are intentionally kept byte-for-byte equal to generator output so `generate --check` can detect drift.
 
 To consume the generator as a library:
 
 ```powershell
-moon add shop1111/moonbindgen@0.6.0
+moon add shop1111/moonbindgen@0.6.1
 ```
 
 Add the root package to `moon.pkg`:
@@ -62,7 +65,7 @@ let result = @bindgen.generate_with_config(clang_ast_json, "library.h", config)
 println(result.bindings)
 ```
 
-Windows users can also download `moonbindgen-v0.6.0-windows-x86_64.zip` from the GitHub Release, extract `moonbindgen.exe`, and keep Clang 23 available separately. The executable is not a general C/C++ compiler bundle.
+Windows users can also download the `moonbindgen-v<version>-windows-x86_64.zip` asset from GitHub Releases, extract `moonbindgen.exe`, and keep Clang 23 available separately. The executable is not a general C/C++ compiler bundle.
 
 ## CLI quick start
 

@@ -6,10 +6,13 @@ extern "C" fn callback_probe_new() -> CallbackProbe = "callback_probe_new"
 
 ///|
 #borrow(probe)
-extern "C" fn callback_probe_touch(probe : CallbackProbe, value : Int) -> Unit = "callback_probe_touch"
+extern "C" fn callback_probe_touch(
+  probe : CallbackProbe,
+  value : Int32,
+) -> Unit = "callback_probe_touch"
 
 ///|
-extern "C" fn callback_probe_finalizations() -> Int = "callback_probe_finalizations"
+extern "C" fn callback_probe_finalizations() -> Int32 = "callback_probe_finalizations"
 
 ///|
 fn register_and_drop() -> Unit {
@@ -29,7 +32,7 @@ fn close_captured_probe() -> Unit {
 ///|
 fn main {
   if call_once(fn(value) { value + 1 }, 41) != 42 {
-    @abort.abort("call-scoped callback failed")
+    abort("call-scoped callback failed")
   }
   let mut received = 0
   let registration = register_listener(fn(value) { received = received + value })
@@ -41,19 +44,19 @@ fn main {
     registration.close() ||
     !registration.is_closed() ||
     unregister_count() != 1 {
-    @abort.abort("persistent callback lifetime failed")
+    abort("persistent callback lifetime failed")
   }
   fire_listener(100)
   if received != 42 {
-    @abort.abort("callback fired after unregister")
+    abort("callback fired after unregister")
   }
   register_and_drop()
   if unregister_count() != 2 {
-    @abort.abort("callback finalizer did not unregister")
+    abort("callback finalizer did not unregister")
   }
   close_captured_probe()
   if unregister_count() != 3 || callback_probe_finalizations() != 1 {
-    @abort.abort("captured callback object was not released")
+    abort("captured callback object was not released")
   }
   println(
     "Callback fixture => call, unregister once, finalizer, closure release",

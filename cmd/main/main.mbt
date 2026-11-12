@@ -1,7 +1,7 @@
 ///|
 fn usage() -> String {
   (
-    #|MoonBindgen 0.6.0
+    #|MoonBindgen 0.6.1
     #|Usage:
     #|  moonbindgen generate <header> --out <dir> [--clang <exe>] [--config <json>] [--check] [-- <clang arguments...>]
     #|
@@ -15,16 +15,19 @@ fn usage() -> String {
 }
 
 ///|
-extern "C" fn native_exit(code : Int) -> Unit = "exit"
+extern "C" fn native_exit(code : Int32) -> Unit = "exit"
 
 ///|
-fn die(code : Int, message : String) -> Unit {
+fn die(code : Int32, message : String) -> Unit {
   println(message)
   native_exit(code)
 }
 
 ///|
-async fn capture(clang : String, args : Array[String]) -> (Int, String, String) {
+async fn capture(
+  clang : String,
+  args : Array[String],
+) -> (Int32, String, String) {
   let (code, stdout, stderr) = @process.collect_output(clang, args) catch {
     _ => {
       die(3, "Could not start Clang: " + clang)
@@ -167,7 +170,7 @@ async fn main {
     return
   }
   if args.length() == 2 && args[1] == "--version" {
-    println("moonbindgen 0.6.0")
+    println("moonbindgen 0.6.1")
     return
   }
   if args.length() >= 3 && args[1] == "generate" && args[2] == "--help" {

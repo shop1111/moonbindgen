@@ -4,13 +4,13 @@ package "shop1111/moonbindgen/examples/value_fixture"
 // Values
 pub fn point_add(MbgValue_point, MbgValue_point) -> MbgValue_point raise
 
-pub fn point_long_bits() -> Int
+pub fn point_long_bits() -> Int32
 
-pub fn point_make(Int, Int64, Double, Bool) -> MbgValue_point raise
+pub fn point_make(Int32, Int64, Double, Bool) -> MbgValue_point raise
 
 pub fn point_passthrough(MbgValue_point) -> MbgValue_point raise
 
-pub fn point_score(MbgValue_point) -> Int raise
+pub fn point_score(MbgValue_point) -> Int32 raise
 
 // Errors
 
@@ -24,7 +24,7 @@ type MbgRawValue_point_passthrough
 type MbgRawValue_point_score
 
 pub(all) struct MbgValue_point {
-  x : Int
+  x : Int32
   y : Int64
   z : Double
   valid : Bool

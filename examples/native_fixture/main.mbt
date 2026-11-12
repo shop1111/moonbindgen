@@ -33,7 +33,7 @@ fn main raise {
     owned_null != None ||
     !malformed_rejected ||
     abi_free_count() != 2 {
-    @abort.abort("generated native ABI fixture failed")
+    abort("generated native ABI fixture failed")
   }
   println("Native ABI fixture => 42, outputs and strings")
 }

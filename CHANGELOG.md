@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.1 - 2026-11-12
+
+- Verify against MoonBit `moon 0.1.20261104` / Moonc and Core `0.10.20+65efd5b93`; 0.10.20 is now the minimum supported compiler.
+- Migrate to `#derive(...)`, replace the deprecated `@abort.abort` in examples with prelude `abort`, and reformat handwritten sources with the current formatter. Generated bindings are unchanged.
+- Update `moonbitlang/async` to 0.22.9.
+- Treat `toolchain.json` as the verified minimum instead of an exact pin, through a shared `scripts/check_toolchain.py`; CI now installs the latest official toolchain and also runs weekly.
+- Pin generated example artifacts to LF so `generate --check` is stable under `core.autocrlf=true`.
+
 ## 0.6.0 - 2026-09-30
 
 - Generate direct closed `FuncRef` calls for explicitly call-scoped scalar callbacks.

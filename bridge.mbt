@@ -105,7 +105,7 @@ fn render_bridge(
   let c_params : Array[String] = []
   let c_args : Array[String] = []
   let borrowed : Array[String] = []
-  let used_names : Map[String, Int] = Map([])
+  let used_names : Map[String, Int32] = Map([])
   for index, parameter in function.parameters {
     let ctype = normalized_type(parameter.canonical_type)
     if config.is_output(function.name, parameter.name) {

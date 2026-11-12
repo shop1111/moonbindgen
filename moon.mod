@@ -11,7 +11,7 @@
 
 name = "shop1111/moonbindgen"
 
-version = "0.6.0"
+version = "0.6.1"
 
 readme = "README.md"
 
@@ -26,5 +26,5 @@ preferred_target = "native"
 description = "Generate MoonBit native C FFI declarations from C headers with Clang."
 
 import {
-  "moonbitlang/async@0.21.0",
+  "moonbitlang/async@0.22.9",
 }

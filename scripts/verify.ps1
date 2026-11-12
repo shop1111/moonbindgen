@@ -29,21 +29,9 @@ function Assert-ExitCode {
 
 Push-Location $projectRoot
 try {
-  $expectedToolchain = Get-Content -Raw -Encoding UTF8 -LiteralPath 'toolchain.json' | ConvertFrom-Json
-  $actualToolchain = (& moon version --all) -join "`n"
-  if (-not $actualToolchain.Contains($expectedToolchain.moon)) { throw 'Unexpected Moon version' }
-  if (-not $actualToolchain.Contains($expectedToolchain.moonc)) { throw 'Unexpected Moonc version' }
-  $coreModule = Join-Path $env:USERPROFILE '.moon/lib/core/moon.mod'
-  if (-not (Test-Path -LiteralPath $coreModule)) { throw 'MoonBit core manifest not found' }
-  $coreManifest = Get-Content -Raw -Encoding UTF8 -LiteralPath $coreModule
-  if (-not $coreManifest.Contains("version = `"$($expectedToolchain.core)`"")) {
-    throw 'Unexpected Core version'
-  }
   if (-not (Test-Path -LiteralPath $Clang)) { throw "Clang not found: $Clang" }
-  $clangVersion = (& $Clang --version) -join "`n"
-  if (-not $clangVersion.Contains("clang version $($expectedToolchain.clang)")) {
-    throw "Unexpected Clang version: $clangVersion"
-  }
+  & python scripts/check_toolchain.py --clang $Clang
+  if ($LASTEXITCODE -ne 0) { throw 'Unsupported toolchain' }
 
   & moon check --target native --deny-warn --warn-list +73
   if ($LASTEXITCODE -ne 0) { throw 'MoonBit check failed' }
@@ -59,7 +47,7 @@ try {
   if (-not $help.Output.Contains('Usage:')) { throw 'CLI help text is incomplete' }
   $version = Invoke-MoonBindgen @('--version')
   Assert-ExitCode 'CLI --version' $version 0
-  if ($version.Output.Trim() -ne 'moonbindgen 0.6.0') { throw 'CLI version is not 0.6.0' }
+  if ($version.Output.Trim() -ne 'moonbindgen 0.6.1') { throw 'CLI version is not 0.6.1' }
   Assert-ExitCode 'CLI usage error' (Invoke-MoonBindgen @('generate')) 2
 
   New-Item -ItemType Directory -Force -Path '_build/verify' | Out-Null

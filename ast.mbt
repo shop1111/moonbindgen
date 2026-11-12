@@ -15,7 +15,7 @@ fn text_field(node : Json, name : String) -> String? {
 }
 
 ///|
-fn int_field(node : Json, name : String) -> Int? {
+fn int_field(node : Json, name : String) -> Int32? {
   match field(node, name) {
     Some(Number(value, ..)) => Some(value.to_int())
     _ => None
@@ -61,7 +61,7 @@ fn source_file(node : Json) -> String? {
 ///|
 priv struct SourceLocation {
   file : String
-  line : Int
+  line : Int32
 }
 
 ///|

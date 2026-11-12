@@ -2,17 +2,17 @@
 package "shop1111/moonbindgen/examples/callback_fixture"
 
 // Values
-pub fn call_once(FuncRef[(Int) -> Int], Int) -> Int
+pub fn call_once(FuncRef[(Int32) -> Int32], Int32) -> Int32
 
-pub fn fire_listener(Int) -> Unit
+pub fn fire_listener(Int32) -> Unit
 
-pub fn register_listener((Int) -> Unit) -> MbgRegistration_register_listener
+pub fn register_listener((Int32) -> Unit) -> MbgRegistration_register_listener
 
-pub fn register_listener_raw(FuncRef[(MbgCallbackData_register_listener, Int) -> Unit], MbgCallbackData_register_listener) -> Unit
+pub fn register_listener_raw(FuncRef[(MbgCallbackData_register_listener, Int32) -> Unit], MbgCallbackData_register_listener) -> Unit
 
 pub fn register_listener_unregister_raw(MbgCallbackData_register_listener) -> Unit
 
-pub fn unregister_count() -> Int
+pub fn unregister_count() -> Int32
 
 // Errors
 

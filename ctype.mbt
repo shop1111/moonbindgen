@@ -2,7 +2,7 @@
 /// A C declarator shape retained before deciding whether its ABI is supported.
 priv struct CTypeModel {
   base : String
-  pointer_depth : Int
+  pointer_depth : Int32
   pointee_const : Bool
   pointer_const : Bool
   array : Bool
